@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.json": "jsonc",
+        ".textlintrc": "jsonc",
+        "stdexcept": "cpp",
+        "string": "cpp",
+        "locale": "cpp"
+    }
+}
