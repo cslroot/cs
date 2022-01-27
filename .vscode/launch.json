@@ -8,7 +8,7 @@
             "name": "(lldb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/example/simple/cs.examples.simple.out",
+            "program": "${workspaceFolder}/build/examples/simple/cs.examples.simple",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

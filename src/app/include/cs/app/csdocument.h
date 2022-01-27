@@ -1,0 +1,31 @@
+#pragma once
+
+#include <cs/app/app_common.h>
+#include <cs/base_fwd.h>
+
+#include <memory>
+
+namespace cs
+{
+    namespace app
+    {
+        class CSDocument
+        {
+        private:
+            /* data */
+        public:
+            DECL_CS_APP CSDocument();
+            DECL_CS_APP ~CSDocument();
+
+        public:
+            DECL_CS_APP void SaveAs(const cs::base::CSString& filepath);
+
+        private:
+            struct Impl;
+            std::unique_ptr<Impl> _impl;
+        };
+
+
+    } // namespace app
+
+} // namespace cs

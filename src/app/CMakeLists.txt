@@ -1,0 +1,36 @@
+cmake_minimum_required(VERSION 3.16.0)
+project(cs.app)
+
+add_compile_definitions(BUILD_CS_RENDER_LIB)
+
+enable_language(CXX)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+
+if (CS_BUILD_SHARED_LIBS)
+    add_library(cs.app SHARED)
+else()
+    add_library(cs.app STATIC)
+endif()
+
+target_sources(cs.app
+PRIVATE
+src/cs_app.cpp
+src/csapp.cpp
+src/csdocument.cpp
+src/csdocumentcollection.cpp
+)
+
+target_link_libraries(cs.app cs.base)
+target_link_libraries(cs.app cs.core)
+target_link_libraries(cs.app cs.render)
+
+target_include_directories(cs.app 
+PUBLIC 
+${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+target_include_directories(cs.app 
+PRIVATE 
+${CMAKE_CURRENT_SOURCE_DIR}/include/cs/app)
