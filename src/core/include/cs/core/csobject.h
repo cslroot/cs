@@ -1,10 +1,12 @@
 #pragma once
 
+#include <cs/core/core_common.h>
+
 namespace cs
 {
     namespace core
     {
-        class CSObject
+        class DECL_CS_CORE CSObject
         {
         public:
             CSObject();
