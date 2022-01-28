@@ -14,7 +14,7 @@ int main(int argc, char** argv)
 
     auto& doc2 = app.OpenNewDocument();
 
-    int i = app.Documents().Size();
+    size_t i = app.Documents().Size();
     std::cout << i << std::endl;
 
     cs::base::CSString str;

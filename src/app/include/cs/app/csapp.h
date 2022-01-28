@@ -11,15 +11,15 @@ namespace cs
         class CSDocument;
         class CSDocumentCollection;
 
-        class DECL_CS_APP CSApp
+        class CSApp
         {
         public:
-            CSApp(int argc, char** argv);
-            virtual ~CSApp();
+            DECL_CS_APP CSApp(int argc, char** argv);
+            DECL_CS_APP virtual ~CSApp();
 
         public:
-            CSDocument& OpenNewDocument();
-            CSDocumentCollection& Documents() const;
+            DECL_CS_APP CSDocument& OpenNewDocument();
+            DECL_CS_APP CSDocumentCollection& Documents() const;
 
         private:
             struct Impl;

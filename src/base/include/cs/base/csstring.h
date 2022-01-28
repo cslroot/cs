@@ -18,9 +18,9 @@ namespace cs
             DECL_CS_BASE virtual ~CSString();
 
         public:
-            const char* c_str() const;
-            CSString& operator+=(const char* u8rhs);
-            CSString& operator+=(const CSString& rhs);
+            DECL_CS_BASE const char* c_str() const;
+            DECL_CS_BASE CSString& operator+=(const char* u8rhs);
+            DECL_CS_BASE CSString& operator+=(const CSString& rhs);
 
         private:
             std::string _str;

@@ -50,7 +50,7 @@ namespace cs
             CSVector(std::array<T, N>);
 
         public:
-            DECL_CS_BASE CSVector<T, N>& operator+=(const CSVector<T, N>& rhs)
+            CSVector<T, N>& operator+=(const CSVector<T, N>& rhs)
             {
                 for (size_t i = 0; i < N; ++i)
                 {
@@ -92,7 +92,7 @@ namespace cs
             CSVec3d() {}
             CSVec3d(double x_, double y_, double z_)
             {
-                this->x = x_;
+                x = x_;
                 y = y_;
                 z = z_;
             }
