@@ -21,9 +21,9 @@ jobs:
         mkdir $buildDirectory -Force -ErrorAction Stop | Out-Null
         cmake -G "Visual Studio 17 2022" `
               -A $msbuildPlatform `
-              -D CMAKE_BUILD_TYPE=Debug `
+              -D CMAKE_BUILD_TYPE=Release `
               -D BUILD_SHARED_LIBS=ON `
-        	  ./ 
+        	  ./
 
     - name: build
       run: |
