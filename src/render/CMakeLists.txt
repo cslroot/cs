@@ -15,9 +15,15 @@ else()
     add_library(cs.render STATIC)
 endif()
 
+
+file(GLOB_RECURSE CS_RENDER_SRC CONFIGURE_DEPENDS 
+     "*.h"
+     "*.cpp"
+)
+
 target_sources(cs.render
 PRIVATE
-src/cs_render.cpp
+${CS_RENDER_SRC}
 )
 
 target_link_libraries(cs.render cs.base)
@@ -29,4 +35,4 @@ ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 target_include_directories(cs.render 
 PRIVATE 
-${CMAKE_CURRENT_SOURCE_DIR}/include/cs/core)
+${CMAKE_CURRENT_SOURCE_DIR}/include/cs/render)

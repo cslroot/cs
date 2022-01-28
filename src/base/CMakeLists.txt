@@ -8,6 +8,12 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_compile_definitions(CS_BASE_EXPORT)
 
+
+file(GLOB_RECURSE CS_BASE_SRC CONFIGURE_DEPENDS 
+     "*.h"
+     "*.cpp"
+)
+
 if (CS_BUILD_SHARED_LIBS)
     add_library(cs.base SHARED)
 else()
@@ -16,8 +22,7 @@ endif()
 
 target_sources(cs.base
 PRIVATE
-src/csstring.cpp
-src/csvector.cpp
+${CS_BASE_SRC}
 )
 
 target_include_directories(cs.base 

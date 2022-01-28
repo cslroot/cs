@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16.0)
 project(cs.app)
 
-add_compile_definitions(BUILD_CS_RENDER_LIB)
+add_compile_definitions(BUILD_CS_APP_LIB)
 
 enable_language(CXX)
 set(CMAKE_CXX_STANDARD 14)
@@ -15,12 +15,15 @@ else()
     add_library(cs.app STATIC)
 endif()
 
+
+file(GLOB_RECURSE CS_APP_SRC CONFIGURE_DEPENDS 
+     "*.h"
+     "*.cpp"
+)
+
 target_sources(cs.app
 PRIVATE
-src/cs_app.cpp
-src/csapp.cpp
-src/csdocument.cpp
-src/csdocumentcollection.cpp
+${CS_APP_SRC}
 )
 
 target_link_libraries(cs.app cs.base)

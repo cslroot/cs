@@ -15,12 +15,15 @@ else()
     add_library(cs.core STATIC)
 endif()
 
+
+file(GLOB_RECURSE CS_CORE_SRC CONFIGURE_DEPENDS 
+     "*.h"
+     "*.cpp"
+)
+
 target_sources(cs.core
 PRIVATE
-src/cs_core.cpp
-src/csobject.cpp
-src/entity.cpp
-src/geometry.cpp
+${CS_CORE_SRC}
 )
 
 target_link_libraries(cs.core cs.base)
