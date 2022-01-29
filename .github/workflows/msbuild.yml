@@ -19,7 +19,7 @@ jobs:
         $msbuildPlatform = "x64"
         $buildDirectory = "build"
         mkdir $buildDirectory -Force -ErrorAction Stop | Out-Null
-        cmake -G "Visual Studio 17 2022" `
+        cmake -G "Visual Studio 16 2019" `
               -A $msbuildPlatform `
               -D CMAKE_BUILD_TYPE=Release `
               -D BUILD_SHARED_LIBS=ON `
