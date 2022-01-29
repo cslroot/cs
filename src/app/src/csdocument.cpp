@@ -27,6 +27,7 @@ void CSDocument::SaveAs(const cs::base::CSString& filepath)
 {
     std::ofstream ofs(filepath.c_str());
     ofs << "hoge" << std::endl;
+    ofs << "name: " << Name() << std::endl;
     ofs.close();
 
     _impl->_filepath = filepath;

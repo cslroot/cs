@@ -10,16 +10,21 @@ int main(int argc, char** argv)
     auto& app = *pmyapp;
 
     auto& doc = app.OpenNewDocument();
-    doc.SaveAs("save.doc");
+    doc.SaveAs("save.txt");
 
     auto& doc2 = app.OpenNewDocument();
+    doc2.SetName(u8"2nd document");
+    doc2.SaveAs("doc2.txt");
+
+    std::cout << "document saved" << std::endl;
 
     size_t i = app.Documents().Size();
     std::cout << i << std::endl;
 
     cs::base::CSString str;
     str += u8"hoge";
-
+    str += u8"fuga";
+    std::cout << str << std::endl;
 
     cs::base::CSVec3d v3d;
     cs::base::CSVec3d v3d2(1, 2, 3);

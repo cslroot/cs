@@ -50,3 +50,10 @@ CSString& CSString::operator+=(const char* u8rhs)
     _str += u8rhs;
     return *this;
 }
+
+
+std::ostream& operator<<(std::ostream& os, const CSString& str)
+{
+    os << str.c_str();
+    return os;
+}

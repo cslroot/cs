@@ -26,6 +26,10 @@ namespace cs
             std::string _str;
         };
 
-    } // namespace base
 
+    } // namespace base
 } // namespace cs
+
+
+DECL_CS_BASE std::ostream& operator<<(std::ostream& os, const cs::base::CSString& str);
+

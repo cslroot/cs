@@ -8,6 +8,16 @@ namespace cs
 {
     namespace core
     {
+        enum class EntityType
+        {
+            Point,
+            Surface,
+            Shell,
+            Vertex,
+            Edge,
+            Body,
+        };
+
         class DECL_CS_CORE Entity
         {
         public:
@@ -16,6 +26,7 @@ namespace cs
 
         private:
             int64_t _id;
+            EntityType _entType;
         };
     } // namespace core
 

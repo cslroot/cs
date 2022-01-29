@@ -2,6 +2,7 @@
 
 #include <cs/app/app_common.h>
 #include <cs/base_fwd.h>
+#include <cs/core/csobject.h>
 
 #include <memory>
 
@@ -9,7 +10,7 @@ namespace cs
 {
     namespace app
     {
-        class CSDocument
+        class CSDocument : public cs::core::CSObject
         {
         private:
             /* data */
