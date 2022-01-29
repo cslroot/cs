@@ -35,5 +35,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: artifacts_win-x64
-        path: build_${{matrix.arch}}/bin
+        path: build/bin/Release
+
+
  
