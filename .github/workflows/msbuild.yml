@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     name: MSBuild
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
     - uses: actions/checkout@v2
 
@@ -19,7 +19,7 @@ jobs:
         $msbuildPlatform = "x64"
         $buildDirectory = "build"
         mkdir $buildDirectory -Force -ErrorAction Stop | Out-Null
-        cmake -G "Visual Studio 16 2019" `
+        cmake -G "Visual Studio 17 2022" `
               -A $msbuildPlatform `
               -D CMAKE_BUILD_TYPE=Release `
               -D BUILD_SHARED_LIBS=ON `
@@ -28,7 +28,7 @@ jobs:
     - name: build
       run: |
         cd build
-        msbuild src\YourProjectFile.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
+        msbuild cs.sln -t:rebuild -verbosity:diag -property:Configuration=Release
 
     - run: |
         msbuild -version
