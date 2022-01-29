@@ -1,3 +1,3 @@
 # cs
 
-[![MSBuild](https://github.com/cslroot/cs/actions/workflows/build-win.yml/badge.svg)](https://github.com/cslroot/cs/actions/workflows/build-win.yml)
+[![MSBuild](https://github.com/cslroot/cs/actions/workflows/msbuild.yml/badge.svg)](https://github.com/cslroot/cs/actions/workflows/msbuild.yml)
