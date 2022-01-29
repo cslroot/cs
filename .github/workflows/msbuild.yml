@@ -21,6 +21,7 @@ jobs:
         mkdir $buildDirectory -Force -ErrorAction Stop | Out-Null
         cmake -G "Visual Studio 17 2022" `
               -A $msbuildPlatform `
+              -B $buildDirectory
               -D CMAKE_BUILD_TYPE=Release `
               -D BUILD_SHARED_LIBS=ON `
         	  ./
@@ -30,5 +31,9 @@ jobs:
         cd build
         msbuild cs.sln -t:rebuild -verbosity:diag -property:Configuration=Release
 
-    - run: |
-        msbuild -version
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: artifacts_win-x64
+        path: build_${{matrix.arch}}/bin
+ 
