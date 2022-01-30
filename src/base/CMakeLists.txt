@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.16.0)
 project(cs.base)
 
 enable_language(CXX)
@@ -17,6 +17,15 @@ endif()
 file(GLOB_RECURSE CS_BASE_SRC CONFIGURE_DEPENDS 
      "*.h"
      "*.cpp"
+)
+
+target_precompile_headers(cs.base
+  PRIVATE
+    <vector>
+    <string>
+    <array>
+    <cassert>
+    <unordered_map>
 )
 
 target_sources(cs.base
