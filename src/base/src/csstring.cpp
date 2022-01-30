@@ -31,6 +31,10 @@ CSString::CSString(const std::wstring& wstr)
     _str = converter.to_bytes(wstr.c_str());
 }
 
+CSString::CSString(const CSString& a)
+    : _str(a._str)
+{}
+
 CSString::~CSString()
 {}
 
@@ -51,6 +55,12 @@ CSString& CSString::operator+=(const char* u8rhs)
     return *this;
 }
 
+cs::base::CSString operator+(const cs::base::CSString& str1, const cs::base::CSString& str2)
+{
+    CSString str(str1.c_str());
+    str += str2;
+    return str;
+}
 
 std::ostream& operator<<(std::ostream& os, const CSString& str)
 {

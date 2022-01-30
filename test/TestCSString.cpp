@@ -18,3 +18,12 @@ TEST(TestCSString, ctor)
     EXPECT_STREQ(str.c_str(), "abc");
 }
 
+
+TEST(TestCSString, opePlus)
+{
+    CSString str1("abc");
+    CSString str2("def");
+    CSString str = str1 + str2;
+    EXPECT_STREQ(str.c_str(), "abcdef");
+}
+

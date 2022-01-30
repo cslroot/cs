@@ -30,6 +30,6 @@ namespace cs
     } // namespace base
 } // namespace cs
 
-
+DECL_CS_BASE cs::base::CSString operator+(const cs::base::CSString& str1, const cs::base::CSString& str2);
 DECL_CS_BASE std::ostream& operator<<(std::ostream& os, const cs::base::CSString& str);
 
