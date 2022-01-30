@@ -41,9 +41,13 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+file(GLOB_RECURSE CS_TEST_SRC CONFIGURE_DEPENDS 
+  "*.h"
+  "*.cpp"
+)
+
 add_executable(cs.test
-# main.cpp
-test_sample.cpp
+${CS_TEST_SRC}
 )
 
 target_link_libraries(cs.test PRIVATE cs.base)

@@ -15,7 +15,6 @@ else()
     add_library(cs.app STATIC)
 endif()
 
-
 file(GLOB_RECURSE CS_APP_SRC CONFIGURE_DEPENDS 
      "*.h"
      "*.cpp"

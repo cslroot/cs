@@ -8,17 +8,16 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_compile_definitions(CS_BASE_EXPORT)
 
-
-file(GLOB_RECURSE CS_BASE_SRC CONFIGURE_DEPENDS 
-     "*.h"
-     "*.cpp"
-)
-
 if (CS_BUILD_SHARED_LIBS)
     add_library(cs.base SHARED)
 else()
     add_library(cs.base STATIC)
 endif()
+
+file(GLOB_RECURSE CS_BASE_SRC CONFIGURE_DEPENDS 
+     "*.h"
+     "*.cpp"
+)
 
 target_sources(cs.base
 PRIVATE
