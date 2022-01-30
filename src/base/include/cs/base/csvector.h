@@ -2,6 +2,7 @@
 
 #include <cs/base/base_common.h>
 #include <string>
+#include <array>
 
 namespace cs
 {
