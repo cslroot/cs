@@ -2,7 +2,10 @@
 
 #include <cs/base/base_common.h>
 #include <string>
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include <array>
+#include <cassert>
 
 namespace cs
 {
@@ -59,6 +62,42 @@ namespace cs
                 }
                 return *this;
             }
+            CSVector<T, N>& operator-=(const CSVector<T, N>& rhs)
+            {
+                for (size_t i = 0; i < N; ++i)
+                {
+                    this->v[i] -= rhs.v[i];
+                }
+                return *this;
+            }
+            CSVector<T, N>& operator*=(T scale)
+            {
+                for (size_t i = 0; i < N; ++i)
+                {
+                    this->v[i] *= scale;
+                }
+                return *this;
+            }
+            CSVector<T, N>& operator/=(T div)
+            {
+                assert(div != 0.0);
+                for (size_t i = 0; i < N; ++i)
+                {
+                    this->v[i] /= div;
+                }
+                return *this;
+            }
+
+            T length() const
+            {
+                T value = 0.0;
+                for (size_t i = 0; i < N; ++i)
+                {
+                    value += this->v[i] * this->v[i];
+                }
+                return std::sqrt(value);
+            }
+
         };
 
         // // pre instanciated types
