@@ -17,3 +17,6 @@
 #else
 #define DECL_CS_BASE IMPORT
 #endif
+
+#define CS_NEW new
+#define CS_DELETE delete
