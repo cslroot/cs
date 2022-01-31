@@ -4,7 +4,7 @@ namespace cs
 {
     namespace modeler
     {
-        class Modeler;
+        class CSModeler;
     } // namespace render
 
 } // namespace cs

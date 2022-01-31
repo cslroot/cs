@@ -1,5 +1,5 @@
 #include <cs/base.h>
-#include <cs/core/topo.h>
+#include <cs/core/topology.h>
 #include <stdexcept>
 #include <gtest/gtest.h>
 

@@ -10,15 +10,14 @@ namespace cs
 {
     namespace modeler
     {
-        class DECL_CS_MODELER Modeler
+        class CSModeler
         {
         public:
-            Modeler();
-            virtual ~Modeler();
+            DECL_CS_MODELER CSModeler();
+            DECL_CS_MODELER virtual ~CSModeler();
 
         public:
-
-            cs::core::Body& CreateBox(const cs::base::CSVec3d& p1, const cs::base::CSVec3d& p2);
+            DECL_CS_MODELER cs::core::Body& CreateBox(const cs::base::CSVec3d& p1, const cs::base::CSVec3d& p2);
 
         private:
             struct Impl;

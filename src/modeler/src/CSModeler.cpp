@@ -1,4 +1,4 @@
-#include "Modeler.h"
+#include "CSModeler.h"
 
 #include <cs/base.h>
 #include <cs/core.h>
@@ -7,19 +7,19 @@
 
 using namespace cs::modeler;
 
-struct Modeler::Impl
+struct CSModeler::Impl
 {
     std::vector<cs::core::Body*> _bodies;
 };
 
-Modeler::Modeler(/* args */)
+CSModeler::CSModeler(/* args */)
     : _impl(std::make_unique<Impl>())
 {}
 
-Modeler::~Modeler()
+CSModeler::~CSModeler()
 {}
 
-cs::core::Body& Modeler::CreateBox(const cs::base::CSVec3d& p1, const cs::base::CSVec3d& p2)
+cs::core::Body& CSModeler::CreateBox(const cs::base::CSVec3d& p1, const cs::base::CSVec3d& p2)
 {
     cs::core::Body* pbody = CS_NEW cs::core::Body();
     _impl->_bodies.push_back(pbody);

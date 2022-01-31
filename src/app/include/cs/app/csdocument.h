@@ -23,7 +23,7 @@ namespace cs
             DECL_CS_APP void SaveAs(const cs::base::CSString& filepath);
 
         public:
-            DECL_CS_APP cs::modeler::Modeler& Modeler() const;
+            DECL_CS_APP cs::modeler::CSModeler& Modeler() const;
 
         private:
             struct Impl;

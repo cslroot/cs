@@ -18,7 +18,7 @@ struct CSDocument::Impl
     CSString _name;
     CSString _filepath;
 
-    cs::modeler::Modeler _modeler;
+    cs::modeler::CSModeler _modeler;
 };
 
 CSDocument::CSDocument()
@@ -38,7 +38,7 @@ void CSDocument::SaveAs(const cs::base::CSString& filepath)
     _impl->_filepath = filepath;
 }
 
-cs::modeler::Modeler& CSDocument::Modeler() const
+cs::modeler::CSModeler& CSDocument::Modeler() const
 {
     return _impl->_modeler;
 }
