@@ -27,6 +27,7 @@ ${CS_APP_SRC}
 
 target_link_libraries(cs.app cs.base)
 target_link_libraries(cs.app cs.core)
+target_link_libraries(cs.app cs.modeler)
 target_link_libraries(cs.app cs.render)
 
 target_include_directories(cs.app 

@@ -1,6 +1,8 @@
 #include "csdocument.h"
 
 #include <cs/base.h>
+#include <cs/core.h>
+#include <cs/modeler.h>
 
 #include <fstream>
 
@@ -9,11 +11,14 @@
 
 using namespace cs::app;
 using namespace cs::base;
+using namespace cs::modeler;
 
 struct CSDocument::Impl
 {
     CSString _name;
     CSString _filepath;
+
+    cs::modeler::Modeler _modeler;
 };
 
 CSDocument::CSDocument()
@@ -31,4 +36,9 @@ void CSDocument::SaveAs(const cs::base::CSString& filepath)
     ofs.close();
 
     _impl->_filepath = filepath;
+}
+
+cs::modeler::Modeler& CSDocument::Modeler() const
+{
+    return _impl->_modeler;
 }

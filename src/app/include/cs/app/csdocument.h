@@ -2,6 +2,7 @@
 
 #include <cs/app/app_common.h>
 #include <cs/base_fwd.h>
+#include <cs/modeler_fwd.h>
 #include <cs/core/csobject.h>
 
 #include <memory>
@@ -20,6 +21,9 @@ namespace cs
 
         public:
             DECL_CS_APP void SaveAs(const cs::base::CSString& filepath);
+
+        public:
+            DECL_CS_APP cs::modeler::Modeler& Modeler() const;
 
         private:
             struct Impl;
