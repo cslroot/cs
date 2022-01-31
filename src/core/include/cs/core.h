@@ -5,3 +5,4 @@
 #include <cs/core/entity.h>
 #include <cs/core/csobject.h>
 #include <cs/core/geometry.h>
+#include <cs/core/topo.h>

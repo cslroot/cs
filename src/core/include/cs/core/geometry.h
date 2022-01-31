@@ -13,6 +13,13 @@ namespace cs
             Geometry() {}
             virtual ~Geometry() {}
         };
+
+        class DECL_CS_CORE Point : public Geometry
+        {};
+        class DECL_CS_CORE Curve : public Geometry
+        {};
+        class DECL_CS_CORE Surface : public Geometry
+        {};
     } // namespace core
 
 } // namespace cs
