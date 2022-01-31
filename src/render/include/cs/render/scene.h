@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cs/render/render_common.h>
+#include <cs/render_fwd.h>
 
 namespace cs
 {
@@ -13,6 +14,9 @@ namespace cs
         public:
             Scene(/* args */);
             ~Scene();
+
+        public:
+            void Add(const cs::render::Mesh& mesh);
         };
     } // namespace render
 

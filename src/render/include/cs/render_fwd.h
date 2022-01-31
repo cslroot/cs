@@ -13,6 +13,8 @@ namespace cs
 
         class Material;
 
+        class Mesh;
+
         class Scene;
     } // namespace render
 

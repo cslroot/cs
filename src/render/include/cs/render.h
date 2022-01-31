@@ -5,3 +5,4 @@
 #include <cs/render/camera.h>
 #include <cs/render/material.h>
 #include <cs/render/scene.h>
+#include <cs/render/mesh.h>

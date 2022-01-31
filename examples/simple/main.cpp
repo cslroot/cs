@@ -45,7 +45,15 @@ int main(int argc, char** argv)
     auto camera = CS_NEW cs::render::PerspectiveCamera();
     auto renderer = CS_NEW cs::render::GLRenderer();
 
+    auto cube = new cs::render::Mesh(box, *mat);
+    scene->Add(*cube);
 
+    bool stop = false;
+    while (stop)
+    {
+        renderer->Render(*scene, *camera);
+        stop = true;
+    }
 
     std::cout << str.c_str() << std::endl;
 }
