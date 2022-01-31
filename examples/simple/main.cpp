@@ -2,6 +2,8 @@
 
 #include <cs/base.h>
 #include <cs/core.h>
+#include <cs/render.h>
+#include <cs/modeler.h>
 #include <cs/app.h>
 
 int main(int argc, char** argv)
@@ -34,6 +36,16 @@ int main(int argc, char** argv)
     std::cout << v3d.x << std::endl;
     std::cout << v3d.y << std::endl;
     std::cout << v3d.z << std::endl;
+
+    auto& modeler = doc.Modeler();
+    auto& box = modeler.CreateBox({ 0,0,0 }, { 1,1,1 });
+    auto mat = CS_NEW cs::render::BasicMaterial({ 1.0, 0.0, 0.0 });
+
+    auto scene = CS_NEW cs::render::Scene();
+    auto camera = CS_NEW cs::render::PerspectiveCamera();
+    auto renderer = CS_NEW cs::render::GLRenderer();
+
+
 
     std::cout << str.c_str() << std::endl;
 }

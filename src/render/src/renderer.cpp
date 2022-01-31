@@ -2,8 +2,8 @@
 
 using namespace cs::render;
 
-renderer::renderer(/* args */)
+Renderer::Renderer(/* args */)
 {}
 
-renderer::~renderer()
+Renderer::~Renderer()
 {}

@@ -6,18 +6,14 @@ namespace cs
 {
     namespace render
     {
-        class DECL_CS_RENDER Renderer
+        class DECL_CS_RENDER Scene
         {
         private:
             /* data */
         public:
-            Renderer(/* args */);
-            ~Renderer();
+            Scene(/* args */);
+            ~Scene();
         };
-
-        class DECL_CS_RENDER GLRenderer : public Renderer
-        {};
-
     } // namespace render
 
 } // namespace cs
