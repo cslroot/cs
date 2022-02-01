@@ -8,23 +8,11 @@
 
 int main(int argc, char** argv)
 {
-    std::locale::global(std::locale(
-#if _WIN32 && !__MINGW32__ && !__CYGWIN__
-        ".UTF-8"
-#else
-        ""
-#endif
-    ));
-
     auto pmyapp = std::make_unique<cs::app::CSApp>(argc, argv);
     auto& app = *pmyapp;
 
     auto& doc = app.Documents().OpenNewDocument();
     doc.SaveAs("save.txt");
-
-    auto& doc2 = app.Documents().OpenNewDocument();
-    doc2.SetName(u8"2nd document");
-    doc2.SaveAs("doc2.txt");
 
     std::cout << "document saved" << std::endl;
 
@@ -53,7 +41,7 @@ int main(int argc, char** argv)
     auto camera = CS_NEW cs::render::PerspectiveCamera();
     auto renderer = CS_NEW cs::render::GLRenderer();
 
-    auto cube = new cs::render::Mesh(box, *mat);
+    auto cube = CS_NEW cs::render::Mesh(box, *mat);
     scene->Add(*cube);
 
     bool stop = false;

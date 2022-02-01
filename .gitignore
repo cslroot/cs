@@ -1,5 +1,8 @@
 # 
 build/
+obj/
+bin/
+out/
 .vs/
 
 # Prerequisites

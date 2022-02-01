@@ -13,7 +13,7 @@ namespace cs
         public:
             virtual ~ICSCollection() {}
         public:
-            virtual void Add(std::shared_ptr<T>& obj) = 0;
+            virtual T& Add(std::unique_ptr<T> obj) = 0;
             virtual void Clear() = 0;
             virtual size_t Size() const = 0;
 

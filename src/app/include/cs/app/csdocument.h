@@ -5,18 +5,18 @@
 #include <cs/modeler_fwd.h>
 #include <cs/core/csobject.h>
 
+#include <cs/app/CSFactory.h>
+
 #include <memory>
 
 namespace cs
 {
     namespace app
     {
-        class CSDocument : public cs::core::CSObject
+        class CSDocument : public cs::core::CSObject, public CSFactory<CSDocument, int>
         {
-        private:
-            /* data */
         public:
-            DECL_CS_APP CSDocument();
+            DECL_CS_APP CSDocument(Key);
             DECL_CS_APP ~CSDocument();
 
         public:

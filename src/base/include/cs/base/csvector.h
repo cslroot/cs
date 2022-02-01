@@ -125,6 +125,7 @@ namespace cs
 
 #endif
 
+        using CSVec2d = cs::base::CSVector<double, 2>;
 
         class DECL_CS_BASE CSVec3d : public CSVector<double, 3>
         {

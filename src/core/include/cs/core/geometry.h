@@ -2,6 +2,7 @@
 
 #include <cs/core/core_common.h>
 #include <cs/core/entity.h>
+#include <cs/base_fwd.h>
 
 namespace cs
 {
@@ -14,11 +15,18 @@ namespace cs
             virtual ~Geometry() {}
         };
 
-        class DECL_CS_CORE Point : public Geometry
+        class DECL_CS_CORE Geometry3d : public Geometry
+        {
+        public:
+            Geometry3d() {}
+            virtual ~Geometry3d() {}
+        };
+
+        class DECL_CS_CORE Point : public Geometry3d
         {};
-        class DECL_CS_CORE Curve : public Geometry
+        class DECL_CS_CORE Curve : public Geometry3d
         {};
-        class DECL_CS_CORE Surface : public Geometry
+        class DECL_CS_CORE Surface : public Geometry3d
         {};
     } // namespace core
 

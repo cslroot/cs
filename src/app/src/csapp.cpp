@@ -33,13 +33,6 @@ CSApp::~CSApp()
     cs_terminate();
 }
 
-CSDocument& CSApp::OpenNewDocument()
-{
-    auto doc = std::make_shared<CSDocument>();
-    _impl->_docs.Add(doc);
-    return *doc;
-}
-
 CSDocumentCollection& CSApp::Documents() const
 {
     return _impl->_docs;

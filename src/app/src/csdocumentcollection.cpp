@@ -10,7 +10,7 @@ using namespace cs::base;
 
 struct CSDocumentCollection::Impl
 {
-    std::vector<std::shared_ptr<CSDocument>> _docs;
+    std::vector<std::unique_ptr<CSDocument>> _docs;
 };
 
 CSDocumentCollection::CSDocumentCollection()
@@ -20,9 +20,20 @@ CSDocumentCollection::CSDocumentCollection()
 CSDocumentCollection::~CSDocumentCollection()
 {}
 
-void CSDocumentCollection::Add(std::shared_ptr<CSDocument>& doc)
+
+CSDocument& CSDocumentCollection::OpenNewDocument(const cs::base::CSString& doc_id)
 {
-    _impl->_docs.push_back(doc);
+    static int nDoc = 0;
+    std::unique_ptr<CSDocument> doc = CSDocument::Create(doc_id.c_str(), nDoc++);
+    return this->Add(std::move(doc));
+}
+
+
+CSDocument& CSDocumentCollection::Add(std::unique_ptr<CSDocument> doc)
+{
+    auto idx = _impl->_docs.size();
+    _impl->_docs.emplace_back(std::move(doc));
+    return *_impl->_docs[idx];
 }
 
 void CSDocumentCollection::Clear()

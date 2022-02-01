@@ -2,9 +2,12 @@
 
 #include <cs/app/app_common.h>
 #include <cs/base_fwd.h>
+
 #include <memory>
 
 #include <cs/base/ICSCollection.h>
+#include <cs/base/csstring.h>
+#include <cs/base_fwd.h>
 
 namespace cs
 {
@@ -20,9 +23,15 @@ namespace cs
             DECL_CS_APP ~CSDocumentCollection();
 
         public:
-            void Add(std::shared_ptr<CSDocument>& doc) override;
+            DECL_CS_APP CSDocument& OpenNewDocument(const cs::base::CSString& doc_id = "CSDocument3d");
+
+
+        public:
             void Clear() override;
             size_t Size() const override;
+
+        private:
+            CSDocument& Add(std::unique_ptr<CSDocument> doc) override;
 
         private:
             struct Impl;

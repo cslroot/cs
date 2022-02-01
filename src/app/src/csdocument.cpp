@@ -21,7 +21,7 @@ struct CSDocument::Impl
     cs::modeler::CSModeler _modeler;
 };
 
-CSDocument::CSDocument()
+CSDocument::CSDocument(Key)
     : _impl(std::make_unique<Impl>())
 {}
 
