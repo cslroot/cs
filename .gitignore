@@ -5,14 +5,19 @@ bin/
 out/
 .vs/
 
+.DS_Store
+
+
 # Prerequisites
 *.d
 
 # Compiled Object files
+**/.DS_Store
 *.slo
 *.lo
 *.o
 *.obj
+
 
 # Precompiled Headers
 *.gch
