@@ -32,6 +32,7 @@ jobs:
               -B ${{env.BUILD_DIR}} `
               -D CMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} `
               -D BUILD_SHARED_LIBS=ON `
+              -D VCPKG_ROOT=${{env.VCPKG_ROOT}}`
         	  ./
 
     - name: build
