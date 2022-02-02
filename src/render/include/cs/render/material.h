@@ -19,7 +19,7 @@ namespace cs
         class DECL_CS_RENDER BasicMaterial : public Material
         {
         public:
-            BasicMaterial(const cs::base::CSColor& color);
+            explicit BasicMaterial(const cs::base::CSColor& color);
 
         private:
             const cs::base::CSColor& _color;

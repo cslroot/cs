@@ -18,8 +18,8 @@ namespace cs
         class CSDocument : public cs::core::CSObject, public DocFactory
         {
         public:
-            DECL_CS_APP CSDocument(Key);
-            DECL_CS_APP ~CSDocument();
+            explicit DECL_CS_APP CSDocument(Key);
+            virtual DECL_CS_APP ~CSDocument();
 
         public:
             DECL_CS_APP void SaveAs(const cs::base::CSString& filepath);

@@ -51,7 +51,7 @@ namespace cs
                     this->v[i] = 0.0;
                 }
             }
-            CSVector(std::array<T, N>);
+            explicit CSVector(std::array<T, N>);
 
         public:
             CSVector<T, N>& operator+=(const CSVector<T, N>& rhs)

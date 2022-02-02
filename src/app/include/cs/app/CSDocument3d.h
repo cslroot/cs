@@ -10,7 +10,7 @@ namespace cs
         class CSDocument3d : public CSDocument::Registrar<CSDocument3d>
         {
         public:
-            DECL_CS_APP CSDocument3d(const cs::base::CSString&) {}
+            explicit DECL_CS_APP CSDocument3d(const cs::base::CSString&) {}
             DECL_CS_APP ~CSDocument3d() {}
         };
     } // namespace app
