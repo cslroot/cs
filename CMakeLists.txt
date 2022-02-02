@@ -7,7 +7,7 @@ option(CS_BUILD_SHARED_LIBS "build as a shared library" ON)
 add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/Zc:__cplusplus>")
 
 # vcpkg
-set(VCPKG_ROOT "${CMAKE_SOURCE_DIR}/../vcpkg" CACHE STRING "vcpkg root directory")
+set(VCPKG_ROOT "${CMAKE_SOURCE_DIR}/third/vcpkg" CACHE STRING "vcpkg root directory")
 set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
 message(STATUS "----- ${CMAKE_TOOLCHAIN_FILE}")
 
