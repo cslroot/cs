@@ -21,6 +21,21 @@ jobs:
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v1.1
 
+    - name: setup-vcpkg
+      uses: lukka/run-vcpkg@v10.0
+
+    - name: vcpkg
+      shell: powershell
+      run: |
+        echo ${env:VCPKG_ROOT}
+        & ${env:VCPKG_ROOT}\vcpkg install
+        & ${env:VCPKG_ROOT}\vcpkg integrate install
+        & ${env:VCPKG_ROOT}\vcpkg list
+        ls ${env:VCPKG_ROOT}\installed
+        ls ${env:VCPKG_ROOT}\installed\${{matrix.arch}}-windows-static
+        ls ${env:VCPKG_ROOT}\installed\${{matrix.arch}}-windows-static\include
+        ls ${env:VCPKG_ROOT}\installed\${{matrix.arch}}-windows-static\lib
+
     - name: cmake
       shell: powershell
       run: |
