@@ -116,7 +116,7 @@ int main(int argc, char** argv)
     ));
 
     auto csapp = std::make_unique<cs::app::CSApp>(argc, argv);
-    auto& doc = dynamic_cast<cs::app::CSDocument2d&>(csapp->Documents().OpenNewDocument("CSDocument2d"));
+    auto& doc = dynamic_cast<cs::app::CSDocument2d&>(csapp->Documents().OpenNewDocument("class cs::app::CSDocument2d"));
 
     auto scene = CS_NEW cs::render::Scene();
     auto camera = CS_NEW cs::render::PerspectiveCamera();

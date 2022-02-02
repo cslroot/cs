@@ -11,7 +11,7 @@ int main(int argc, char** argv)
     auto pmyapp = std::make_unique<cs::app::CSApp>(argc, argv);
     auto& app = *pmyapp;
 
-    auto& doc = app.Documents().OpenNewDocument();
+    auto& doc = app.Documents().OpenNewDocument(typeid(cs::app::CSDocument3d).name());
     doc.SaveAs("save.txt");
 
     std::cout << "document saved" << std::endl;

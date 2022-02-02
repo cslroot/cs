@@ -28,7 +28,7 @@ namespace cs
         };
 
 
-    } // namespace base`
+    } // namespace base
 } // namespace cs
 
 DECL_CS_BASE cs::base::CSString operator+(const cs::base::CSString& str1, const cs::base::CSString& str2);

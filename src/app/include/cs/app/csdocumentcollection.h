@@ -23,7 +23,7 @@ namespace cs
             DECL_CS_APP ~CSDocumentCollection();
 
         public:
-            DECL_CS_APP CSDocument& OpenNewDocument(const cs::base::CSString& doc_id = "CSDocument3d");
+            DECL_CS_APP CSDocument& OpenNewDocument(const cs::base::CSString& doc_id);
 
 
         public:
