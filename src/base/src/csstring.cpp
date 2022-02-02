@@ -19,6 +19,10 @@ CSString::CSString(const char* utf8string)
     : _str(utf8string)
 {}
 
+CSString::CSString(const std::string& utf8string)
+    : _str(utf8string)
+{}
+
 CSString::CSString(const wchar_t* widestring)
 {
     std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;

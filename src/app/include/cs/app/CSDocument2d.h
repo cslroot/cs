@@ -10,8 +10,8 @@ namespace cs
         class CSDocument2d : public CSDocument::Registrar<CSDocument2d>
         {
         public:
-            DECL_CS_APP CSDocument2d(int x) {}
-            DECL_CS_APP ~CSDocument2d() {}
+            DECL_CS_APP CSDocument2d(const cs::base::CSString&);
+            DECL_CS_APP ~CSDocument2d();
 
         private:
         };

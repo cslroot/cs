@@ -12,6 +12,7 @@ namespace cs
         public:
             DECL_CS_BASE CSString();
             DECL_CS_BASE CSString(const char* utf8string);  // cppcheck-suppress noExplicitConstructor
+            DECL_CS_BASE CSString(const std::string& utf8string);  // cppcheck-suppress noExplicitConstructor
             DECL_CS_BASE explicit CSString(const wchar_t* wstring);
             DECL_CS_BASE explicit CSString(const std::wstring& wstring);
             DECL_CS_BASE CSString(const CSString& a);
@@ -27,7 +28,7 @@ namespace cs
         };
 
 
-    } // namespace base
+    } // namespace base`
 } // namespace cs
 
 DECL_CS_BASE cs::base::CSString operator+(const cs::base::CSString& str1, const cs::base::CSString& str2);

@@ -24,7 +24,7 @@ CSDocumentCollection::~CSDocumentCollection()
 CSDocument& CSDocumentCollection::OpenNewDocument(const cs::base::CSString& doc_id)
 {
     static int nDoc = 0;
-    std::unique_ptr<CSDocument> doc = CSDocument::Create(doc_id.c_str(), nDoc++);
+    std::unique_ptr<CSDocument> doc = CSDocument::Create(doc_id.c_str(), doc_id);
     return this->Add(std::move(doc));
 }
 

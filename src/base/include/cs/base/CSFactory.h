@@ -3,6 +3,7 @@
 #include <memory>
 #include <unordered_map>
 #include <string>
+#include <iostream>
 
 #include <cstdlib>
 #ifdef _GCC
@@ -11,7 +12,7 @@
 
 namespace cs
 {
-    namespace app
+    namespace base
     {
 #ifdef _GCC
         std::string demangle(const char* name)
@@ -45,17 +46,17 @@ namespace cs
 #ifdef _GCC
                     const auto name = demangle(typeid(T).name());
 #else
-                    const auto name = T::name;
+                    const auto name = typeid(T).name();
 #endif
-                    Facotry::data()[name] = [](Args... args) -> std::unique_ptr<BaseClass> {
-                        return std::make_unique<T>(std::forword<Args>(args)...);
-                    }
+                    CSFactory::data()[name] = [](Args... args) -> std::unique_ptr<BaseClass> {
+                        return std::make_unique<T>(std::forward<Args>(args)...);
+                    };
                     return true;
                 }
                 static bool registered;
 
             private:
-                Registrar() : Base(Key{}) { (void)registered; }
+                Registrar() : BaseClass(Key{}) { (void)registered; }
             };
 
         private:
@@ -64,7 +65,7 @@ namespace cs
                 template <class T> friend struct Registrar;
             };
 
-            using FuncType = std::unique_ptr<BaseClass>(*) (Args...);
+            using FuncType = std::unique_ptr<BaseClass>(*)(Args...);
             CSFactory() = default;
 
             static auto& data()
@@ -79,5 +80,4 @@ namespace cs
         bool CSFactory<BaseClass, Args...>::Registrar<T>::registered = CSFactory<BaseClass, Args...>::Registrar<T>::registerT();
 
     } // namespace app
-
 } // namespace cs
