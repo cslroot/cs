@@ -26,36 +26,32 @@
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
                 "BUILD_SHARED_LIBS": "ON"
             }
-        }
-    ],
-    "buildPresets": [
-        {
-            "name": "win-x64-vs2022-debug",
-            "description": "",
-            "displayName": "VS2022(Debug)",
-            "configurePreset": "win-x64-vs2022",
-            "configuration": "Debug"
         },
         {
-            "name": "win-x64-vs2022-release",
-            "description": "",
-            "displayName": "VS2022(Release)",
-            "configurePreset": "win-x64-vs2022",
-            "configuration": "Release"
+            "name": "mac-clang12-debug",
+            "displayName": "Clang12(Debug)",
+            "description": "Using compilers: C = /usr/bin/clang, CXX = /usr/bin/clang++",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_C_COMPILER": "/usr/bin/clang",
+                "CMAKE_CXX_COMPILER": "/usr/bin/clang++"
+            }
         },
         {
-            "name": "win-x64-vs2019-debug",
-            "description": "",
-            "displayName": "VS2019(Debug)",
-            "configurePreset": "win-x64-vs2019",
-            "configuration": "Debug"
-        },
-        {
-            "name": "win-x64-vs2019-release",
-            "description": "",
-            "displayName": "VS2019(Release)",
-            "configurePreset": "win-x64-vs2019",
-            "configuration": "Release"
+            "name": "mac-clang12-release",
+            "displayName": "Clang12(Release)",
+            "description": "Using compilers: C = /usr/bin/clang, CXX = /usr/bin/clang++",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_C_COMPILER": "/usr/bin/clang",
+                "CMAKE_CXX_COMPILER": "/usr/bin/clang++"
+            }
         }
     ]
 }
