@@ -1,0 +1,61 @@
+{
+    "version": 2,
+    "configurePresets": [
+        {
+            "name": "win-x64-vs2022",
+            "displayName": "VS2022 x64",
+            "description": "Using compilers for Visual Studio 17 2022 (x64 architecture)",
+            "generator": "Visual Studio 17 2022",
+            "toolset": "host=x64",
+            "architecture": "x64",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
+                "BUILD_SHARED_LIBS": "ON"
+            }
+        },
+        {
+            "name": "win-x64-vs2019",
+            "displayName": "VS2019 x64",
+            "description": "Using compilers for Visual Studio 16 2019 (x64 architecture)",
+            "generator": "Visual Studio 16 2019",
+            "toolset": "host=x64",
+            "architecture": "x64",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
+                "BUILD_SHARED_LIBS": "ON"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "win-x64-vs2022-debug",
+            "description": "",
+            "displayName": "VS2022(Debug)",
+            "configurePreset": "win-x64-vs2022",
+            "configuration": "Debug"
+        },
+        {
+            "name": "win-x64-vs2022-release",
+            "description": "",
+            "displayName": "VS2022(Release)",
+            "configurePreset": "win-x64-vs2022",
+            "configuration": "Release"
+        },
+        {
+            "name": "win-x64-vs2019-debug",
+            "description": "",
+            "displayName": "VS2019(Debug)",
+            "configurePreset": "win-x64-vs2019",
+            "configuration": "Debug"
+        },
+        {
+            "name": "win-x64-vs2019-release",
+            "description": "",
+            "displayName": "VS2019(Release)",
+            "configurePreset": "win-x64-vs2019",
+            "configuration": "Release"
+        }
+    ]
+}

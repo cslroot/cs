@@ -6,6 +6,7 @@
         "fmt",
         "glfw3",
         "glm",
-        "glew"
+        "glew",
+        "gtest"
     ]
 }

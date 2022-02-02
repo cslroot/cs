@@ -34,23 +34,27 @@ jobs:
         & ${env:VCPKG_ROOT}\vcpkg integrate install
         & ${env:VCPKG_ROOT}\vcpkg list
         ls ${env:VCPKG_ROOT}\installed
-        ls ${env:VCPKG_ROOT}\installed\${{matrix.arch}}-windows-static
-        ls ${env:VCPKG_ROOT}\installed\${{matrix.arch}}-windows-static\include
-        ls ${env:VCPKG_ROOT}\installed\${{matrix.arch}}-windows-static\lib
-
     - name: cmake
       shell: powershell
       run: |
-        $msbuildPlatform = "x64"
-        $buildDirectory = "build"
-        mkdir $buildDirectory -Force -ErrorAction Stop | Out-Null
-        cmake -G "Visual Studio 17 2022" `
-              -A $msbuildPlatform `
-              -B ${{env.BUILD_DIR}} `
-              -D CMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} `
-              -D BUILD_SHARED_LIBS=ON `
+        cmake --preset  "win-x64-vs2022" `
+
               -D VCPKG_ROOT=${{env.VCPKG_ROOT}}`
         	  ./
+
+    # - name: cmake
+    #   shell: powershell
+    #   run: |
+    #     $msbuildPlatform = "x64"
+    #     $buildDirectory = "build"
+    #     mkdir $buildDirectory -Force -ErrorAction Stop | Out-Null
+    #     cmake -G "Visual Studio 17 2022" `
+    #           -A $msbuildPlatform `
+    #           -B ${{env.BUILD_DIR}} `
+    #           -D CMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} `
+    #           -D BUILD_SHARED_LIBS=ON `
+    #           -D VCPKG_ROOT=${{env.VCPKG_ROOT}}`
+    #     	  ./
 
     - name: build
       run: |
