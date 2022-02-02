@@ -2,7 +2,9 @@
 
 #include <cs/base/base_common.h>
 #include <string>
+#ifndef _USE_MATH_DEFINES
 #define _USE_MATH_DEFINES
+#endif
 #include <cmath>
 #include <array>
 #include <cassert>

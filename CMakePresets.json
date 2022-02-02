@@ -11,7 +11,8 @@
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
-                "BUILD_SHARED_LIBS": "ON"
+                "BUILD_SHARED_LIBS": "ON",
+                "MSVC": true
             }
         },
         {
@@ -24,7 +25,8 @@
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
-                "BUILD_SHARED_LIBS": "ON"
+                "BUILD_SHARED_LIBS": "ON",
+                "MSVC": true
             }
         },
         {
