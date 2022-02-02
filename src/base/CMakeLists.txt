@@ -15,7 +15,7 @@ else()
 endif()
 
 file(GLOB_RECURSE CS_BASE_SRC CONFIGURE_DEPENDS 
-     "*.h"
+    #  "*.h"
      "*.cpp"
 )
 

@@ -12,7 +12,7 @@ find_package(glm CONFIG REQUIRED)
 find_package(OpenGL REQUIRED)
 
 file(GLOB_RECURSE CS_EX_GLFW_SRC CONFIGURE_DEPENDS 
-     "*.h"
+     # "*.h"
      "*.cpp"
 )
 
