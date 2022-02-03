@@ -13,7 +13,11 @@ env:
 
 jobs:
   build:
-    runs-on: windows-2022
+    strategy:
+      matrix:
+        platform: [windows-2022]
+
+    runs-on: ${{ matrix.platform }}
 
     steps:
     - uses: actions/checkout@v2
@@ -23,38 +27,12 @@ jobs:
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v1.1
 
-    - name: setup-vcpkg
-      uses: lukka/run-vcpkg@v10.0
-
-    - name: vcpkg
-      shell: powershell
-      run: |
-        echo ${env:VCPKG_ROOT}
-        & ${env:VCPKG_ROOT}\vcpkg install
-        & ${env:VCPKG_ROOT}\vcpkg integrate install
-        & ${env:VCPKG_ROOT}\vcpkg list
-        ls ${env:VCPKG_ROOT}\installed
     - name: cmake
       shell: powershell
       run: |
-        cmake --preset  "win-x64-vs2022" `
-
-              -D VCPKG_ROOT=${{env.VCPKG_ROOT}}`
+        cmake --preset "win-x64-vs2022" `
         	  ./
 
-    # - name: cmake
-    #   shell: powershell
-    #   run: |
-    #     $msbuildPlatform = "x64"
-    #     $buildDirectory = "build"
-    #     mkdir $buildDirectory -Force -ErrorAction Stop | Out-Null
-    #     cmake -G "Visual Studio 17 2022" `
-    #           -A $msbuildPlatform `
-    #           -B ${{env.BUILD_DIR}} `
-    #           -D CMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} `
-    #           -D BUILD_SHARED_LIBS=ON `
-    #           -D VCPKG_ROOT=${{env.VCPKG_ROOT}}`
-    #     	  ./
 
     - name: build
       run: |
