@@ -55,5 +55,35 @@
                 "CMAKE_CXX_COMPILER": "/usr/bin/clang++"
             }
         }
+    ],
+    "buildPresets": [
+        {
+            "name": "win-x64-vs2022-debug",
+            "description": "",
+            "displayName": "VS2022(Debug)",
+            "configurePreset": "win-x64-vs2022",
+            "configuration": "Debug"
+        },
+        {
+            "name": "win-x64-vs2022-release",
+            "description": "",
+            "displayName": "VS2022(Release)",
+            "configurePreset": "win-x64-vs2022",
+            "configuration": "Release"
+        },
+        {
+            "name": "win-x64-vs2019-debug",
+            "description": "",
+            "displayName": "VS2019(Debug)",
+            "configurePreset": "win-x64-vs2019",
+            "configuration": "Debug"
+        },
+        {
+            "name": "win-x64-vs2019-release",
+            "description": "",
+            "displayName": "VS2019(Release)",
+            "configurePreset": "win-x64-vs2019",
+            "configuration": "Release"
+        }
     ]
 }
