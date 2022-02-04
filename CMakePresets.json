@@ -24,7 +24,7 @@
             "architecture": "x64",
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
                 "BUILD_SHARED_LIBS": "ON",
                 "MSVC": true
             }
@@ -37,7 +37,7 @@
             "generator": "Ninja",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
                 "CMAKE_C_COMPILER": "/usr/bin/clang",
                 "CMAKE_CXX_COMPILER": "/usr/bin/clang++"
             }
@@ -50,9 +50,22 @@
             "generator": "Ninja",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
                 "CMAKE_C_COMPILER": "/usr/bin/clang",
                 "CMAKE_CXX_COMPILER": "/usr/bin/clang++"
+            }
+        },
+        {
+            "name": "ubuntu-gcc9-debug",
+            "displayName": "GCC 9.3.0 x86_64-linux-gnu",
+            "description": "Using compilers: C = /bin/x86_64-linux-gnu-gcc-9, CXX = /bin/x86_64-linux-gnu-g++-9",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
+                "CMAKE_C_COMPILER": "/bin/x86_64-linux-gnu-gcc-9",
+                "CMAKE_CXX_COMPILER": "/bin/x86_64-linux-gnu-g++-9"
             }
         }
     ],
@@ -84,6 +97,12 @@
             "displayName": "VS2019(Release)",
             "configurePreset": "win-x64-vs2019",
             "configuration": "Release"
+        },
+        {
+            "name": "ubuntu-gcc9-debug",
+            "description": "",
+            "displayName": "",
+            "configurePreset": "ubuntu-gcc9-debug"
         }
     ]
 }
