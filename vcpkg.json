@@ -4,9 +4,15 @@
     "version": "0.1.0",
     "dependencies": [
         "fmt",
-        "glfw3",
-        "glm",
-        "glew",
-        "gtest"
+        {
+            "name": "glfw3",
+            "platform": "!linux"
+        },
+        {
+            "name": "glm"
+        },
+        {
+            "name": "gtest"
+        }
     ]
 }
