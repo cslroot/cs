@@ -23,7 +23,7 @@ set(CMAKE_CXX_STANDARD 14)  # GoogleTest requires at least C++11
 enable_testing()
 
 find_package(Threads REQUIRED)
-find_package(GTest REQUIRED)
+find_package(GTest CONFIG REQUIRED)
 
 message(STATUS "gtest_SOURCE_DIR = ${gtest_SOURCE_DIR}")
 message(STATUS "gmock_SOURCE_DIR = ${gmock_SOURCE_DIR}")
