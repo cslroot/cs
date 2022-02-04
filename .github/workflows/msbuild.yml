@@ -37,6 +37,11 @@ jobs:
       run: |
         cmake --build --preset "win-x64-vs2022-release"
 
+
+    - name: Test
+      working-directory: ${{github.workspace}}/build/win-x64-vs2022-release
+      run: ctest -C release
+      
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
