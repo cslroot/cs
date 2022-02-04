@@ -9,6 +9,9 @@
             "platform": "!linux"
         },
         {
+            "name": "glew"
+        },
+        {
             "name": "glm"
         },
         {
