@@ -1,5 +1,10 @@
 {
-    "version": 2,
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 20,
+        "patch": 0
+    },
     "configurePresets": [
         {
             "name": "win-x64-vs2022",
@@ -16,6 +21,19 @@
             }
         },
         {
+            "name": "win-x64-ninja",
+            "displayName": "ninja x64",
+            "description": "",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "BUILD_SHARED_LIBS": "ON",
+                "CMAKE_C_COMPILER": "clang-cl",
+                "CMAKE_CXX_COMPILER": "clang-cl"
+            }
+        },
+        {
             "name": "win-x64-vs2019",
             "displayName": "VS2019 x64",
             "description": "Using compilers for Visual Studio 16 2019 (x64 architecture)",
@@ -24,7 +42,6 @@
             "architecture": "x64",
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
                 "BUILD_SHARED_LIBS": "ON",
                 "MSVC": true
             }
@@ -46,7 +63,7 @@
             "name": "mac-clang12-release",
             "displayName": "Clang12(Release)",
             "description": "Using compilers: C = /usr/bin/clang, CXX = /usr/bin/clang++",
-            "binaryDir": "${sourceDir}/build/${presetName}",
+            "binaryDir": "${sourceDir}/build/$z{presetName}",
             "generator": "Ninja",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release",
@@ -103,6 +120,12 @@
             "description": "",
             "displayName": "",
             "configurePreset": "ubuntu-gcc9-debug"
+        },
+        {
+            "name": "win-ninja",
+            "description": "",
+            "displayName": "",
+            "configurePreset": "win-x64-ninja"
         }
     ]
 }
