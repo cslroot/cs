@@ -6,3 +6,4 @@
 #include <cs/core/csobject.h>
 #include <cs/core/geometry.h>
 #include <cs/core/topology.h>
+#include <cs/core/CSConfig.h>

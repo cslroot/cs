@@ -15,6 +15,9 @@
             "name": "glm"
         },
         {
+            "name": "poco"
+        },
+        {
             "name": "gtest"
         }
     ]
