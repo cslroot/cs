@@ -22,7 +22,7 @@ namespace cs
                 , _b(col[2])
             {}
 
-            explicit DECL_CS_BASE CSColor(u_int32_t colorHex)
+            explicit DECL_CS_BASE CSColor(uint32_t colorHex)
                 : _r(ToFloat* ((colorHex & 0xFF0000) >> 16))
                 , _g(ToFloat* ((colorHex & 0xFF00) >> 8))
                 , _b(ToFloat* ((colorHex & 0xFF) >> 0))

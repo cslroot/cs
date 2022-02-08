@@ -23,6 +23,19 @@ file(GLOB_RECURSE CS_CORE_HEADER CONFIGURE_DEPENDS
     "*.h"
 )
 
+target_precompile_headers(cs.base
+  PRIVATE
+    <vector>
+    <string>
+    <array>
+    <cassert>
+    <unordered_map>
+    <iostream>
+    <locale>
+    <algorithm>
+    <codecvt>
+)
+
 target_sources(cs.core
 PRIVATE
 ${CS_CORE_SRC}

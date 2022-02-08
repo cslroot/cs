@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <locale>
+#include <algorithm>
 #include <codecvt>
 
 using namespace cs::base;

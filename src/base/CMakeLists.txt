@@ -26,6 +26,10 @@ target_precompile_headers(cs.base
     <array>
     <cassert>
     <unordered_map>
+    <iostream>
+    <locale>
+    <algorithm>
+    <codecvt>
 )
 
 target_sources(cs.base
