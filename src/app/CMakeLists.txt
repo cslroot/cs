@@ -25,10 +25,10 @@ PRIVATE
 ${CS_APP_SRC}
 )
 
-target_link_libraries(cs.app cs.base)
-target_link_libraries(cs.app cs.core)
-target_link_libraries(cs.app cs.modeler)
-target_link_libraries(cs.app cs.render)
+target_link_libraries(cs.app PRIVATE cs.base)
+target_link_libraries(cs.app PRIVATE cs.core)
+target_link_libraries(cs.app PRIVATE cs.modeler)
+target_link_libraries(cs.app PRIVATE cs.render)
 
 target_include_directories(cs.app 
 PUBLIC 

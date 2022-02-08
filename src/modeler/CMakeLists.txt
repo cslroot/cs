@@ -26,8 +26,8 @@ PRIVATE
 ${CS_MODELER_SRC}
 )
 
-target_link_libraries(cs.modeler cs.base)
-target_link_libraries(cs.modeler cs.core)
+target_link_libraries(cs.modeler PRIVATE cs.base)
+target_link_libraries(cs.modeler PRIVATE cs.core)
 
 target_include_directories(cs.modeler 
 PUBLIC 
