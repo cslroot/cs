@@ -100,6 +100,17 @@
         "xstring": "cpp",
         "xtr1common": "cpp",
         "xtree": "cpp",
-        "xutility": "cpp"
-    }
+        "xutility": "cpp",
+        "__config": "cpp",
+        "__errc": "cpp",
+        "__nullptr": "cpp",
+        "__string": "cpp",
+        "__tree": "cpp",
+        "__tuple": "cpp",
+        "numeric": "cpp",
+        "stack": "cpp",
+        "strstream": "cpp",
+        "valarray": "cpp"
+    },
+    "editor.defaultFormatter": "ms-vscode.cpptools"
 }
