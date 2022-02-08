@@ -9,6 +9,7 @@ namespace {
 
 Entity::Entity()
     : _id(++id_counter)
+    , _entType(EntityType::None)
 {}
 Entity::~Entity()
 {}

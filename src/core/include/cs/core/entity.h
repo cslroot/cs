@@ -10,6 +10,7 @@ namespace cs
     {
         enum class EntityType
         {
+            None,
             Point,
             Surface,
             Shell,
