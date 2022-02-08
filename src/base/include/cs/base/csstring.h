@@ -23,6 +23,11 @@ namespace cs
             DECL_CS_BASE CSString& operator+=(const char* u8rhs);
             DECL_CS_BASE CSString& operator+=(const CSString& rhs);
 
+            // "AbcAbc" Replace('A', 'X') => "XbcXbc"
+            DECL_CS_BASE CSString Replace(const char target, const char rep) const;
+
+            DECL_CS_BASE int ParseInt() const;
+
         private:
             std::string _str;
         };

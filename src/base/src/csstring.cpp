@@ -71,3 +71,26 @@ std::ostream& operator<<(std::ostream& os, const CSString& str)
     os << str.c_str();
     return os;
 }
+
+CSString CSString::Replace(const char target, const char rep) const
+{
+    CSString repString = *this;
+
+    if (rep == '\0')
+    {
+        auto& str = repString._str;
+        str.erase(std::remove(str.begin(), str.end(), target), str.end());
+        repString = str;
+    }
+    else
+    {
+        std::replace(repString._str.begin(), repString._str.end(), target, rep);
+    }
+
+    return repString;
+}
+
+int CSString::ParseInt() const
+{
+    return std::stod(_str);
+}
