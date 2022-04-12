@@ -31,3 +31,34 @@ cmd> "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build
 
 cmake --preset="win-x64-ninja"
 cmake --build --preset="win-ninja"
+
+
+------
+
+
+# raspi (Raspberry os x64)
+
+
+cmake -> 3.18.4
+latest vcpkg needs cmake 3.20+
+-> pip3 install cmake 
+-> sudo ln -s ~/.local/bin/c* /usr/bin
+
+
+
+[cmake]       libxmu-dev
+[cmake]       libxi-dev
+[cmake]       libgl-dev
+
+
+sudo apt-get install libxmu-dev libxi-dev libgl-dev
+
+
+
+[build] GLFW3 currently requires the following libraries from the system package manager:
+[build]     libxinerama-dev
+[build]     libxcursor-dev
+[build]     xorg-dev
+[build]     libglu1-mesa-dev
+
+sudo apt-get install libglu1-mesa

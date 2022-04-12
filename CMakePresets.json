@@ -84,6 +84,22 @@
                 "CMAKE_C_COMPILER": "/bin/x86_64-linux-gnu-gcc-9",
                 "CMAKE_CXX_COMPILER": "/bin/x86_64-linux-gnu-g++-9"
             }
+        },
+        {
+            "name": "rpi-arm64-clang",
+            "displayName": "Clang(aarch64)",
+            "description": "Using compilers: C = /usr/bin/clang, CXX = /usr/bin/clang++",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
+                "CMAKE_C_COMPILER": "/usr/bin/clang",
+                "CMAKE_CXX_COMPILER": "/usr/bin/clang++"
+            },
+            "environment": {
+                "VCPKG_FORCE_SYSTEM_BINARIES": "1"
+            }
         }
     ],
     "buildPresets": [
@@ -126,6 +142,12 @@
             "description": "",
             "displayName": "",
             "configurePreset": "win-x64-ninja"
+        },
+        {
+            "name": "raspi-arm64",
+            "description": "",
+            "displayName": "raspi(aarch64)",
+            "configurePreset": "rpi-arm64-clang"
         }
     ]
 }

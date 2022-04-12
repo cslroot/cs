@@ -5,8 +5,7 @@
     "dependencies": [
         "fmt",
         {
-            "name": "glfw3",
-            "platform": "!linux"
+            "name": "glfw3"
         },
         {
             "name": "glew"
