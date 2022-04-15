@@ -17,3 +17,9 @@
 #else
 #define DECL_CS_RENDER IMPORT
 #endif
+
+#ifdef __APPLE__
+#ifndef GL_SILENCE_DEPRECATION
+#   define GL_SILENCE_DEPRECATION
+#endif
+#endif

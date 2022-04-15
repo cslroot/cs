@@ -9,6 +9,8 @@ namespace cs
 
         class Entity;
 
+        class CSBufferObject;
+
         class Body;
     } // namespace core
 

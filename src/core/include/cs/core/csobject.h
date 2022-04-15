@@ -9,6 +9,7 @@ namespace cs
 {
     namespace core
     {
+        class CSBufferObject;
         class CSObject
         {
         public:
@@ -18,6 +19,8 @@ namespace cs
         public:
             DECL_CS_CORE const cs::base::CSString& Name() const;
             DECL_CS_CORE void SetName(const cs::base::CSString& name);
+
+            DECL_CS_CORE virtual std::shared_ptr<CSBufferObject> GenerateBuffer() const { return nullptr; };
 
         private:
             struct Impl;

@@ -7,7 +7,7 @@ namespace cs
 {
     namespace render
     {
-        class DECL_CS_RENDER Renderer
+        class Renderer
         {
         private:
             /* data */
@@ -16,12 +16,20 @@ namespace cs
             ~Renderer();
 
         public:
-            void Render(const Scene& scene, const Camera& camera);
+            DECL_CS_RENDER virtual void Init() {}
+            DECL_CS_RENDER virtual void Terminate() {}
+            DECL_CS_RENDER virtual void Render(const Scene& scene, const Camera& camera);
+            DECL_CS_RENDER virtual void Resize(int width, int height);
+            DECL_CS_RENDER virtual bool WindowShouldClose() { return false; }
+
+        private:
+            int _width;
+            int _height;
+
         };
 
         class DECL_CS_RENDER GLRenderer : public Renderer
         {};
-
     } // namespace render
 
 } // namespace cs

@@ -27,3 +27,4 @@ void CSObject::SetName(const cs::base::CSString& name)
 {
     _impl->_name = name;
 }
+

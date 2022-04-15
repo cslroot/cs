@@ -16,7 +16,7 @@ namespace cs
         private:
             /* data */
         public:
-            Mesh(const cs::core::Entity& entity, const cs::render::Material& material) {}
+            Mesh(const cs::core::Entity& entity, const cs::render::CSMaterial& material) {}
             ~Mesh() {}
         };
     } // namespace render

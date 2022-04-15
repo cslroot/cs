@@ -7,6 +7,10 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+find_package(glfw3 CONFIG REQUIRED)
+find_package(glew CONFIG REQUIRED)
+find_package(glm CONFIG REQUIRED)
+find_package(OpenGL REQUIRED)
 
 if (CS_BUILD_SHARED_LIBS)
     add_library(cs.render SHARED)
@@ -24,6 +28,10 @@ target_sources(cs.render
 PRIVATE
 ${CS_RENDER_SRC}
 )
+
+target_link_libraries(cs.render PRIVATE glfw)
+target_link_libraries(cs.render PRIVATE GLEW::GLEW)
+target_link_libraries(cs.render PRIVATE glm::glm)
 
 target_link_libraries(cs.render PRIVATE cs.base)
 target_link_libraries(cs.render PRIVATE cs.core)

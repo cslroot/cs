@@ -7,19 +7,28 @@ namespace cs
 {
     namespace render
     {
-        class DECL_CS_RENDER Material
+        class DECL_CS_RENDER CSMaterial
         {
         private:
             /* data */
         public:
-            Material(/* args */) {}
-            ~Material() {}
+            CSMaterial(/* args */) {}
+            ~CSMaterial() {}
         };
 
-        class DECL_CS_RENDER BasicMaterial : public Material
+        class DECL_CS_RENDER BasicMaterial : public CSMaterial
         {
         public:
             explicit BasicMaterial(const cs::base::CSColor& color);
+
+        private:
+            const cs::base::CSColor& _color;
+        };
+
+        class DECL_CS_RENDER DrawingMaterial : public CSMaterial
+        {
+        public:
+            explicit DrawingMaterial(const cs::base::CSColor& color);
 
         private:
             const cs::base::CSColor& _color;

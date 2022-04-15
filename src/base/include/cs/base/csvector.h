@@ -8,6 +8,7 @@
 #include <cmath>
 #include <array>
 #include <cassert>
+#include <cstddef>
 
 namespace cs
 {
@@ -53,7 +54,12 @@ namespace cs
                     this->v[i] = 0.0;
                 }
             }
-            explicit CSVector(std::array<T, N>);
+            CSVector(const std::array<T, N>& p2d)
+            {
+                for (int i = 0; i < N; ++i) {
+                    this->v[i] = p2d[i];
+                }
+            }
 
         public:
             CSVector<T, N>& operator+=(const CSVector<T, N>& rhs)
@@ -118,16 +124,26 @@ namespace cs
         extern template class cs::base::CSVector<float, 3>;
         extern template class cs::base::CSVector<float, 4>;
 #else
-        template class DECL_CS_BASE cs::base::CSVector<double, 2>;
-        template class DECL_CS_BASE cs::base::CSVector<double, 3>;
-        template class DECL_CS_BASE cs::base::CSVector<double, 4>;
-        template class DECL_CS_BASE cs::base::CSVector<float, 2>;
-        template class DECL_CS_BASE cs::base::CSVector<float, 3>;
-        template class DECL_CS_BASE cs::base::CSVector<float, 4>;
-
+        // template class DECL_CS_BASE cs::base::CSVector<double, 2>;
+        // template class DECL_CS_BASE cs::base::CSVector<double, 3>;
+        // template class DECL_CS_BASE cs::base::CSVector<double, 4>;
+        // template class DECL_CS_BASE cs::base::CSVector<float, 2>;
+        // template class DECL_CS_BASE cs::base::CSVector<float, 3>;
+        // template class DECL_CS_BASE cs::base::CSVector<float, 4>;
 #endif
 
-        using CSVec2d = cs::base::CSVector<double, 2>;
+        class DECL_CS_BASE CSVec2d : public CSVector<double, 2>
+        {
+        public:
+            CSVec2d() {}
+            CSVec2d(double x_, double y_)
+                : CSVector<double, 2>({ x_, y_ })
+            {
+            }
+            CSVec2d(std::array<double, 2> p)
+                : CSVector<double, 2>(p)
+            {}
+        };
 
         class DECL_CS_BASE CSVec3d : public CSVector<double, 3>
         {

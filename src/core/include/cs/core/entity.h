@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cs/core/core_common.h>
-
+#include <cs/core/csobject.h>
 #include <cstdint>
 
 namespace cs
@@ -19,7 +19,7 @@ namespace cs
             Body,
         };
 
-        class DECL_CS_CORE Entity
+        class DECL_CS_CORE Entity : public CSObject
         {
         public:
             Entity();

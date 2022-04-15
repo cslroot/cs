@@ -22,6 +22,7 @@ file(GLOB_RECURSE CS_BASE_SRC CONFIGURE_DEPENDS
 target_precompile_headers(cs.base
   PRIVATE
     <vector>
+    <array>
     <string>
     <array>
     <cassert>
@@ -30,6 +31,7 @@ target_precompile_headers(cs.base
     <locale>
     <algorithm>
     <codecvt>
+    <cstddef>
 )
 
 target_sources(cs.base

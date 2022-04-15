@@ -11,7 +11,12 @@ namespace cs
         class PerspectiveCamera;
         class OrthoCamera;
 
-        class Material;
+        class CSDisplayableObject;
+        class CSDisplayableObject2d;
+
+        class CSBufferObject;
+
+        class CSMaterial;
 
         class Mesh;
 

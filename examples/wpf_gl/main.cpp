@@ -42,7 +42,7 @@ int main(int argc, char** argv)
     auto renderer = CS_NEW cs::render::GLRenderer();
 
     auto cube = CS_NEW cs::render::Mesh(box, *mat);
-    scene->Add(*cube);
+    scene->Add(cube);
 
     bool stop = false;
     while (stop)
