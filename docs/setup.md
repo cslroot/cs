@@ -53,8 +53,6 @@ latest vcpkg needs cmake 3.20+
 
 sudo apt-get install libxmu-dev libxi-dev libgl-dev
 
-
-
 [build] GLFW3 currently requires the following libraries from the system package manager:
 [build]     libxinerama-dev
 [build]     libxcursor-dev
@@ -62,3 +60,64 @@ sudo apt-get install libxmu-dev libxi-dev libgl-dev
 [build]     libglu1-mesa-dev
 
 sudo apt-get install libglu1-mesa
+
+
+sudo apt install libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev
+
+
+# WSLg
+
+Test Env.
+
+* Ubuntu 20.04LTS
+* Intel(R) Core(TM) i7-10875H
+* NVIDIA GeForce RTX 2070 Super
+
+
+
+### Note
+* WSLg supports OpenGL 3.3 (Core) now (2022-04-01)
+
+```result of my laptop (ubuntu 20.04LTS / GeForce 2070 Super laptop)
+$ glxinfo -B
+name of display: :0
+display: :0  screen: 0
+direct rendering: Yes
+Extended renderer info (GLX_MESA_query_renderer):
+    Vendor: Microsoft Corporation (0xffffffff)
+    Device: D3D12 (NVIDIA GeForce RTX 2070 Super) (0xffffffff)
+    Version: 21.2.6
+    Accelerated: yes
+    Video memory: 24286MB
+    Unified memory: no
+    Preferred profile: core (0x1)
+    Max core profile version: 3.3
+    Max compat profile version: 3.1
+    Max GLES1 profile version: 1.1
+    Max GLES[23] profile version: 3.0
+OpenGL vendor string: Microsoft Corporation
+OpenGL renderer string: D3D12 (NVIDIA GeForce RTX 2070 Super)
+OpenGL core profile version string: 3.3 (Core Profile) Mesa 21.2.6
+OpenGL core profile shading language version string: 3.30
+OpenGL core profile context flags: (none)
+OpenGL core profile profile mask: core profile
+
+OpenGL version string: 3.1 Mesa 21.2.6
+OpenGL shading language version string: 1.40
+OpenGL context flags: (none)
+
+OpenGL ES profile version string: OpenGL ES 3.0 Mesa 21.2.6
+OpenGL ES profile shading language version string: OpenGL ES GLSL ES 3.00
+```
+
+## TIPS
+
+### Update cmake to newer version
+
+if your package manaeger(apt) use older cmake (<3.20), please try to update cmake via pip.
+
+```
+$ sudo apt purge cmake  # remove cmake from package manager
+$ pip3 install cmake    # install cmake via pip
+$ cmake --version
+```

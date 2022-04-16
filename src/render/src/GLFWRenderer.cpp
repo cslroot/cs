@@ -25,7 +25,7 @@ namespace
 
 
     static const char* vertex_shader_text =
-        "#version 410 core\n"
+        "#version 330 core\n"
         "uniform mat4 MVP;\n"
         // "in vec3 vCol;\n"
         "in vec2 vPos;\n"
@@ -37,7 +37,7 @@ namespace
         "}\n";
 
     static const char* fragment_shader_text =
-        "#version 410 core\n"
+        "#version 330 core\n"
         "in vec3 color;\n"
         "out vec4 fragColor;\n"
         "void main()\n"
@@ -141,8 +141,8 @@ void GLFWRenderer::Init()
     if (!glfwInit())
         exit(EXIT_FAILURE);
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 

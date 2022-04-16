@@ -149,5 +149,19 @@
             "displayName": "raspi(aarch64)",
             "configurePreset": "rpi-arm64-clang"
         }
+    ],
+    "testPresets": [
+        {
+            "name": "win-x64-vs2022",
+            "description": "",
+            "displayName": "",
+            "configurePreset": "win-x64-vs2022"
+        },
+        {
+            "name": "ubuntu-gcc9-debug",
+            "description": "",
+            "displayName": "",
+            "configurePreset": "ubuntu-gcc9-debug"
+        }
     ]
 }

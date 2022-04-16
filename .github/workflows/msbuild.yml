@@ -16,8 +16,13 @@ jobs:
     strategy:
       matrix:
         platform: [windows-2022, ]
+        build: [Release, Debug]
 
     runs-on: ${{ matrix.platform }}
+
+    env:
+      BUILD_TYPE: ${{ matrix.build }}
+      CMAKE_PRESET: ${{ matrix.build }}
 
     steps:
     - uses: actions/checkout@v2
@@ -29,6 +34,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.1
 
     - name: cmake
+      if: contains(${{ matrix.platform }}, 'windows')
       shell: powershell
       run: |
         cmake --preset "win-x64-vs2022" `
