@@ -82,9 +82,6 @@
                     "type": "FILEPATH"
                 }
             },
-            "environment": {
-                "VCPKG_ROOT": "${sourceDir}/third/vcpkg"
-            },
             "condition": {
                 "type": "equals",
                 "lhs": "${hostSystemName}",
@@ -92,7 +89,7 @@
             }
         },
         {
-            "name": "clang-debug",
+            "name": "clang-Debug",
             "displayName": "Clang(Debug)",
             "inherits": "ninja",
             "cacheVariables": {
@@ -100,7 +97,7 @@
             }
         },
         {
-            "name": "clang-release",
+            "name": "clang-Release",
             "displayName": "Clang(Release)",
             "inherits": "ninja",
             "cacheVariables": {
@@ -108,8 +105,9 @@
             }
         },
         {
-            "name": "gcc9-debug",
+            "name": "linux-gcc-ninja",
             "inherits": "ninja",
+            "generator": "Ninja Multi-Config",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_C_COMPILER": "gcc",
@@ -135,40 +133,46 @@
     ],
     "buildPresets": [
         {
-            "name": "windows-x64-ninja-debug",
+            "name": "windows-x64-ninja-Debug",
             "configurePreset": "windows-x64-ninja",
             "configuration": "Debug"
         },
         {
-            "name": "windows-x64-ninja-release",
+            "name": "windows-x64-ninja-Release",
             "configurePreset": "windows-x64-ninja",
             "configuration": "Release"
         },
         {
-            "name": "windows-x64-vs2022-debug",
+            "name": "windows-x64-vs2022-Debug",
             "configurePreset": "windows-x64-vs2022",
             "configuration": "Debug"
         },
         {
-            "name": "windows-x64-vs2022-release",
+            "name": "windows-x64-vs2022-Release",
             "configurePreset": "windows-x64-vs2022",
             "configuration": "Release"
         },
         {
-            "name": "windows-x64-vs2019-debug",
+            "name": "windows-x64-vs2019-Debug",
             "configurePreset": "windows-x64-vs2019",
             "configuration": "Debug"
         },
         {
-            "name": "windows-x64-vs2019-release",
+            "name": "windows-x64-vs2019-Release",
             "configurePreset": "windows-x64-vs2019",
             "configuration": "Release"
         },
         {
-            "name": "ubuntu-gcc9-debug",
+            "name": "ubuntu-gcc9-Debug",
             "description": "",
             "displayName": "",
-            "configurePreset": "gcc9-debug"
+            "configurePreset": "gcc9-Debug"
+        },
+        {
+            "name": "ubuntu-gcc9-Release",
+            "description": "",
+            "displayName": "",
+            "configurePreset": "gcc9-Release"
         },
         {
             "name": "raspi-arm64",
@@ -190,8 +194,8 @@
             }
         },
         {
-            "name": "ubuntu-gcc9-debug",
-            "configurePreset": "gcc9-debug"
+            "name": "ubuntu-gcc9-Debug",
+            "configurePreset": "gcc9-Debug"
         }
     ]
 }
