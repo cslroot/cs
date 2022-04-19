@@ -195,7 +195,7 @@
         },
         {
             "name": "ubuntu-gcc9-Debug",
-            "configurePreset": "gcc9-Debug"
+            "configurePreset": "ubuntu-gcc9-Debug"
         }
     ]
 }
