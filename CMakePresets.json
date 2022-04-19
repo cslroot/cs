@@ -7,86 +7,117 @@
     },
     "configurePresets": [
         {
-            "name": "win-x64-vs2022",
-            "displayName": "VS2022 x64",
-            "description": "Using compilers for Visual Studio 17 2022 (x64 architecture)",
+            "name": "windows-base",
+            "hidden": true,
+            "generator": "Ninja Multi-Config",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "installDir": "${sourceDir}/build/install/${presetName}",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "cl",
+                "CMAKE_CXX_COMPILER": "cl",
+                "BUILD_SHARED_LIBS": "ON",
+                "CMAKE_TOOLCHAIN_FILE": {
+                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+                    "type": "FILEPATH"
+                }
+            },
+            "environment": {
+                "VCPKG_ROOT": "${sourceDir}/third/vcpkg"
+            },
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "hostOS": [
+                        "Windows"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "windows-x64-ninja",
+            "inherits": "windows-base",
+            "generator": "Ninja Multi-Config"
+        },
+        {
+            "name": "windows-x64-vs2022",
+            "inherits": "windows-base",
             "generator": "Visual Studio 17 2022",
             "toolset": "host=x64",
-            "architecture": "x64",
-            "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
-                "BUILD_SHARED_LIBS": "ON",
                 "MSVC": true
             }
         },
         {
-            "name": "win-x64-ninja",
-            "displayName": "ninja x64",
-            "description": "",
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/build/${presetName}",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug",
-                "BUILD_SHARED_LIBS": "ON",
-                "CMAKE_C_COMPILER": "clang-cl",
-                "CMAKE_CXX_COMPILER": "clang-cl"
-            }
-        },
-        {
-            "name": "win-x64-vs2019",
-            "displayName": "VS2019 x64",
-            "description": "Using compilers for Visual Studio 16 2019 (x64 architecture)",
+            "name": "windows-x64-vs2019",
+            "inherits": "windows-base",
             "generator": "Visual Studio 16 2019",
             "toolset": "host=x64",
-            "architecture": "x64",
-            "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
-                "BUILD_SHARED_LIBS": "ON",
                 "MSVC": true
             }
         },
         {
-            "name": "mac-clang12-debug",
-            "displayName": "Clang12(Debug)",
-            "description": "Using compilers: C = /usr/bin/clang, CXX = /usr/bin/clang++",
-            "binaryDir": "${sourceDir}/build/${presetName}",
+            "name": "ninja",
+            "hidden": true,
             "generator": "Ninja",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_TOOLCHAIN_FILE": {
+                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+                    "type": "FILEPATH"
+                }
+            },
+            "environment": {
+                "VCPKG_ROOT": "${sourceDir}/third/vcpkg"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            }
+        },
+        {
+            "name": "clang-debug",
+            "displayName": "Clang(Debug)",
+            "inherits": "ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "clang-release",
+            "displayName": "Clang(Release)",
+            "inherits": "ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "gcc9-debug",
+            "inherits": "ninja",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
-                "CMAKE_C_COMPILER": "/usr/bin/clang",
-                "CMAKE_CXX_COMPILER": "/usr/bin/clang++"
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++"
             }
         },
         {
-            "name": "mac-clang12-release",
-            "displayName": "Clang12(Release)",
-            "description": "Using compilers: C = /usr/bin/clang, CXX = /usr/bin/clang++",
-            "binaryDir": "${sourceDir}/build/$z{presetName}",
-            "generator": "Ninja",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
-                "CMAKE_C_COMPILER": "/usr/bin/clang",
-                "CMAKE_CXX_COMPILER": "/usr/bin/clang++"
-            }
-        },
-        {
-            "name": "ubuntu-gcc9-debug",
-            "displayName": "GCC 9.3.0 x86_64-linux-gnu",
-            "description": "Using compilers: C = /bin/x86_64-linux-gnu-gcc-9, CXX = /bin/x86_64-linux-gnu-g++-9",
-            "binaryDir": "${sourceDir}/build/${presetName}",
-            "generator": "Ninja",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
-                "CMAKE_C_COMPILER": "/bin/x86_64-linux-gnu-gcc-9",
-                "CMAKE_CXX_COMPILER": "/bin/x86_64-linux-gnu-g++-9"
-            }
-        },
-        {
-            "name": "rpi-arm64-clang",
+            "name": "raspi-arm64-clang",
             "displayName": "Clang(aarch64)",
             "description": "Using compilers: C = /usr/bin/clang, CXX = /usr/bin/clang++",
             "binaryDir": "${sourceDir}/build/${presetName}",
@@ -94,8 +125,8 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
-                "CMAKE_C_COMPILER": "/usr/bin/clang",
-                "CMAKE_CXX_COMPILER": "/usr/bin/clang++"
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++"
             },
             "environment": {
                 "VCPKG_FORCE_SYSTEM_BINARIES": "1"
@@ -104,64 +135,63 @@
     ],
     "buildPresets": [
         {
-            "name": "win-x64-vs2022-debug",
-            "description": "",
-            "displayName": "VS2022(Debug)",
-            "configurePreset": "win-x64-vs2022",
+            "name": "windows-x64-ninja-debug",
+            "configurePreset": "windows-x64-ninja",
             "configuration": "Debug"
         },
         {
-            "name": "win-x64-vs2022-release",
-            "description": "",
-            "displayName": "VS2022(Release)",
-            "configurePreset": "win-x64-vs2022",
+            "name": "windows-x64-ninja-release",
+            "configurePreset": "windows-x64-ninja",
             "configuration": "Release"
         },
         {
-            "name": "win-x64-vs2019-debug",
-            "description": "",
-            "displayName": "VS2019(Debug)",
-            "configurePreset": "win-x64-vs2019",
+            "name": "windows-x64-vs2022-debug",
+            "configurePreset": "windows-x64-vs2022",
             "configuration": "Debug"
         },
         {
-            "name": "win-x64-vs2019-release",
-            "description": "",
-            "displayName": "VS2019(Release)",
-            "configurePreset": "win-x64-vs2019",
+            "name": "windows-x64-vs2022-release",
+            "configurePreset": "windows-x64-vs2022",
+            "configuration": "Release"
+        },
+        {
+            "name": "windows-x64-vs2019-debug",
+            "configurePreset": "windows-x64-vs2019",
+            "configuration": "Debug"
+        },
+        {
+            "name": "windows-x64-vs2019-release",
+            "configurePreset": "windows-x64-vs2019",
             "configuration": "Release"
         },
         {
             "name": "ubuntu-gcc9-debug",
             "description": "",
             "displayName": "",
-            "configurePreset": "ubuntu-gcc9-debug"
-        },
-        {
-            "name": "win-ninja",
-            "description": "",
-            "displayName": "",
-            "configurePreset": "win-x64-ninja"
+            "configurePreset": "gcc9-debug"
         },
         {
             "name": "raspi-arm64",
             "description": "",
             "displayName": "raspi(aarch64)",
-            "configurePreset": "rpi-arm64-clang"
+            "configurePreset": "raspi-arm64-clang"
         }
     ],
     "testPresets": [
         {
             "name": "win-x64-vs2022",
-            "description": "",
-            "displayName": "",
-            "configurePreset": "win-x64-vs2022"
+            "output": {
+                "outputOnFailure": true
+            },
+            "configurePreset": "windows-x64-vs2022",
+            "execution": {
+                "noTestsAction": "error",
+                "stopOnFailure": true
+            }
         },
         {
             "name": "ubuntu-gcc9-debug",
-            "description": "",
-            "displayName": "",
-            "configurePreset": "ubuntu-gcc9-debug"
+            "configurePreset": "gcc9-debug"
         }
     ]
 }

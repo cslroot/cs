@@ -15,14 +15,15 @@ jobs:
   build:
     strategy:
       matrix:
-        platform: [windows-2022, ]
+        platform: [windows, ]
+        tool: [vs2022, ]
         build: [Release, Debug]
 
-    runs-on: ${{ matrix.platform }}
+    runs-on: "${{matrix.platform}}-2022"
 
     env:
-      BUILD_TYPE: ${{ matrix.build }}
-      CMAKE_PRESET: ${{ matrix.build }}
+      BUILD_TYPE: ${{matrix.build}}
+      CMAKE_PRESET: ${{matrix.build}}
 
     steps:
     - uses: actions/checkout@v2
@@ -30,28 +31,26 @@ jobs:
         submodules: recursive
 
     - name: setup-msbuild
-      if: contains(${{ matrix.platform }}, 'windows')
+      if: contains(${{matrix.platform}}, 'windows')
       uses: microsoft/setup-msbuild@v1.1
 
     - name: cmake
-      if: contains(${{ matrix.platform }}, 'windows')
+      if: contains(${{matrix.platform}}, 'windows')
       shell: powershell
       run: |
-        cmake --preset "win-x64-vs2022" `
+        cmake --preset "${{matrix.platform}}-x64-${{matrix.tool}}" `
         	  ./
 
     - name: cmake build
       run: |
-        cmake --build --preset "win-x64-vs2022-release"
+        cmake --build --preset "${{matrix.platform}}-x64-${{matrix.tool}}-${{matrix.build}}"
 
-
-    - name: Test
-      working-directory: ${{github.workspace}}/build/win-x64-vs2022-release
-      run: ctest -C release
+    # - name: Test
+    #   run: ctest -C release
       
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
         name: artifacts_win-x64
-        path: build/win-x64-vs2022/bin/Release
+        path: "build/${{matrix.platform}}-x64-${{matrix.tool}}/bin/${{matrix.build}}"
 
