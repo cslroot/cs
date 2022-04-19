@@ -25,14 +25,14 @@ jobs:
             platform: windows
             tool: vs2022
             build: Release
-          - os: ubuntu-latest
-            platform: linux
-            tool: clang
-            build: Release
-          - os: macos-latest
-            platform: osx
-            tool: clang
-            build: Release
+          # - os: ubuntu-latest
+          #   platform: linux
+          #   tool: clang
+          #   build: Release
+          # - os: macos-latest
+          #   platform: osx
+          #   tool: clang
+          #   build: Release
 
     runs-on: ${{matrix.os}}
 

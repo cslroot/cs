@@ -89,27 +89,15 @@
             }
         },
         {
-            "name": "clang-Debug",
-            "displayName": "Clang(Debug)",
+            "name": "linux-clang-ninja",
             "inherits": "ninja",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
-            }
-        },
-        {
-            "name": "clang-Release",
-            "displayName": "Clang(Release)",
-            "inherits": "ninja",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
-            }
+            "generator": "Ninja Multi-Config"
         },
         {
             "name": "linux-gcc-ninja",
             "inherits": "ninja",
             "generator": "Ninja Multi-Config",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_C_COMPILER": "gcc",
                 "CMAKE_CXX_COMPILER": "g++"
             }
@@ -163,16 +151,18 @@
             "configuration": "Release"
         },
         {
-            "name": "ubuntu-gcc9-Debug",
+            "name": "linux-gcc-Debug",
             "description": "",
             "displayName": "",
-            "configurePreset": "gcc9-Debug"
+            "configurePreset": "linux-gcc-ninja",
+            "configuration": "Debug"
         },
         {
-            "name": "ubuntu-gcc9-Release",
+            "name": "linux-gcc-Release",
             "description": "",
             "displayName": "",
-            "configurePreset": "gcc9-Release"
+            "configurePreset": "linux-gcc-ninja",
+            "configuration": "Release"
         },
         {
             "name": "raspi-arm64",
@@ -194,8 +184,8 @@
             }
         },
         {
-            "name": "ubuntu-gcc9-Debug",
-            "configurePreset": "ubuntu-gcc9-Debug"
+            "name": "linux-gcc-Debug",
+            "configurePreset": "linux-gcc-ninja"
         }
     ]
 }
