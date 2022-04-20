@@ -25,6 +25,7 @@ jobs:
             platform: windows
             tool: vs2022
             build: Release
+            triplet: x64-windows
           # - os: ubuntu-latest
           #   platform: linux
           #   tool: clang
@@ -34,7 +35,7 @@ jobs:
           #   tool: clang
           #   build: Release
 
-    runs-on: ${{matrix.os}}
+    runs-on: ${{ matrix.os }}
 
     steps:
     - name: "check out repo with vcpkg as submodule"
@@ -45,13 +46,23 @@ jobs:
       run: mkdir -p $VCPKG_DEFAULT_BINARY_CACHE
       shell: bash
 
-    - name: setup-msbuild
+    - name: Cache/Restore vcpkg
+      uses: actions/cache@v2
+      with:
+        path: |
+          ${{ env.VCPKG_ROOT }}
+          !${{ env.VCPKG_ROOT }}/buildtrees
+          !${{ env.VCPKG_ROOT }}/packages
+          !${{ env.VCPKG_ROOT }}/downloads
+          !${{ env.VCPKG_ROOT }}/installed
+        key: |
+          ${{ hashFiles('vcpkg.json') }}-${{ hashFiles('.git/modules/vcpkg/HEAD') }}-${{ matrix.triplet }}
+
+    - name: Add msbuild to PATH
       if: contains(${{matrix.platform}}, 'windows')
       uses: microsoft/setup-msbuild@v1.1
 
     - name: cmake configure
-      if: contains(${{matrix.platform}}, 'windows')
-      shell: powershell
       run: |
         cmake --preset "${{matrix.platform}}-x64-${{matrix.tool}}" `
         	  ./
