@@ -56,7 +56,7 @@ jobs:
           !${{ env.VCPKG_ROOT }}/downloads
           !${{ env.VCPKG_ROOT }}/installed
         key: |
-          ${{ hashFiles('vcpkg.json') }}-${{ hashFiles('.git/modules/vcpkg/HEAD') }}-${{ matrix.triplet }}
+          ${{ hashFiles('vcpkg.json') }}-${{ hashFiles('.git/modules/third/vcpkg/HEAD') }}-${{ matrix.triplet }}
 
     - name: Add msbuild to PATH
       if: contains(${{matrix.platform}}, 'windows')
