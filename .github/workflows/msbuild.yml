@@ -18,21 +18,20 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest]
+        os: [windows-latest, ubuntu-latest]
         # os: [windows-latest, ubuntu-latest, macos-latest]
         include:
           - os: windows-latest
             platform: windows
-            tool: vs2022
+            preset: windows-cl-x64-ninja
             build: Release
             triplet: x64-windows
-          # - os: ubuntu-latest
-          #   platform: linux
-          #   tool: clang
-          #   build: Release
+          - os: ubuntu-latest
+            platform: linux
+            preset: clang-x64-ninja
+            build: Release
           # - os: macos-latest
           #   platform: osx
-          #   tool: clang
           #   build: Release
 
     runs-on: ${{ matrix.os }}
@@ -64,12 +63,11 @@ jobs:
 
     - name: cmake configure
       run: |
-        cmake --preset "${{matrix.platform}}-x64-${{matrix.tool}}" `
-        	  ./
+        cmake --preset "${{matrix.preset}}"
 
     - name: cmake build
       run: |
-        cmake --build --preset "${{matrix.platform}}-x64-${{matrix.tool}}-${{matrix.build}}"
+        cmake --build --preset "${{matrix.preset}}-${{matrix.build}}"
 
     # - name: Test
     #   run: ctest -C release
@@ -78,5 +76,5 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: artifacts_win-x64
-        path: "build/${{matrix.platform}}-x64-${{matrix.tool}}/bin/${{matrix.build}}"
+        path: "build/${{matrix.preset}}/bin/${{matrix.build}}"
 
