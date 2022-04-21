@@ -15,6 +15,7 @@ env:
 
 jobs:
   build:
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
@@ -34,13 +35,15 @@ jobs:
           #   platform: osx
           #   build: Release
 
-    runs-on: ${{ matrix.os }}
-
     steps:
     - name: "check out repo with vcpkg as submodule"
       uses: actions/checkout@v2
       with:
         submodules: recursive
+
+    - name: "setup ninja"
+      uses: seanmiddleditch/gha-setup-ninja@master
+
     - name: "Create directory '${{ env.VCPKG_DEFAULT_BINARY_CACHE }}'"
       run: mkdir -p $VCPKG_DEFAULT_BINARY_CACHE
       shell: bash
@@ -58,12 +61,13 @@ jobs:
           ${{ hashFiles('vcpkg.json') }}-${{ hashFiles('.git/modules/third/vcpkg/HEAD') }}-${{ matrix.triplet }}
 
     - name: Add msbuild to PATH
-      if: contains(${{matrix.platform}}, 'windows')
+      if: runner.os == 'Windows'
       uses: microsoft/setup-msbuild@v1.1
 
     - name: cmake configure
       run: |
-        cmake --preset "${{matrix.preset}}"
+        cmake --preset "${{matrix.preset}}" `
+        	  ./
 
     - name: cmake build
       run: |
