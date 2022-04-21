@@ -60,9 +60,20 @@ jobs:
         key: |
           ${{ hashFiles('vcpkg.json') }}-${{ hashFiles('.git/modules/third/vcpkg/HEAD') }}-${{ matrix.triplet }}
 
-    - name: Add msbuild to PATH
+    - name: Add msbuild to PATH(Windows)
       if: runner.os == 'Windows'
       uses: microsoft/setup-msbuild@v1.1
+
+    - name: Configure build for amd64(Windows)
+      if: runner.os == 'Windows'
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: amd64
+
+    - name: Add packages
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get install -y libxmu-dev libxi-dev libgl-dev # for glew
 
     - name: cmake configure
       run: |
