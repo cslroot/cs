@@ -74,7 +74,7 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         sudo apt-get install -y libxmu-dev libxi-dev libgl-dev  # for glew
-        sudo apt-get install =y libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev  # for glfw
+        sudo apt-get install -y libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev  # for glfw
 
     - name: cmake configure
       run: |
