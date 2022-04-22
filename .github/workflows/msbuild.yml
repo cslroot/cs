@@ -23,13 +23,13 @@ jobs:
         # os: [windows-latest, ubuntu-latest, macos-latest]
         include:
           - os: windows-latest
-            platform: windows
             preset: windows-cl-x64-ninja
+            build-preset: windows-x64-Release
             build: Release
             triplet: x64-windows
           - os: ubuntu-latest
-            platform: linux
             preset: clang-x64-ninja
+            build-preset: linux-x64-Release
             build: Release
           # - os: macos-latest
           #   platform: osx
@@ -73,7 +73,8 @@ jobs:
     - name: Add packages
       if: runner.os == 'Linux'
       run: |
-        sudo apt-get install -y libxmu-dev libxi-dev libgl-dev # for glew
+        sudo apt-get install -y libxmu-dev libxi-dev libgl-dev  # for glew
+        sudo apt-get install =y libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev  # for glfw
 
     - name: cmake configure
       run: |
@@ -81,7 +82,7 @@ jobs:
 
     - name: cmake build
       run: |
-        cmake --build --preset "${{matrix.preset}}-${{matrix.build}}"
+        cmake --build --preset "${{matrix.build-preset}}"
 
     # - name: Test
     #   run: ctest -C release
@@ -89,6 +90,6 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
-        name: artifacts_win-x64
+        name: "artifacts_${{ runner.os }}"
         path: "build/${{matrix.preset}}/bin/${{matrix.build}}"
 
