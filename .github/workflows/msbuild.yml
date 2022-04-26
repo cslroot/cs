@@ -73,8 +73,14 @@ jobs:
     - name: Add packages
       if: runner.os == 'Linux'
       run: |
+        sudo apt-get update
         sudo apt-get install -y libxmu-dev libxi-dev libgl-dev  # for glew
         sudo apt-get install -y libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev  # for glfw
+        sudo apt-get install -y libgl1-mesa-dev
+        sudo apt-get install -y mesa-utils
+        apt list | grep -i gl
+        glxinfo | grep -i OpenGL
+
 
     - name: cmake configure
       run: |
