@@ -78,8 +78,8 @@ jobs:
         sudo apt-get install -y libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev  # for glfw
         sudo apt-get install -y libgl1-mesa-dev
         sudo apt-get install -y mesa-utils
-        apt list | grep -i gl
-        glxinfo | grep -i OpenGL
+        # apt list | grep -i gl
+        xvfb-run glxinfo | grep -i OpenGL
 
 
     - name: cmake configure
