@@ -24,12 +24,12 @@ jobs:
         include:
           - os: windows-latest
             preset: windows-cl-x64-ninja
-            build-preset: windows-x64-Release
+            build-preset: windows-cl-x64-ninja-Release
             build: Release
             triplet: x64-windows
           - os: ubuntu-latest
             preset: clang-x64-ninja
-            build-preset: linux-x64-Release
+            build-preset: clang-x64-ninja-Release
             build: Release
           # - os: macos-latest
           #   platform: osx

@@ -21,10 +21,6 @@
             },
             "environment": {
                 "VCPKG_ROOT": "${sourceDir}/third/vcpkg"
-            },
-            "architecture": {
-                "value": "x64",
-                "strategy": "external"
             }
         },
         {
@@ -65,11 +61,6 @@
             "name": "windows-x64-ninja-vcpkg-base",
             "hidden": true,
             "inherits": "ninja-vcpkg-base",
-            "vendor": {
-                "microsoft.com/VisualStudioSettings/CMake/1.0": {
-                    "intelliSenseMode": "windows-clang-x64"
-                }
-            },
             "condition": {
                 "type": "equals",
                 "lhs": "${hostSystemName}",
@@ -77,6 +68,10 @@
             },
             "architecture": {
                 "value": "x64",
+                "strategy": "external"
+            },
+            "toolset": {
+                "value": "host=x64",
                 "strategy": "external"
             }
         },
@@ -88,9 +83,10 @@
                 "CMAKE_C_COMPILER": "clang-cl",
                 "CMAKE_CXX_COMPILER": "clang-cl"
             },
-            "toolset": {
-                "value": "host=x64",
-                "strategy": "external"
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "intelliSenseMode": "windows-clang-x64"
+                }
             }
         },
         {
@@ -98,18 +94,17 @@
             "inherits": "windows-x64-ninja-vcpkg-base",
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "cl",
-                "CMAKE_CXX_COMPILER": "cl",
-                "MSVC": true
+                "CMAKE_CXX_COMPILER": "cl"
             }
         },
         {
             "name": "windows-x64-vs2022",
-            "inherits": "windows-cl-x64-ninja",
+            "inherits": "windows-x64-ninja-vcpkg-base",
             "generator": "Visual Studio 17 2022"
         },
         {
             "name": "windows-x64-vs2019",
-            "inherits": "windows-cl-x64-ninja",
+            "inherits": "windows-x64-ninja-vcpkg-base",
             "generator": "Visual Studio 16 2019"
         },
         {
@@ -154,23 +149,17 @@
             "configuration": "Release"
         },
         {
-            "name": "windows-x64-Debug",
+            "name": "windows-cl-x64-ninja-Debug",
             "configurePreset": "windows-cl-x64-ninja",
             "configuration": "Debug"
         },
         {
-            "name": "windows-x64-Release",
+            "name": "windows-cl-x64-ninja-Release",
             "configurePreset": "windows-cl-x64-ninja",
             "configuration": "Release"
         },
         {
-            "name": "raspi-arm64",
-            "description": "",
-            "displayName": "raspi(aarch64)",
-            "configurePreset": "raspi-arm64-clang"
-        },
-        {
-            "name": "windows-gen-sln-vs2022",
+            "name": "windows-x64-vs2022-Debug",
             "configurePreset": "windows-x64-vs2022",
             "configuration": "Debug",
             "targets": [
@@ -178,9 +167,44 @@
             ]
         },
         {
+            "name": "windows-x64-vs2022-Release",
+            "configuration": "Release",
+            "inherits": [
+                "windows-x64-vs2022-Debug"
+            ]
+        },
+        {
+            "name": "windows-x64-vs2019-Debug",
+            "configurePreset": "windows-x64-vs2019",
+            "configuration": "Debug",
+            "targets": [
+                "ALL_BUILD"
+            ]
+        },
+        {
+            "name": "windows-x64-vs2019-Release",
+            "configuration": "Release",
+            "inherits": [
+                "windows-x64-vs2019-Debug"
+            ]
+        },
+        {
             "name": "windows-clang-Debug",
             "configurePreset": "windows-clang-x64-ninja",
             "configuration": "Debug"
+        },
+        {
+            "name": "windows-clang-Release",
+            "configuration": "Release",
+            "inherits": [
+                "windows-clang-Debug"
+            ]
+        },
+        {
+            "name": "raspi-arm64",
+            "description": "",
+            "displayName": "raspi(aarch64)",
+            "configurePreset": "raspi-arm64-clang"
         }
     ],
     "testPresets": [
