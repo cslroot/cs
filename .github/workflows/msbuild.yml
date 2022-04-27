@@ -1,4 +1,4 @@
-name: MSBuild
+name: build
 
 on:
   push:
@@ -19,8 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest]
-        # os: [windows-latest, ubuntu-latest, macos-latest]
+        os: [windows-latest, ubuntu-latest, macos-latest]
         include:
           - os: windows-latest
             preset: windows-cl-x64-ninja
@@ -31,9 +30,12 @@ jobs:
             preset: clang-x64-ninja
             build-preset: clang-x64-ninja-Release
             build: Release
-          # - os: macos-latest
-          #   platform: osx
-          #   build: Release
+            triplet: x64-linux
+          - os: macos-latest
+            preset: clang-x64-ninja
+            build-preset: clang-x64-ninja-Release
+            build: Release
+            triplet: x64-osx
 
     steps:
     - name: "check out repo with vcpkg as submodule"
@@ -70,7 +72,7 @@ jobs:
       with:
         arch: amd64
 
-    - name: Add packages
+    - name: Add packages(Linux)
       if: runner.os == 'Linux'
       run: |
         sudo apt-get update
