@@ -27,8 +27,6 @@
             "name": "clang-x64-ninja",
             "inherits": "ninja-vcpkg-base",
             "cacheVariables": {
-                "CMAKE_C_COMPILER_FORCED": true,
-                "CMAKE_CXX_COMPILER_FORCED": true,
                 "CMAKE_C_COMPILER": "clang",
                 "CMAKE_CXX_COMPILER": "clang++"
             },
