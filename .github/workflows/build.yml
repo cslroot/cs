@@ -20,22 +20,16 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
-        config: [Debug, Release]
+        build: [Debug, Release]
         include:
           - os: windows-latest
             preset: windows-cl-x64-ninja
-            build-preset: windows-cl-x64-ninja-${{matrix.config}}
-            build: ${{matrix.config}}
             triplet: x64-windows
           - os: ubuntu-latest
             preset: clang-x64-ninja
-            build-preset: clang-x64-ninja-${{matrix.config}}
-            build: ${{matrix.config}}
             triplet: x64-linux
           - os: macos-latest
             preset: clang-x64-ninja
-            build-preset: clang-x64-ninja-${{matrix.config}}
-            build: ${{matrix.config}}
             triplet: x64-osx
 
     steps:
@@ -91,7 +85,7 @@ jobs:
 
     - name: cmake build
       run: |
-        cmake --build --preset "${{matrix.build-preset}}"
+        cmake --build --preset "${{matrix.preset}}-${{matrix.build}}"
 
     # - name: Test
     #   run: ctest -C release
