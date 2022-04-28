@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.16.0)
-project(cs.app)
 
 add_compile_definitions(BUILD_CS_APP_LIB)
 

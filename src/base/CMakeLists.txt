@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.16.0)
-project(cs.base)
 
 enable_language(CXX)
 set(CMAKE_CXX_STANDARD 14)
