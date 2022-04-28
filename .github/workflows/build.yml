@@ -20,26 +20,27 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
+        config: [Debug, Release]
         include:
           - os: windows-latest
             preset: windows-cl-x64-ninja
-            build-preset: windows-cl-x64-ninja-Release
-            build: Release
+            build-preset: windows-cl-x64-ninja-${{matrix.config}}
+            build: ${{matrix.config}}
             triplet: x64-windows
           - os: ubuntu-latest
             preset: clang-x64-ninja
-            build-preset: clang-x64-ninja-Release
-            build: Release
+            build-preset: clang-x64-ninja-${{matrix.config}}
+            build: ${{matrix.config}}
             triplet: x64-linux
           - os: macos-latest
             preset: clang-x64-ninja
-            build-preset: clang-x64-ninja-Release
-            build: Release
+            build-preset: clang-x64-ninja-${{matrix.config}}
+            build: ${{matrix.config}}
             triplet: x64-osx
 
     steps:
     - name: "check out repo with vcpkg as submodule"
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         submodules: recursive
 

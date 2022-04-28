@@ -1,5 +1,6 @@
 
-[![build](https://github.com/cslroot/cs/actions/workflows/msbuild.yml/badge.svg)](https://github.com/cslroot/cs/actions/workflows/msbuild.yml)
+[![build](https://github.com/cslroot/cs/actions/workflows/build.yml/badge.svg)](https://github.com/cslroot/cs/actions/workflows/build.yml)
+[![CodeQL](https://github.com/cslroot/cs/actions/workflows/codeql.yml/badge.svg)](https://github.com/cslroot/cs/actions/workflows/codeql.yml)
 
 # cs
 
