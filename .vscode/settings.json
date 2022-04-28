@@ -112,5 +112,8 @@
         "strstream": "cpp",
         "valarray": "cpp"
     },
-    "editor.defaultFormatter": "ms-vscode.cpptools"
+    "editor.defaultFormatter": "ms-vscode.cpptools",
+    "files.exclude": {
+        "third/*": true
+    }
 }

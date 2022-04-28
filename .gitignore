@@ -4,9 +4,7 @@ obj/
 bin/
 out/
 .vs/
-
-.DS_Store
-
+third/vcpkg/**/*
 
 # Prerequisites
 *.d

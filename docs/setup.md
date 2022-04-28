@@ -17,10 +17,28 @@ ubuntu:
 - ninja
   sudo apt-get install ninja
 
-git clone --recursive
+```
+git clone --recursive https://github.com/cslroot/cs.git
+```
+
+if you already cloned without `--recursive` option, then use below
+```
 git submodule update --init --recursive
+```
+
+vcpkg bind
+```
+.\bootstrap-vcpkg.bat
+```
 
 # Windows
+
+
+```PowerShell
+winget install cmake
+
+```
+
 
 ## Ninja + clang
 
@@ -44,14 +62,15 @@ latest vcpkg needs cmake 3.20+
 -> pip3 install cmake 
 -> sudo ln -s ~/.local/bin/c* /usr/bin
 
-
-
 [cmake]       libxmu-dev
 [cmake]       libxi-dev
 [cmake]       libgl-dev
 
-
-sudo apt-get install libxmu-dev libxi-dev libgl-dev
+```
+sudo apt install -y libxmu-dev libxi-dev libgl-dev
+sudo apt install -y libglu1-mesa
+sudo apt install -y libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev
+```
 
 [build] GLFW3 currently requires the following libraries from the system package manager:
 [build]     libxinerama-dev
@@ -59,10 +78,8 @@ sudo apt-get install libxmu-dev libxi-dev libgl-dev
 [build]     xorg-dev
 [build]     libglu1-mesa-dev
 
-sudo apt-get install libglu1-mesa
 
 
-sudo apt install libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev
 
 
 # WSLg
@@ -78,7 +95,9 @@ Test Env.
 ### Note
 * WSLg supports OpenGL 3.3 (Core) now (2022-04-01)
 
-```result of my laptop (ubuntu 20.04LTS / GeForce 2070 Super laptop)
+result of my laptop (ubuntu 20.04LTS / GeForce 2070 Super laptop)
+
+```
 $ glxinfo -B
 name of display: :0
 display: :0  screen: 0
@@ -109,6 +128,33 @@ OpenGL context flags: (none)
 OpenGL ES profile version string: OpenGL ES 3.0 Mesa 21.2.6
 OpenGL ES profile shading language version string: OpenGL ES GLSL ES 3.00
 ```
+
+
+
+Ubuntu
+----------------
+
+* Docker Desktop on Windows / WSL
+* Ubuntu focal
+  * `docker pull ubuntu:focal`
+
+```sh
+apt install -y git
+apt install -y cmake ninja-build clang
+apt install -y libxmu-dev libxi-dev libgl-dev
+apt install -y libglu1-mesa
+apt install -y libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev
+```
+
+`cmake --version` is old to build using cmake preset
+so that introduce update version of cmake via pip
+
+```
+apt purge cmake
+apt install -y python3-pip
+pip3 install cmake
+```
+
 
 ## TIPS
 
