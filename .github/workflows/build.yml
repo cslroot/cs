@@ -93,6 +93,6 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
-        name: "artifacts_${{ runner.os }}"
+        name: "artifacts_${{ runner.os }}-${{matrix.build}}"
         path: "build/${{matrix.preset}}/bin/${{matrix.build}}"
 

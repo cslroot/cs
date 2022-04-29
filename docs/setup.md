@@ -1,54 +1,97 @@
-behavior:
 
-- vcpkg is cloned using git submodule
-- install dependent library via vcpkg.json
+# How to build from source
 
-## pre-requisites:
+## In short
 
-ubuntu:
+### Linux
 
-- CMake ver. 3.xx
-- zip/unzip to expand vcpkg
-  - sudo apt-get install curl zip unzip tar
-- pkg-config
-  sudo apt-get install pkg-config
-- for OpenGL on WSL ubuntu
-  sudo apt-get install libgl1-mesa-dev
-- ninja
-  sudo apt-get install ninja
+```
+git clone --recursive https://github.com/cslroot/cs.git
+cd cs
+cmake --preset "clang-x64-ninja"
+cmake --build --preset "clang-x64-ninja-Release"
+```
+
+### Windows
+
+using Visual Studio 2022
+
+```
+git clone --recursive https://github.com/cslroot/cs.git
+cd cs
+cmake --preset "windows-x64-vs2019"
+cmake --build --preset "windows-x64-vs2019-Release"
+```
+
+
+## get source from git
 
 ```
 git clone --recursive https://github.com/cslroot/cs.git
 ```
 
-if you already cloned without `--recursive` option, then use below
+This repo use vcpkg as submodule, so clone with recursive option.
+Dependent libraries are retrieved via vcpkg.json.
+
+
+When you already cloned without `--recursive` option, then use below to get vcpkg:
+
 ```
 git submodule update --init --recursive
 ```
+
+
+## pre-requisites:
+
+If you want to build locally, please introduce the followings:
+
+- CMake ver. 3.20 or above
+  - to use CMakePreset
+- need zip/unzip to expand package of vcpkg (Linux)
+  - `sudo apt-get install curl zip unzip tar`
+- ninja
+  - `sudo apt-get install ninja`
+
 
 vcpkg bind
 ```
 .\bootstrap-vcpkg.bat
 ```
 
+no need to call integrate ~`.\vcpkg.exe integrate install`~
+
+
 # Windows
 
+## using Visual Studio 2022(VS2022)
 
-```PowerShell
-winget install cmake
+### install build tools
+I used VS2022 Community Edition. It is easist way to build.
+And install cmake and Ninja via VS2022 Installer.
 
+* `ツール >  ツールと機能を取得`
+* checked `ワークロード > C++ によるデスクトップ開発`
+  * install MSVC and 
+* check `Windows 用 C++ CMake ツール` if unchecked
+
+
+### build
+
+```PowerShell:
+"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+cmake --preset="win-x64-ninja"
+cmake --build --preset="win-ninja"
 ```
 
 
+## using local??
+
+```PowerShell
+winget install cmake
+winget install LLVM
+```
+
 ## Ninja + clang
-
-
-PS> & 'C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat'
-
-cmd> "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat" x64
-
-cmake --preset="win-x64-ninja"
-cmake --build --preset="win-ninja"
 
 
 ------
@@ -82,7 +125,7 @@ sudo apt install -y libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev
 
 
 
-# WSLg
+# Ubuntu on WSLg
 
 Test Env.
 
