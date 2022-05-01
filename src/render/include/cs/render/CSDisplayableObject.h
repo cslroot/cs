@@ -11,34 +11,34 @@ namespace cs
     {
         class CSMaterial;
 
-        class DECL_CS_RENDER CSDisplayableObject
+        class CSDisplayableObject
         {
         private:
             /* data */
         public:
-            CSDisplayableObject() : _visible(true), _cachedMesh(nullptr) {}
-            ~CSDisplayableObject() {}
+            DECL_CS_RENDER CSDisplayableObject() : _visible(true), _cachedMesh(nullptr) {}
+            DECL_CS_RENDER virtual ~CSDisplayableObject() {}
 
         public:
-            void Show() { _visible = true; }
-            void Hide() { _visible = false; }
-            bool GetVisible() const { return _visible; }
+            DECL_CS_RENDER void Show() { _visible = true; }
+            DECL_CS_RENDER void Hide() { _visible = false; }
+            DECL_CS_RENDER bool GetVisible() const { return _visible; }
 
-            std::shared_ptr<cs::core::CSBufferObject> GetBuffer() const { return _cachedMesh; }
-            virtual void Test() {}
+            DECL_CS_RENDER std::shared_ptr<cs::core::CSBufferObject> GetBuffer() const { return _cachedMesh; }
+            DECL_CS_RENDER virtual void Test() {}
 
         protected:
-            void setBuffer(std::shared_ptr<cs::core::CSBufferObject> _);
+            DECL_CS_RENDER void setBuffer(std::shared_ptr<cs::core::CSBufferObject> _);
 
         private:
             bool _visible;
             std::shared_ptr<cs::core::CSBufferObject> _cachedMesh;
         };
 
-        class DECL_CS_RENDER CSDisplayableObject2d : public CSDisplayableObject
+        class CSDisplayableObject2d : public CSDisplayableObject
         {
         public:
-            CSDisplayableObject2d(const cs::core::CSObject&, const CSMaterial&);
+            DECL_CS_RENDER CSDisplayableObject2d(const cs::core::CSObject&, const CSMaterial&);
 
         };
 

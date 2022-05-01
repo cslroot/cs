@@ -19,11 +19,11 @@ namespace cs
             Body,
         };
 
-        class DECL_CS_CORE Entity : public CSObject
+        class Entity : public CSObject
         {
         public:
-            Entity();
-            virtual ~Entity();
+            DECL_CS_CORE Entity();
+            DECL_CS_CORE virtual ~Entity();
 
         private:
             int64_t _id;

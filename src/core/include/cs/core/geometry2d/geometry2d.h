@@ -12,11 +12,11 @@ namespace cs
     {
         class CSBufferObject;
 
-        class DECL_CS_CORE Geometry2d : public Geometry
+        class Geometry2d : public Geometry
         {
         public:
-            Geometry2d() {}
-            virtual ~Geometry2d() {}
+            DECL_CS_CORE Geometry2d() {}
+            DECL_CS_CORE virtual ~Geometry2d() {}
         };
 
         class LineSegment2d : public Geometry2d

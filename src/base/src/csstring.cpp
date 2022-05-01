@@ -93,5 +93,5 @@ CSString CSString::Replace(const char target, const char rep) const
 
 int CSString::ParseInt() const
 {
-    return std::stod(_str);
+    return std::stoi(_str);
 }

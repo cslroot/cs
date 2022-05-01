@@ -22,68 +22,68 @@ namespace cs
             Last = Body
         };
 
-        class DECL_CS_CORE Topology : public Entity
+        class Topology : public Entity
         {
         public:
-            Topology() {}
-            virtual ~Topology() {}
+            DECL_CS_CORE Topology() {}
+            DECL_CS_CORE virtual ~Topology() {}
 
         public:
-            virtual TopologyType GetType() const = 0;
+            DECL_CS_CORE virtual TopologyType GetType() const = 0;
         };
 
-        class DECL_CS_CORE Vertex : public Topology
+        class Vertex : public Topology
         {
         public:
-            virtual TopologyType GetType() const override { return TopologyType::Vertex; }
+            DECL_CS_CORE virtual TopologyType GetType() const override { return TopologyType::Vertex; }
         };
 
-        class DECL_CS_CORE CoEdge : public Topology
+        class CoEdge : public Topology
         {
         public:
-            virtual TopologyType GetType() const override { return TopologyType::CoEdge; }
+            DECL_CS_CORE virtual TopologyType GetType() const override { return TopologyType::CoEdge; }
         };
 
-        class DECL_CS_CORE Edge : public Topology
+        class Edge : public Topology
         {
         public:
-            virtual TopologyType GetType() const override { return TopologyType::Edge; }
+            DECL_CS_CORE  virtual TopologyType GetType() const override { return TopologyType::Edge; }
         };
 
-        class DECL_CS_CORE Loop : public Topology
+        class Loop : public Topology
         {
         public:
-            virtual TopologyType GetType() const override { return TopologyType::Loop; }
+            DECL_CS_CORE  virtual TopologyType GetType() const override { return TopologyType::Loop; }
         };
 
-        class DECL_CS_CORE Face : public Topology
+        class Face : public Topology
         {
         public:
-            virtual TopologyType GetType() const override { return TopologyType::Face; }
+            DECL_CS_CORE virtual TopologyType GetType() const override { return TopologyType::Face; }
         };
 
-        class DECL_CS_CORE Shell : public Topology
+        class Shell : public Topology
         {
         public:
-            virtual TopologyType GetType() const override { return TopologyType::Shell; }
+            DECL_CS_CORE virtual TopologyType GetType() const override { return TopologyType::Shell; }
         };
 
-        class DECL_CS_CORE Lump : public Topology
+        class Lump : public Topology
         {
         public:
-            virtual TopologyType GetType() const override { return TopologyType::Lump; }
+            DECL_CS_CORE virtual TopologyType GetType() const override { return TopologyType::Lump; }
         };
 
-        class DECL_CS_CORE Wire : public Topology
+        class  Wire : public Topology
         {
         public:
-            virtual TopologyType GetType() const override { return TopologyType::Wire; }
+            DECL_CS_CORE virtual TopologyType GetType() const override { return TopologyType::Wire; }
         };
 
-        class DECL_CS_CORE Body : public Topology
+        class Body : public Topology
         {
         public:
-            virtual TopologyType GetType() const override { return TopologyType::Body; }
+            DECL_CS_CORE virtual TopologyType GetType() const override { return TopologyType::Body; }
         };
     } // namespace core
 

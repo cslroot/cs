@@ -1,5 +1,6 @@
 
-int func()
+int
+func()
 {
-    return 0;
+  return 0;
 }

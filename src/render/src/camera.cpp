@@ -2,9 +2,6 @@
 
 using namespace cs::render;
 
+Camera::Camera(/* args */) {}
 
-Camera::Camera(/* args */)
-{}
-
-Camera::~Camera()
-{}
+Camera::~Camera() {}

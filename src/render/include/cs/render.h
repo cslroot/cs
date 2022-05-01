@@ -1,7 +1,8 @@
 #pragma once
 
 #include <cs/render/render_common.h>
-#include <cs/render/renderer.h>
+#include <cs/render/Renderer.h>
+#include <cs/render/EmptyRenderer.h>
 #include <cs/render/GLFWRenderer.h>
 
 #include <cs/render/camera.h>

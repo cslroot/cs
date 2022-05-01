@@ -39,7 +39,7 @@ int main(int argc, char** argv)
 
     auto scene = CS_NEW cs::render::Scene();
     auto camera = CS_NEW cs::render::PerspectiveCamera();
-    auto renderer = CS_NEW cs::render::GLRenderer();
+    auto renderer = CS_NEW cs::render::EmptyRenderer();
 
     auto cube = CS_NEW cs::render::Mesh(box, *mat);
     scene->Add(cube);

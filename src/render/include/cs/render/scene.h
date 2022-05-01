@@ -9,18 +9,18 @@ namespace cs
 {
     namespace render
     {
-        class DECL_CS_RENDER Scene
+        class Scene
         {
         private:
             /* data */
         public:
-            Scene(/* args */);
-            ~Scene();
+            DECL_CS_RENDER Scene(/* args */);
+            DECL_CS_RENDER ~Scene();
 
         public:
-            void Add(CSDisplayableObject* mesh);
-            void Update();
-            CSDisplayableObject* RootObject() const;
+            DECL_CS_RENDER void Add(CSDisplayableObject* mesh);
+            DECL_CS_RENDER void Update();
+            DECL_CS_RENDER CSDisplayableObject* RootObject() const;
 
         private:
             struct Impl;

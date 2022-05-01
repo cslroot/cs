@@ -8,25 +8,25 @@ namespace cs
 {
     namespace core
     {
-        class DECL_CS_CORE Geometry : public Entity
+        class Geometry : public Entity
         {
         public:
-            Geometry() {}
-            virtual ~Geometry() {}
+            DECL_CS_CORE Geometry() {}
+            DECL_CS_CORE virtual ~Geometry() {}
         };
 
-        class DECL_CS_CORE Geometry3d : public Geometry
+        class Geometry3d : public Geometry
         {
         public:
-            Geometry3d() {}
-            virtual ~Geometry3d() {}
+            DECL_CS_CORE Geometry3d() {}
+            DECL_CS_CORE virtual ~Geometry3d() {}
         };
 
-        class DECL_CS_CORE Point : public Geometry3d
+        class Point : public Geometry3d
         {};
-        class DECL_CS_CORE Curve : public Geometry3d
+        class Curve : public Geometry3d
         {};
-        class DECL_CS_CORE Surface : public Geometry3d
+        class Surface : public Geometry3d
         {};
     } // namespace core
 

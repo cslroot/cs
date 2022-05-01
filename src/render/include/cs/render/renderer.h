@@ -12,8 +12,8 @@ namespace cs
         private:
             /* data */
         public:
-            Renderer(/* args */);
-            ~Renderer();
+            DECL_CS_RENDER Renderer(/* args */);
+            DECL_CS_RENDER virtual ~Renderer();
 
         public:
             DECL_CS_RENDER virtual void Init() {}
@@ -28,8 +28,6 @@ namespace cs
 
         };
 
-        class DECL_CS_RENDER GLRenderer : public Renderer
-        {};
     } // namespace render
 
 } // namespace cs

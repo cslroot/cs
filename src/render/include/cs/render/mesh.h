@@ -11,13 +11,13 @@ namespace cs
 {
     namespace render
     {
-        class DECL_CS_RENDER Mesh : public CSDisplayableObject
+        class Mesh : public CSDisplayableObject
         {
         private:
             /* data */
         public:
-            Mesh(const cs::core::Entity& entity, const cs::render::CSMaterial& material) {}
-            ~Mesh() {}
+            DECL_CS_RENDER Mesh(const cs::core::Entity& entity, const cs::render::CSMaterial& material) {}
+            DECL_CS_RENDER virtual ~Mesh() {}
         };
     } // namespace render
 
