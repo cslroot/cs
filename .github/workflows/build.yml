@@ -54,7 +54,8 @@ jobs:
           !${{ env.VCPKG_ROOT }}/downloads
           !${{ env.VCPKG_ROOT }}/installed
         key: |
-          ${{ hashFiles('vcpkg.json') }}-${{ hashFiles('.git/modules/third/vcpkg/HEAD') }}-${{ matrix.triplet }}
+          ${{ runner.os }}-${{ matrix.triplet }}-${{ secrets.CACHE_VERSION }}-${{ hashFiles('vcpkg.json') }}-${{ hashFiles('.git/modules/third/vcpkg/HEAD') }}
+        # CACHE_VERSION is used to clear cache explicitly
 
     - name: Add msbuild to PATH(Windows)
       if: runner.os == 'Windows'
