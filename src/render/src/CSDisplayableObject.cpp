@@ -2,17 +2,18 @@
 
 #include <cs/base.h>
 #include <cs/core.h>
-#include <cs/render/material.h>
+#include <cs/render/Material.h>
 
 using namespace cs::render;
 
-
-void CSDisplayableObject::setBuffer(std::shared_ptr<cs::core::CSBufferObject> _)
+void
+CSDisplayableObject::setBuffer(std::shared_ptr<cs::core::CSBufferObject> _)
 {
-    _cachedMesh = _;
+  _cachedMesh = _;
 }
 
-CSDisplayableObject2d::CSDisplayableObject2d(const cs::core::CSObject& obj_, const CSMaterial& mat_)
+CSDisplayableObject2d::CSDisplayableObject2d(const cs::core::CSObject& obj_,
+                                             const CSMaterial& mat_)
 {
-    this->setBuffer(obj_.GenerateBuffer());
+  this->setBuffer(obj_.GenerateBuffer());
 }
