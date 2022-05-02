@@ -206,14 +206,18 @@
             "name": "gcc-x64-ninja-Debug",
             "configurePreset": "gcc-x64-ninja",
             "configuration": "Debug"
+        },
+        {
+            "name": "gcc-x64-ninja-Release",
+            "configuration": "Release",
+            "inherits": [
+                "gcc-x64-ninja-Debug"
+            ]
         }
     ],
     "testPresets": [
         {
-            "name": "windows-x64-vs2022",
-            "output": {
-                "outputOnFailure": true
-            },
+            "name": "windows-cl-x64-ninja",
             "configurePreset": "windows-cl-x64-ninja",
             "execution": {
                 "noTestsAction": "error",
@@ -221,8 +225,14 @@
             }
         },
         {
-            "name": "linux-Debug",
+            "name": "clang-x64-ninja",
+            "inherits": "windows-cl-x64-ninja",
             "configurePreset": "clang-x64-ninja"
+        },
+        {
+            "name": "gcc-x64-ninja",
+            "inherits": "windows-cl-x64-ninja",
+            "configurePreset": "gcc-x64-ninja"
         }
     ]
 }

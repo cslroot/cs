@@ -35,8 +35,12 @@ if(MSVC)
 endif()
 
 project(cs)
-enable_testing()
 
 add_subdirectory(src)
+
+# enable testing
+enable_testing()
 add_subdirectory(test)
+
+# build example app
 add_subdirectory(examples)

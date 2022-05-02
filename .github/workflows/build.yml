@@ -88,8 +88,8 @@ jobs:
         cmake --build --preset "${{matrix.preset}}-Debug"
         cmake --build --preset "${{matrix.preset}}-Release"
 
-    # - name: Test
-    #   run: ctest -C release
+    - name: Test
+      run: ctest --preset "${{matrix.preset}}"
       
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
