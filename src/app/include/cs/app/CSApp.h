@@ -6,6 +6,7 @@
 
 namespace cs {
 namespace app {
+
 class CSDocument;
 class CSDocumentCollection;
 
@@ -18,11 +19,15 @@ public:
 public:
   DECL_CS_APP CSDocumentCollection& Documents() const;
 
+public:
+  // event
+  DECL_CS_APP void EmitDocumentActivated(CSDocument&);
+  DECL_CS_APP void EmitDocumentUnActivated(CSDocument&);
+
 private:
   struct Impl;
   std::unique_ptr<Impl> _impl;
 };
 
 } // namespace app
-
 } // namespace cs

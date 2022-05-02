@@ -12,17 +12,15 @@ using namespace cs::app;
 
 struct CSApp::Impl
 {
-  Impl()
-  {
-    static int ii = 0;
-    ii++;
-  }
+  Impl(CSApp* pApp)
+    : _docs(pApp)
+  {}
 
   CSDocumentCollection _docs;
 };
 
 CSApp::CSApp(int argc, char** argv)
-  : _impl(std::make_unique<CSApp::Impl>())
+  : _impl(std::make_unique<CSApp::Impl>(this))
 {
   cs_initialize(argc, argv);
 }
@@ -37,3 +35,10 @@ CSApp::Documents() const
 {
   return _impl->_docs;
 }
+
+void
+CSApp::EmitDocumentActivated(CSDocument&)
+{}
+void
+CSApp::EmitDocumentUnActivated(CSDocument&)
+{}

@@ -12,17 +12,23 @@
 namespace cs {
 namespace app {
 
+class CSApp;
 class CSDocument;
 
-class CSDocumentCollection : cs::base::ICSCollection<CSDocument>
+class CSDocumentCollection final : cs::base::ICSCollection<CSDocument>
 {
-private:
-  /* data */
 public:
-  DECL_CS_APP CSDocumentCollection();
+  DECL_CS_APP CSDocumentCollection(CSApp*);
   DECL_CS_APP ~CSDocumentCollection();
 
 public:
+  /**
+   * @brief Get active document
+   *
+   * @return DECL_CS_APP&
+   */
+  DECL_CS_APP CSDocument* ActiveDocument() const;
+  DECL_CS_APP void SetActiveDocument(CSDocument* pDoc);
   DECL_CS_APP CSDocument& OpenNewDocument(const cs::base::CSString& doc_id);
 
 public:

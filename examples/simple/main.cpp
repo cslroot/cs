@@ -1,67 +1,74 @@
 #include <iostream>
 
+#include <cs/app.h>
 #include <cs/base.h>
 #include <cs/core.h>
-#include <cs/render.h>
 #include <cs/modeler.h>
-#include <cs/app.h>
+#include <cs/render.h>
 
-int main(int argc, char** argv)
+int
+main(int argc, char** argv)
 {
-    std::locale::global(std::locale(
+  std::locale::global(std::locale(
 #if _WIN32 && !__MINGW32__ && !__CYGWIN__
-        ".UTF-8"
+    ".UTF-8"
 #else
-        ""
+    ""
 #endif
     ));
 
-    auto pmyapp = std::make_unique<cs::app::CSApp>(argc, argv);
-    auto& app = *pmyapp;
+  auto pmyapp = std::make_unique<cs::app::CSApp>(argc, argv);
+  auto& app = *pmyapp;
 
-    auto& doc = app.Documents().OpenNewDocument(typeid(cs::app::CSDocument3d).name());
-    doc.SaveAs("save.txt");
+  assert(nullptr == app.Documents().ActiveDocument());
 
-    auto& doc2 = app.Documents().OpenNewDocument(typeid(cs::app::CSDocument3d).name());
-    doc2.SetName(u8"2nd document");
-    doc2.SaveAs("doc2.txt");
+  auto& doc =
+    app.Documents().OpenNewDocument(typeid(cs::app::CSDocument3d).name());
+  doc.SaveAs("save.txt");
+  assert(&doc == app.Documents().ActiveDocument());
 
-    std::cout << "document saved" << std::endl;
+  auto& doc2 =
+    app.Documents().OpenNewDocument(typeid(cs::app::CSDocument3d).name());
+  doc2.SetName(u8"2nd document");
+  doc2.SaveAs("doc2.txt");
+  assert(&doc != app.Documents().ActiveDocument());
+  assert(&doc2 == app.Documents().ActiveDocument());
 
-    size_t i = app.Documents().Size();
-    std::cout << i << std::endl;
+  std::cout << "document saved" << std::endl;
 
-    cs::base::CSString str;
-    str += u8"hoge";
-    str += u8"fuga";
-    std::cout << str << std::endl;
+  size_t i = app.Documents().Size();
+  std::cout << i << std::endl;
 
-    cs::base::CSVec3d v3d;
-    cs::base::CSVec3d v3d2(1, 2, 3);
-    cs::base::CSVec3d v3d3(1, 2, 3);
-    v3d += v3d2;
-    v3d += v3d3;
-    std::cout << v3d.x << std::endl;
-    std::cout << v3d.y << std::endl;
-    std::cout << v3d.z << std::endl;
+  cs::base::CSString str;
+  str += u8"hoge";
+  str += u8"fuga";
+  std::cout << str << std::endl;
 
-    auto& modeler = doc.Modeler();
-    auto& box = modeler.CreateBox({ 0,0,0 }, { 1,1,1 });
-    auto mat = CS_NEW cs::render::BasicMaterial({ 1.0, 0.0, 0.0 });
+  cs::base::CSVec3d v3d;
+  cs::base::CSVec3d v3d2(1, 2, 3);
+  cs::base::CSVec3d v3d3(1, 2, 3);
+  v3d += v3d2;
+  v3d += v3d3;
+  std::cout << v3d.x << std::endl;
+  std::cout << v3d.y << std::endl;
+  std::cout << v3d.z << std::endl;
 
-    auto scene = CS_NEW cs::render::Scene();
-    auto camera = CS_NEW cs::render::PerspectiveCamera();
-    auto renderer = CS_NEW cs::render::EmptyRenderer();
+  auto& modeler = doc.Modeler();
+  auto& box = modeler.CreateBox({ 0, 0, 0 }, { 1, 1, 1 });
+  auto mat = CS_NEW cs::render::BasicMaterial({ 1.0, 0.0, 0.0 });
 
-    auto cube = new cs::render::Mesh(box, *mat);
-    scene->Add(cube);
+  auto scene = CS_NEW cs::render::Scene();
+  auto camera = CS_NEW cs::render::PerspectiveCamera();
+  auto renderer = CS_NEW cs::render::EmptyRenderer();
 
-    bool stop = false;
-    while (stop)
-    {
-        renderer->Render(*scene, *camera);
-        stop = true;
-    }
+  auto cube = new cs::render::Mesh(box, *mat);
+  scene->Add(cube);
 
-    std::cout << str.c_str() << std::endl;
+  bool stop = false;
+  while (stop) {
+    renderer->Render(*scene, *camera);
+    stop = true;
+  }
+
+  std::cout << str.c_str() << std::endl;
 }
