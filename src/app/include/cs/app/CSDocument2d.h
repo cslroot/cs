@@ -1,22 +1,19 @@
 #pragma once
 
+#include <cs/app/CSDocument.h>
 #include <cs/app/app_common.h>
-#include <cs/app/csdocument.h>
 
-namespace cs
+namespace cs {
+namespace app {
+
+class CSDocument2d : public CSDocument::Registrar<CSDocument2d>
 {
-    namespace app
-    {
-        class CSDocument2d : public CSDocument::Registrar<CSDocument2d>
-        {
-        public:
-            explicit DECL_CS_APP CSDocument2d(const cs::base::CSString&);
-            DECL_CS_APP ~CSDocument2d();
+public:
+  explicit DECL_CS_APP CSDocument2d(const cs::base::CSString&);
+  DECL_CS_APP ~CSDocument2d();
 
-        private:
-        };
+private:
+};
 
-
-    } // namespace app
-
+} // namespace app
 } // namespace cs

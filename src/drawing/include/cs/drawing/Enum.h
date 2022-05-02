@@ -2,19 +2,15 @@
 
 #include <cs/drawing/drawing_common.h>
 
-namespace cs
+namespace cs {
+namespace drawing {
+
+enum class LineWeight
 {
-    namespace drawing
-    {
+  Entity = 370,
 
-        enum class LineWeight
-        {
-            Entity = 370,
+  RESERVED = 379,
+};
 
-
-            RESERVED = 379,
-        };
-
-
-    } // namespace modeler
+} // namespace modeler
 } // namespace cs

@@ -200,9 +200,12 @@
         },
         {
             "name": "raspi-arm64",
-            "description": "",
-            "displayName": "raspi(aarch64)",
             "configurePreset": "raspi-arm64-clang"
+        },
+        {
+            "name": "gcc-x64-ninja-Debug",
+            "configurePreset": "gcc-x64-ninja",
+            "configuration": "Debug"
         }
     ],
     "testPresets": [
