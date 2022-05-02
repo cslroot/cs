@@ -32,8 +32,8 @@ public:
   DECL_CS_APP CSDocument& OpenNewDocument(const cs::base::CSString& doc_id);
 
 public:
-  void Clear() override;
-  size_t Size() const override;
+  DECL_CS_APP void Clear() override;
+  DECL_CS_APP size_t Size() const override;
 
 private:
   CSDocument& Add(std::unique_ptr<CSDocument> doc) override;
