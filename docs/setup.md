@@ -99,6 +99,29 @@ winget install LLVM
 
 # raspi (Raspberry os x64)
 
+## ubuntu 22.04 LTS
+
+install env.
+
+```
+sudo apt install -y cmake ninja-build clang
+sudo apt install -y curl zip unzip tar
+sudo apt install -y pkg-config
+sudo apt install -y libxmu-dev libxi-dev libgl-dev
+sudo apt install -y libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev
+``
+
+build
+
+```
+cmake --preset="raspi-clang-arm64-ninja"
+cmake --build --preset="raspi-clang-arm64-ninja-Debug"
+```
+
+
+-----
+
+## raspberry pi OS
 
 cmake -> 3.18.4
 latest vcpkg needs cmake 3.20+
@@ -174,7 +197,7 @@ OpenGL ES profile shading language version string: OpenGL ES GLSL ES 3.00
 
 
 
-Ubuntu
+Ubuntu x64
 ----------------
 
 * Docker Desktop on Windows / WSL

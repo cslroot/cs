@@ -106,32 +106,10 @@
             "generator": "Visual Studio 16 2019"
         },
         {
-            "name": "raspi-arm64-clang",
-            "displayName": "Clang(aarch64)",
-            "description": "Using compilers: C = /usr/bin/clang, CXX = /usr/bin/clang++",
-            "binaryDir": "${sourceDir}/build/${presetName}",
-            "generator": "Ninja",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
-                "CMAKE_C_COMPILER": "clang",
-                "CMAKE_CXX_COMPILER": "clang++"
-            },
+            "name": "raspi-clang-arm64-ninja",
+            "inherits": "clang-x64-ninja",
             "environment": {
                 "VCPKG_FORCE_SYSTEM_BINARIES": "1"
-            },
-            "condition": {
-                "type": "equals",
-                "lhs": "${hostSystemName}",
-                "rhs": "Linux"
-            }
-        },
-        {
-            "name": "test",
-            "hidden": true,
-            "toolset": {
-                "value": "host=x64",
-                "strategy": "external"
             }
         }
     ],
@@ -144,6 +122,16 @@
         {
             "name": "clang-x64-ninja-Release",
             "configurePreset": "clang-x64-ninja",
+            "configuration": "Release"
+        },
+        {
+            "name": "raspi-clang-arm64-ninja-Debug",
+            "configurePreset": "raspi-clang-arm64-ninja",
+            "configuration": "Debug"
+        },
+        {
+            "name": "raspi-clang-arm64-ninja-Release",
+            "configurePreset": "raspi-clang-arm64-ninja",
             "configuration": "Release"
         },
         {
@@ -197,10 +185,6 @@
             "inherits": [
                 "windows-clang-Debug"
             ]
-        },
-        {
-            "name": "raspi-arm64",
-            "configurePreset": "raspi-arm64-clang"
         },
         {
             "name": "gcc-x64-ninja-Debug",
