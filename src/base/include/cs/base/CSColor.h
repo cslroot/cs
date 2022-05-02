@@ -6,6 +6,7 @@
 
 namespace cs {
 namespace base {
+
 class CSColor
 {
   const float ToFloat = 1.0f / 255.0f;
