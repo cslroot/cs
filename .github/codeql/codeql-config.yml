@@ -1,0 +1,4 @@
+name: "CodeQL config for CS"
+
+paths-ignore: 
+  - third
