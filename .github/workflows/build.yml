@@ -57,15 +57,17 @@ jobs:
           ${{ runner.os }}-${{ matrix.triplet }}-${{ secrets.CACHE_VERSION }}-${{ hashFiles('vcpkg.json') }}-${{ hashFiles('.git/modules/third/vcpkg/HEAD') }}
         # CACHE_VERSION is used to clear cache explicitly
 
-    - name: Add msbuild to PATH(Windows)
-      if: runner.os == 'Windows'
-      uses: microsoft/setup-msbuild@v1.1
-
-    # - name: Configure build for amd64(Windows)
+    # REMARK: setup-msbuild doesn't expose cl.exe into PATH.
+    # Then use ilammy/msvc-dev-cmd
+    # - name: Add msbuild to PATH(Windows)
     #   if: runner.os == 'Windows'
-    #   uses: ilammy/msvc-dev-cmd@v1
-    #   with:
-    #     arch: amd64
+    #   uses: microsoft/setup-msbuild@v1.1
+
+    - name: Configure build for amd64(Windows)
+      if: runner.os == 'Windows'
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: amd64
 
     - name: Add packages(Linux)
       if: runner.os == 'Linux'
