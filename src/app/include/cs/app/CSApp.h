@@ -21,6 +21,7 @@ public:
   DECL_CS_APP CSDocumentCollection& Documents() const;
   DECL_CS_APP cs::core::CSConfig& Config() const;
   DECL_CS_APP cs::core::CSLogger& Log() const;
+  DECL_CS_APP cs::core::UUID& SessionID() const;
 
 public:
   // event

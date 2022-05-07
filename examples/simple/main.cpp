@@ -27,8 +27,13 @@ main(int argc, char** argv)
   log.Trace("trace message");
 
   // config
-  auto& confPath = app.Config().ConfigHomePath();
+  auto confPath = app.Config().ConfigHomePath();
   log.Information(fmt::format("config path: {}", confPath.c_str()).c_str());
+
+  // session id
+  auto strSessionID = app.SessionID().ToString();
+  log.Information(strSessionID);
+  log.Information(app.SessionID().ToString());
 
   assert(nullptr == app.Documents().ActiveDocument());
 

@@ -9,6 +9,7 @@ class CSLogger;
 class CSObject;
 
 class Entity;
+class UUID;
 
 class CSBufferObject;
 

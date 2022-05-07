@@ -22,6 +22,7 @@ struct CSApp::Impl
   CSDocumentCollection _docs;
   CSConfig _config;
   std::unique_ptr<CSLogger> _log;
+  cs::core::UUID _sessionID;
 };
 
 CSApp::CSApp(int argc, char** argv)
@@ -59,6 +60,12 @@ cs::core::CSLogger&
 CSApp::Log() const
 {
   return *_impl->_log;
+}
+
+cs::core::UUID&
+CSApp::SessionID() const
+{
+  return _impl->_sessionID;
 }
 
 void

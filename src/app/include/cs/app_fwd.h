@@ -1,14 +1,14 @@
 #pragma once
 
-namespace cs
-{
-    namespace app
-    {
-        class CSApp;
+namespace cs {
+namespace app {
 
-        class CSDocument;
-        class CSDocument2d;
-        class CSDocument3d;
-        class CSDocumentCollection;
-    }
+class CSApp;
+
+class CSDocument;
+class CSDocument2d;
+class CSDocument3d;
+class CSDocumentCollection;
+
+}
 }

@@ -5,6 +5,7 @@
 
 namespace cs {
 namespace core {
+
 enum class TopologyType
 {
   INVALID,
