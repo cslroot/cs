@@ -6,7 +6,13 @@
 #include <Poco/Util/AbstractConfiguration.h>
 #include <Poco/Util/JSONConfiguration.h>
 
+#include <filesystem>
+
 using namespace cs::core;
+
+namespace {
+constexpr char conf_filename[] = "app.config.json";
+}
 
 struct CSConfig::Impl
 {
@@ -86,5 +92,5 @@ CSConfig::GetValue<cs::base::CSString>(const cs::base::CSString& key) const
 cs::base::CSString
 CSConfig::ConfigHomePath()
 {
-  return Poco::Path::configHome().c_str();
+  return Poco::Path::configHome() + "cs/" + conf_filename;
 }

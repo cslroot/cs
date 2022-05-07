@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cs/app/app_common.h>
+#include <cs/core_fwd.h>
 
 #include <memory>
 
@@ -18,6 +19,8 @@ public:
 
 public:
   DECL_CS_APP CSDocumentCollection& Documents() const;
+  DECL_CS_APP cs::core::CSConfig& Config() const;
+  DECL_CS_APP cs::core::CSLogger& Log() const;
 
 public:
   // event

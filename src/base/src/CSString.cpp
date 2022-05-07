@@ -6,11 +6,46 @@
 #include <locale>
 #include <string>
 
+#ifdef _WIN32
+#include <Windows.h>
+#endif
+
 using namespace cs::base;
 
 namespace {
-// char converter
 
+std::string
+wideToUtf8(const std::wstring& wstr)
+{
+  if (wstr.empty())
+    return std::string();
+#ifdef _WIN32
+  int size_needed = WideCharToMultiByte(
+    CP_UTF8, 0, &wstr[0], (int)wstr.size(), NULL, 0, NULL, NULL);
+  std::string strTo(size_needed, 0);
+  WideCharToMultiByte(
+    CP_UTF8, 0, &wstr[0], (int)wstr.size(), &strTo[0], size_needed, NULL, NULL);
+#else
+#endif
+  return strTo;
+}
+
+std::wstring
+utf8toWide(const std::string& strU8)
+{
+  if (strU8.empty())
+    return std::wstring();
+#ifdef _WIN32
+  int size_needed =
+    MultiByteToWideChar(CP_UTF8, 0, &strU8[0], (int)strU8.size(), NULL, 0);
+  std::wstring wstrTo(size_needed, 0);
+  MultiByteToWideChar(
+    CP_UTF8, 0, &strU8[0], (int)strU8.size(), &wstrTo[0], size_needed);
+#else
+
+#endif
+  return wstrTo;
+}
 }
 
 CSString::CSString(/* args */) {}

@@ -6,11 +6,12 @@
 
 namespace cs {
 namespace core {
+
 class CSConfig : CSObject
 {
 public:
-  CSConfig();
-  virtual ~CSConfig();
+  DECL_CS_CORE CSConfig();
+  DECL_CS_CORE virtual ~CSConfig();
 
 public:
   DECL_CS_CORE void SetValue(const cs::base::CSString& key, bool bValue);

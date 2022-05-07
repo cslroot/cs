@@ -6,25 +6,35 @@
 #include <cs/modeler.h>
 #include <cs/render.h>
 
+#include <fmt/format.h>
+
 int
 main(int argc, char** argv)
 {
-  std::locale::global(std::locale(
-#if _WIN32 && !__MINGW32__ && !__CYGWIN__
-    ".UTF-8"
-#else
-    ""
-#endif
-    ));
 
   auto pmyapp = std::make_unique<cs::app::CSApp>(argc, argv);
   auto& app = *pmyapp;
+  auto& log = app.Log();
+
+  // test print logger
+  log.Fatal("fatal message");
+  log.Critical("critial message");
+  log.Error("error message");
+  log.Warning("warning message");
+  log.Notice("notice message");
+  log.Information("information message");
+  log.Debug("debug message");
+  log.Trace("trace message");
+
+  // config
+  auto& confPath = app.Config().ConfigHomePath();
+  log.Information(fmt::format("config path: {}", confPath.c_str()).c_str());
 
   assert(nullptr == app.Documents().ActiveDocument());
 
   auto& doc =
     app.Documents().OpenNewDocument(typeid(cs::app::CSDocument3d).name());
-  doc.SaveAs("save.txt");
+  doc.SaveAs("save.txt.db");
   assert(&doc == app.Documents().ActiveDocument());
 
   auto& doc2 =

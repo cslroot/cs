@@ -2,6 +2,7 @@
 
 #include <cs/core/CSBufferObject.h>
 #include <cs/core/CSConfig.h>
+#include <cs/core/CSLogger.h>
 #include <cs/core/CSObject.h>
 #include <cs/core/Entity.h>
 #include <cs/core/Geometry.h>

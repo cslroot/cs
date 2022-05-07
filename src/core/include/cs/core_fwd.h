@@ -1,17 +1,18 @@
 #pragma once
 
-namespace cs
-{
-    namespace core
-    {
-        class CSConfig;
-        class CSObject;
+namespace cs {
+namespace core {
 
-        class Entity;
+class CSConfig;
+class CSLogger;
 
-        class CSBufferObject;
+class CSObject;
 
-        class Body;
-    } // namespace core
+class Entity;
 
+class CSBufferObject;
+
+class Body;
+
+} // namespace core
 } // namespace cs
