@@ -1,6 +1,6 @@
+set(PROJ_NAME cs.test)
+
 # GoogleTest requires at least C++11
-enable_language(CXX)
-set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -24,25 +24,24 @@ file(GLOB_RECURSE CS_TEST_SRC CONFIGURE_DEPENDS
     # "*.h"
     "*.cpp"
 )
+add_executable(${PROJ_NAME} ${CS_TEST_SRC})
 
-add_executable(cs.test
-    ${CS_TEST_SRC}
-)
+set_target_properties(${PROJ_NAME} PROPERTIES FOLDER test)
+target_compile_features(${PROJ_NAME} PRIVATE cxx_std_17)
 
 find_package(Threads REQUIRED)
 find_package(GTest CONFIG REQUIRED)
 include(GoogleTest)
 
-
-target_link_libraries(cs.test PRIVATE cs.base)
-target_link_libraries(cs.test PRIVATE cs.core)
+target_link_libraries(${PROJ_NAME} PRIVATE cs.base)
+target_link_libraries(${PROJ_NAME} PRIVATE cs.core)
 
 if (MSVC)
     # on Windows, google test can not find test cases when `GTest::gmock` is exist
-    target_link_libraries(cs.test PRIVATE GTest::gtest GTest::gmock_main GTest::gtest_main)
+    target_link_libraries(${PROJ_NAME} PRIVATE GTest::gtest GTest::gmock_main GTest::gtest_main)
 else()
-    target_link_libraries(cs.test PRIVATE GTest::gmock GTest::gtest GTest::gmock_main GTest::gtest_main)
+    target_link_libraries(${PROJ_NAME} PRIVATE GTest::gmock GTest::gtest GTest::gmock_main GTest::gtest_main)
 endif()
 
-gtest_discover_tests(cs.test) # cmake v3.10+
+gtest_discover_tests(${PROJ_NAME}) # cmake v3.10+
 # gtest_add_tests(TARGET cs.test)

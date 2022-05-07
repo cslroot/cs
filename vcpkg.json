@@ -3,7 +3,12 @@
     "name": "cs",
     "version": "0.1.0",
     "dependencies": [
-        "fmt",
+        {
+            "name": "fmt"
+        },
+        {
+            "name": "sqlite3"
+        },
         {
             "name": "glfw3"
         },
