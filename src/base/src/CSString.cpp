@@ -25,9 +25,11 @@ wideToUtf8(const std::wstring& wstr)
   std::string strTo(size_needed, 0);
   WideCharToMultiByte(
     CP_UTF8, 0, &wstr[0], (int)wstr.size(), &strTo[0], size_needed, NULL, NULL);
-#else
-#endif
   return strTo;
+#else
+  std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+  return converter.to_bytes(wstr.c_str());
+#endif
 }
 
 std::wstring
@@ -60,14 +62,12 @@ CSString::CSString(const std::string& utf8string)
 
 CSString::CSString(const wchar_t* widestring)
 {
-  std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
-  _str = converter.to_bytes(widestring);
+  _str = wideToUtf8(widestring);
 }
 
 CSString::CSString(const std::wstring& wstr)
 {
-  std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
-  _str = converter.to_bytes(wstr.c_str());
+  _str = wideToUtf8(wstr);
 }
 
 CSString::CSString(const CSString& a)

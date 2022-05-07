@@ -110,7 +110,8 @@
         "numeric": "cpp",
         "stack": "cpp",
         "strstream": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "filesystem": "cpp"
     },
     "editor.defaultFormatter": "ms-vscode.cpptools",
     "files.exclude": {
