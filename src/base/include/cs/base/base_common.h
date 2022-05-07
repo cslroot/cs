@@ -12,7 +12,7 @@
 #pragma warning Unknown dynamic link import / export semantics.
 #endif
 
-#if CS_BASE_EXPORT
+#if BUILD_CS_BASE_LIB
 #define DECL_CS_BASE EXPORT
 #else
 #define DECL_CS_BASE IMPORT
