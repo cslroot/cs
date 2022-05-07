@@ -43,10 +43,11 @@ utf8toWide(const std::string& strU8)
   std::wstring wstrTo(size_needed, 0);
   MultiByteToWideChar(
     CP_UTF8, 0, &strU8[0], (int)strU8.size(), &wstrTo[0], size_needed);
-#else
-
-#endif
   return wstrTo;
+#else
+  std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+  return converter.from_byte(strU8.c_str());
+#endif
 }
 }
 
