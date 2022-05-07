@@ -46,7 +46,7 @@ utf8toWide(const std::string& strU8)
   return wstrTo;
 #else
   std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
-  return converter.from_byte(strU8.c_str());
+  return converter.from_bytes(strU8.c_str());
 #endif
 }
 }
