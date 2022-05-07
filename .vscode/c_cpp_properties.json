@@ -19,8 +19,7 @@
             "name": "win32-vs2022com-x64",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${vcpkgRoot}/x64-windows/include",
-                "${vcpkgRoot}/x86-windows/include"
+                "build/windows-cl-x64-ninja/vcpkg_installed/x64-windows/include"
             ],
             "defines": [
                 "_DEBUG",
