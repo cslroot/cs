@@ -1,6 +1,5 @@
 #include "kernel2d/Circle2d.h"
 
-#include <cs/base/CSVector.h>
 #include <cs/core/CSBufferObject.h>
 #include <cs/math.h>
 
@@ -22,7 +21,7 @@ Circle2d::Circle2d()
   : _impl(std::make_unique<Impl>())
 {}
 
-Circle2d::Circle2d(const cs::base::CSVec2d& center, double radius)
+Circle2d::Circle2d(const cs::math::CSVec2d& center, double radius)
   : _impl(std::make_unique<Impl>())
 {
   _impl->_center = center;
@@ -31,7 +30,7 @@ Circle2d::Circle2d(const cs::base::CSVec2d& center, double radius)
 
 Circle2d::~Circle2d() {}
 
-const cs::base::CSVec2d&
+const cs::math::CSVec2d&
 Circle2d::Center() const
 {
   return _impl->_center;
@@ -42,7 +41,7 @@ Circle2d::Radius() const
   return _impl->_radius;
 }
 void
-Circle2d::SetCenter(const cs::base::CSVec2d& center)
+Circle2d::SetCenter(const cs::math::CSVec2d& center)
 {
   _impl->_center = center;
 }

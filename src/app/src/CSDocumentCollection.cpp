@@ -6,6 +6,7 @@
 #include <cs/base.h>
 
 #include <algorithm>
+#include <cassert>
 #include <vector>
 
 using namespace cs::app;

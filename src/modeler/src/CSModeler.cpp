@@ -20,7 +20,7 @@ CSModeler::CSModeler(/* args */)
 CSModeler::~CSModeler() {}
 
 cs::kernel::Body&
-CSModeler::CreateBox(const cs::base::CSVec3d& p1, const cs::base::CSVec3d& p2)
+CSModeler::CreateBox(const cs::math::CSVec3d& p1, const cs::math::CSVec3d& p2)
 {
   cs::kernel::Body* pbody = CS_NEW cs::kernel::Body();
   _impl->_bodies.push_back(pbody);

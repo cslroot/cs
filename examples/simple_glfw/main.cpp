@@ -5,6 +5,7 @@
 #include <cs/base.h>
 #include <cs/core.h>
 #include <cs/kernel.h>
+#include <cs/math.h>
 #include <cs/modeler.h>
 #include <cs/render.h>
 
@@ -40,8 +41,8 @@ main(int argc, char** argv)
   auto scene = std::make_unique<cs::render::Scene>();
   auto camera = std::make_unique<cs::render::PerspectiveCamera>();
 
-  cs::base::CSVec2d p1 = { { 0.0, 0.0 } };
-  cs::base::CSVec2d p2 = { { 1.0, 1.0 } };
+  cs::math::CSVec2d p1 = { { 0.0, 0.0 } };
+  cs::math::CSVec2d p2 = { { 1.0, 1.0 } };
 
   cs::base::CSColor color = { 1.0, 1.0, 0.0 };
   auto mat = std::make_unique<cs::render::DrawingMaterial>(color);

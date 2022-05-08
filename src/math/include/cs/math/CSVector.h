@@ -1,7 +1,7 @@
 #pragma once
 
-#include <cs/base/base_common.h>
-#include <cs/math.h>
+#include <cs/math/CSMath.h>
+#include <cs/math/common.h>
 
 #include <array>
 #include <cassert>
@@ -10,7 +10,7 @@
 #include <type_traits>
 
 namespace cs {
-namespace base {
+namespace math {
 
 template<typename T, int constSize>
 struct VecFloatStorage

@@ -15,5 +15,8 @@ file(GLOB_RECURSE CS_MATH_SRC CONFIGURE_DEPENDS
 )
 target_sources(${PROJ_NAME} PRIVATE ${CS_MATH_SRC})
 
+find_package(glm CONFIG REQUIRED)
+target_link_libraries(${PROJ_NAME} PRIVATE glm::glm)
+
 target_include_directories(${PROJ_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_include_directories(${PROJ_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/cs/math)

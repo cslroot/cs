@@ -1,13 +1,14 @@
 #include "kernel2d/Segment2d.h"
 
-#include <cs/base/CSVector.h>
 #include <cs/core/CSBufferObject.h>
+#include <cs/math.h>
 #include <memory>
 #include <vector>
 
 using namespace cs::base;
 using namespace cs::core;
 using namespace cs::kernel;
+using namespace cs::math;
 
 struct Segment2d::Impl
 {
@@ -19,7 +20,7 @@ Segment2d::Segment2d()
   : _impl(std::make_unique<Impl>())
 {}
 
-Segment2d::Segment2d(const cs::base::CSVec2d& p1, const cs::base::CSVec2d& p2)
+Segment2d::Segment2d(const cs::math::CSVec2d& p1, const cs::math::CSVec2d& p2)
   : _impl(std::make_unique<Impl>())
 {
   _impl->_p1 = p1;
@@ -28,12 +29,12 @@ Segment2d::Segment2d(const cs::base::CSVec2d& p1, const cs::base::CSVec2d& p2)
 
 Segment2d::~Segment2d() {}
 
-const cs::base::CSVec2d&
+const cs::math::CSVec2d&
 Segment2d::StartPoint() const
 {
   return _impl->_p1;
 }
-const cs::base::CSVec2d&
+const cs::math::CSVec2d&
 Segment2d::EndPoint() const
 {
   return _impl->_p2;

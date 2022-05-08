@@ -1,9 +1,9 @@
-#include <cs/base.h>
+#include <cs/math.h>
 #include <gtest/gtest.h>
 #include <stdexcept>
 
 using namespace cs;
-using namespace cs::base;
+using namespace cs::math;
 
 TEST(TestCSVector, default_param)
 {

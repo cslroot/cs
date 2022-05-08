@@ -4,9 +4,9 @@
 #include <cs/core.h>
 #include <cs/modeler.h>
 
+#include <cassert>
 #include <chrono>
 #include <fstream>
-
 #include <sqlite3.h>
 
 // #include <filesystem>

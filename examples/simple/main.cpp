@@ -4,10 +4,13 @@
 #include <cs/base.h>
 #include <cs/core.h>
 #include <cs/kernel.h>
+#include <cs/math.h>
 #include <cs/modeler.h>
 #include <cs/render.h>
 
 #include <fmt/format.h>
+
+#include <cassert>
 
 using namespace cs::app;
 using namespace cs::base;
@@ -64,9 +67,9 @@ main(int argc, char** argv)
   str += u8"fuga";
   std::cout << str << std::endl;
 
-  cs::base::CSVec3d v3d;
-  cs::base::CSVec3d v3d2({ 1.0, 2.0, 3.0 });
-  cs::base::CSVec3d v3d3({ 1.0, 2.0, 3.0 });
+  cs::math::CSVec3d v3d;
+  cs::math::CSVec3d v3d2({ 1.0, 2.0, 3.0 });
+  cs::math::CSVec3d v3d3({ 1.0, 2.0, 3.0 });
   v3d += v3d2;
   v3d += v3d3;
   std::cout << v3d.x << std::endl;

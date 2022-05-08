@@ -1,8 +1,7 @@
 #pragma once
 
-#include <cs/base.h>
-#include <cs/core.h>
 #include <cs/kernel_fwd.h>
+#include <cs/math_fwd.h>
 #include <cs/modeler/modeler_common.h>
 
 #include <memory>
@@ -17,8 +16,8 @@ public:
   DECL_CS_MODELER virtual ~CSModeler();
 
 public:
-  DECL_CS_MODELER cs::kernel::Body& CreateBox(const cs::base::CSVec3d& p1,
-                                              const cs::base::CSVec3d& p2);
+  DECL_CS_MODELER cs::kernel::Body& CreateBox(const cs::math::CSVec3d& p1,
+                                              const cs::math::CSVec3d& p2);
 
 private:
   struct Impl;

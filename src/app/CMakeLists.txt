@@ -19,6 +19,8 @@ target_precompile_headers(${PROJ_NAME}
   PRIVATE
     <chrono>
     <fstream>
+    <cassert>
+    <vector>
 )
 
 find_package(unofficial-sqlite3 CONFIG REQUIRED)
