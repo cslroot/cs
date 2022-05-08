@@ -42,13 +42,22 @@ main(int argc, char** argv)
 
   cs::base::CSVec2d p1 = { { 0.0, 0.0 } };
   cs::base::CSVec2d p2 = { { 1.0, 1.0 } };
-  auto line = std::make_unique<cs::kernel::Segment2d>(p1, p2);
+
   cs::base::CSColor color = { 1.0, 1.0, 0.0 };
   auto mat = std::make_unique<cs::render::DrawingMaterial>(color);
 
+  // line
+  auto line = std::make_unique<cs::kernel::Segment2d>(p1, p2);
+  line->Property().SetColor(color);
   auto lineObj =
     std::make_unique<cs::render::CSDisplayableObject2d>(*line, *mat);
   scene->Add(lineObj.get());
+
+  // circle
+  auto circle = std::make_unique<cs::kernel::Circle2d>(p1, 0.4);
+  auto circleObj =
+    std::make_unique<cs::render::CSDisplayableObject2d>(*circle, *mat);
+  scene->Add(circleObj.get());
 
   auto renderer = std::make_unique<cs::render::GLFWRenderer>();
   renderer->Init();

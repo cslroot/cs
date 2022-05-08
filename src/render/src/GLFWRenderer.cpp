@@ -70,7 +70,7 @@ struct GLFWRenderer::Impl
   GLint _vpos_location;
   // GLint _vcol_location;
 
-  void gen(const Scene& scene)
+  GLsizei gen(const Scene& scene)
   {
     auto rootObj = scene.RootObject();
     auto p = dynamic_cast<cs::render::CSDisplayableObject2d*>(rootObj);
@@ -78,10 +78,10 @@ struct GLFWRenderer::Impl
     auto vertices = buffer->_points;
 
     std::vector<vertex> v;
-    vertex v1 = { (float)vertices[0], (float)vertices[1] };
-    vertex v2 = { (float)vertices[2], (float)vertices[3] };
-    v.push_back(v1);
-    v.push_back(v2);
+    for (size_t i = 0; i < vertices.size(); i += 2) {
+      vertex v1 = { (float)vertices[i], (float)vertices[i + 1] };
+      v.push_back(v1);
+    }
 
     GLuint vertex_shader, fragment_shader;
     vertex_shader = glCreateShader(GL_VERTEX_SHADER);
@@ -121,6 +121,8 @@ struct GLFWRenderer::Impl
       //                       sizeof(vertices[0]), (void *)(sizeof(float) *
       //                       2));
     }
+
+    return v.size();
   }
 };
 
@@ -181,7 +183,7 @@ GLFWRenderer::Render(const Scene& scene, const Camera& camera)
 {
   _impl->_window = glfwGetCurrentContext();
 
-  _impl->gen(scene);
+  GLsizei npos = _impl->gen(scene);
 
   float ratio;
   int width, height;
@@ -200,7 +202,9 @@ GLFWRenderer::Render(const Scene& scene, const Camera& camera)
   glUseProgram(_impl->_program);
   glUniformMatrix4fv(
     _impl->_mvp_location, 1, GL_FALSE, (const GLfloat*)glm::value_ptr(mvp));
-  glDrawArrays(GL_LINES, 0, 2);
+  // glDrawArrays(GL_LINES, 0, npos);
+  glDrawArrays(GL_LINE_STRIP, 0, npos);
+
   auto err = glGetError();
   if (err != GL_NO_ERROR) {
     assert(false);
