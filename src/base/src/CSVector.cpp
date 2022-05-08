@@ -1,10 +1,11 @@
 #include "CSVector.h"
 
-using namespace cs::base;
+// using namespace cs::base;
 
-template class DECL_CS_BASE cs::base::CSVector<double, 2>;
-template class DECL_CS_BASE cs::base::CSVector<double, 3>;
-template class DECL_CS_BASE cs::base::CSVector<double, 4>;
-template class DECL_CS_BASE cs::base::CSVector<float, 2>;
-template class DECL_CS_BASE cs::base::CSVector<float, 3>;
-template class DECL_CS_BASE cs::base::CSVector<float, 4>;
+// explicit instantiation
+template class cs::base::CSVector<double, 2>;
+template class cs::base::CSVector<double, 3>;
+template class cs::base::CSVector<double, 4>;
+template class cs::base::CSVector<float, 2>;
+template class cs::base::CSVector<float, 3>;
+template class cs::base::CSVector<float, 4>;

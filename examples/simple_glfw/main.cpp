@@ -40,8 +40,8 @@ main(int argc, char** argv)
   auto scene = std::make_unique<cs::render::Scene>();
   auto camera = std::make_unique<cs::render::PerspectiveCamera>();
 
-  cs::base::CSVec2d p1 = { 0, 0 };
-  cs::base::CSVec2d p2 = { 1, 1 };
+  cs::base::CSVec2d p1 = { { 0.0, 0.0 } };
+  cs::base::CSVec2d p2 = { { 1.0, 1.0 } };
   auto line = std::make_unique<cs::kernel::Segment2d>(p1, p2);
   cs::base::CSColor color = { 1.0, 1.0, 0.0 };
   auto mat = std::make_unique<cs::render::DrawingMaterial>(color);

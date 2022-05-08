@@ -11,19 +11,18 @@
 namespace cs {
 namespace kernel {
 
-class Segment2d : public Curve2d
+class Circle2d : public Curve2d
 {
-  using BASE_CLASS = Curve2d;
+public:
+  DECL_CS_KERNEL Circle2d();
+  DECL_CS_KERNEL Circle2d(const cs::base::CSVec2d& center, double radius);
+  DECL_CS_KERNEL virtual ~Circle2d();
 
 public:
-  DECL_CS_KERNEL Segment2d();
-  DECL_CS_KERNEL Segment2d(const cs::base::CSVec2d& p1,
-                           const cs::base::CSVec2d& p2);
-  DECL_CS_KERNEL virtual ~Segment2d();
-
-public:
-  DECL_CS_KERNEL const cs::base::CSVec2d& StartPoint() const;
-  DECL_CS_KERNEL const cs::base::CSVec2d& EndPoint() const;
+  DECL_CS_KERNEL const cs::base::CSVec2d& Center() const;
+  DECL_CS_KERNEL const double& Radius() const;
+  DECL_CS_KERNEL void SetCenter(const cs::base::CSVec2d& center);
+  DECL_CS_KERNEL void SetRadius(double radius) const;
 
   // TODO: create tessalation data from out of geometry class
   DECL_CS_KERNEL virtual std::shared_ptr<cs::core::CSBufferObject>

@@ -10,8 +10,12 @@ namespace kernel {
 
 class Geometry2d : public Geometry
 {
+  using BASE_CLASS = Geometry;
+
 public:
-  DECL_CS_KERNEL Geometry2d() {}
+  DECL_CS_KERNEL Geometry2d(EntityType entType)
+    : BASE_CLASS(entType)
+  {}
   DECL_CS_KERNEL virtual ~Geometry2d() {}
 };
 

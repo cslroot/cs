@@ -9,6 +9,10 @@
 
 #include <fmt/format.h>
 
+using namespace cs::app;
+using namespace cs::base;
+using namespace cs::core;
+
 int
 main(int argc, char** argv)
 {
@@ -61,8 +65,8 @@ main(int argc, char** argv)
   std::cout << str << std::endl;
 
   cs::base::CSVec3d v3d;
-  cs::base::CSVec3d v3d2(1, 2, 3);
-  cs::base::CSVec3d v3d3(1, 2, 3);
+  cs::base::CSVec3d v3d2({ 1.0, 2.0, 3.0 });
+  cs::base::CSVec3d v3d3({ 1.0, 2.0, 3.0 });
   v3d += v3d2;
   v3d += v3d3;
   std::cout << v3d.x << std::endl;
@@ -70,7 +74,7 @@ main(int argc, char** argv)
   std::cout << v3d.z << std::endl;
 
   auto& modeler = doc.Modeler();
-  auto& box = modeler.CreateBox({ 0, 0, 0 }, { 1, 1, 1 });
+  auto& box = modeler.CreateBox({ { 0.0, 0.0, 0.0 } }, { { 1.0, 1.0, 0.0 } });
   auto mat = CS_NEW cs::render::BasicMaterial({ 1.0, 0.0, 0.0 });
 
   auto scene = CS_NEW cs::render::Scene();

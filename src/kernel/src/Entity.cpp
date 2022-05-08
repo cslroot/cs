@@ -7,8 +7,9 @@ namespace {
 static int64_t id_counter = 0;
 }
 
-Entity::Entity()
+Entity::Entity(EntityType entType)
   : _id(++id_counter)
-  , _entType(EntityType::None)
+  , _entType(entType)
 {}
+
 Entity::~Entity() {}

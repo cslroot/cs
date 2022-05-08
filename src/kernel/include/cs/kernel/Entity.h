@@ -9,16 +9,22 @@ namespace kernel {
 
 enum class EntityType
 {
-  None,
-  Point,
-  Surface,
-  Shell,
-  Vertex,
-  Edge,
-  Body,
+  None = 0,
 
-  // 2d entity
-  Segment2d,
+  Point,
+  Curve,
+  Surface,
+
+  Vertex,
+  CoEdge,
+  Edge,
+  Loop,
+  Wire,
+  Face,
+  Shell,
+  Lump,
+  Body,
+  Last = Body
 };
 
 /**
@@ -28,12 +34,17 @@ enum class EntityType
 class Entity : public cs::core::CSObject
 {
 public:
-  DECL_CS_KERNEL Entity();
+  DECL_CS_KERNEL Entity(EntityType entType);
   DECL_CS_KERNEL virtual ~Entity();
+
+public:
+  DECL_CS_KERNEL EntityType Type() const;
+  DECL_CS_KERNEL int SubType() const;
 
 private:
   int64_t _id;
   EntityType _entType;
+  int _entSubType;
 };
 
 } // namespace kernel

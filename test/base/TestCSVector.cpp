@@ -15,7 +15,7 @@ TEST(TestCSVector, default_param)
 
 TEST(TestCSVector, param)
 {
-  CSVec3d v(1, 2, 3);
+  CSVec3d v({ 1.0, 2.0, 3.0 });
   EXPECT_EQ(v.x, 1.0);
   EXPECT_EQ(v.y, 2.0);
   EXPECT_EQ(v.z, 3.0);
@@ -23,7 +23,7 @@ TEST(TestCSVector, param)
 
 TEST(TestCSVector, param_array)
 {
-  CSVec3d v({ 1, 2, 3 });
+  CSVec3d v = { { 1.0, 2.0, 3.0 } };
   EXPECT_EQ(v.x, 1.0);
   EXPECT_EQ(v.y, 2.0);
   EXPECT_EQ(v.z, 3.0);
@@ -31,8 +31,8 @@ TEST(TestCSVector, param_array)
 
 TEST(TestCSVector, opepluseq)
 {
-  CSVec3d v(1, 2, 3);
-  CSVec3d v2(4, 5, 6);
+  CSVec3d v({ 1.0, 2.0, 3.0 });
+  CSVec3d v2({ 4.0, 5.0, 6.0 });
   v += v2;
 
   EXPECT_EQ(v.x, 5.0);
@@ -42,7 +42,7 @@ TEST(TestCSVector, opepluseq)
 
 TEST(TestCSVector, opescale)
 {
-  CSVec3d v(1, 2, 3);
+  CSVec3d v({ 1, 2, 3 });
   v *= 2;
 
   EXPECT_EQ(v.x, 2.0);
@@ -52,7 +52,7 @@ TEST(TestCSVector, opescale)
 
 TEST(TestCSVector, opediv)
 {
-  CSVec3d v(1, 2, 3);
+  CSVec3d v({ 1, 2, 3 });
   v /= 2;
 
   EXPECT_EQ(v.x, 0.5);
@@ -62,9 +62,9 @@ TEST(TestCSVector, opediv)
 
 TEST(TestCSVector, length)
 {
-  CSVec3d v(0, 0, 0);
+  CSVec3d v({ 0.0, 0.0, 0.0 });
   EXPECT_EQ(v.length(), 0.0);
 
-  v = CSVec3d(1.0, 1.0, 0.0);
+  v = CSVec3d({ 1.0, 1.0, 0.0 });
   EXPECT_EQ(v.length(), std::sqrt(2));
 }

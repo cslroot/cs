@@ -2,16 +2,17 @@
 
 #include <cstddef>
 
-namespace cs
-{
-    namespace base
-    {
-        class CSString;
-        class CSColor;
+namespace cs {
+namespace base {
 
-        template<typename T, size_t N>
-        class CSVector;
+class CSString;
+class CSColor;
 
-        class CSVec2d;
-    } // namespace base
+template<typename T, size_t N>
+class CSVector;
+
+using CSVec2d = CSVector<double, 2>;
+using CSVec3d = CSVector<double, 3>;
+
+} // namespace base
 } // namespace cs
