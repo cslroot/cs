@@ -2,6 +2,7 @@
 
 #include <cs/math/common.h>
 
+#include <cmath>
 #include <memory>
 
 namespace cs {
@@ -24,6 +25,9 @@ public:
   DECL_CS_MATH virtual ~CSMath();
 
 public:
+  static inline double Sqrt(double d) { return std::sqrt(d); }
+  static inline float Sqrt(float d) { return std::sqrt(d); }
+
 private:
   struct Impl;
   std::unique_ptr<Impl> _impl;

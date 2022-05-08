@@ -125,7 +125,7 @@ public:
     for (size_t i = 0; i < N; ++i) {
       value += this->v[i] * this->v[i];
     }
-    return std::sqrt(value);
+    return cs::math::CSMath::Sqrt(value);
   }
 };
 
