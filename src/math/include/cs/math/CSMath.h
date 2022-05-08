@@ -11,8 +11,11 @@ class CSMath
 {
 public:
   static constexpr double CS_PI = 3.1415926535897932384626433832795028841971;
-  static constexpr double CS_PI_x2 = CS_PI * 2.0;
+  static constexpr double Tau = 6.2831853071795862;
   static constexpr double CS_PI_2 = CS_PI / 2.0;
+
+  static constexpr double E = 2.7182818284590451;
+
   static constexpr double DEGRA = CS_PI / 180.0;
   static constexpr double RADEG = 180.0 / CS_PI;
 
