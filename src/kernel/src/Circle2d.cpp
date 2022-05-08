@@ -2,17 +2,15 @@
 
 #include <cs/base/CSVector.h>
 #include <cs/core/CSBufferObject.h>
+#include <cs/math.h>
 
-#include <cmath>
 #include <memory>
 #include <vector>
 
 using namespace cs::base;
 using namespace cs::core;
+using namespace cs::math;
 using namespace cs::kernel;
-
-// TODO: constant M_PI
-constexpr double CS_PI = M_PI;
 
 struct Circle2d::Impl
 {
@@ -66,7 +64,7 @@ Circle2d::GenerateBuffer() const
   std::shared_ptr<CSBufferObject> buffer = std::make_shared<CSBufferObject>();
 
   constexpr int CS_CIRCLE_DIVIDE = 20;
-  constexpr double p = 2.0 * CS_PI / CS_CIRCLE_DIVIDE;
+  constexpr double p = 2.0 * CSMath::CS_PI / CS_CIRCLE_DIVIDE;
   for (int i = 0; i < CS_CIRCLE_DIVIDE; ++i) {
     auto pos =
       _impl->_center + _impl->_radius * CSVec2d({ cos(p * i), sin(p * i) });

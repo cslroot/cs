@@ -7,6 +7,7 @@
 
 namespace cs {
 namespace render {
+
 class GLFWRenderer : public Renderer
 {
 public:
@@ -27,5 +28,4 @@ private:
 };
 
 } // namespace render
-
 } // namespace cs

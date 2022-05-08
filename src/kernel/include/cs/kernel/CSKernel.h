@@ -23,6 +23,5 @@ private:
   std::unique_ptr<Impl> _impl;
 };
 
-} // namespace modeler
-
+} // namespace kernel
 } // namespace cs

@@ -1,26 +1,25 @@
 #pragma once
 
-namespace cs
-{
-    namespace render
-    {
-        class Renderer;
-        class GLRenderer;
+namespace cs {
+namespace render {
 
-        class Camera;
-        class PerspectiveCamera;
-        class OrthoCamera;
+class Renderer;
+class GLRenderer;
 
-        class CSDisplayableObject;
-        class CSDisplayableObject2d;
+class Camera;
+class PerspectiveCamera;
+class OrthoCamera;
 
-        class CSBufferObject;
+class CSDisplayableObject;
+class CSDisplayableObject2d;
 
-        class CSMaterial;
+class CSBufferObject;
 
-        class Mesh;
+class CSMaterial;
 
-        class Scene;
-    } // namespace render
+class Mesh;
 
+class Scene;
+
+} // namespace render
 } // namespace cs

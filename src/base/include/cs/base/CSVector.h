@@ -1,14 +1,12 @@
 #pragma once
 
 #include <cs/base/base_common.h>
-#include <string>
-#ifndef _USE_MATH_DEFINES
-#define _USE_MATH_DEFINES
-#endif
+#include <cs/math.h>
+
 #include <array>
 #include <cassert>
-#include <cmath>
 #include <cstddef>
+#include <string>
 #include <type_traits>
 
 namespace cs {

@@ -9,6 +9,7 @@
 
 namespace cs {
 namespace modeler {
+
 class CSModeler
 {
 public:
@@ -25,5 +26,4 @@ private:
 };
 
 } // namespace modeler
-
 } // namespace cs

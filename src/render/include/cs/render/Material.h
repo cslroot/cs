@@ -5,6 +5,7 @@
 
 namespace cs {
 namespace render {
+
 class DECL_CS_RENDER CSMaterial
 {
 private:
@@ -31,6 +32,6 @@ public:
 private:
   const cs::base::CSColor& _color;
 };
-} // namespace render
 
+} // namespace render
 } // namespace cs

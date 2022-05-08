@@ -5,6 +5,7 @@
 
 namespace cs {
 namespace render {
+
 class Renderer
 {
 private:
@@ -26,5 +27,4 @@ private:
 };
 
 } // namespace render
-
 } // namespace cs

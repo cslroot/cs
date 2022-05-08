@@ -7,6 +7,7 @@
 
 namespace cs {
 namespace render {
+
 class CSMaterial;
 
 class CSDisplayableObject
@@ -47,5 +48,4 @@ public:
 };
 
 } // namespace render
-
 } // namespace cs

@@ -5,6 +5,7 @@
 
 namespace cs {
 namespace render {
+
 class EmptyRenderer : public Renderer
 {
 private:
@@ -15,5 +16,4 @@ public:
 };
 
 } // namespace render
-
 } // namespace cs

@@ -7,6 +7,7 @@
 
 namespace cs {
 namespace render {
+
 class Scene
 {
 private:
@@ -24,6 +25,6 @@ private:
   struct Impl;
   std::unique_ptr<Impl> _impl;
 };
-} // namespace render
 
+} // namespace render
 } // namespace cs
