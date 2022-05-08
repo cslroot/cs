@@ -1,11 +1,12 @@
 #include <iostream>
 #include <memory>
 
+#include <cs/app.h>
 #include <cs/base.h>
 #include <cs/core.h>
-#include <cs/render.h>
+#include <cs/kernel.h>
 #include <cs/modeler.h>
-#include <cs/app.h>
+#include <cs/render.h>
 
 // #include <glm/glm.hpp>
 // #include <glm/gtc/matrix_transform.hpp>
@@ -18,38 +19,43 @@
 
 #include <fmt/format.h>
 
-int main(int argc, char** argv)
+using namespace cs::core;
+using namespace cs::kernel;
+
+int
+main(int argc, char** argv)
 {
-    std::locale::global(std::locale(
+  std::locale::global(std::locale(
 #if _WIN32 && !__MINGW32__ && !__CYGWIN__
-        ".UTF-8"
+    ".UTF-8"
 #else
-        ""
+    ""
 #endif
     ));
 
-    auto csapp = std::make_unique<cs::app::CSApp>(argc, argv);
-    auto& doc = dynamic_cast<cs::app::CSDocument2d&>(csapp->Documents().OpenNewDocument(typeid(cs::app::CSDocument2d).name()));
+  auto csapp = std::make_unique<cs::app::CSApp>(argc, argv);
+  auto& doc = dynamic_cast<cs::app::CSDocument2d&>(
+    csapp->Documents().OpenNewDocument(typeid(cs::app::CSDocument2d).name()));
 
-    auto scene = std::make_unique<cs::render::Scene>();
-    auto camera = std::make_unique<cs::render::PerspectiveCamera>();
+  auto scene = std::make_unique<cs::render::Scene>();
+  auto camera = std::make_unique<cs::render::PerspectiveCamera>();
 
-    cs::base::CSVec2d p1 = { 0, 0 };
-    cs::base::CSVec2d p2 = { 1, 1 };
-    auto line = std::make_unique<cs::core::LineSegment2d>(p1, p2);
-    cs::base::CSColor color = { 1.0, 1.0, 0.0 };
-    auto mat = std::make_unique<cs::render::DrawingMaterial>(color);
+  cs::base::CSVec2d p1 = { 0, 0 };
+  cs::base::CSVec2d p2 = { 1, 1 };
+  auto line = std::make_unique<cs::kernel::Segment2d>(p1, p2);
+  cs::base::CSColor color = { 1.0, 1.0, 0.0 };
+  auto mat = std::make_unique<cs::render::DrawingMaterial>(color);
 
-    auto lineObj = std::make_unique<cs::render::CSDisplayableObject2d>(*line, *mat);
-    scene->Add(lineObj.get());
+  auto lineObj =
+    std::make_unique<cs::render::CSDisplayableObject2d>(*line, *mat);
+  scene->Add(lineObj.get());
 
-    auto renderer = std::make_unique<cs::render::GLFWRenderer>();
-    renderer->Init();
+  auto renderer = std::make_unique<cs::render::GLFWRenderer>();
+  renderer->Init();
 
-    while (!renderer->WindowShouldClose())
-    {
-        renderer->Render(*scene, *camera);
-    }
+  while (!renderer->WindowShouldClose()) {
+    renderer->Render(*scene, *camera);
+  }
 
-    exit(EXIT_SUCCESS);
+  exit(EXIT_SUCCESS);
 }

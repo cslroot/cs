@@ -1,10 +1,10 @@
 #pragma once
 
-#include <cs/core/Entity.h>
-#include <cs/core/core_common.h>
+#include <cs/kernel/Entity.h>
+#include <cs/kernel/common.h>
 
 namespace cs {
-namespace core {
+namespace kernel {
 
 enum class TopologyType
 {
@@ -24,17 +24,17 @@ enum class TopologyType
 class Topology : public Entity
 {
 public:
-  DECL_CS_CORE Topology() {}
-  DECL_CS_CORE virtual ~Topology() {}
+  DECL_CS_KERNEL Topology() {}
+  DECL_CS_KERNEL virtual ~Topology() {}
 
 public:
-  DECL_CS_CORE virtual TopologyType GetType() const = 0;
+  DECL_CS_KERNEL virtual TopologyType GetType() const = 0;
 };
 
 class Vertex : public Topology
 {
 public:
-  DECL_CS_CORE virtual TopologyType GetType() const override
+  DECL_CS_KERNEL virtual TopologyType GetType() const override
   {
     return TopologyType::Vertex;
   }
@@ -43,7 +43,7 @@ public:
 class CoEdge : public Topology
 {
 public:
-  DECL_CS_CORE virtual TopologyType GetType() const override
+  DECL_CS_KERNEL virtual TopologyType GetType() const override
   {
     return TopologyType::CoEdge;
   }
@@ -52,7 +52,7 @@ public:
 class Edge : public Topology
 {
 public:
-  DECL_CS_CORE virtual TopologyType GetType() const override
+  DECL_CS_KERNEL virtual TopologyType GetType() const override
   {
     return TopologyType::Edge;
   }
@@ -61,7 +61,7 @@ public:
 class Loop : public Topology
 {
 public:
-  DECL_CS_CORE virtual TopologyType GetType() const override
+  DECL_CS_KERNEL virtual TopologyType GetType() const override
   {
     return TopologyType::Loop;
   }
@@ -70,7 +70,7 @@ public:
 class Face : public Topology
 {
 public:
-  DECL_CS_CORE virtual TopologyType GetType() const override
+  DECL_CS_KERNEL virtual TopologyType GetType() const override
   {
     return TopologyType::Face;
   }
@@ -79,7 +79,7 @@ public:
 class Shell : public Topology
 {
 public:
-  DECL_CS_CORE virtual TopologyType GetType() const override
+  DECL_CS_KERNEL virtual TopologyType GetType() const override
   {
     return TopologyType::Shell;
   }
@@ -88,7 +88,7 @@ public:
 class Lump : public Topology
 {
 public:
-  DECL_CS_CORE virtual TopologyType GetType() const override
+  DECL_CS_KERNEL virtual TopologyType GetType() const override
   {
     return TopologyType::Lump;
   }
@@ -97,7 +97,7 @@ public:
 class Wire : public Topology
 {
 public:
-  DECL_CS_CORE virtual TopologyType GetType() const override
+  DECL_CS_KERNEL virtual TopologyType GetType() const override
   {
     return TopologyType::Wire;
   }
@@ -106,11 +106,11 @@ public:
 class Body : public Topology
 {
 public:
-  DECL_CS_CORE virtual TopologyType GetType() const override
+  DECL_CS_KERNEL virtual TopologyType GetType() const override
   {
     return TopologyType::Body;
   }
 };
-} // namespace core
 
+} // namespace kernel
 } // namespace cs

@@ -36,8 +36,6 @@ target_link_libraries(${PROJ_NAME} PRIVATE GLEW::GLEW)
 target_link_libraries(${PROJ_NAME} PRIVATE glm::glm)
 target_link_libraries(${PROJ_NAME} PRIVATE OpenGL::GL)
 
-target_link_libraries(${PROJ_NAME} PRIVATE cs.base)
-target_link_libraries(${PROJ_NAME} PRIVATE cs.core)
 target_link_libraries(${PROJ_NAME} PRIVATE cs.modeler)
 target_link_libraries(${PROJ_NAME} PRIVATE cs.render)
 target_link_libraries(${PROJ_NAME} PRIVATE cs.app)

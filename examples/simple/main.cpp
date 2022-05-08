@@ -3,6 +3,7 @@
 #include <cs/app.h>
 #include <cs/base.h>
 #include <cs/core.h>
+#include <cs/kernel.h>
 #include <cs/modeler.h>
 #include <cs/render.h>
 

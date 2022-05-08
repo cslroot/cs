@@ -34,8 +34,7 @@ target_link_libraries(${PROJ_NAME} PRIVATE glfw)
 target_link_libraries(${PROJ_NAME} PRIVATE GLEW::GLEW)
 target_link_libraries(${PROJ_NAME} PRIVATE glm::glm)
 
-target_link_libraries(${PROJ_NAME} PRIVATE cs.base)
-target_link_libraries(${PROJ_NAME} PRIVATE cs.core)
+target_link_libraries(${PROJ_NAME} PUBLIC cs.kernel)
 
 target_include_directories(${PROJ_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_include_directories(${PROJ_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/cs/render)

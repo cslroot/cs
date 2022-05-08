@@ -12,8 +12,6 @@ add_executable(${PROJ_NAME} ${CS_EX_WPF_SRC})
 set_target_properties(${PROJ_NAME} PROPERTIES FOLDER examples)
 target_compile_features(${PROJ_NAME} PRIVATE cxx_std_17)
 
-target_link_libraries(${PROJ_NAME} PRIVATE cs.base)
-target_link_libraries(${PROJ_NAME} PRIVATE cs.core)
 target_link_libraries(${PROJ_NAME} PRIVATE cs.modeler)
 target_link_libraries(${PROJ_NAME} PRIVATE cs.render)
 target_link_libraries(${PROJ_NAME} PRIVATE cs.app)

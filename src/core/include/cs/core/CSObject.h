@@ -7,6 +7,11 @@
 namespace cs {
 namespace core {
 class CSBufferObject;
+
+/**
+ * @brief atomic object manipulated by F/W
+ *
+ */
 class CSObject
 {
 public:

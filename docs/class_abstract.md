@@ -4,8 +4,9 @@ classDiagram
  App ..> Modeler
  App ..> Drawing
  Render ..> Core
- Drawing ..> Core
- Modeler ..> Core
+ Render ..> Kernel
+ Drawing ..> Kernel
+ Modeler ..> Kernel
  Core ..> Base
  Kernel ..> Core
 ```

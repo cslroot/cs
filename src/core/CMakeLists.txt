@@ -34,7 +34,8 @@ source_group("headers" FILES ${CS_CORE_HEADER})
 
 find_package(Poco CONFIG REQUIRED Foundation Util)
 target_link_libraries(${PROJ_NAME} PRIVATE Poco::Util)
-target_link_libraries(${PROJ_NAME} PRIVATE cs.base)
+
+target_link_libraries(${PROJ_NAME} PUBLIC cs.base)
 
 target_include_directories(${PROJ_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_include_directories(${PROJ_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/cs/core)

@@ -2,6 +2,7 @@
 
 #include <cs/base.h>
 #include <cs/core.h>
+#include <cs/kernel.h>
 
 #include <vector>
 
@@ -9,7 +10,7 @@ using namespace cs::drawing;
 
 struct CSSheet::Impl
 {
-  std::vector<cs::core::Body*> _bodies;
+  std::vector<cs::kernel::Body*> _bodies;
 };
 
 CSSheet::CSSheet(/* args */)

@@ -35,6 +35,7 @@ include(GoogleTest)
 
 target_link_libraries(${PROJ_NAME} PRIVATE cs.base)
 target_link_libraries(${PROJ_NAME} PRIVATE cs.core)
+target_link_libraries(${PROJ_NAME} PRIVATE cs.kernel)
 
 if (MSVC)
     # on Windows, google test can not find test cases when `GTest::gmock` is exist

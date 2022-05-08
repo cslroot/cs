@@ -1,7 +1,7 @@
 #include "Entity.h"
 #include <cstdint>
 
-using namespace cs::core;
+using namespace cs::kernel;
 
 namespace {
 static int64_t id_counter = 0;

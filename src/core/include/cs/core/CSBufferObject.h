@@ -9,11 +9,12 @@
 
 namespace cs {
 namespace core {
-class CSBufferObject : CSObject
+
+class CSBufferObject : public CSObject
 {
 public:
-  CSBufferObject();
-  virtual ~CSBufferObject();
+  DECL_CS_CORE CSBufferObject();
+  DECL_CS_CORE virtual ~CSBufferObject();
 
 public:
   std::vector<double> _points;
@@ -22,6 +23,6 @@ private:
   struct Impl;
   std::unique_ptr<Impl> _impl;
 };
-} // namespace core
 
+} // namespace core
 } // namespace cs

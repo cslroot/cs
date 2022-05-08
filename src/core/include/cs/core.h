@@ -7,8 +7,4 @@
 #include <cs/core/CSConfig.h>
 #include <cs/core/CSLogger.h>
 #include <cs/core/CSObject.h>
-#include <cs/core/Entity.h>
-#include <cs/core/Geometry.h>
-#include <cs/core/Topology.h>
 #include <cs/core/UUID.h>
-#include <cs/core/geometry2d/Geometry2d.h>
