@@ -12,7 +12,7 @@ add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/Zc:__cplusplus>")
 
 # vcpkg
 if(NOT DEFINED VCPKG_ROOT)
-    set(VCPKG_ROOT "${CMAKE_SOURCE_DIR}/third/vcpkg" CACHE STRING "vcpkg root directory")
+    set(VCPKG_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/third/vcpkg" CACHE STRING "vcpkg root directory")
 endif()
 set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
 
