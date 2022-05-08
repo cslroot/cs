@@ -66,8 +66,9 @@ Circle2d::GenerateBuffer() const
   constexpr int CS_CIRCLE_DIVIDE = 20;
   constexpr double p = 2.0 * CSMath::CS_PI / CS_CIRCLE_DIVIDE;
   for (int i = 0; i < CS_CIRCLE_DIVIDE; ++i) {
-    auto pos =
-      _impl->_center + _impl->_radius * CSVec2d({ cos(p * i), sin(p * i) });
+    auto pos = _impl->_center +
+               _impl->_radius * CSVec2d({ cs::math::CSMath::Cos(p * i),
+                                          cs::math::CSMath::Sin(p * i) });
     buffer->_points.emplace_back(pos.x);
     buffer->_points.emplace_back(pos.y);
   }

@@ -28,6 +28,13 @@ public:
   static inline double Sqrt(double d) { return std::sqrt(d); }
   static inline float Sqrt(float d) { return std::sqrt(d); }
 
+  static inline double Sin(double d) { return std::sin(d); }
+  static inline float Sin(float d) { return std::sin(d); }
+  static inline double Cos(double d) { return std::cos(d); }
+  static inline float Cos(float d) { return std::cos(d); }
+  static inline double Tan(double d) { return std::tan(d); }
+  static inline float Tan(float d) { return std::tan(d); }
+
 private:
   struct Impl;
   std::unique_ptr<Impl> _impl;
