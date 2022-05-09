@@ -8,18 +8,17 @@ namespace cs {
 namespace base {
 
 constexpr float ColorToFloat = 1.0f / 255.0f;
+constexpr int ColorToInt = 255;
 
 class CSColor
 {
 public:
   DECL_CS_BASE CSColor()
-    : CSColor(1.0f, 1.0f, 1.0f)
+    : CSColor(0.0f, 0.0f, 0.0f)
   {}
 
   DECL_CS_BASE CSColor(float r, float g, float b)
-    : _r(r)
-    , _g(g)
-    , _b(b)
+    : CSColor(r, g, b, 1.0f)
   {}
 
   DECL_CS_BASE CSColor(float r, float g, float b, float a)
@@ -38,28 +37,49 @@ public:
 
   explicit DECL_CS_BASE CSColor(uint32_t colorHexRGB)
     : _r(ColorToFloat * ((colorHexRGB & 0xFF0000) >> 16))
-    , _g(ColorToFloat * ((colorHexRGB & 0xFF00) >> 8))
-    , _b(ColorToFloat * ((colorHexRGB & 0xFF) >> 0))
+    , _g(ColorToFloat * ((colorHexRGB & 0x00FF00) >> 8))
+    , _b(ColorToFloat * ((colorHexRGB & 0x0000FF) >> 0))
   {}
 
   // "#ff0000" -> 1.0, 0.0, 0.0
   explicit DECL_CS_BASE CSColor(const CSString& colorHexStr)
   {
     auto tmp = colorHexStr.Replace('#', '\0');
-    int colorHex = tmp.ParseInt();
+    int colorHexRGB = tmp.ParseInt();
 
-    _r = ColorToFloat * ((colorHex & 0xFF0000) >> 16);
-    _g = (ColorToFloat * ((colorHex & 0xFF00) >> 8));
-    _b = (ColorToFloat * ((colorHex & 0xFF) >> 0));
+    _r = ColorToFloat * ((colorHexRGB & 0xFF0000) >> 16);
+    _g = ColorToFloat * ((colorHexRGB & 0x00FF00) >> 8);
+    _b = ColorToFloat * ((colorHexRGB & 0x0000FF) >> 0);
   }
 
   DECL_CS_BASE virtual ~CSColor() {}
 
 public:
-  float R() const { return _r; }
-  float G() const { return _g; }
-  float B() const { return _b; }
-  float A() const { return _a; }
+  DECL_CS_BASE uint32_t ToRGBA() const
+  {
+    return static_cast<uint32_t>(ColorToInt * _r) << 24 |
+           static_cast<uint32_t>(ColorToInt * _g) << 16 |
+           static_cast<uint32_t>(ColorToInt * _b) << 8 |
+           static_cast<uint32_t>(ColorToInt * _a) << 0;
+  }
+  DECL_CS_BASE uint32_t ToRGB() const
+  {
+    return static_cast<uint32_t>(ColorToInt * _r) << 16 |
+           static_cast<uint32_t>(ColorToInt * _g) << 8 |
+           static_cast<uint32_t>(ColorToInt * _b) << 0;
+  }
+
+public:
+  inline float R() const { return _r; }
+  inline float G() const { return _g; }
+  inline float B() const { return _b; }
+  inline float A() const { return _a; }
+  void SetRGB(uint32_t colorHexRGB)
+  {
+    _r = ColorToFloat * ((colorHexRGB & 0xFF0000) >> 16);
+    _g = ColorToFloat * ((colorHexRGB & 0x00FF00) >> 8);
+    _b = ColorToFloat * ((colorHexRGB & 0x0000FF) >> 0);
+  }
 
 private:
   float _r;
