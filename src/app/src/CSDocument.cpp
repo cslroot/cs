@@ -1,5 +1,6 @@
 #include "CSDocument.h"
 
+#include "CSApp.h"
 #include <cs/base.h>
 #include <cs/core.h>
 #include <cs/modeler.h>
@@ -27,13 +28,29 @@ create_db_doc()
   char* err = nullptr;
   rc = sqlite3_exec(
     db,
-    "create table hoge(id INTEGER, name TEXT, category TEXT, "
+    "CREATE TABLE hoge(id INTEGER, name TEXT, category TEXT, "
     "cost INTEGER, size INTEGER, weight INTEGER, createed_at DATETIME);",
     NULL,
     NULL,
     &err);
+  assert(rc == SQLITE_OK);
   if (rc != SQLITE_OK) {
     printf("Execution Err \n");
+    sqlite3_close(db);
+    sqlite3_free(err);
+    return nullptr;
+  }
+  rc = sqlite3_exec(db,
+                    "CREATE TABLE entities("
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    "enttype TEXT);",
+                    NULL,
+                    NULL,
+                    &err);
+  assert(rc == SQLITE_OK);
+  if (rc != SQLITE_OK) {
+    printf("Execution Err \n");
+    CSApp::Instance().Log().Error(err);
     sqlite3_close(db);
     sqlite3_free(err);
     return nullptr;
@@ -41,6 +58,16 @@ create_db_doc()
 
   return db;
 }
+
+void
+OnCreateEntity(cs::core::CSObject* ent)
+{}
+void
+OnDeleteEntity(cs::core::CSObject* ent)
+{}
+void
+OnUpdateEntity(cs::core::CSObject* ent)
+{}
 
 }
 

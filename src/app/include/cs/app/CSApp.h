@@ -16,6 +16,10 @@ public:
   DECL_CS_APP virtual ~CSApp();
 
 public:
+  DECL_CS_APP static CSApp& Instance();
+  DECL_CS_APP static CSApp& Create(int argc, char** argv);
+
+public:
   DECL_CS_APP CSDocumentCollection& Documents() const;
   DECL_CS_APP CSCommandCollection& Commands() const;
 
@@ -31,6 +35,9 @@ public:
 private:
   struct Impl;
   std::unique_ptr<Impl> _impl;
+
+private:
+  static std::unique_ptr<CSApp> _app;
 };
 
 } // namespace app

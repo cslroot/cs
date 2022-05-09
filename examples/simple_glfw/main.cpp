@@ -23,9 +23,9 @@ main(int argc, char** argv)
 #endif
     ));
 
-  auto csapp = std::make_unique<cs::app::CSApp>(argc, argv);
+  auto& app = cs::app::CSApp::Create(argc, argv);
   auto& doc = dynamic_cast<cs::app::CSDocument2d&>(
-    csapp->Documents().OpenNewDocument(typeid(cs::app::CSDocument2d).name()));
+    app.Documents().OpenNewDocument(typeid(cs::app::CSDocument2d).name()));
 
   auto scene = std::make_unique<cs::render::Scene>();
   auto camera = std::make_unique<cs::render::PerspectiveCamera>();

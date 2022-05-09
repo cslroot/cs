@@ -19,9 +19,7 @@ using namespace cs::core;
 int
 main(int argc, char** argv)
 {
-
-  auto pmyapp = std::make_unique<cs::app::CSApp>(argc, argv);
-  auto& app = *pmyapp;
+  auto& app = cs::app::CSApp::Create(argc, argv);
   auto& log = app.Log();
 
   // test print logger

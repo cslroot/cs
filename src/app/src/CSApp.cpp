@@ -13,6 +13,21 @@
 using namespace cs::app;
 using namespace cs::core;
 
+std::unique_ptr<CSApp> CSApp::_app;
+
+CSApp&
+CSApp::Instance()
+{
+  return *_app;
+}
+
+CSApp&
+CSApp::Create(int argc, char** argv)
+{
+  CSApp::_app = std::make_unique<CSApp>(argc, argv);
+  return *_app;
+}
+
 struct CSApp::Impl
 {
   Impl(CSApp* pApp)
