@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cs/app/app_common.h>
+#include <cs/app/common.h>
 
 #include <cs/app/CSApp.h>
 #include <cs/app/CSDocument.h>

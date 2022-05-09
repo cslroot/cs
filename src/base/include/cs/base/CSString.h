@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cs/base/base_common.h>
+#include <cs/base/common.h>
 #include <string>
 
 namespace cs {

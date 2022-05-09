@@ -2,7 +2,7 @@
 
 #include <cs/kernel_fwd.h>
 #include <cs/math_fwd.h>
-#include <cs/modeler/modeler_common.h>
+#include <cs/modeler/common.h>
 
 #include <memory>
 

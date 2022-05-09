@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cs/base_fwd.h>
-#include <cs/core/core_common.h>
+#include <cs/core/common.h>
 #include <memory>
 
 namespace cs {

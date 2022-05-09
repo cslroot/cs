@@ -1,7 +1,7 @@
 #pragma once
 
+#include <cs/render/common.h>
 #include <cs/render/node.h>
-#include <cs/render/render_common.h>
 
 #include <cs/core_fwd.h>
 #include <memory>

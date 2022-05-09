@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cs/core/core_common.h>
+#include <cs/core/common.h>
 
 /**
  * @brief init cs.core

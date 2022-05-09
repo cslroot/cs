@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cs/app/CSDocument.h>
-#include <cs/app/app_common.h>
+#include <cs/app/common.h>
 
 namespace cs {
 namespace app {

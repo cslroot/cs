@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cs/render/render_common.h>
+#include <cs/render/common.h>
 #include <cs/render_fwd.h>
 
 namespace cs {

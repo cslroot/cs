@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cs/render/Renderer.h>
-#include <cs/render/render_common.h>
+#include <cs/render/common.h>
 
 #include <memory>
 

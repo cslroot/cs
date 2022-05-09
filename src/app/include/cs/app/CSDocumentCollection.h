@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cs/app/app_common.h>
+#include <cs/app/common.h>
 #include <cs/base_fwd.h>
 
 #include <memory>

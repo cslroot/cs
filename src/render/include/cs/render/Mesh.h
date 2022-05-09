@@ -4,7 +4,7 @@
 #include <cs/core_fwd.h>
 #include <cs/kernel_fwd.h>
 #include <cs/render/CSDisplayableObject.h>
-#include <cs/render/render_common.h>
+#include <cs/render/common.h>
 #include <cs/render_fwd.h>
 
 namespace cs {

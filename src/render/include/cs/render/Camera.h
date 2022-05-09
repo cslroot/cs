@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cs/render/render_common.h>
+#include <cs/render/common.h>
 
 namespace cs {
 namespace render {

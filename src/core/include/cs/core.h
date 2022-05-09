@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cs/core/core_common.h>
+#include <cs/core/common.h>
 #include <cs/core/cs_core.h>
 
 #include <cs/core/CSBufferObject.h>
