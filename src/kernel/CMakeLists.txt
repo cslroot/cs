@@ -17,6 +17,7 @@ target_sources(${PROJ_NAME} PRIVATE ${CS_KERNEL_SRC})
 
 target_link_libraries(${PROJ_NAME} PUBLIC cs.base)
 target_link_libraries(${PROJ_NAME} PUBLIC cs.core)
+target_link_libraries(${PROJ_NAME} PUBLIC cs.math)
 
 target_include_directories(${PROJ_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_include_directories(${PROJ_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/cs/kernel)
