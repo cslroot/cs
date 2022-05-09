@@ -4,6 +4,7 @@
 #include <codecvt>
 #include <iostream>
 #include <locale>
+#include <sstream>
 #include <string>
 
 #ifdef _WIN32
@@ -49,6 +50,15 @@ utf8toWide(const std::string& strU8)
   return converter.from_bytes(strU8.c_str());
 #endif
 }
+}
+
+CSString
+CSString::CreateFromHex(void* p)
+{
+  std::stringstream ss;
+  ss << std::hex << p;
+  std::string s = ss.str(); // "10"
+  return s;
 }
 
 CSString::CSString(/* args */) {}

@@ -1,5 +1,6 @@
 #pragma once
 
+#if defined(CS_DLL)
 #if defined(_MSC_VER)
 #define EXPORT __declspec(dllexport)
 #define IMPORT __declspec(dllimport)
@@ -10,6 +11,10 @@
 #define EXPORT
 #define IMPORT
 #pragma warning Unknown dynamic link import / export semantics.
+#endif
+#else
+#define EXPORT
+#define IMPORT
 #endif
 
 #if BUILD_CS_BASE_LIB

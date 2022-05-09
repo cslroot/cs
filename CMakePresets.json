@@ -75,6 +75,7 @@
         },
         {
             "name": "windows-clang-x64-ninja",
+            "hidden": true,
             "description": "This preset is not work well. fail to build Poco with clang-cl #3162(lld-link: error: could not open 'PocoFoundationd.lib': no such file or directory)",
             "inherits": "windows-x64-ninja-vcpkg-base",
             "cacheVariables": {
@@ -98,18 +99,12 @@
         {
             "name": "windows-x64-vs2022",
             "inherits": "windows-x64-ninja-vcpkg-base",
-            "generator": "Visual Studio 17 2022",
-            "cacheVariables": {
-                "MSVC": true
-            }
+            "generator": "Visual Studio 17 2022"
         },
         {
             "name": "windows-x64-vs2019",
             "inherits": "windows-x64-ninja-vcpkg-base",
-            "generator": "Visual Studio 16 2019",
-            "cacheVariables": {
-                "MSVC": true
-            }
+            "generator": "Visual Studio 16 2019"
         },
         {
             "name": "raspi-clang-arm64-ninja",

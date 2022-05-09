@@ -233,3 +233,32 @@ $ sudo apt purge cmake  # remove cmake from package manager
 $ pip3 install cmake    # install cmake via pip
 $ cmake --version
 ```
+
+-----------
+
+# Testing
+
+test project: `${PROJECT_ROOT}/test`
+
+* google test (installed via vcpkg)
+* lcov (for coverage)
+
+
+## Coverage
+
+CS_CODE_COVERAGE = ON
+
+```
+sudo apt install -y lcov
+sudo apt install -y llvm  # to use clang gcov
+```
+
+
+> /path/to/XXXX.cpp.gcno:version '408*', prefer 'B12*'
+> geninfo: ERROR: GCOV failed for /path/to/XXXX.cpp.gcda!
+
+
+```
+lcov -d . -c -o coverage.info --gcov-tool $PWD/llvm-gcov.sh
+genhtml -o lcovHtml --num-spaces 4 -s --legend coverage.info
+```

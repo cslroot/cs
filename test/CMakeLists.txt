@@ -37,7 +37,7 @@ target_link_libraries(${PROJ_NAME} PRIVATE cs.base)
 target_link_libraries(${PROJ_NAME} PRIVATE cs.core)
 target_link_libraries(${PROJ_NAME} PRIVATE cs.kernel)
 
-if (MSVC)
+if (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC)
     # on Windows, google test can not find test cases when `GTest::gmock` is exist
     target_link_libraries(${PROJ_NAME} PRIVATE GTest::gtest GTest::gmock_main GTest::gtest_main)
 else()
@@ -46,3 +46,15 @@ endif()
 
 gtest_discover_tests(${PROJ_NAME}) # cmake v3.10+
 # gtest_add_tests(TARGET cs.test)
+
+if(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
+    # TODO: how to enable coverage on MSVC 
+elseif()
+    if(${CS_CODE_COVERAGE})
+        message(STATUS "enabled coverage option")
+        #   set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} --coverage")
+        #   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
+        target_compile_options(${PROJ_NAME} PRIVATE --coverage)
+        target_link_options(${PROJ_NAME} PRIVATE --coverage)
+    endif()
+endif()
