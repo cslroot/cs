@@ -10,6 +10,7 @@ class Camera;
 class PerspectiveCamera;
 class OrthoCamera;
 
+class Node;
 class CSDisplayableObject;
 class CSDisplayableObject2d;
 
