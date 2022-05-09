@@ -5,6 +5,9 @@ namespace app {
 
 class CSApp;
 
+class CSCommand;
+class CSCommandCollection;
+
 class CSDocument;
 class CSDocument2d;
 class CSDocument3d;

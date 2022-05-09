@@ -1,15 +1,13 @@
 #pragma once
 
 #include <cs/app/common.h>
+#include <cs/app_fwd.h>
 #include <cs/core_fwd.h>
 
 #include <memory>
 
 namespace cs {
 namespace app {
-
-class CSDocument;
-class CSDocumentCollection;
 
 class CSApp
 {
@@ -19,6 +17,8 @@ public:
 
 public:
   DECL_CS_APP CSDocumentCollection& Documents() const;
+  DECL_CS_APP CSCommandCollection& Commands() const;
+
   DECL_CS_APP cs::core::CSConfig& Config() const;
   DECL_CS_APP cs::core::CSLogger& Log() const;
   DECL_CS_APP cs::core::UUID& SessionID() const;
