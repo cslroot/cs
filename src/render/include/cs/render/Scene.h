@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cs/render/CSDisplayableObject.h>
 #include <cs/render/common.h>
 #include <cs/render_fwd.h>
 
@@ -17,9 +18,9 @@ public:
   DECL_CS_RENDER ~Scene();
 
 public:
-  DECL_CS_RENDER void Add(CSDisplayableObject* mesh);
+  DECL_CS_RENDER void Add(Node::Ptr mesh);
   DECL_CS_RENDER void Update();
-  DECL_CS_RENDER CSDisplayableObject* RootObject() const;
+  DECL_CS_RENDER CSDisplayableObject::Ptr RootObject() const;
 
 private:
   struct Impl;

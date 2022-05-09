@@ -25,18 +25,26 @@ main(int argc, char** argv)
   auto& log = app.Log();
 
   // test print logger
-  log.Fatal("fatal message");
-  log.Critical("critial message");
-  log.Error("error message");
-  log.Warning("warning message");
-  log.Notice("notice message");
-  log.Information("information message");
-  log.Debug("debug message");
-  log.Trace("trace message");
+  auto printLogs = [&]() {
+    log.Fatal("fatal message");
+    log.Critical("critial message");
+    log.Error("error message");
+    log.Warning("warning message");
+    log.Notice("notice message");
+    log.Information("information message");
+    log.Debug("debug message");
+    log.Trace("trace message");
+  };
+
+  printLogs();
 
   // config
-  auto confPath = app.Config().ConfigHomePath();
+  auto& conf = app.Config();
+  auto confPath = conf.ConfigHomePath();
   log.Information(fmt::format("config path: {}", confPath.c_str()).c_str());
+  printLogs();
+
+  conf.Save();
 
   // session id
   auto strSessionID = app.SessionID().ToString();
@@ -84,8 +92,8 @@ main(int argc, char** argv)
   auto camera = CS_NEW cs::render::PerspectiveCamera();
   auto renderer = CS_NEW cs::render::EmptyRenderer();
 
-  auto cube = new cs::render::Mesh(box, *mat);
-  scene->Add(cube);
+  auto cube = std::make_unique<cs::render::Mesh>(box, *mat);
+  scene->Add(std::move(cube));
 
   bool stop = false;
   while (stop) {

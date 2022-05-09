@@ -13,10 +13,15 @@ class CSMaterial;
 
 class CSDisplayableObject : public Node
 {
-private:
-  /* data */
 public:
-  DECL_CS_RENDER CSDisplayableObject()
+  using Ptr = std::shared_ptr<CSDisplayableObject>;
+
+  DECL_CS_RENDER CSDisplayableObject(const cs::base::CSString& name)
+    : Node(name)
+    , _cachedMesh(nullptr)
+  {}
+  DECL_CS_RENDER
+  CSDisplayableObject()
     : _cachedMesh(nullptr)
   {}
   DECL_CS_RENDER virtual ~CSDisplayableObject() {}

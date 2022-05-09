@@ -7,7 +7,10 @@
 #include <Poco/Util/JSONConfiguration.h>
 
 #include <filesystem>
+#include <fstream>
+#include <iostream>
 
+namespace fs = std::filesystem;
 using namespace cs::core;
 
 namespace {
@@ -26,12 +29,30 @@ struct CSConfig::Impl
 CSConfig::CSConfig()
   : _impl(std::make_unique<Impl>())
 {
-  _impl->_config->setInt("version", 20220201);
-  _impl->_config->setString("loglevel", "default");
-  _impl->_config->setString("mouse_mode", "default");
+  auto p = fs::path(ConfigHomePath().c_str());
+  if (!fs::exists(p)) {
+    _impl->_config->setInt("version", 20220201);
+    _impl->_config->setString("loglevel", "information");
+    _impl->_config->setString("mouse_mode", "default");
+  } else {
+    _impl->_config->load(p.string());
+  }
 }
 
 CSConfig::~CSConfig() {}
+
+void
+CSConfig::Save()
+{
+  auto path = this->ConfigHomePath();
+  auto p = fs::path(path.c_str());
+  if (!fs::exists(p)) {
+    fs::create_directories(p.parent_path());
+  }
+
+  std::ofstream ofs(path.c_str());
+  _impl->_config->save(ofs);
+}
 
 void
 CSConfig::SetValue(const cs::base::CSString& key, bool bValue)

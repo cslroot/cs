@@ -11,10 +11,14 @@
 namespace cs {
 namespace render {
 
-class Node
+class Node : public std::enable_shared_from_this<Node>
 {
 public:
-  DECL_CS_RENDER Node();
+  using Ptr = std::shared_ptr<Node>;
+
+  DECL_CS_RENDER
+  Node();
+  DECL_CS_RENDER Node(const cs::base::CSString& name);
   DECL_CS_RENDER virtual ~Node();
 
 public:
@@ -25,10 +29,22 @@ public:
   DECL_CS_RENDER const cs::base::CSString& Name() const { return _name; }
   DECL_CS_RENDER void SetName(const cs::base::CSString& name) { _name = name; }
 
+  DECL_CS_RENDER Node* Parent() const { return _parent.lock().get(); };
+  DECL_CS_RENDER void SetParent(std::weak_ptr<Node> parent)
+  {
+    _parent = parent;
+  };
+
+  DECL_CS_RENDER std::vector<Node::Ptr>& Children() { return _children; };
+  DECL_CS_RENDER void AddChild(std::shared_ptr<Node> pNode);
+  DECL_CS_RENDER void AddChildren(
+    const std::vector<std::shared_ptr<Node>>& pNodes);
+
 private:
   cs::base::CSString _name;
   bool _visible;
-  std::vector<std::shared_ptr<Node>> _children;
+  std::weak_ptr<Node> _parent;
+  std::vector<Node::Ptr> _children;
 };
 
 } // namespace render

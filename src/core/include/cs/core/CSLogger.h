@@ -32,6 +32,9 @@ public:
   DECL_CS_CORE virtual ~CSLogger();
 
 public:
+  DECL_CS_CORE void SetLevel(const cs::base::CSString& level);
+  DECL_CS_CORE void SetLevel(const Priority& level);
+
   DECL_CS_CORE void Fatal(const cs::base::CSString& message);
   DECL_CS_CORE void Critical(const cs::base::CSString& message);
   DECL_CS_CORE void Error(const cs::base::CSString& message);

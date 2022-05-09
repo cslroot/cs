@@ -6,7 +6,7 @@ using namespace cs::render;
 
 struct Scene::Impl
 {
-  CSDisplayableObject* _rootObj = nullptr;
+  CSDisplayableObject::Ptr _root = std::make_shared<CSDisplayableObject>("/");
 };
 
 Scene::Scene(/* args */)
@@ -16,13 +16,13 @@ Scene::Scene(/* args */)
 Scene::~Scene() {}
 
 void
-Scene::Add(CSDisplayableObject* mesh)
+Scene::Add(Node::Ptr mesh)
 {
-  _impl->_rootObj = mesh;
+  _impl->_root->AddChild(mesh);
 }
 
-CSDisplayableObject*
+CSDisplayableObject::Ptr
 Scene::RootObject() const
 {
-  return _impl->_rootObj;
+  return _impl->_root;
 }

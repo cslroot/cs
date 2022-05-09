@@ -7,13 +7,15 @@
 namespace cs {
 namespace core {
 
-class CSConfig : CSObject
+class CSConfig : public CSObject
 {
 public:
   DECL_CS_CORE CSConfig();
   DECL_CS_CORE virtual ~CSConfig();
 
 public:
+  DECL_CS_CORE void Save();
+
   DECL_CS_CORE void SetValue(const cs::base::CSString& key, bool bValue);
   DECL_CS_CORE void SetValue(const cs::base::CSString& key, int iValue);
   DECL_CS_CORE void SetValue(const cs::base::CSString& key, double dValue);

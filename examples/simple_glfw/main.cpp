@@ -9,17 +9,6 @@
 #include <cs/modeler.h>
 #include <cs/render.h>
 
-// #include <glm/glm.hpp>
-// #include <glm/gtc/matrix_transform.hpp>
-// #include <glm/gtc/type_ptr.hpp>
-// #include <glm/gtx/string_cast.hpp>
-
-// #include <GL/glew.h>
-// #define GLFW_INCLUDE_NONE
-// #include <GLFW/glfw3.h>
-
-#include <fmt/format.h>
-
 using namespace cs::core;
 using namespace cs::kernel;
 
@@ -52,13 +41,13 @@ main(int argc, char** argv)
   line->Property().SetColor(color);
   auto lineObj =
     std::make_unique<cs::render::CSDisplayableObject2d>(*line, *mat);
-  scene->Add(lineObj.get());
+  scene->Add(std::move(lineObj));
 
   // circle
   auto circle = std::make_unique<cs::kernel::Circle2d>(p1, 0.4);
   auto circleObj =
     std::make_unique<cs::render::CSDisplayableObject2d>(*circle, *mat);
-  scene->Add(circleObj.get());
+  scene->Add(std::move(circleObj));
 
   auto renderer = std::make_unique<cs::render::GLFWRenderer>();
   renderer->Init();

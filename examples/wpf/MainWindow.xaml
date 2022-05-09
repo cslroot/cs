@@ -1,12 +1,102 @@
-﻿<Window x:Class="wpf.MainWindow"
+<Fluent:RibbonWindow x:Class="wpf.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Fluent="urn:fluent-ribbon"
         xmlns:local="clr-namespace:wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
-</Window>
+  <Grid>
+    <Fluent:Ribbon>
+      <!-- クイックアクセスツールバー -->
+      <!--<Fluent:Ribbon.QuickAccessItems>
+
+        <Fluent:QuickAccessMenuItem IsChecked="True">
+          <Fluent:Button Header="FontExp"></Fluent:Button>
+        </Fluent:QuickAccessMenuItem>
+
+        <Fluent:QuickAccessMenuItem IsChecked="True">
+          <Fluent:Button Header="FontRedu"></Fluent:Button>
+        </Fluent:QuickAccessMenuItem>
+
+        <Fluent:QuickAccessMenuItem IsChecked="False">
+          <Fluent:Button Header="FontUD"></Fluent:Button>
+        </Fluent:QuickAccessMenuItem>
+      </Fluent:Ribbon.QuickAccessItems>-->
+
+      <Fluent:RibbonTabItem Header="Home1" KeyTip="T1">
+        <Fluent:RibbonGroupBox Header="ボタン" KeyTip="B">
+          <Fluent:Button Header="大ボタン"
+                   KeyTip="BI"
+                   LargeIcon="..."/>
+
+          <Fluent:Button Header="中ボタン"
+                   KeyTip="MI"
+                   Size="Middle"
+                   Icon="..."/>
+
+          <Fluent:Button Header="小ボタン"
+                   KeyTip="SM"
+                   Size="Small"
+                   Icon="..."/>
+        </Fluent:RibbonGroupBox>
+
+        <Fluent:RibbonGroupBox Header="ドロップダウン"
+                       KeyTip="DD">
+
+          <Fluent:DropDownButton Header="大ボタン"
+                           KeyTip="DB"
+                           LargeIcon="...">
+
+            <!-- メニューの設定ができる -->
+            <Fluent:MenuItem Header="子要素1" Icon="..."/>
+            <Fluent:MenuItem Header="子要素2" Icon="..."/>
+          </Fluent:DropDownButton>
+
+          <Fluent:DropDownButton Header="中ボタン"
+                           KeyTip="DM"
+                           Size="Middle"
+                           Icon="..."/>
+
+          <Fluent:DropDownButton Header="小ボタン"
+                           KeyTip="DS"
+                           Size="Small"
+                           Icon="..."/>
+        </Fluent:RibbonGroupBox>
+        <Fluent:RibbonGroupBox Header="トグル" KeyTip="TB">
+
+          <Fluent:ToggleButton Header="大トグル"
+                         KeyTip="TB"
+                         LargeIcon="..."/>
+
+          <Fluent:ToggleButton Header="中トグル"
+                         KeyTip="TM"
+                         Size="Middle"
+                         Icon="..."/>
+
+          <Fluent:ToggleButton Header="小トグル"
+                         KeyTip="TS"
+                         Size="Small"
+                         Icon="..."/>
+
+        </Fluent:RibbonGroupBox>
+        <Fluent:RibbonGroupBox Header="ラジオボタン" KeyTip="RB">
+          <Fluent:RadioButton Header="選択肢1" KeyTip="11" GroupName="Group1" IsChecked="True"/>
+          <Fluent:RadioButton Header="選択肢2" KeyTip="12" GroupName="Group1"/>
+          <Fluent:RadioButton Header="選択肢3" KeyTip="13" GroupName="Group1"/>
+
+          <Fluent:RadioButton Header="選択肢4" KeyTip="21" GroupName="Group2" IsChecked="True"/>
+          <Fluent:RadioButton Header="選択肢5" KeyTip="22" GroupName="Group2"/>
+          <Fluent:RadioButton Header="選択肢6" KeyTip="23" GroupName="Group2"/>
+        </Fluent:RibbonGroupBox>
+      </Fluent:RibbonTabItem>
+
+      <Fluent:RibbonTabItem Header="タブ2" KeyTip="T2">
+      </Fluent:RibbonTabItem>
+
+      <Fluent:RibbonTabItem Header="タブ3" KeyTip="T3">
+      </Fluent:RibbonTabItem>
+    </Fluent:Ribbon>
+  </Grid>
+</Fluent:RibbonWindow>

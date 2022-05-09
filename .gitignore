@@ -6,6 +6,9 @@ out/
 .vs/
 third/vcpkg/**/*
 
+# nuget package
+packages/
+
 # Prerequisites
 *.d
 

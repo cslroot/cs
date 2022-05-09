@@ -12,15 +12,7 @@
 
 using namespace cs::core;
 
-namespace {
-
-Poco::Logger&
-getLogger()
-{
-  return Poco::Logger::get(Poco::Logger::ROOT);
-}
-
-}
+namespace {}
 
 #pragma region static
 std::unique_ptr<CSLogger>
@@ -43,19 +35,20 @@ struct CSLogger::Impl
     pSChannel->addChannel(new Poco::ConsoleChannel);
 
     Poco::FormattingChannel* pFChannel = new Poco::FormattingChannel(
-      new Poco::PatternFormatter("%Y-%m-%d %H:%M:%S.%c %N[%P]:%s:%q:%t"));
+      new Poco::PatternFormatter("%Y-%m-%d %H:%M:%S.%c %N[%P]:%s:%q: %t"));
 
     pFChannel->setChannel(pSChannel);
 
     auto& log = Poco::Logger::create(
       Poco::Logger::ROOT, pFChannel, Poco::Message::PRIO_INFORMATION);
     log.information("logger initialized");
+    _logger = &log;
   }
 
   ~Impl()
   {
-    getLogger().information("logger terminated.");
-    getLogger().close();
+    _logger->information("logger terminated.");
+    _logger->close();
   }
 };
 
@@ -68,44 +61,55 @@ CSLogger::CSLogger()
 CSLogger::~CSLogger() {}
 
 void
+CSLogger::SetLevel(const cs::base::CSString& level)
+{
+  _impl->_logger->setLevel(level.c_str());
+}
+void
+CSLogger::SetLevel(const Priority& level)
+{
+  _impl->_logger->setLevel(static_cast<int>(level));
+}
+
+void
 CSLogger::Fatal(const cs::base::CSString& message)
 {
-  getLogger().fatal(message.c_str());
+  _impl->_logger->fatal(message.c_str());
 }
 void
 CSLogger::Critical(const cs::base::CSString& message)
 {
-  getLogger().critical(message.c_str());
+  _impl->_logger->critical(message.c_str());
 }
 void
 CSLogger::Error(const cs::base::CSString& message)
 {
-  getLogger().error(message.c_str());
+  _impl->_logger->error(message.c_str());
 }
 void
 CSLogger::Warning(const cs::base::CSString& message)
 {
-  getLogger().warning(message.c_str());
+  _impl->_logger->warning(message.c_str());
 }
 void
 CSLogger::Notice(const cs::base::CSString& message)
 {
-  getLogger().notice(message.c_str());
+  _impl->_logger->notice(message.c_str());
 }
 void
 CSLogger::Information(const cs::base::CSString& message)
 {
-  getLogger().information(message.c_str());
+  _impl->_logger->information(message.c_str());
 }
 void
 CSLogger::Debug(const cs::base::CSString& message)
 {
-  getLogger().debug(message.c_str());
+  _impl->_logger->debug(message.c_str());
 }
 void
 CSLogger::Trace(const cs::base::CSString& message)
 {
-  getLogger().trace(message.c_str());
+  _impl->_logger->trace(message.c_str());
 }
 
 void
@@ -113,7 +117,7 @@ CSLogger::Write(Priority priority, const cs::base::CSString& message)
 {
   Poco::Message::Priority prio = (Poco::Message::Priority)((int)priority + 1);
   auto msg = Poco::Message(std::string(""), message.c_str(), prio);
-  getLogger().log(msg);
+  _impl->_logger->log(msg);
 }
 
 #pragma endregion
