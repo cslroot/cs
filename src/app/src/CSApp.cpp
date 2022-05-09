@@ -1,5 +1,6 @@
 #include "CSApp.h"
 
+#include <cs/base.h>
 #include <cs/core.h>
 
 #include "CSDocument.h"
@@ -16,12 +17,11 @@ struct CSApp::Impl
 {
   Impl(CSApp* pApp)
     : _docs(pApp)
-    , _log(cs::core::CSLogger::Create())
   {}
 
   CSDocumentCollection _docs;
   CSConfig _config;
-  std::unique_ptr<CSLogger> _log;
+  CSLogger _log;
   cs::core::UUID _sessionID;
 };
 
@@ -37,6 +37,10 @@ CSApp::CSApp(int argc, char** argv)
     ""
 #endif
     ));
+
+  //----- init with config ----
+  auto loglevel = _impl->_config.GetValue<cs::base::CSString>("loglevel");
+  _impl->_log.SetLevel(loglevel);
 }
 
 CSApp::~CSApp()
@@ -59,7 +63,7 @@ CSApp::Config() const
 cs::core::CSLogger&
 CSApp::Log() const
 {
-  return *_impl->_log;
+  return _impl->_log;
 }
 
 cs::core::UUID&
