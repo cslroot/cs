@@ -12,6 +12,7 @@ else()
     set(CS_LIB_TYPE STATIC)
 endif()
 
+SET(CMAKE_DEBUG_POSTFIX "d")
 
 # vcpkg
 if(NOT DEFINED VCPKG_ROOT)
