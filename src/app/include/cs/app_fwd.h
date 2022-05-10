@@ -5,6 +5,8 @@ namespace app {
 
 class CSApp;
 
+class CSPluginManager;
+
 class CSCommand;
 class CSCommandCollection;
 

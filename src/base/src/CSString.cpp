@@ -93,6 +93,12 @@ CSString::c_str() const
   return _str.c_str();
 }
 
+std::string
+CSString::str() const
+{
+  return _str;
+}
+
 CSString&
 CSString::operator+=(const CSString& rhs)
 {

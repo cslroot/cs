@@ -12,5 +12,6 @@ class UUID;
 
 class CSBufferObject;
 
+class ICSPlugin;
 } // namespace core
 } // namespace cs

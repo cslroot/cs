@@ -49,6 +49,12 @@ main(int argc, char** argv)
   log.Information(strSessionID);
   log.Information(app.SessionID().ToString());
 
+  // plugin
+  app.PluginManager().LoadAll();
+  auto pPlugin = app.PluginManager().GetPlugin("SimplePlugin");
+  log.Information(pPlugin->Name());
+
+  // docuemnt
   assert(nullptr == app.Documents().ActiveDocument());
 
   auto& doc =

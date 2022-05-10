@@ -9,3 +9,4 @@
 #include <cs/app/CSDocument2d.h>
 #include <cs/app/CSDocument3d.h>
 #include <cs/app/CSDocumentCollection.h>
+#include <cs/app/CSPluginManager.h>

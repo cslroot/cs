@@ -15,6 +15,4 @@ target_compile_features(${PROJ_NAME} PRIVATE cxx_std_17)
 find_package(fmt CONFIG REQUIRED)
 target_link_libraries(${PROJ_NAME} PRIVATE fmt::fmt)
 
-target_link_libraries(${PROJ_NAME} PRIVATE cs.modeler)
-target_link_libraries(${PROJ_NAME} PRIVATE cs.render)
 target_link_libraries(${PROJ_NAME} PRIVATE cs.app)

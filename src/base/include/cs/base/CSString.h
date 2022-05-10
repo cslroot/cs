@@ -23,6 +23,7 @@ public:
 
 public:
   DECL_CS_BASE const char* c_str() const;
+  DECL_CS_BASE std::string str() const;
   DECL_CS_BASE CSString& operator+=(const char* u8rhs);
   DECL_CS_BASE CSString& operator+=(const CSString& rhs);
 

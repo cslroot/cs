@@ -3,6 +3,8 @@ classDiagram
  App ..> Render
  App ..> Modeler
  App ..> Drawing
+ App ..> PluginFeatures
+ PluginFeatures ..> Core
  Render ..> Core
  Render ..> Kernel
  Drawing ..> Kernel

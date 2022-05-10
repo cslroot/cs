@@ -27,6 +27,8 @@ public:
   DECL_CS_APP cs::core::CSLogger& Log() const;
   DECL_CS_APP cs::core::UUID& SessionID() const;
 
+  DECL_CS_APP cs::app::CSPluginManager& PluginManager() const;
+
 public:
   // event
   DECL_CS_APP void EmitDocumentActivated(CSDocument&);

@@ -3,6 +3,8 @@
 #include <cs/base.h>
 #include <cs/core.h>
 
+#include "CSPluginManager.h"
+
 #include "CSDocument.h"
 #include "CSDocumentCollection.h"
 
@@ -38,6 +40,7 @@ struct CSApp::Impl
   CSConfig _config;
   CSLogger _log;
   cs::core::UUID _sessionID;
+  CSPluginManager _pluginManager;
 };
 
 CSApp::CSApp(int argc, char** argv)
@@ -85,6 +88,12 @@ cs::core::UUID&
 CSApp::SessionID() const
 {
   return _impl->_sessionID;
+}
+
+cs::app::CSPluginManager&
+CSApp::PluginManager() const
+{
+  return _impl->_pluginManager;
 }
 
 void
