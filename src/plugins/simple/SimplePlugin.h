@@ -4,7 +4,7 @@
 #include <cs/core/ICSPlugin.h>
 
 namespace cs {
-namespace plguins {
+namespace plugins {
 namespace simple {
 
 extern "C" DECL_CS_PLUGINS_SIMPLE cs::core::ICSPlugin*
@@ -25,5 +25,5 @@ public:
 };
 
 } // namespace simple
-} // namespace plguins
+} // namespace plugins
 } // namespace cs

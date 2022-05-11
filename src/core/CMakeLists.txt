@@ -9,12 +9,6 @@ add_library(${PROJ_NAME} ${CS_LIB_TYPE})
 target_compile_definitions(${PROJ_NAME} PRIVATE BUILD_CS_CORE_LIB)
 target_compile_features(${PROJ_NAME} PRIVATE cxx_std_17)
 
-file(GLOB_RECURSE CS_CORE_SRC CONFIGURE_DEPENDS 
-  "*.cpp"
-)
-file(GLOB_RECURSE CS_CORE_HEADER CONFIGURE_DEPENDS 
-  "*.h"
-)
 
 target_precompile_headers(${PROJ_NAME}
   PRIVATE
@@ -29,8 +23,13 @@ target_precompile_headers(${PROJ_NAME}
     <codecvt>
 )
 
-target_sources(${PROJ_NAME} PRIVATE ${CS_CORE_SRC})
-source_group("headers" FILES ${CS_CORE_HEADER})
+file(GLOB_RECURSE ${PROJ_NAME}_SRC CONFIGURE_DEPENDS "*.cpp")
+file(GLOB_RECURSE ${PROJ_NAME}_HEADER CONFIGURE_DEPENDS "*.h")
+target_sources(${PROJ_NAME} PRIVATE ${${PROJ_NAME}_SRC})
+if(WIN32)
+target_sources(${PROJ_NAME} PRIVATE ${CMAKE_BINARY_DIR}/version.rc)
+endif()
+source_group("headers" FILES ${${PROJ_NAME}_HEADER})
 
 find_package(Poco CONFIG REQUIRED Foundation Util)
 target_link_libraries(${PROJ_NAME} PRIVATE Poco::Util)

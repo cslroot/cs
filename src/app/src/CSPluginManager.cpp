@@ -16,8 +16,8 @@ using namespace cs::core;
 
 struct CSPluginManager::Impl
 {
-  std::unordered_map<std::string, ICSPlugin*> _plugins;
-  std::vector<Poco::SharedLibrary*> _libs;
+  std::unordered_map<std::string, cs::core::ICSPlugin*> _plugins;
+  std::vector<std::unique_ptr<Poco::SharedLibrary>> _libs;
 };
 
 CSPluginManager::CSPluginManager()
@@ -31,7 +31,7 @@ CSPluginManager::~CSPluginManager()
   }
   for (auto& p : _impl->_libs) {
     p->unload();
-    delete p;
+    // delete p;
   }
 }
 
@@ -50,14 +50,15 @@ CSPluginManager::LoadAll()
 
   for (auto& f : files) {
     CSApp::Instance().Log().Information(f);
-    SharedLibrary* plibrary =
-      new SharedLibrary(f); // will also load the library
-    _impl->_libs.push_back(plibrary);
+    std::unique_ptr<SharedLibrary> plibrary =
+      std::make_unique<SharedLibrary>(f); // will also load the library
 
     auto func = (ICSPluginEntryFunc)plibrary->getSymbol("cs_create_plugin");
     auto pPlugin = func();
     auto name = pPlugin->Name();
-    _impl->_plugins[name.str()] = pPlugin;
+
+    _impl->_plugins[name.str()] = std::move(pPlugin);
+    _impl->_libs.push_back(std::move(plibrary));
   }
 }
 

@@ -2,7 +2,7 @@
 
 #include <cs/core.h>
 
-using namespace cs::plguins::simple;
+using namespace cs::plugins::simple;
 
 extern "C" DECL_CS_PLUGINS_SIMPLE cs::core::ICSPlugin*
 cs_create_plugin()

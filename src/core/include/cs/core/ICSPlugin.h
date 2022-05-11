@@ -24,4 +24,4 @@ public:
 } // namespace core
 } // namespace cs
 
-typedef cs::core::ICSPlugin* (*ICSPluginEntryFunc)(); // function pointer typ
+typedef cs::core::ICSPlugin* (*ICSPluginEntryFunc)();
