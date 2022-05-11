@@ -103,6 +103,6 @@ add_subdirectory(test)
 add_subdirectory(examples)
 
 # build installer
-if(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
+if(WIN32)
 add_subdirectory(package)
 endif()
