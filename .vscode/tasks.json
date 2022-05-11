@@ -4,23 +4,31 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
-            "type": "shell",
-            "command": "msbuild",
-            "args": [
-                // Ask msbuild to generate full paths for file names.
-                "/property:GenerateFullPaths=true",
-                "/t:build",
-                // Do not generate summary otherwise it leads to duplicate errors in Problems panel
-                "/consoleloggerparameters:NoSummary"
-            ],
+            "label": "CMake build",
+            "type": "cmake",
+            "command": "build",
             "group": "build",
             "presentation": {
                 // Reveal the output only if unrecognized errors occur.
                 "reveal": "silent"
             },
-            // Use the standard MS compiler pattern to detect errors, warnings and infos
-            "problemMatcher": "$msCompile"
+            "problemMatcher": []
+        },
+        {
+            "label": "CTest",
+            "type": "shell",
+            "command": "ctest",
+            "args": [
+                "--preset",
+                "windows-cl-x64-ninja"
+                // "${command:cmake.activeTestPresetName}" not found...
+            ],
+            "group": "test",
+            "presentation": {
+                // Reveal the output only if unrecognized errors occur.
+                "reveal": "silent"
+            },
+            "problemMatcher": []
         }
     ]
 }
