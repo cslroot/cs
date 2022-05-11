@@ -1,0 +1,12 @@
+{
+    "version": "0.2",
+    "ignorePaths": [
+        "CMakePresets.json",
+        "*.rc.in"
+    ],
+    "dictionaryDefinitions": [],
+    "dictionaries": [],
+    "words": [],
+    "ignoreWords": [],
+    "import": []
+}

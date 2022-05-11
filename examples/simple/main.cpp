@@ -25,7 +25,7 @@ main(int argc, char** argv)
   // test print logger
   auto printLogs = [&]() {
     log.Fatal("fatal message");
-    log.Critical("critial message");
+    log.Critical("critical message");
     log.Error("error message");
     log.Warning("warning message");
     log.Notice("notice message");
@@ -54,7 +54,7 @@ main(int argc, char** argv)
   auto pPlugin = app.PluginManager().GetPlugin("SimplePlugin");
   log.Information(pPlugin->Name());
 
-  // docuemnt
+  // document
   assert(nullptr == app.Documents().ActiveDocument());
 
   auto& doc =
@@ -75,8 +75,8 @@ main(int argc, char** argv)
   std::cout << i << std::endl;
 
   cs::base::CSString str;
-  str += u8"hoge";
-  str += u8"fuga";
+  str += u8"message";
+  str += u8"-append message";
   std::cout << str << std::endl;
 
   cs::math::CSVec3d v3d;
