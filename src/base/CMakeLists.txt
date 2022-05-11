@@ -6,11 +6,11 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_library(${PROJ_NAME} ${CS_LIB_TYPE})
 
-file(GLOB_RECURSE CS_BASE_SRC CONFIGURE_DEPENDS 
-    #  "*.h"
-     "*.cpp"
-)
-target_sources(${PROJ_NAME} PRIVATE ${CS_BASE_SRC})
+file(GLOB_RECURSE ${PROJ_NAME}_SRC CONFIGURE_DEPENDS "*.cpp")
+target_sources(${PROJ_NAME} PRIVATE ${${PROJ_NAME}_SRC})
+if(WIN32)
+target_sources(${PROJ_NAME} PRIVATE ${CMAKE_BINARY_DIR}/version.rc)
+endif()
 
 target_compile_definitions(${PROJ_NAME} PRIVATE BUILD_CS_BASE_LIB)
 target_compile_features(${PROJ_NAME} PRIVATE cxx_std_17)

@@ -1,6 +1,34 @@
 cmake_minimum_required(VERSION 3.20.0)
+project(cs VERSION 0.1.0)
 
 cmake_policy(SET CMP0054 NEW)
+
+# set(CMAKE_PROJECT_VERSION_MAJOR 0)
+# set(CMAKE_PROJECT_VERSION_MINOR 1)
+# set(CMAKE_PROJECT_VERSION_PATCH 1)
+set(CS_PROJECT_VERSION_STR "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
+message(STATUS "CS_PROJECT_VERSION_STR: ${CS_PROJECT_VERSION_STR}")
+
+set(PRODUCT_COMMENTS "Product comment")
+set(PRODUCT_COMPANY_NAME "net.savethebunny.cs")
+set(PRODUCT_FILE_DESCRIPTION "cs modules 2022.0.0")
+set(PRODUCT_FILE_VERSION ${CS_PROJECT_VERSION_STR})
+set(PRODUCT_INTERNAL_NAME "Internal name")
+set(PRODUCT_COMPANY_COPYRIGHT "Copyright (C) net.savethebunny.cs. All rights reserved.")
+set(PRODUCT_ORIGINAL_FILENAME "")
+set(PRODUCT_NAME ${PROJECT_NAME})
+set(PRODUCT_VERSION_STR ${CS_PROJECT_VERSION_STR})
+
+if(WIN32)
+configure_file(
+    ${CMAKE_SOURCE_DIR}/src/version.rc.in
+    ${CMAKE_BINARY_DIR}/version.rc
+    @ONLY)
+endif()
+
+set_property(GLOBAL PROPERTY
+    VERSION ${CS_PROJECT_VERSION_NUMBER})
+
 
 option(CS_BUILD_SHARED_LIBS "build as a shared library" ON)
 option(CS_CODE_COVERAGE "enable code coverage" ON)
@@ -15,12 +43,12 @@ endif()
 SET(CMAKE_DEBUG_POSTFIX "d")
 
 # vcpkg
-if(NOT DEFINED VCPKG_ROOT)
-    set(VCPKG_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/third/vcpkg" CACHE STRING "vcpkg root directory")
-endif()
-if(NOT DEFINED CMAKE_TOOLCHAIN_FILE)
-    set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
-endif()
+# if(NOT DEFINED VCPKG_ROOT)
+#     set(VCPKG_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/third/vcpkg" CACHE STRING "vcpkg root directory")
+# endif()
+# if(NOT DEFINED CMAKE_TOOLCHAIN_FILE)
+#     set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
+# endif()
 
 # clang on ubuntu/WSLg: Could NOT find OpenGL (missing: OPENGL_opengl_LIBRARY OPENGL_glx_LIBRARY)  ??
 set(OpenGL_GL_PREFERENCE LEGACY)
@@ -32,7 +60,6 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)  # .dll, .so with MO
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/arc)  # .lib .exp, .a with STATIC
 
 enable_language(CXX)
-project(cs)
 
 # information
 message(STATUS "CMAKE_GENERATOR: " ${CMAKE_GENERATOR})
