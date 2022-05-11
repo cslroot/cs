@@ -43,3 +43,10 @@ packages/
 *.exe
 *.out
 *.app
+
+Testing/
+
+# wix
+*.wixobj
+*.wixpdb
+*.msi

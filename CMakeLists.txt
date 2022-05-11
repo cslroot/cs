@@ -101,3 +101,8 @@ add_subdirectory(test)
 
 # build example app
 add_subdirectory(examples)
+
+# build installer
+if(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
+add_subdirectory(package)
+endif()

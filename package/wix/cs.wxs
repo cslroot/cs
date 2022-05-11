@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Product Id="FF77BD20-453E-4F62-A1E3-6F2D92AF575D" Name="CS" Language="1033" Version="0.0.0.1" Manufacturer="net.savethebunny.cs" UpgradeCode="8C5C73B8-D6AE-4C45-8434-88E2577A4C3C">
+        <Package Description="Test file in a Product" Comments="Simple test" InstallerVersion="200" Compressed="yes" />
+        <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramFilesFolder" Name="PFiles">
+                <Directory Name="cs" Id="CS">
+                    <Directory Id="BIN" Name="bin">
+                        <Directory Id="DEBUG" Name="Debug">
+                            <Component Id="CS.APP.DLL" DiskId="1" Guid="92164D89-07CD-4EBA-9C8E-27801872EA85">
+                                <File Id="CS.APP.DLL" Name="cs.app.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.app.dll" />
+                            </Component>
+                            <Component Id="CS.APP.ILK" DiskId="1" Guid="B8AF67D3-923C-4A6F-BCC4-5AAC44853A3F">
+                                <File Id="CS.APP.ILK" Name="cs.app.ilk" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.app.ilk" />
+                            </Component>
+                            <Component Id="CS.APP.PDB" DiskId="1" Guid="1A152E64-604A-47C7-9DB1-37819449055B">
+                                <File Id="CS.APP.PDB" Name="cs.app.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.app.pdb" />
+                            </Component>
+                            <Component Id="CS.APPD.DLL" DiskId="1" Guid="53C42DE9-CFDD-4A53-BFF0-FED8B5511C9C">
+                                <File Id="CS.APPD.DLL" Name="cs.appd.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.appd.dll" />
+                            </Component>
+                            <Component Id="CS.APPD.DLL.MANIFEST" DiskId="1" Guid="AABE142A-80C8-4331-A99E-F67C27212B83">
+                                <File Id="CS.APPD.DLL.MANIFEST" Name="cs.appd.dll.manifest" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.appd.dll.manifest" />
+                            </Component>
+                            <Component Id="CS.APPD.PDB" DiskId="1" Guid="B80BAB88-504F-4B75-A44A-8CBBCEDCCAEF">
+                                <File Id="CS.APPD.PDB" Name="cs.appd.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.appd.pdb" />
+                            </Component>
+                            <Component Id="CS.BASE.DLL" DiskId="1" Guid="26FA0811-1B58-4531-AB9E-8DDB454568A6">
+                                <File Id="CS.BASE.DLL" Name="cs.base.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.base.dll" />
+                            </Component>
+                            <Component Id="CS.BASE.ILK" DiskId="1" Guid="FFF2A102-94F0-4F1C-93D3-001E271BDA61">
+                                <File Id="CS.BASE.ILK" Name="cs.base.ilk" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.base.ilk" />
+                            </Component>
+                            <Component Id="CS.BASE.PDB" DiskId="1" Guid="69DC0190-850A-45A9-876E-F5A0BEEA7660">
+                                <File Id="CS.BASE.PDB" Name="cs.base.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.base.pdb" />
+                            </Component>
+                            <Component Id="CS.BASED.DLL" DiskId="1" Guid="909393F8-023A-4AF3-9C90-F2884D336669">
+                                <File Id="CS.BASED.DLL" Name="cs.based.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.based.dll" />
+                            </Component>
+                            <Component Id="CS.BASED.DLL.MANIFEST" DiskId="1" Guid="99729059-3C8A-4F46-98E3-AF6D03FA8DB4">
+                                <File Id="CS.BASED.DLL.MANIFEST" Name="cs.based.dll.manifest" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.based.dll.manifest" />
+                            </Component>
+                            <Component Id="CS.BASED.PDB" DiskId="1" Guid="6AA633C8-AC36-4FF7-BD6B-CC1F96981EBC">
+                                <File Id="CS.BASED.PDB" Name="cs.based.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.based.pdb" />
+                            </Component>
+                            <Component Id="CS.CORE.DLL" DiskId="1" Guid="09893AEE-628A-408E-97DA-92BF07EF9F60">
+                                <File Id="CS.CORE.DLL" Name="cs.core.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.core.dll" />
+                            </Component>
+                            <Component Id="CS.CORE.ILK" DiskId="1" Guid="2C45753F-4FA3-45FE-A988-2FBFA06151A1">
+                                <File Id="CS.CORE.ILK" Name="cs.core.ilk" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.core.ilk" />
+                            </Component>
+                            <Component Id="CS.CORE.PDB" DiskId="1" Guid="BEC179AD-2858-48CF-B50E-C5B5B51305EA">
+                                <File Id="CS.CORE.PDB" Name="cs.core.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.core.pdb" />
+                            </Component>
+                            <Component Id="CS.CORED.DLL" DiskId="1" Guid="47210AB8-8A3E-4977-8920-DC54614DFEC2">
+                                <File Id="CS.CORED.DLL" Name="cs.cored.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.cored.dll" />
+                            </Component>
+                            <Component Id="CS.CORED.DLL.MANIFEST" DiskId="1" Guid="E0749C85-B2D8-4FC3-BD29-F30C0EE754B4">
+                                <File Id="CS.CORED.DLL.MANIFEST" Name="cs.cored.dll.manifest" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.cored.dll.manifest" />
+                            </Component>
+                            <Component Id="CS.CORED.PDB" DiskId="1" Guid="5ED85314-B604-4CC9-8A78-248D40F756A1">
+                                <File Id="CS.CORED.PDB" Name="cs.cored.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.cored.pdb" />
+                            </Component>
+                            <Component Id="CS.DRAWING.DLL" DiskId="1" Guid="B81F7DEA-FD93-4C21-9F0D-B0F1F1C7F5D0">
+                                <File Id="CS.DRAWING.DLL" Name="cs.drawing.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.drawing.dll" />
+                            </Component>
+                            <Component Id="CS.DRAWING.ILK" DiskId="1" Guid="B88D1114-3900-48A4-8B01-309AE38813D8">
+                                <File Id="CS.DRAWING.ILK" Name="cs.drawing.ilk" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.drawing.ilk" />
+                            </Component>
+                            <Component Id="CS.DRAWING.PDB" DiskId="1" Guid="CF8B8274-1C95-4A5E-A451-E3A458D2206C">
+                                <File Id="CS.DRAWING.PDB" Name="cs.drawing.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.drawing.pdb" />
+                            </Component>
+                            <Component Id="CS.DRAWINGD.DLL" DiskId="1" Guid="66770142-3DB1-4476-903D-2B0BEF59BD46">
+                                <File Id="CS.DRAWINGD.DLL" Name="cs.drawingd.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.drawingd.dll" />
+                            </Component>
+                            <Component Id="CS.DRAWINGD.DLL.MANIFEST" DiskId="1" Guid="B14D22A6-A74C-40B3-8BD6-A1AD9FD739A9">
+                                <File Id="CS.DRAWINGD.DLL.MANIFEST" Name="cs.drawingd.dll.manifest" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.drawingd.dll.manifest" />
+                            </Component>
+                            <Component Id="CS.DRAWINGD.PDB" DiskId="1" Guid="A686CBE7-3EDC-41A9-8762-A7B7601C27F2">
+                                <File Id="CS.DRAWINGD.PDB" Name="cs.drawingd.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.drawingd.pdb" />
+                            </Component>
+                            <Component Id="CS.EXAMPLES.GLFW.EXE" DiskId="1" Guid="BEA33C21-DBB7-40E7-B912-BB1ACD608CB6">
+                                <File Id="CS.EXAMPLES.GLFW.EXE" Name="cs.examples.glfw.exe" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.examples.glfw.exe" />
+                            </Component>
+                            <Component Id="CS.EXAMPLES.GLFW.EXE.MANIFEST" DiskId="1" Guid="DA368B10-0495-403A-8045-6078049FE755">
+                                <File Id="CS.EXAMPLES.GLFW.EXE.MANIFEST" Name="cs.examples.glfw.exe.manifest" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.examples.glfw.exe.manifest" />
+                            </Component>
+                            <Component Id="CS.EXAMPLES.GLFW.PDB" DiskId="1" Guid="5111F2E7-212D-4FB4-BC3B-152A669951D0">
+                                <File Id="CS.EXAMPLES.GLFW.PDB" Name="cs.examples.glfw.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.examples.glfw.pdb" />
+                            </Component>
+                            <Component Id="CS.EXAMPLES.SIMPLE.EXE" DiskId="1" Guid="93DC0015-7D37-4AA9-B99C-C9FF78FABCA7">
+                                <File Id="CS.EXAMPLES.SIMPLE.EXE" Name="cs.examples.simple.exe" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.examples.simple.exe" />
+                            </Component>
+                            <Component Id="CS.EXAMPLES.SIMPLE.EXE.MANIFEST" DiskId="1" Guid="14209EAD-FF5D-46EB-9F19-4B7317264AD4">
+                                <File Id="CS.EXAMPLES.SIMPLE.EXE.MANIFEST" Name="cs.examples.simple.exe.manifest" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.examples.simple.exe.manifest" />
+                            </Component>
+                            <Component Id="CS.EXAMPLES.SIMPLE.PDB" DiskId="1" Guid="C55536DF-1581-40FB-8D99-406AEB67F532">
+                                <File Id="CS.EXAMPLES.SIMPLE.PDB" Name="cs.examples.simple.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.examples.simple.pdb" />
+                            </Component>
+                            <Component Id="CS.KERNEL.DLL" DiskId="1" Guid="1CAE6CA9-38BF-45E5-B253-44C02B2758C2">
+                                <File Id="CS.KERNEL.DLL" Name="cs.kernel.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.kernel.dll" />
+                            </Component>
+                            <Component Id="CS.KERNEL.ILK" DiskId="1" Guid="D489B953-FAEE-4B08-8076-5688EB067E93">
+                                <File Id="CS.KERNEL.ILK" Name="cs.kernel.ilk" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.kernel.ilk" />
+                            </Component>
+                            <Component Id="CS.KERNEL.PDB" DiskId="1" Guid="DB6D89F5-8B5B-4D30-A745-680797DADCEA">
+                                <File Id="CS.KERNEL.PDB" Name="cs.kernel.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.kernel.pdb" />
+                            </Component>
+                            <Component Id="CS.KERNELD.DLL" DiskId="1" Guid="FFFF8E04-C913-4EDC-9066-076000227CF9">
+                                <File Id="CS.KERNELD.DLL" Name="cs.kerneld.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.kerneld.dll" />
+                            </Component>
+                            <Component Id="CS.KERNELD.DLL.MANIFEST" DiskId="1" Guid="5A09FB1C-2BCB-4BD8-8D29-E1A5A840AB0C">
+                                <File Id="CS.KERNELD.DLL.MANIFEST" Name="cs.kerneld.dll.manifest" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.kerneld.dll.manifest" />
+                            </Component>
+                            <Component Id="CS.KERNELD.PDB" DiskId="1" Guid="BF2C78F6-0E8A-4F1A-A996-94EAFC0A4EC7">
+                                <File Id="CS.KERNELD.PDB" Name="cs.kerneld.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.kerneld.pdb" />
+                            </Component>
+                            <Component Id="CS.LOGGER.LOG" DiskId="1" Guid="55F092BA-EC46-4198-8E53-DC3511A47DD7">
+                                <File Id="CS.LOGGER.LOG" Name="cs.logger.log" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.logger.log" />
+                            </Component>
+                            <Component Id="CS.MATH.DLL" DiskId="1" Guid="EF6B13F2-247D-4490-A323-062FCED3527E">
+                                <File Id="CS.MATH.DLL" Name="cs.math.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.math.dll" />
+                            </Component>
+                            <Component Id="CS.MATH.ILK" DiskId="1" Guid="396456BD-41A8-4AEC-B421-7136C8B26237">
+                                <File Id="CS.MATH.ILK" Name="cs.math.ilk" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.math.ilk" />
+                            </Component>
+                            <Component Id="CS.MATH.PDB" DiskId="1" Guid="D010BAD5-7E74-4D79-94BD-B570928EF385">
+                                <File Id="CS.MATH.PDB" Name="cs.math.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.math.pdb" />
+                            </Component>
+                            <Component Id="CS.MATHD.DLL" DiskId="1" Guid="39922A50-C62C-4ADA-8B4C-CD8392B7C236">
+                                <File Id="CS.MATHD.DLL" Name="cs.mathd.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.mathd.dll" />
+                            </Component>
+                            <Component Id="CS.MATHD.DLL.MANIFEST" DiskId="1" Guid="731397C7-89DF-42CF-8E6A-3E9987B0140C">
+                                <File Id="CS.MATHD.DLL.MANIFEST" Name="cs.mathd.dll.manifest" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.mathd.dll.manifest" />
+                            </Component>
+                            <Component Id="CS.MATHD.PDB" DiskId="1" Guid="AC7DC27B-3B21-43BD-8A5C-66CCF6272E71">
+                                <File Id="CS.MATHD.PDB" Name="cs.mathd.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.mathd.pdb" />
+                            </Component>
+                            <Component Id="CS.MODELER.DLL" DiskId="1" Guid="63644EC7-6F44-40A0-A336-14D124B7EB23">
+                                <File Id="CS.MODELER.DLL" Name="cs.modeler.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.modeler.dll" />
+                            </Component>
+                            <Component Id="CS.MODELER.ILK" DiskId="1" Guid="9C54C306-0F29-4096-BCE8-3A7E85D43C48">
+                                <File Id="CS.MODELER.ILK" Name="cs.modeler.ilk" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.modeler.ilk" />
+                            </Component>
+                            <Component Id="CS.MODELER.PDB" DiskId="1" Guid="D028A049-23E3-48C6-A891-2674FB4C9DC6">
+                                <File Id="CS.MODELER.PDB" Name="cs.modeler.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.modeler.pdb" />
+                            </Component>
+                            <Component Id="CS.MODELERD.DLL" DiskId="1" Guid="1A5AEFE7-425C-42ED-B6E7-F3F2D4A5160E">
+                                <File Id="CS.MODELERD.DLL" Name="cs.modelerd.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.modelerd.dll" />
+                            </Component>
+                            <Component Id="CS.MODELERD.DLL.MANIFEST" DiskId="1" Guid="48F00D8F-8487-4FAE-9CFA-7CB9102B561C">
+                                <File Id="CS.MODELERD.DLL.MANIFEST" Name="cs.modelerd.dll.manifest" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.modelerd.dll.manifest" />
+                            </Component>
+                            <Component Id="CS.MODELERD.PDB" DiskId="1" Guid="8E166224-2BF7-4EF5-B171-1F0464D3BE12">
+                                <File Id="CS.MODELERD.PDB" Name="cs.modelerd.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.modelerd.pdb" />
+                            </Component>
+                            <Component Id="CS.RENDER.DLL" DiskId="1" Guid="CE0A600A-FD48-4335-B2DD-719DD832C93D">
+                                <File Id="CS.RENDER.DLL" Name="cs.render.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.render.dll" />
+                            </Component>
+                            <Component Id="CS.RENDER.ILK" DiskId="1" Guid="DBC67165-24DE-46BB-AC1D-E64C43D2975E">
+                                <File Id="CS.RENDER.ILK" Name="cs.render.ilk" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.render.ilk" />
+                            </Component>
+                            <Component Id="CS.RENDER.PDB" DiskId="1" Guid="0505673B-218D-41B0-9BAD-8574B1E0B4A5">
+                                <File Id="CS.RENDER.PDB" Name="cs.render.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.render.pdb" />
+                            </Component>
+                            <Component Id="CS.RENDERD.DLL" DiskId="1" Guid="9271406D-BD39-48DB-9609-5617A47179F2">
+                                <File Id="CS.RENDERD.DLL" Name="cs.renderd.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.renderd.dll" />
+                            </Component>
+                            <Component Id="CS.RENDERD.DLL.MANIFEST" DiskId="1" Guid="A7F5D49B-E836-440A-8CBC-6A3BE249E8DB">
+                                <File Id="CS.RENDERD.DLL.MANIFEST" Name="cs.renderd.dll.manifest" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.renderd.dll.manifest" />
+                            </Component>
+                            <Component Id="CS.RENDERD.PDB" DiskId="1" Guid="56600206-B53F-4414-91DD-D816BC48ECA9">
+                                <File Id="CS.RENDERD.PDB" Name="cs.renderd.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.renderd.pdb" />
+                            </Component>
+                            <Component Id="CS.TEST.EXE" DiskId="1" Guid="65BB6657-F8E5-41ED-A59C-F686D9B9003D">
+                                <File Id="CS.TEST.EXE" Name="cs.test.exe" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.test.exe" />
+                            </Component>
+                            <Component Id="CS.TEST.EXE.MANIFEST" DiskId="1" Guid="49AB04E9-8F06-437C-9AEF-92DD8F24F107">
+                                <File Id="CS.TEST.EXE.MANIFEST" Name="cs.test.exe.manifest" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.test.exe.manifest" />
+                            </Component>
+                            <Component Id="CS.TEST.PDB" DiskId="1" Guid="DA2649E6-A46E-4C37-81EE-0C1176C6AB05">
+                                <File Id="CS.TEST.PDB" Name="cs.test.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\cs.test.pdb" />
+                            </Component>
+                            <Component Id="DOC2.TXT" DiskId="1" Guid="8FEB5689-81D3-4653-BCEB-1BE0A5DE28C5">
+                                <File Id="DOC2.TXT" Name="doc2.txt" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\doc2.txt" />
+                            </Component>
+                            <Component Id="FMTD.DLL" DiskId="1" Guid="F9896E49-6AB9-4AE9-B964-1F0D345294B1">
+                                <File Id="FMTD.DLL" Name="fmtd.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\fmtd.dll" />
+                            </Component>
+                            <Component Id="GLEW32D.DLL" DiskId="1" Guid="0DA69DAE-7CA8-425A-8499-E5B4DB15D8A2">
+                                <File Id="GLEW32D.DLL" Name="glew32d.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\glew32d.dll" />
+                            </Component>
+                            <Component Id="GLFW3.DLL" DiskId="1" Guid="316E180F-7111-484B-8250-A6F3B950708E">
+                                <File Id="GLFW3.DLL" Name="glfw3.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\glfw3.dll" />
+                            </Component>
+                            <Component Id="GMOCK_MAIND.DLL" DiskId="1" Guid="B321A794-F3E1-4E4D-B8F8-477A964FC0A1">
+                                <File Id="GMOCK_MAIND.DLL" Name="gmock_maind.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\gmock_maind.dll" />
+                            </Component>
+                            <Component Id="LIBEXPATD.DLL" DiskId="1" Guid="377A1105-9C0A-40CA-A4B7-C12A4DD28CE0">
+                                <File Id="LIBEXPATD.DLL" Name="libexpatd.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\libexpatd.dll" />
+                            </Component>
+                            <Component Id="PCRED.DLL" DiskId="1" Guid="A9AFC1D2-7C26-419D-9B2E-9064DEB5D53A">
+                                <File Id="PCRED.DLL" Name="pcred.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\pcred.dll" />
+                            </Component>
+                            <Component Id="POCOFOUNDATIOND.DLL" DiskId="1" Guid="EEE8CED7-88D3-49E0-9B31-8921981C37E3">
+                                <File Id="POCOFOUNDATIOND.DLL" Name="PocoFoundationd.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\PocoFoundationd.dll" />
+                            </Component>
+                            <Component Id="POCOJSOND.DLL" DiskId="1" Guid="1DA80675-E405-422E-8081-F035D02E2838">
+                                <File Id="POCOJSOND.DLL" Name="PocoJSONd.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\PocoJSONd.dll" />
+                            </Component>
+                            <Component Id="POCOUTILD.DLL" DiskId="1" Guid="A1ACCA0F-B062-4116-A53B-13BED07FC2D7">
+                                <File Id="POCOUTILD.DLL" Name="PocoUtild.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\PocoUtild.dll" />
+                            </Component>
+                            <Component Id="POCOXMLD.DLL" DiskId="1" Guid="F40636BF-AB7D-4A69-A570-E0407F792225">
+                                <File Id="POCOXMLD.DLL" Name="PocoXMLd.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\PocoXMLd.dll" />
+                            </Component>
+                            <Component Id="SAVE.TXT.DB" DiskId="1" Guid="B68FEF77-5178-4C51-B1A6-B1C70E883E37">
+                                <File Id="SAVE.TXT.DB" Name="save.txt.db" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\save.txt.db" />
+                            </Component>
+                            <Component Id="SQLITE3.DLL" DiskId="1" Guid="E15C3845-EE94-4359-9CA7-75FDBDA90B27">
+                                <File Id="SQLITE3.DLL" Name="sqlite3.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\sqlite3.dll" />
+                            </Component>
+                            <Component Id="ZLIBD1.DLL" DiskId="1" Guid="4018075D-C881-4B6A-BBC4-5835F412F0FB">
+                                <File Id="ZLIBD1.DLL" Name="zlibd1.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\zlibd1.dll" />
+                            </Component>
+                            <Directory Id="PLUGINS" Name="plugins">
+                                <Component Id="CS.PLUGINS.SIMPLE.DLL" DiskId="1" Guid="8CD3D0FD-26E4-4951-BBB0-BC8535DE32A3">
+                                    <File Id="CS.PLUGINS.SIMPLE.DLL" Name="cs.plugins.simple.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\plugins\cs.plugins.simple.dll" />
+                                </Component>
+                                <Component Id="CS.PLUGINS.SIMPLE.ILK" DiskId="1" Guid="1A5E5FCC-7EA8-40F1-BEE5-346E794D92BF">
+                                    <File Id="CS.PLUGINS.SIMPLE.ILK" Name="cs.plugins.simple.ilk" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\plugins\cs.plugins.simple.ilk" />
+                                </Component>
+                                <Component Id="CS.PLUGINS.SIMPLE.PDB" DiskId="1" Guid="AC4ADE47-932F-457D-9794-05A6D7EE0A7B">
+                                    <File Id="CS.PLUGINS.SIMPLE.PDB" Name="cs.plugins.simple.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\plugins\cs.plugins.simple.pdb" />
+                                </Component>
+                                <Component Id="CS.PLUGINS.SIMPLED.DLL" DiskId="1" Guid="CBC30064-7FC0-462E-A58B-00E0B883986F">
+                                    <File Id="CS.PLUGINS.SIMPLED.DLL" Name="cs.plugins.simpled.dll" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\plugins\cs.plugins.simpled.dll" />
+                                </Component>
+                                <Component Id="CS.PLUGINS.SIMPLED.DLL.MANIFEST" DiskId="1" Guid="B2B10217-47C8-40C1-ACE8-0CC1B75753D8">
+                                    <File Id="CS.PLUGINS.SIMPLED.DLL.MANIFEST" Name="cs.plugins.simpled.dll.manifest" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\plugins\cs.plugins.simpled.dll.manifest" />
+                                </Component>
+                                <Component Id="CS.PLUGINS.SIMPLED.PDB" DiskId="1" Guid="B53BE7EF-46B0-42CD-9B95-56FC7BA4EE74">
+                                    <File Id="CS.PLUGINS.SIMPLED.PDB" Name="cs.plugins.simpled.pdb" Source="..\..\build\windows-cl-x64-ninja\bin\Debug\plugins\cs.plugins.simpled.pdb" />
+                                </Component>
+                            </Directory>
+                        </Directory>
+                        <Directory Id="RELEASE" Name="Release">
+                            <Directory Id="PLUGINS_1" Name="plugins" />
+                        </Directory>
+                    </Directory>
+                    <Directory Id="INCLUDE" Name="include">
+                        <Directory Id="CS_1" Name="cs">
+                            <Component Id="APP.H" DiskId="1" Guid="AED22D74-E0EA-4B79-93F9-3E6FF3BFA923">
+                                <File Id="APP.H" Name="app.h" Source="..\..\src\app\include\cs\app.h" />
+                            </Component>
+                            <Component Id="APP_FWD.H" DiskId="1" Guid="36B0FA95-33BB-4695-96D4-24728BFD670E">
+                                <File Id="APP_FWD.H" Name="app_fwd.h" Source="..\..\src\app\include\cs\app_fwd.h" />
+                            </Component>
+                            <Directory Id="APP" Name="app">
+                                <Component Id="COMMON.H" DiskId="1" Guid="2C93EA82-9616-47E2-B7E3-F06C34F3C942">
+                                    <File Id="COMMON.H" Name="common.h" Source="..\..\src\app\include\cs\app\common.h" />
+                                </Component>
+                                <Component Id="CSAPP.H" DiskId="1" Guid="042A1812-2B15-4E1A-B235-12365C1F0170">
+                                    <File Id="CSAPP.H" Name="CSApp.h" Source="..\..\src\app\include\cs\app\CSApp.h" />
+                                </Component>
+                                <Component Id="CSCOMMAND.H" DiskId="1" Guid="569D7525-05C7-4961-BF4E-94B1598F16C6">
+                                    <File Id="CSCOMMAND.H" Name="CSCommand.h" Source="..\..\src\app\include\cs\app\CSCommand.h" />
+                                </Component>
+                                <Component Id="CSCOMMANDCOLLECTION.H" DiskId="1" Guid="BE07AFA5-E481-4A2A-8710-11027E42CC3D">
+                                    <File Id="CSCOMMANDCOLLECTION.H" Name="CSCommandCollection.h" Source="..\..\src\app\include\cs\app\CSCommandCollection.h" />
+                                </Component>
+                                <Component Id="CSDOCUMENT.H" DiskId="1" Guid="9B266AC7-007E-42BF-8D28-7994CAC96054">
+                                    <File Id="CSDOCUMENT.H" Name="CSDocument.h" Source="..\..\src\app\include\cs\app\CSDocument.h" />
+                                </Component>
+                                <Component Id="CSDOCUMENT2D.H" DiskId="1" Guid="4907BF00-4057-43F5-98CB-97F846B0C4C2">
+                                    <File Id="CSDOCUMENT2D.H" Name="CSDocument2d.h" Source="..\..\src\app\include\cs\app\CSDocument2d.h" />
+                                </Component>
+                                <Component Id="CSDOCUMENT3D.H" DiskId="1" Guid="8F865813-6CFB-401D-AAB6-3EFEC9EE83D4">
+                                    <File Id="CSDOCUMENT3D.H" Name="CSDocument3d.h" Source="..\..\src\app\include\cs\app\CSDocument3d.h" />
+                                </Component>
+                                <Component Id="CSDOCUMENTCOLLECTION.H" DiskId="1" Guid="0D80D271-38A6-448D-8732-D9EB55A13035">
+                                    <File Id="CSDOCUMENTCOLLECTION.H" Name="CSDocumentCollection.h" Source="..\..\src\app\include\cs\app\CSDocumentCollection.h" />
+                                </Component>
+                                <Component Id="CSPLUGINMANAGER.H" DiskId="1" Guid="D9A16FF7-FA9E-4630-B0B8-978642675204">
+                                    <File Id="CSPLUGINMANAGER.H" Name="CSPluginManager.h" Source="..\..\src\app\include\cs\app\CSPluginManager.h" />
+                                </Component>
+                            </Directory>
+                        </Directory>
+                        <Directory Id="CS_2" Name="cs">
+                            <Component Id="BASE.H" DiskId="1" Guid="B3F02191-DAF5-4AD5-A417-48EE9A2566CA">
+                                <File Id="BASE.H" Name="base.h" Source="..\..\src\base\include\cs\base.h" />
+                            </Component>
+                            <Component Id="BASE_FWD.H" DiskId="1" Guid="A14BE19A-9194-4429-8C3C-D615561B38B6">
+                                <File Id="BASE_FWD.H" Name="base_fwd.h" Source="..\..\src\base\include\cs\base_fwd.h" />
+                            </Component>
+                            <Directory Id="BASE" Name="base">
+                                <Component Id="COMMON.H_1" DiskId="1" Guid="5B88CC43-D4C5-4EC9-B760-1FA538F52128">
+                                    <File Id="COMMON.H_1" Name="common.h" Source="..\..\src\base\include\cs\base\common.h" />
+                                </Component>
+                                <Component Id="CSCOLOR.H" DiskId="1" Guid="80FCC33C-4C1D-4A0C-A2F9-84F947116733">
+                                    <File Id="CSCOLOR.H" Name="CSColor.h" Source="..\..\src\base\include\cs\base\CSColor.h" />
+                                </Component>
+                                <Component Id="CSCONSTANTS.H" DiskId="1" Guid="BE30C33E-49F8-4155-8BC6-E7B299632A22">
+                                    <File Id="CSCONSTANTS.H" Name="CSConstants.h" Source="..\..\src\base\include\cs\base\CSConstants.h" />
+                                </Component>
+                                <Component Id="CSFACTORY.H" DiskId="1" Guid="9DB0C336-6FFE-4A32-94EE-B49253C157B5">
+                                    <File Id="CSFACTORY.H" Name="CSFactory.h" Source="..\..\src\base\include\cs\base\CSFactory.h" />
+                                </Component>
+                                <Component Id="CSSTRING.H" DiskId="1" Guid="E58C32F4-1E29-4062-81C8-2ECE9967F37F">
+                                    <File Id="CSSTRING.H" Name="CSString.h" Source="..\..\src\base\include\cs\base\CSString.h" />
+                                </Component>
+                                <Component Id="ICSCOLLECTION.H" DiskId="1" Guid="E1B85C35-59A0-4FD4-88CB-CBB350831794">
+                                    <File Id="ICSCOLLECTION.H" Name="ICSCollection.h" Source="..\..\src\base\include\cs\base\ICSCollection.h" />
+                                </Component>
+                            </Directory>
+                        </Directory>
+                    </Directory>
+                </Directory>
+            </Directory>
+        </Directory>
+        <Feature Id="DefaultFeature" Title="Main Feature" Level="1">
+            <ComponentRef Id="CS.APP.DLL" />
+            <ComponentRef Id="CS.APP.ILK" />
+            <ComponentRef Id="CS.APP.PDB" />
+            <ComponentRef Id="CS.APPD.DLL" />
+            <ComponentRef Id="CS.APPD.DLL.MANIFEST" />
+            <ComponentRef Id="CS.APPD.PDB" />
+            <ComponentRef Id="CS.BASE.DLL" />
+            <ComponentRef Id="CS.BASE.ILK" />
+            <ComponentRef Id="CS.BASE.PDB" />
+            <ComponentRef Id="CS.BASED.DLL" />
+            <ComponentRef Id="CS.BASED.DLL.MANIFEST" />
+            <ComponentRef Id="CS.BASED.PDB" />
+            <ComponentRef Id="CS.CORE.DLL" />
+            <ComponentRef Id="CS.CORE.ILK" />
+            <ComponentRef Id="CS.CORE.PDB" />
+            <ComponentRef Id="CS.CORED.DLL" />
+            <ComponentRef Id="CS.CORED.DLL.MANIFEST" />
+            <ComponentRef Id="CS.CORED.PDB" />
+            <ComponentRef Id="CS.DRAWING.DLL" />
+            <ComponentRef Id="CS.DRAWING.ILK" />
+            <ComponentRef Id="CS.DRAWING.PDB" />
+            <ComponentRef Id="CS.DRAWINGD.DLL" />
+            <ComponentRef Id="CS.DRAWINGD.DLL.MANIFEST" />
+            <ComponentRef Id="CS.DRAWINGD.PDB" />
+            <ComponentRef Id="CS.EXAMPLES.GLFW.EXE" />
+            <ComponentRef Id="CS.EXAMPLES.GLFW.EXE.MANIFEST" />
+            <ComponentRef Id="CS.EXAMPLES.GLFW.PDB" />
+            <ComponentRef Id="CS.EXAMPLES.SIMPLE.EXE" />
+            <ComponentRef Id="CS.EXAMPLES.SIMPLE.EXE.MANIFEST" />
+            <ComponentRef Id="CS.EXAMPLES.SIMPLE.PDB" />
+            <ComponentRef Id="CS.KERNEL.DLL" />
+            <ComponentRef Id="CS.KERNEL.ILK" />
+            <ComponentRef Id="CS.KERNEL.PDB" />
+            <ComponentRef Id="CS.KERNELD.DLL" />
+            <ComponentRef Id="CS.KERNELD.DLL.MANIFEST" />
+            <ComponentRef Id="CS.KERNELD.PDB" />
+            <ComponentRef Id="CS.LOGGER.LOG" />
+            <ComponentRef Id="CS.MATH.DLL" />
+            <ComponentRef Id="CS.MATH.ILK" />
+            <ComponentRef Id="CS.MATH.PDB" />
+            <ComponentRef Id="CS.MATHD.DLL" />
+            <ComponentRef Id="CS.MATHD.DLL.MANIFEST" />
+            <ComponentRef Id="CS.MATHD.PDB" />
+            <ComponentRef Id="CS.MODELER.DLL" />
+            <ComponentRef Id="CS.MODELER.ILK" />
+            <ComponentRef Id="CS.MODELER.PDB" />
+            <ComponentRef Id="CS.MODELERD.DLL" />
+            <ComponentRef Id="CS.MODELERD.DLL.MANIFEST" />
+            <ComponentRef Id="CS.MODELERD.PDB" />
+            <ComponentRef Id="CS.RENDER.DLL" />
+            <ComponentRef Id="CS.RENDER.ILK" />
+            <ComponentRef Id="CS.RENDER.PDB" />
+            <ComponentRef Id="CS.RENDERD.DLL" />
+            <ComponentRef Id="CS.RENDERD.DLL.MANIFEST" />
+            <ComponentRef Id="CS.RENDERD.PDB" />
+            <ComponentRef Id="CS.TEST.EXE" />
+            <ComponentRef Id="CS.TEST.EXE.MANIFEST" />
+            <ComponentRef Id="CS.TEST.PDB" />
+            <ComponentRef Id="DOC2.TXT" />
+            <ComponentRef Id="FMTD.DLL" />
+            <ComponentRef Id="GLEW32D.DLL" />
+            <ComponentRef Id="GLFW3.DLL" />
+            <ComponentRef Id="GMOCK_MAIND.DLL" />
+            <ComponentRef Id="LIBEXPATD.DLL" />
+            <ComponentRef Id="PCRED.DLL" />
+            <ComponentRef Id="POCOFOUNDATIOND.DLL" />
+            <ComponentRef Id="POCOJSOND.DLL" />
+            <ComponentRef Id="POCOUTILD.DLL" />
+            <ComponentRef Id="POCOXMLD.DLL" />
+            <ComponentRef Id="SAVE.TXT.DB" />
+            <ComponentRef Id="SQLITE3.DLL" />
+            <ComponentRef Id="ZLIBD1.DLL" />
+            <ComponentRef Id="CS.PLUGINS.SIMPLE.DLL" />
+            <ComponentRef Id="CS.PLUGINS.SIMPLE.ILK" />
+            <ComponentRef Id="CS.PLUGINS.SIMPLE.PDB" />
+            <ComponentRef Id="CS.PLUGINS.SIMPLED.DLL" />
+            <ComponentRef Id="CS.PLUGINS.SIMPLED.DLL.MANIFEST" />
+            <ComponentRef Id="CS.PLUGINS.SIMPLED.PDB" />
+            <ComponentRef Id="APP.H" />
+            <ComponentRef Id="APP_FWD.H" />
+            <ComponentRef Id="COMMON.H" />
+            <ComponentRef Id="CSAPP.H" />
+            <ComponentRef Id="CSCOMMAND.H" />
+            <ComponentRef Id="CSCOMMANDCOLLECTION.H" />
+            <ComponentRef Id="CSDOCUMENT.H" />
+            <ComponentRef Id="CSDOCUMENT2D.H" />
+            <ComponentRef Id="CSDOCUMENT3D.H" />
+            <ComponentRef Id="CSDOCUMENTCOLLECTION.H" />
+            <ComponentRef Id="CSPLUGINMANAGER.H" />
+            <ComponentRef Id="BASE.H" />
+            <ComponentRef Id="BASE_FWD.H" />
+            <ComponentRef Id="COMMON.H_1" />
+            <ComponentRef Id="CSCOLOR.H" />
+            <ComponentRef Id="CSCONSTANTS.H" />
+            <ComponentRef Id="CSFACTORY.H" />
+            <ComponentRef Id="CSSTRING.H" />
+            <ComponentRef Id="ICSCOLLECTION.H" />
+        </Feature>
+        <UI />
+        <UIRef Id="WixUI_Minimal" />
+        <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+        <Binary Id="license.rtf" SourceFile="C:\Develop\cs\package\wix\license.rtf" />
+    </Product>
+</Wix>
