@@ -1,5 +1,6 @@
 message(STATUS "generate installer")
 
+# TODO: #6 support cpack...
 add_executable(cs.installer main.cpp)
 set(CPACK_GENERATOR WIX)
 
