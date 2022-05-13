@@ -13,8 +13,8 @@ class CSQuaternion
 {
 public:
   DECL_CS_MATH CSQuaternion();
-  DECL_CS_MATH explicit CSQuaternion(double w, double x, double y, double z);
-  DECL_CS_MATH explicit CSQuaternion(const CSVec3& eulerAngleXYZ);
+  // DECL_CS_MATH explicit CSQuaternion(double w, double x, double y, double z);
+  // DECL_CS_MATH explicit CSQuaternion(const CSVec3& eulerAngleXYZ);
   DECL_CS_MATH virtual ~CSQuaternion();
 
 public:

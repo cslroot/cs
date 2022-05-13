@@ -2,6 +2,8 @@
 
 #include <cs/kernel/common.h>
 
+#include <cs/kernel/CSKernel.h>
+
 #include <cs/kernel/Entity.h>
 #include <cs/kernel/Geometry.h>
 #include <cs/kernel/Topology.h>

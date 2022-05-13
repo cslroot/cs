@@ -8,6 +8,9 @@
 #include "CSDocument.h"
 #include "CSDocumentCollection.h"
 
+#include "CSCommand.h"
+#include "CSCommandCollection.h"
+
 #include <locale>
 #include <memory>
 #include <vector>
@@ -34,9 +37,11 @@ struct CSApp::Impl
 {
   Impl(CSApp* pApp)
     : _docs(pApp)
+    , _commands(pApp)
   {}
 
   CSDocumentCollection _docs;
+  CSCommandCollection _commands;
   CSConfig _config;
   CSLogger _log;
   cs::core::UUID _sessionID;
@@ -70,6 +75,11 @@ CSDocumentCollection&
 CSApp::Documents() const
 {
   return _impl->_docs;
+}
+CSCommandCollection&
+CSApp::Commands() const
+{
+  return _impl->_commands;
 }
 
 cs::core::CSConfig&

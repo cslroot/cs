@@ -13,3 +13,14 @@ Entity::Entity(EntityType entType)
 {}
 
 Entity::~Entity() {}
+
+EntityType
+Entity::Type() const
+{
+  return _entType;
+}
+int
+Entity::SubType() const
+{
+  return 0;
+}

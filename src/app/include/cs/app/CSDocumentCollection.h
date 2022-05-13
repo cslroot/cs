@@ -15,7 +15,7 @@ namespace app {
 class CSApp;
 class CSDocument;
 
-class CSDocumentCollection final : cs::base::ICSCollection<CSDocument>
+class CSDocumentCollection final : public cs::base::ICSCollection<CSDocument>
 {
 public:
   DECL_CS_APP CSDocumentCollection(CSApp*);

@@ -9,6 +9,8 @@ class Entity;
 class Geometry;
 class Topology;
 
+class Geometry2d;
+class Geometry2dProperty;
 class Curve2d;
 
 class Point2d;

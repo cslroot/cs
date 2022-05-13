@@ -12,6 +12,9 @@ public:
   explicit DECL_CS_APP CSDocument2d(const cs::base::CSString&);
   DECL_CS_APP ~CSDocument2d();
 
+public:
+  DECL_CS_APP virtual cs::base::CSString TypeName() const override;
+
 private:
 };
 

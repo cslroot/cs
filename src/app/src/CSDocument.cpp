@@ -126,7 +126,7 @@ struct CSDocument::Impl
   }
 };
 
-CSDocument::CSDocument(Key)
+CSDocument::CSDocument(CSFactory::Key)
   : _impl(std::make_unique<Impl>())
 {
   _impl->_db = create_db_doc();

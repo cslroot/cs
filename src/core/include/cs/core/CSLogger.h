@@ -12,7 +12,7 @@ namespace core {
 class CSLogger
 {
 public:
-  DECL_CS_CORE static std::unique_ptr<CSLogger> Create();
+  // DECL_CS_CORE static std::unique_ptr<CSLogger> Create();
 
 public:
   enum class Priority

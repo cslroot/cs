@@ -15,12 +15,12 @@ using namespace cs::core;
 namespace {}
 
 #pragma region static
-std::unique_ptr<CSLogger>
-CSLogger::Create()
-{
-  auto pLogger = std::make_unique<CSLogger>();
-  return pLogger;
-}
+// std::unique_ptr<CSLogger>
+// CSLogger::Create()
+// {
+//   auto pLogger = std::make_unique<CSLogger>();
+//   return pLogger;
+// }
 #pragma endregion static
 
 struct CSLogger::Impl

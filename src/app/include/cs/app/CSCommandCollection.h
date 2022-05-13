@@ -13,7 +13,7 @@
 namespace cs {
 namespace app {
 
-class CSCommandCollection final : cs::base::ICSCollection<CSCommand>
+class CSCommandCollection final : public cs::base::ICSCollection<CSCommand>
 {
 public:
   DECL_CS_APP CSCommandCollection(CSApp*);

@@ -21,6 +21,12 @@ Scene::Add(Node::Ptr mesh)
   _impl->_root->AddChild(mesh);
 }
 
+void
+Scene::Update()
+{
+  // _impl->_root->update();
+}
+
 CSDisplayableObject::Ptr
 Scene::RootObject() const
 {

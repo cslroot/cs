@@ -21,11 +21,12 @@ class CSDocument
   , public DocFactory
 {
 public:
-  explicit DECL_CS_APP CSDocument(Key);
+  explicit DECL_CS_APP CSDocument(CSFactory::Key);
   virtual DECL_CS_APP ~CSDocument();
 
 public:
   DECL_CS_APP void SaveAs(const cs::base::CSString& filepath);
+  DECL_CS_APP virtual cs::base::CSString TypeName() const = 0;
 
 public:
   DECL_CS_APP cs::modeler::CSModeler& Modeler() const;
