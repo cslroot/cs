@@ -93,6 +93,8 @@ if("${CMAKE_GENERATOR}" MATCHES "^Visual Studio.*")
     set_property(GLOBAL PROPERTY CMAKE_SKIP_INSTALL_ALL_DEPENDENCY true)
 endif()
 
+include(GenerateExportHeader)   # to create CS_XXX_EXPORT with generate_export_header
+
 add_subdirectory(src)
 
 # enable testing

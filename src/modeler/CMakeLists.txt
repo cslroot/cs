@@ -6,6 +6,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_library(${PROJ_NAME} ${CS_LIB_TYPE})
 
+generate_export_header(${PROJ_NAME} BASE_NAME cs_modeler)
+target_include_directories(${PROJ_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+
 target_compile_definitions(${PROJ_NAME} PRIVATE BUILD_CS_MODELER_LIB)
 target_compile_features(${PROJ_NAME} PRIVATE cxx_std_17)
 

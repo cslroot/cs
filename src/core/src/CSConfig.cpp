@@ -20,10 +20,10 @@ constexpr char conf_filename[] = "app.config.json";
 struct CSConfig::Impl
 {
   Impl()
-    : _config(new Poco::Util::JSONConfiguration)
+    : _config(std::make_unique<Poco::Util::JSONConfiguration>())
   {}
 
-  Poco::AutoPtr<Poco::Util::JSONConfiguration> _config;
+  std::unique_ptr<Poco::Util::JSONConfiguration> _config;
 };
 
 CSConfig::CSConfig()

@@ -6,6 +6,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_library(${PROJ_NAME} ${CS_LIB_TYPE})
 
+generate_export_header(${PROJ_NAME} BASE_NAME cs_base)
+target_include_directories(${PROJ_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+
 file(GLOB_RECURSE ${PROJ_NAME}_SRC CONFIGURE_DEPENDS "*.cpp")
 target_sources(${PROJ_NAME} PRIVATE ${${PROJ_NAME}_SRC})
 if(WIN32)

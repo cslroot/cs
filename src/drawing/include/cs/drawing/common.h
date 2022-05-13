@@ -1,5 +1,7 @@
 #pragma once
 
+#if !defined(cs_drawing_EXPORTS)
+// w/a without cmake
 #if defined(CS_DLL)
 #if defined(_MSC_VER)
 #define EXPORT __declspec(dllexport)
@@ -16,9 +18,12 @@
 #define EXPORT
 #define IMPORT
 #endif
-
 #if BUILD_CS_DRAWING_LIB
 #define DECL_CS_DRAWING EXPORT
 #else
 #define DECL_CS_DRAWING IMPORT
+#endif
+#else
+#include <cs_drawing_export.h>
+#define DECL_CS_DRAWING CS_DRAWING_EXPORT
 #endif

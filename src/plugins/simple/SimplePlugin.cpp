@@ -4,7 +4,7 @@
 
 using namespace cs::plugins::simple;
 
-extern "C" DECL_CS_PLUGINS_SIMPLE cs::core::ICSPlugin*
+extern "C" DECL_CS_PLUGIN_SIMPLE cs::core::ICSPlugin*
 cs_create_plugin()
 {
   return new SimplePlugin();

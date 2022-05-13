@@ -6,6 +6,13 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_library(${PROJ_NAME} ${CS_LIB_TYPE})
 
+generate_export_header(${PROJ_NAME}
+  BASE_NAME cs_app
+  # EXPORT_MACRO_NAME CS_APP_EXPORT  # default
+  # EXPORT_FILE_NAME cs_app_export.h  # default
+)
+target_include_directories(${PROJ_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+
 file(GLOB_RECURSE ${PROJ_NAME}_SRC CONFIGURE_DEPENDS "*.cpp")
 target_sources(${PROJ_NAME} PRIVATE ${${PROJ_NAME}_SRC})
 if(WIN32)
@@ -35,3 +42,5 @@ target_link_libraries(${PROJ_NAME} PUBLIC cs.render)
 
 target_include_directories(${PROJ_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_include_directories(${PROJ_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/cs/app)
+
+message(STATUS ${CMAKE_CURRENT_BINARY_DIR})
