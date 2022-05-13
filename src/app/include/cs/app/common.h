@@ -1,5 +1,7 @@
 #pragma once
 
+#if !defined(cs_app_EXPORTS)
+// w/a without cmake
 #if defined(CS_DLL)
 #if defined(_MSC_VER)
 #define EXPORT __declspec(dllexport)
@@ -16,9 +18,12 @@
 #define EXPORT
 #define IMPORT
 #endif
-
 #if BUILD_CS_APP_LIB
 #define DECL_CS_APP EXPORT
 #else
 #define DECL_CS_APP IMPORT
+#endif
+#else
+#include <cs_app_export.h>
+#define DECL_CS_APP CS_APP_EXPORT
 #endif

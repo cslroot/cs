@@ -1,5 +1,7 @@
 #pragma once
 
+#if !defined(cs_base_EXPORTS)
+// w/a without cmake
 #if defined(CS_DLL)
 #if defined(_MSC_VER)
 #define EXPORT __declspec(dllexport)
@@ -16,12 +18,12 @@
 #define EXPORT
 #define IMPORT
 #endif
-
 #if BUILD_CS_BASE_LIB
 #define DECL_CS_BASE EXPORT
 #else
 #define DECL_CS_BASE IMPORT
 #endif
-
-#define CS_NEW new
-#define CS_DELETE delete
+#else
+#include <cs_base_export.h>
+#define DECL_CS_BASE CS_BASE_EXPORT
+#endif

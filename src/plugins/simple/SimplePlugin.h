@@ -7,10 +7,10 @@ namespace cs {
 namespace plugins {
 namespace simple {
 
-extern "C" DECL_CS_PLUGINS_SIMPLE cs::core::ICSPlugin*
+extern "C" DECL_CS_PLUGIN_SIMPLE cs::core::ICSPlugin*
 cs_create_plugin();
 
-class DECL_CS_PLUGINS_SIMPLE SimplePlugin final : public cs::core::ICSPlugin
+class DECL_CS_PLUGIN_SIMPLE SimplePlugin final : public cs::core::ICSPlugin
 {
 public:
   SimplePlugin();
