@@ -21,20 +21,6 @@ body:
       label: Reproducibility
       options:
         - label: reproducible
-  - type: dropdown
-    id: module
-    attributes:
-      label: What modules are you facing the problem on?
-      multiple: true
-      options:
-        - base
-        - math
-        - core
-        - modeler
-        - renderer
-        - plugins
-        - bindings(C#)
-        - example
   - type: textarea
     id: to-reproduce
     attributes:
