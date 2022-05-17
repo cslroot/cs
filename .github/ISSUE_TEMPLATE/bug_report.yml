@@ -1,0 +1,86 @@
+name: Bug Report
+description: Create a report to help us improve
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "## Thank you for contributing to our project!"
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+      value: "A bug happened!"
+    validations:
+      required: true
+  - type: checkboxes
+    id: reproduce
+    attributes:
+      label: Reproducibility
+      options:
+        - label: reproducible
+  - type: dropdown
+    id: module
+    attributes:
+      label: What modules are you facing the problem on?
+      multiple: true
+      options:
+        - base
+        - math
+        - core
+        - modeler
+        - renderer
+        - plugins
+        - bindings(C#)
+        - example
+  - type: textarea
+    id: to-reproduce
+    attributes:
+      label: How to reproduce the problem?
+      description: |
+        examples:
+          Steps to reproduce the behavior:
+          1. Go to '...'
+          2. Click on '....'
+          3. Scroll down to '....'
+          4. See error
+  - type: dropdown
+    id: modules
+    attributes:
+      label: Which modules are related to the problem?
+      multiple: true
+      options:
+        - base
+        - math
+        - core
+        - modeler
+        - renderer
+        - plugins
+        - bindings(C#)
+        - example
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version
+      description: What version of our software are you running?
+      options:
+        - 0.1.0 (Default)
+    validations:
+      required: true
+  - type: dropdown
+    id: OS
+    attributes:
+      label: What OS are you seeing the problem on?
+      multiple: true
+      options:
+        - Windows
+        - Linux
+        - MacOS
+        - Others
+  - type: input
+    id: OS_detail
+    attributes:
+      description: OS not listed
+      label: What OS are you seeing the problem on?
