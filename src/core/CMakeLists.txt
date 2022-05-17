@@ -29,10 +29,11 @@ target_precompile_headers(${PROJ_NAME}
 file(GLOB_RECURSE ${PROJ_NAME}_SRC CONFIGURE_DEPENDS "*.cpp")
 file(GLOB_RECURSE ${PROJ_NAME}_HEADER CONFIGURE_DEPENDS "*.h")
 target_sources(${PROJ_NAME} PRIVATE ${${PROJ_NAME}_SRC})
+target_sources(${PROJ_NAME} PRIVATE ${${PROJ_NAME}_HEADER})
 if(WIN32)
 target_sources(${PROJ_NAME} PRIVATE ${CMAKE_BINARY_DIR}/version.rc)
 endif()
-source_group("headers" FILES ${${PROJ_NAME}_HEADER})
+# source_group("headers" FILES ${${PROJ_NAME}_HEADER})
 
 find_package(Poco CONFIG REQUIRED Foundation Util)
 target_link_libraries(${PROJ_NAME} PRIVATE Poco::Util)

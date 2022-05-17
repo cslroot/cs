@@ -13,14 +13,18 @@ target_compile_definitions(${PROJ_NAME} PRIVATE BUILD_CS_PLUGINS_SIMPLE_LIB)
 target_compile_features(${PROJ_NAME} PRIVATE cxx_std_17)
 
 file(GLOB_RECURSE ${PROJ_NAME}_SRC CONFIGURE_DEPENDS "*.cpp")
+file(GLOB_RECURSE ${PROJ_NAME}_HEADER CONFIGURE_DEPENDS "*.h")
 target_sources(${PROJ_NAME} PRIVATE ${${PROJ_NAME}_SRC})
+target_sources(${PROJ_NAME} PRIVATE ${${PROJ_NAME}_HEADER})
 if(WIN32)
 target_sources(${PROJ_NAME} PRIVATE ${CMAKE_BINARY_DIR}/version.rc)
 endif()
 
+
 target_link_libraries(${PROJ_NAME} PUBLIC cs.core)
 target_include_directories(${PROJ_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
+set_target_properties(${PROJ_NAME} PROPERTIES FOLDER plugins)
 set_target_properties(${PROJ_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/plugins)
 # set_target_properties(${PROJ_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/plugins)
 # set_target_properties(${PROJ_NAME} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/plugins)
