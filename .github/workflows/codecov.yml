@@ -4,7 +4,8 @@ on: [push, pull_request]
 env:
   VCPKG_ROOT: ${{github.workspace}}/third/vcpkg
   VCPKG_DEFAULT_BINARY_CACHE: ${{github.workspace}}/third/vcpkg/bincache
-  TRIPLET: windows-cl-x64-ninja
+  PRESET: windows-cl-x64-ninja
+  TRIPLET: x64-windows
 
 jobs:
   run:
@@ -57,11 +58,11 @@ jobs:
 
       - name: cmake configure
         run: |
-          cmake --preset "windows-cl-x64-ninja"
+          cmake --preset "${{env.PRESET}}"
 
       - name: cmake build
         run: |
-          cmake --build --preset "${{env.TRIPLET}}"
+          cmake --build --preset "${{env.PRESET}}-Debug"
 
       - name: Setup OpenCppCoverage and add to PATh
         id: setup_opencppcoverage
@@ -72,7 +73,7 @@ jobs:
       - name: Generate Report
         id: generate_test_report
         shell: cmd
-        run: OpenCppCoverage --sources src --modules=build\${{env.TRIPLET}}\bin\Debug\cs.* --export_type cobertura:cs.xml -- .\build\${{env.TRIPLET}}\bin\Debug\cs.test.exe
+        run: OpenCppCoverage --sources src --modules=build\${{env.PRESET}}\bin\Debug\cs.* --export_type cobertura:cs.xml -- .\build\${{env.PRESET}}\bin\Debug\cs.test.exe
       - name: Upload Report to Codecov
         uses: codecov/codecov-action@v2
         with:
