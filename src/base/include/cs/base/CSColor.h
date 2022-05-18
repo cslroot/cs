@@ -45,7 +45,8 @@ public:
   explicit DECL_CS_BASE CSColor(const CSString& colorHexStr)
   {
     auto tmp = colorHexStr.Replace('#', '\0');
-    int colorHexRGB = tmp.ParseInt();
+    tmp = "0x" + tmp;
+    unsigned int colorHexRGB = tmp.ParseUint();
 
     _r = ColorToFloat * ((colorHexRGB & 0xFF0000) >> 16);
     _g = ColorToFloat * ((colorHexRGB & 0x00FF00) >> 8);
