@@ -30,6 +30,7 @@ TEST(TestCSString, replace)
   CSString str1("AbcabcA");
   CSString str = str1.Replace('A', 'X');
   EXPECT_STREQ(str.c_str(), "XbcabcX");
+  EXPECT_STREQ(str1.c_str(), "AbcabcA");
 
   CSString str2 = str1.Replace('A', '\0');
   EXPECT_STREQ(str2.c_str(), "bcabc");

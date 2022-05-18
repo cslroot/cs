@@ -131,21 +131,44 @@ operator<<(std::ostream& os, const CSString& str)
 CSString
 CSString::Replace(const char target, const char rep) const
 {
-  CSString repString = *this;
+  CSString repString;
 
   if (rep == '\0') {
-    auto& str = repString._str;
-    str.erase(std::remove(str.begin(), str.end(), target), str.end());
-    repString = str;
+    std::string tmp;
+    std::remove_copy(_str.begin(), _str.end(), std::back_inserter(tmp), target);
+    repString = tmp;
   } else {
-    std::replace(repString._str.begin(), repString._str.end(), target, rep);
+    repString = *this;
+    auto& s = repString._str;
+    std::replace(s.begin(), s.end(), target, rep);
   }
 
+  return repString;
+}
+
+CSString
+CSString::Replace(const CSString& target, const CSString& rep) const
+{
+  CSString repString = *this;
+  auto& s = repString._str;
+  if (!target.empty()) {
+    std::string::size_type pos = 0;
+    while ((pos = s.find(target.str(), pos)) != std::string::npos) {
+      s.replace(pos, target.length(), rep.str());
+      pos += rep.length();
+    }
+  }
   return repString;
 }
 
 int
 CSString::ParseInt() const
 {
-  return std::stoi(_str);
+  return std::stoi(_str, nullptr, 0);
+}
+
+unsigned int
+CSString::ParseUint() const
+{
+  return std::stoul(_str, nullptr, 0);
 }
