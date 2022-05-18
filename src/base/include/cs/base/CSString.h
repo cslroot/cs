@@ -25,7 +25,7 @@ public:
   DECL_CS_BASE const char* c_str() const;
   DECL_CS_BASE std::string str() const;
   DECL_CS_BASE bool empty() const { return _str.empty(); }
-  DECL_CS_BASE bool length() const { return _str.length(); }
+  DECL_CS_BASE size_t length() const { return _str.length(); }
 
   DECL_CS_BASE CSString& operator+=(const char* u8rhs);
   DECL_CS_BASE CSString& operator+=(const CSString& rhs);

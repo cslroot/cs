@@ -34,4 +34,32 @@ TEST(TestCSString, replace)
 
   CSString str2 = str1.Replace('A', '\0');
   EXPECT_STREQ(str2.c_str(), "bcabc");
+
+  // string version
+  CSString str3 = str1.Replace("bc", "BC");
+  EXPECT_STREQ(str3.c_str(), "ABCaBCA");
+}
+
+TEST(TestCSString, ParseInt)
+{
+  CSString str1("123");
+  EXPECT_EQ(str1.ParseInt(), 123);
+
+  CSString str2("0xF");
+  EXPECT_EQ(str2.ParseInt(), 15);
+
+  CSString str3("010");
+  EXPECT_EQ(str3.ParseInt(), 8);
+}
+
+TEST(TestCSString, ParseUint)
+{
+  CSString str1("123");
+  EXPECT_EQ(str1.ParseUint(), 123U);
+
+  CSString str2("0xff");
+  EXPECT_EQ(str2.ParseUint(), 255U);
+
+  CSString str3("010");
+  EXPECT_EQ(str3.ParseUint(), 8);
 }
