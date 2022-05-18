@@ -34,7 +34,7 @@ TEST(TestCSColor, ctor_with_rgba)
 
 TEST(TestCSColor, ctor_with_array)
 {
-  CSColor v({ 1.0f, 0.5f, 0.0f });
+  CSColor v(std::array<float, 3>{ 1.0f, 0.5f, 0.0f });
   EXPECT_EQ(v.R(), 1.0f);
   EXPECT_EQ(v.G(), 0.5f);
   EXPECT_EQ(v.B(), 0.0f);

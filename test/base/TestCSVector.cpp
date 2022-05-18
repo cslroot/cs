@@ -1,3 +1,4 @@
+#include <array>
 #include <cs/math.h>
 #include <gtest/gtest.h>
 #include <stdexcept>
@@ -15,7 +16,7 @@ TEST(TestCSVector, default_param)
 
 TEST(TestCSVector, param)
 {
-  CSVec3d v({ 1.0, 2.0, 3.0 });
+  CSVec3d v(std::array<double, 3>{ 1.0, 2.0, 3.0 });
   EXPECT_EQ(v.x, 1.0);
   EXPECT_EQ(v.y, 2.0);
   EXPECT_EQ(v.z, 3.0);
