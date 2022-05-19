@@ -2,6 +2,7 @@
     "files.associations": {
         "*.json": "jsonc",
         ".textlintrc": "jsonc",
+        "*.i": "ignore",
         "stdexcept": "cpp",
         "string": "cpp",
         "locale": "cpp",
@@ -111,7 +112,10 @@
         "stack": "cpp",
         "strstream": "cpp",
         "valarray": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "numbers": "cpp",
+        "cfenv": "cpp",
+        "cinttypes": "cpp"
     },
     "files.exclude": {
         "third/*": true

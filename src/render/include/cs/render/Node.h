@@ -36,9 +36,8 @@ public:
   };
 
   DECL_CS_RENDER std::vector<Node::Ptr>& Children() { return _children; };
-  DECL_CS_RENDER void AddChild(std::shared_ptr<Node> pNode);
-  DECL_CS_RENDER void AddChildren(
-    const std::vector<std::shared_ptr<Node>>& pNodes);
+  DECL_CS_RENDER void AddChild(Node::Ptr pNode);
+  DECL_CS_RENDER void AddChildren(const std::vector<Node::Ptr>& pNodes);
 
 private:
   cs::base::CSString _name;
