@@ -1,4 +1,4 @@
-#include <iostream>
+// #include <iostream>
 
 #include <cs/app.h>
 #include <cs/base.h>
@@ -51,8 +51,18 @@ main(int argc, char** argv)
 
   // plugin
   app.PluginManager().LoadAll();
+  {
+    auto pPlugin = app.PluginManager().GetPlugin("Unexpected Plugin name");
+    if (pPlugin) {
+    }
+  }
+
   auto pPlugin = app.PluginManager().GetPlugin("SimplePlugin");
-  log.Information(pPlugin->Name());
+  if (pPlugin) {
+    log.Information(pPlugin->Name());
+  } else {
+    log.Information("SimplePlugin not found");
+  }
 
   // document
   assert(nullptr == app.Documents().ActiveDocument());
@@ -69,7 +79,7 @@ main(int argc, char** argv)
   assert(&doc != app.Documents().ActiveDocument());
   assert(&doc2 == app.Documents().ActiveDocument());
 
-  std::cout << "document saved" << std::endl;
+  log.Information("document saved");
 
   size_t i = app.Documents().Size();
   std::cout << i << std::endl;
@@ -104,6 +114,4 @@ main(int argc, char** argv)
     renderer->Render(*scene, *camera);
     stop = true;
   }
-
-  std::cout << str.c_str() << std::endl;
 }

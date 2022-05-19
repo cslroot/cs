@@ -29,10 +29,9 @@ CSPluginManager::~CSPluginManager()
   for (auto p : _impl->_plugins) {
     delete p.second;
   }
-  for (auto& p : _impl->_libs) {
-    p->unload();
-    // delete p;
-  }
+  _impl->_plugins.clear();
+
+  _impl->_libs.clear();
 }
 
 void
@@ -65,6 +64,11 @@ CSPluginManager::LoadAll()
 cs::core::ICSPlugin*
 CSPluginManager::GetPlugin(const cs::base::CSString& pluginName)
 {
+
+  if (_impl->_plugins.find(pluginName.str()) == _impl->_plugins.end()) {
+    return nullptr;
+  }
+
   return _impl->_plugins[pluginName.str()];
   // auto& pp = _impl->_plugins;
   // return pp.empty() ? nullptr : pp.front();
