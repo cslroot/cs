@@ -124,5 +124,31 @@
     "files.trimFinalNewlines": true,
     "yaml.schemas": {
         "https://json.schemastore.org/github-workflow.json": ".github/workflows/build.yml"
-    }
+    },
+    "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+    "C_Cpp.codeAnalysis.clangTidy.checks.enabled": [
+        "*"
+    ],
+    "C_Cpp.codeAnalysis.clangTidy.checks.disabled": [
+        "modernize-concat-nested-namespaces",
+        "modernize-use-trailing-return-type",
+        "modernize-use-nodiscard",
+        "llvm-header-guard",
+        "llvmlibc-*",
+        "altera-*",
+        "google-build-using-namespace",
+        "fuchsia-default-arguments-calls",
+        "fuchsia-overloaded-operator",
+        "cppcoreguidelines-pro-type-union-access",
+        "readability-named-parameter",
+        "hicpp-named-parameter",
+        "hicpp-member-init",
+        "hicpp-uppercase-literal-suffix",
+        "bugprone-easily-swappable-parameters"
+    ],
+    "C_Cpp.codeAnalysis.exclude": {
+        "**/build/**": true,
+        "**/third/": true
+    },
+    "C_Cpp.codeAnalysis.clangTidy.fallbackConfig": "{CheckOptions: [  {key: \"readability-implicit-bool-conversion.AllowPointerConditions\", value: true}, {key: \"readability-implicit-bool-conversion.AllowIntegerConditions\", value: true}, {key: \"misc-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic\", value: true}]}"
 }
