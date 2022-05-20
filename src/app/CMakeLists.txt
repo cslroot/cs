@@ -26,9 +26,9 @@ target_compile_features(${PROJ_NAME} PRIVATE cxx_std_17)
 
 target_precompile_headers(${PROJ_NAME}
   PRIVATE
+    <cassert>
     <chrono>
     <fstream>
-    <cassert>
     <vector>
 )
 

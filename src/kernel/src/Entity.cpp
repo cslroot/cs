@@ -4,15 +4,18 @@
 using namespace cs::kernel;
 
 namespace {
-static int64_t id_counter = 0;
-}
+
+int64_t id_counter = 0;
+
+} // namespace
 
 Entity::Entity(EntityType entType)
   : _id(++id_counter)
   , _entType(entType)
+  , _entSubType(0)
 {}
 
-Entity::~Entity() {}
+Entity::~Entity() = default;
 
 EntityType
 Entity::Type() const
@@ -22,5 +25,5 @@ Entity::Type() const
 int
 Entity::SubType() const
 {
-  return 0;
+  return _entSubType;
 }

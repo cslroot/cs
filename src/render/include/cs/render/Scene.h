@@ -11,10 +11,8 @@ namespace render {
 
 class Scene
 {
-private:
-  /* data */
 public:
-  DECL_CS_RENDER Scene(/* args */);
+  DECL_CS_RENDER Scene();
   DECL_CS_RENDER ~Scene();
 
 public:

@@ -18,14 +18,28 @@ namespace {
 std::string
 wideToUtf8(const std::wstring& wstr)
 {
-  if (wstr.empty())
-    return std::string();
+  if (wstr.empty()) {
+    return {};
+  }
+
 #ifdef _WIN32
-  int size_needed = WideCharToMultiByte(
-    CP_UTF8, 0, &wstr[0], (int)wstr.size(), NULL, 0, NULL, NULL);
+  int size_needed = WideCharToMultiByte(CP_UTF8,
+                                        0,
+                                        &wstr[0],
+                                        static_cast<DWORD>(wstr.size()),
+                                        nullptr,
+                                        0,
+                                        nullptr,
+                                        nullptr);
   std::string strTo(size_needed, 0);
-  WideCharToMultiByte(
-    CP_UTF8, 0, &wstr[0], (int)wstr.size(), &strTo[0], size_needed, NULL, NULL);
+  WideCharToMultiByte(CP_UTF8,
+                      0,
+                      &wstr[0],
+                      static_cast<DWORD>(wstr.size()),
+                      &strTo[0],
+                      size_needed,
+                      nullptr,
+                      nullptr);
   return strTo;
 #else
   std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
@@ -36,21 +50,26 @@ wideToUtf8(const std::wstring& wstr)
 std::wstring
 utf8toWide(const std::string& strU8)
 {
-  if (strU8.empty())
-    return std::wstring();
+  if (strU8.empty()) {
+    return {};
+  }
 #ifdef _WIN32
-  int size_needed =
-    MultiByteToWideChar(CP_UTF8, 0, &strU8[0], (int)strU8.size(), NULL, 0);
+  int size_needed = MultiByteToWideChar(
+    CP_UTF8, 0, &strU8[0], static_cast<DWORD>(strU8.size()), nullptr, 0);
   std::wstring wstrTo(size_needed, 0);
-  MultiByteToWideChar(
-    CP_UTF8, 0, &strU8[0], (int)strU8.size(), &wstrTo[0], size_needed);
+  MultiByteToWideChar(CP_UTF8,
+                      0,
+                      &strU8[0],
+                      static_cast<DWORD>(strU8.size()),
+                      &wstrTo[0],
+                      size_needed);
   return wstrTo;
 #else
   std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
   return converter.from_bytes(strU8.c_str());
 #endif
 }
-}
+} // namespace
 
 CSString
 CSString::CreateFromHex(void* p)
@@ -61,7 +80,7 @@ CSString::CreateFromHex(void* p)
   return s;
 }
 
-CSString::CSString(/* args */) {}
+CSString::CSString(/* args */) = default;
 
 CSString::CSString(const char* utf8string)
   : _str(utf8string)
@@ -81,11 +100,9 @@ CSString::CSString(const std::wstring& wstr)
   _str = wideToUtf8(wstr);
 }
 
-CSString::CSString(const CSString& a)
-  : _str(a._str)
-{}
+CSString::CSString(const CSString& a) = default;
 
-CSString::~CSString() {}
+CSString::~CSString() = default;
 
 const char*
 CSString::c_str() const

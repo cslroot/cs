@@ -15,15 +15,15 @@ target_compile_features(${PROJ_NAME} PRIVATE cxx_std_17)
 
 target_precompile_headers(${PROJ_NAME}
   PRIVATE
-    <vector>
-    <string>
+    <algorithm>
     <array>
     <cassert>
-    <unordered_map>
+    <codecvt>
     <iostream>
     <locale>
-    <algorithm>
-    <codecvt>
+    <string>
+    <unordered_map>
+    <vector>
 )
 
 file(GLOB_RECURSE ${PROJ_NAME}_SRC CONFIGURE_DEPENDS "*.cpp")

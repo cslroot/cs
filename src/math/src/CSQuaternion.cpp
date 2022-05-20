@@ -15,4 +15,4 @@ CSQuaternion::CSQuaternion()
   : _impl(std::make_unique<Impl>())
 {}
 
-CSQuaternion::~CSQuaternion() {}
+CSQuaternion::~CSQuaternion() = default;

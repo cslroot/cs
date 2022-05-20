@@ -14,7 +14,7 @@ class DECL_CS_PLUGIN_SIMPLE SimplePlugin final : public cs::core::ICSPlugin
 {
 public:
   SimplePlugin();
-  virtual ~SimplePlugin();
+  ~SimplePlugin() override;
 
 public:
   int Version() const override { return 0; }

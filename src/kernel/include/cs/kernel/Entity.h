@@ -35,7 +35,7 @@ class Entity : public cs::core::CSObject
 {
 public:
   DECL_CS_KERNEL Entity(EntityType entType);
-  DECL_CS_KERNEL virtual ~Entity();
+  DECL_CS_KERNEL ~Entity() override;
 
 public:
   DECL_CS_KERNEL EntityType Type() const;

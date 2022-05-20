@@ -16,7 +16,7 @@ CSKernel::CSKernel(/* args */)
   : _impl(std::make_unique<Impl>())
 {}
 
-CSKernel::~CSKernel() {}
+CSKernel::~CSKernel() = default;
 
 bool
 CSKernel::IsInitialized() const

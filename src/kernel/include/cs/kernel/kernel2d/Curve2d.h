@@ -14,7 +14,7 @@ public:
   DECL_CS_KERNEL Curve2d()
     : BASE_CLASS(EntityType::Curve)
   {}
-  DECL_CS_KERNEL virtual ~Curve2d() {}
+  DECL_CS_KERNEL ~Curve2d() override = default;
 
 public:
 };

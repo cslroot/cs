@@ -17,7 +17,7 @@ class CSCommandCollection final : public cs::base::ICSCollection<CSCommand>
 {
 public:
   DECL_CS_APP CSCommandCollection(CSApp*);
-  DECL_CS_APP ~CSCommandCollection();
+  DECL_CS_APP ~CSCommandCollection() override;
 
 public:
 public:

@@ -11,6 +11,8 @@
 #include "CSCommand.h"
 #include "CSCommandCollection.h"
 
+#include <Poco/SingletonHolder.h>
+
 #include <locale>
 #include <memory>
 #include <vector>
@@ -18,27 +20,21 @@
 using namespace cs::app;
 using namespace cs::core;
 
-std::unique_ptr<CSApp> CSApp::_app;
-
 CSApp&
 CSApp::Instance()
 {
-  return *_app;
-}
-
-CSApp&
-CSApp::Create(int argc, char** argv)
-{
-  CSApp::_app = std::make_unique<CSApp>(argc, argv);
-  return *_app;
+  static Poco::SingletonHolder<CSApp> sh;
+  return *sh.get();
 }
 
 struct CSApp::Impl
 {
-  Impl(CSApp* pApp)
+  explicit Impl(CSApp* pApp)
     : _docs(pApp)
     , _commands(pApp)
   {}
+
+  bool _initialized = false;
 
   CSDocumentCollection _docs;
   CSCommandCollection _commands;
@@ -48,10 +44,9 @@ struct CSApp::Impl
   CSPluginManager _pluginManager;
 };
 
-CSApp::CSApp(int argc, char** argv)
+CSApp::CSApp()
   : _impl(std::make_unique<CSApp::Impl>(this))
 {
-  cs_initialize(argc, argv);
 
   std::locale::global(std::locale(
 #if _WIN32 && !__MINGW32__ && !__CYGWIN__
@@ -69,6 +64,15 @@ CSApp::CSApp(int argc, char** argv)
 CSApp::~CSApp()
 {
   cs_terminate();
+}
+
+CSApp&
+CSApp::Initialize(int argc, char** argv)
+{
+  cs_initialize(argc, argv);
+  _impl->_initialized = true;
+
+  return *this;
 }
 
 CSDocumentCollection&

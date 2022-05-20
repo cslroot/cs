@@ -27,7 +27,7 @@ public:
   DECL_CS_KERNEL Topology(EntityType entType)
     : Entity(entType)
   {}
-  DECL_CS_KERNEL virtual ~Topology() {}
+  DECL_CS_KERNEL ~Topology() override = default;
 
 public:
   DECL_CS_KERNEL virtual TopologyTypes TopologyType() const = 0;
@@ -42,7 +42,7 @@ public:
     : BASE_CLASS(EntityType::Vertex)
   {}
 
-  DECL_CS_KERNEL virtual TopologyTypes TopologyType() const override
+  DECL_CS_KERNEL TopologyTypes TopologyType() const override
   {
     return TopologyTypes::Vertex;
   }
@@ -56,7 +56,7 @@ public:
   DECL_CS_KERNEL CoEdge()
     : BASE_CLASS(EntityType::CoEdge)
   {}
-  DECL_CS_KERNEL virtual TopologyTypes TopologyType() const override
+  DECL_CS_KERNEL TopologyTypes TopologyType() const override
   {
     return TopologyTypes::CoEdge;
   }
@@ -71,7 +71,7 @@ public:
     : BASE_CLASS(EntityType::Edge)
   {}
 
-  DECL_CS_KERNEL virtual TopologyTypes TopologyType() const override
+  DECL_CS_KERNEL TopologyTypes TopologyType() const override
   {
     return TopologyTypes::Edge;
   }
@@ -85,7 +85,7 @@ public:
   DECL_CS_KERNEL Loop()
     : BASE_CLASS(EntityType::Loop)
   {}
-  DECL_CS_KERNEL virtual TopologyTypes TopologyType() const override
+  DECL_CS_KERNEL TopologyTypes TopologyType() const override
   {
     return TopologyTypes::Loop;
   }
@@ -99,7 +99,7 @@ public:
   DECL_CS_KERNEL Face()
     : BASE_CLASS(EntityType::Face)
   {}
-  DECL_CS_KERNEL virtual TopologyTypes TopologyType() const override
+  DECL_CS_KERNEL TopologyTypes TopologyType() const override
   {
     return TopologyTypes::Face;
   }
@@ -113,7 +113,7 @@ public:
   DECL_CS_KERNEL Shell()
     : BASE_CLASS(EntityType::Shell)
   {}
-  DECL_CS_KERNEL virtual TopologyTypes TopologyType() const override
+  DECL_CS_KERNEL TopologyTypes TopologyType() const override
   {
     return TopologyTypes::Shell;
   }
@@ -127,7 +127,7 @@ public:
   DECL_CS_KERNEL Lump()
     : BASE_CLASS(EntityType::Lump)
   {}
-  DECL_CS_KERNEL virtual TopologyTypes TopologyType() const override
+  DECL_CS_KERNEL TopologyTypes TopologyType() const override
   {
     return TopologyTypes::Lump;
   }
@@ -141,7 +141,7 @@ public:
   DECL_CS_KERNEL Wire()
     : BASE_CLASS(EntityType::Wire)
   {}
-  DECL_CS_KERNEL virtual TopologyTypes TopologyType() const override
+  DECL_CS_KERNEL TopologyTypes TopologyType() const override
   {
     return TopologyTypes::Wire;
   }
@@ -155,7 +155,7 @@ public:
   DECL_CS_KERNEL Body()
     : BASE_CLASS(EntityType::Body)
   {}
-  DECL_CS_KERNEL virtual TopologyTypes TopologyType() const override
+  DECL_CS_KERNEL TopologyTypes TopologyType() const override
   {
     return TopologyTypes::Body;
   }

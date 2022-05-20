@@ -13,8 +13,10 @@ namespace core {
 class CSBufferObject : public CSObject
 {
 public:
+  using Ptr = std::shared_ptr<CSBufferObject>;
+
   DECL_CS_CORE CSBufferObject();
-  DECL_CS_CORE virtual ~CSBufferObject();
+  DECL_CS_CORE ~CSBufferObject() override;
 
 public:
   std::vector<double> _points;

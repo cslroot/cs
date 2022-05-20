@@ -25,7 +25,7 @@ CSCommandCollection::CSCommandCollection(CSApp* pOwnerApp)
   assert(pOwnerApp);
 }
 
-CSCommandCollection::~CSCommandCollection() {}
+CSCommandCollection::~CSCommandCollection() = default;
 
 CSCommand&
 CSCommandCollection::Add(std::unique_ptr<CSCommand> doc)

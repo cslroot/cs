@@ -12,5 +12,5 @@ enum class LineWeight
   RESERVED = 379,
 };
 
-} // namespace modeler
+} // namespace drawing
 } // namespace cs

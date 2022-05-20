@@ -13,8 +13,8 @@ using namespace cs::kernel;
 
 struct Circle2d::Impl
 {
-  CSVec2d _center;
-  double _radius;
+  CSVec2d _center = {};
+  double _radius = 0.0;
 };
 
 Circle2d::Circle2d()
@@ -28,7 +28,7 @@ Circle2d::Circle2d(const cs::math::CSVec2d& center, double radius)
   _impl->_radius = radius;
 }
 
-Circle2d::~Circle2d() {}
+Circle2d::~Circle2d() = default;
 
 const cs::math::CSVec2d&
 Circle2d::Center() const

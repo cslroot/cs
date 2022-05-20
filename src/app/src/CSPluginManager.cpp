@@ -26,7 +26,7 @@ CSPluginManager::CSPluginManager()
 
 CSPluginManager::~CSPluginManager()
 {
-  for (auto p : _impl->_plugins) {
+  for (auto& p : _impl->_plugins) {
     delete p.second;
   }
   _impl->_plugins.clear();
@@ -47,13 +47,14 @@ CSPluginManager::LoadAll()
   CSApp::Instance().Log().Information(targetPath.toString());
   Glob::glob(targetPath, files);
 
-  for (auto& f : files) {
+  for (const auto& f : files) {
     CSApp::Instance().Log().Information(f);
     std::unique_ptr<SharedLibrary> plibrary =
       std::make_unique<SharedLibrary>(f); // will also load the library
 
-    auto func = (ICSPluginEntryFunc)plibrary->getSymbol("cs_create_plugin");
-    auto pPlugin = func();
+    auto func =
+      static_cast<ICSPluginEntryFunc>(plibrary->getSymbol("cs_create_plugin"));
+    auto* pPlugin = func();
     auto name = pPlugin->Name();
 
     _impl->_plugins[name.str()] = std::move(pPlugin);

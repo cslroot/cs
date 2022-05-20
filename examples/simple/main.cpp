@@ -19,7 +19,7 @@ using namespace cs::core;
 int
 main(int argc, char** argv)
 {
-  auto& app = cs::app::CSApp::Create(argc, argv);
+  auto& app = cs::app::CSApp::Instance().Initialize(argc, argv);
   auto& log = app.Log();
 
   // test print logger
@@ -38,7 +38,7 @@ main(int argc, char** argv)
 
   // config
   auto& conf = app.Config();
-  auto confPath = conf.ConfigHomePath();
+  auto confPath = CSConfig::ConfigHomePath();
   log.Information(fmt::format("config path: {}", confPath.c_str()).c_str());
   printLogs();
 
@@ -52,12 +52,12 @@ main(int argc, char** argv)
   // plugin
   app.PluginManager().LoadAll();
   {
-    auto pPlugin = app.PluginManager().GetPlugin("Unexpected Plugin name");
+    auto* pPlugin = app.PluginManager().GetPlugin("Unexpected Plugin name");
     if (pPlugin) {
     }
   }
 
-  auto pPlugin = app.PluginManager().GetPlugin("SimplePlugin");
+  auto* pPlugin = app.PluginManager().GetPlugin("SimplePlugin");
   if (pPlugin) {
     log.Information(pPlugin->Name());
   } else {
@@ -100,18 +100,17 @@ main(int argc, char** argv)
 
   auto& modeler = doc.Modeler();
   auto& box = modeler.CreateBox({ { 0.0, 0.0, 0.0 } }, { { 1.0, 1.0, 0.0 } });
-  auto mat = CS_NEW cs::render::BasicMaterial({ 1.0, 0.0, 0.0 });
+  auto* mat = CS_NEW cs::render::BasicMaterial({ 1.0, 0.0, 0.0 });
 
-  auto scene = CS_NEW cs::render::Scene();
-  auto camera = CS_NEW cs::render::PerspectiveCamera();
-  auto renderer = CS_NEW cs::render::EmptyRenderer();
+  auto scene = std::make_unique<cs::render::Scene>();
+  auto camera = std::make_unique<cs::render::PerspectiveCamera>();
+  auto renderer = std::make_unique<cs::render::EmptyRenderer>();
 
   auto cube = std::make_unique<cs::render::Mesh>(box, *mat);
   scene->Add(std::move(cube));
 
-  bool stop = false;
-  while (stop) {
-    renderer->Render(*scene, *camera);
-    stop = true;
-  }
+  // render only once
+  renderer->Render(*scene, *camera);
+
+  return 0;
 }

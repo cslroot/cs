@@ -11,8 +11,8 @@ class EmptyRenderer : public Renderer
 private:
   /* data */
 public:
-  DECL_CS_RENDER EmptyRenderer(/* args */) {}
-  DECL_CS_RENDER ~EmptyRenderer() {}
+  DECL_CS_RENDER EmptyRenderer(/* args */) = default;
+  DECL_CS_RENDER ~EmptyRenderer() override = default;
 };
 
 } // namespace render

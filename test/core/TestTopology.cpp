@@ -9,6 +9,6 @@ using namespace cs::kernel;
 
 TEST(TestTopology, GetType)
 {
-  Vertex* v = CS_NEW Vertex();
-  EXPECT_EQ(v->TopologyType(), TopologyTypes::Vertex);
+  Vertex v;
+  EXPECT_EQ(v.TopologyType(), TopologyTypes::Vertex);
 }

@@ -19,7 +19,7 @@ class CSDocumentCollection final : public cs::base::ICSCollection<CSDocument>
 {
 public:
   DECL_CS_APP CSDocumentCollection(CSApp*);
-  DECL_CS_APP ~CSDocumentCollection();
+  DECL_CS_APP ~CSDocumentCollection() override;
 
 public:
   /**

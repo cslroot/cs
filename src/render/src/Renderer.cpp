@@ -9,7 +9,7 @@ Renderer::Renderer(/* args */)
   , _height(0)
 {}
 
-Renderer::~Renderer() {}
+Renderer::~Renderer() = default;
 
 void
 Renderer::Render(const Scene& scene, const Camera& camera)

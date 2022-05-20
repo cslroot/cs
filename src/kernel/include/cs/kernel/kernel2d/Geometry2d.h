@@ -15,11 +15,11 @@ class Geometry2d : public Geometry
   using BASE_CLASS = Geometry;
 
 public:
-  DECL_CS_KERNEL Geometry2d(EntityType entType)
+  DECL_CS_KERNEL explicit Geometry2d(EntityType entType)
     : BASE_CLASS(entType)
     , _props(std::make_unique<Geometry2dProperty>())
   {}
-  DECL_CS_KERNEL virtual ~Geometry2d() {}
+  DECL_CS_KERNEL ~Geometry2d() override = default;
 
   DECL_CS_KERNEL Geometry2dProperty& Property() const { return *_props; }
 
@@ -27,5 +27,5 @@ private:
   std::unique_ptr<Geometry2dProperty> _props;
 };
 
-} // namespace core
+} // namespace kernel
 } // namespace cs

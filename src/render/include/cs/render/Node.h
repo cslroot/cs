@@ -36,7 +36,7 @@ public:
   };
 
   DECL_CS_RENDER std::vector<Node::Ptr>& Children() { return _children; };
-  DECL_CS_RENDER void AddChild(Node::Ptr pNode);
+  DECL_CS_RENDER void AddChild(Node::Ptr& pNode);
   DECL_CS_RENDER void AddChildren(const std::vector<Node::Ptr>& pNodes);
 
 private:

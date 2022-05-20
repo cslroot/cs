@@ -11,4 +11,4 @@ CSMath::CSMath(/* args */)
   : _impl(std::make_unique<Impl>())
 {}
 
-CSMath::~CSMath() {}
+CSMath::~CSMath() = default;

@@ -13,7 +13,7 @@ Scene::Scene(/* args */)
   : _impl(std::make_unique<Impl>())
 {}
 
-Scene::~Scene() {}
+Scene::~Scene() = default;
 
 void
 Scene::Add(Node::Ptr mesh)

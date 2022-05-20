@@ -11,7 +11,7 @@ class CSConfig : public CSObject
 {
 public:
   DECL_CS_CORE CSConfig();
-  DECL_CS_CORE virtual ~CSConfig();
+  DECL_CS_CORE ~CSConfig() override;
 
 public:
   DECL_CS_CORE void Save();

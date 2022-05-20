@@ -11,7 +11,7 @@ namespace core {
 class ICSPlugin
 {
 public:
-  virtual ~ICSPlugin() {}
+  virtual ~ICSPlugin() = default;
 
 public:
   virtual int Version() const = 0;

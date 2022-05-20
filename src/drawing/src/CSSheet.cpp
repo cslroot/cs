@@ -17,4 +17,4 @@ CSSheet::CSSheet(/* args */)
   : _impl(std::make_unique<Impl>())
 {}
 
-CSSheet::~CSSheet() {}
+CSSheet::~CSSheet() = default;

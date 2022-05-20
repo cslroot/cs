@@ -27,7 +27,7 @@ Segment2d::Segment2d(const cs::math::CSVec2d& p1, const cs::math::CSVec2d& p2)
   _impl->_p2 = p2;
 }
 
-Segment2d::~Segment2d() {}
+Segment2d::~Segment2d() = default;
 
 const cs::math::CSVec2d&
 Segment2d::StartPoint() const

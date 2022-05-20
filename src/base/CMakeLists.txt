@@ -24,17 +24,16 @@ target_compile_features(${PROJ_NAME} PRIVATE cxx_std_17)
 
 target_precompile_headers(${PROJ_NAME}
   PRIVATE
-    <vector>
-    <array>
-    <string>
+    <algorithm>
     <array>
     <cassert>
-    <unordered_map>
-    <iostream>
-    <locale>
-    <algorithm>
     <codecvt>
     <cstddef>
+    <iostream>
+    <locale>
+    <string>
+    <unordered_map>
+    <vector>
 )
 
 target_include_directories(${PROJ_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)

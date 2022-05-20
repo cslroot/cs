@@ -9,7 +9,7 @@ using namespace cs::render;
 void
 CSDisplayableObject::setBuffer(std::shared_ptr<cs::core::CSBufferObject> _)
 {
-  _cachedMesh = _;
+  _cachedMesh = std::move(_);
 }
 
 CSDisplayableObject2d::CSDisplayableObject2d(const cs::core::CSObject& obj_,

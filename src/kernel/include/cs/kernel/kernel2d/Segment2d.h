@@ -20,15 +20,15 @@ public:
   DECL_CS_KERNEL Segment2d();
   DECL_CS_KERNEL Segment2d(const cs::math::CSVec2d& p1,
                            const cs::math::CSVec2d& p2);
-  DECL_CS_KERNEL virtual ~Segment2d();
+  DECL_CS_KERNEL ~Segment2d() override;
 
 public:
   DECL_CS_KERNEL const cs::math::CSVec2d& StartPoint() const;
   DECL_CS_KERNEL const cs::math::CSVec2d& EndPoint() const;
 
   // TODO: create tessalation data from out of geometry class
-  DECL_CS_KERNEL virtual std::shared_ptr<cs::core::CSBufferObject>
-  GenerateBuffer() const override;
+  DECL_CS_KERNEL std::shared_ptr<cs::core::CSBufferObject> GenerateBuffer()
+    const override;
 
 private:
   struct Impl;

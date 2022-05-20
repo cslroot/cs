@@ -6,7 +6,7 @@
 using namespace cs;
 using namespace cs::math;
 
-TEST(TestCSVector, default_param)
+TEST(TestCSVector, ctorDefault)
 {
   CSVec3d v;
   EXPECT_EQ(v.x, 0.0);
@@ -14,7 +14,7 @@ TEST(TestCSVector, default_param)
   EXPECT_EQ(v.z, 0.0);
 }
 
-TEST(TestCSVector, param)
+TEST(TestCSVector, ctorArray)
 {
   CSVec3d v(std::array<double, 3>{ 1.0, 2.0, 3.0 });
   EXPECT_EQ(v.x, 1.0);
@@ -22,7 +22,7 @@ TEST(TestCSVector, param)
   EXPECT_EQ(v.z, 3.0);
 }
 
-TEST(TestCSVector, param_array)
+TEST(TestCSVector, ctorCopy)
 {
   CSVec3d v = { { 1.0, 2.0, 3.0 } };
   EXPECT_EQ(v.x, 1.0);

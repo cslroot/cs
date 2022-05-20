@@ -14,7 +14,7 @@ CSObject::CSObject()
   : _impl(std::make_unique<Impl>())
 {}
 
-CSObject::~CSObject() {}
+CSObject::~CSObject() = default;
 
 const cs::base::CSString&
 CSObject::Name() const

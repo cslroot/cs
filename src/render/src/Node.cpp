@@ -14,10 +14,10 @@ Node::Node()
   : Node(CSString::CreateFromHex(this))
 {}
 
-Node::~Node() {}
+Node::~Node() = default;
 
 void
-Node::AddChild(Node::Ptr pNode)
+Node::AddChild(Node::Ptr& pNode)
 {
   this->_children.emplace_back(pNode);
   pNode->SetParent(shared_from_this());
@@ -26,7 +26,7 @@ Node::AddChild(Node::Ptr pNode)
 void
 Node::AddChildren(const std::vector<std::shared_ptr<Node>>& pNodes)
 {
-  for (auto& pNode : pNodes) {
+  for (const auto& pNode : pNodes) {
     this->_children.emplace_back(pNode);
     pNode->SetParent(shared_from_this());
   }

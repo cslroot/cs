@@ -15,5 +15,5 @@ class CSDocument2d;
 class CSDocument3d;
 class CSDocumentCollection;
 
-}
-}
+} // namespace app
+} // namespace cs

@@ -21,7 +21,7 @@ UUID::UUID()
   _impl->_uuid = uuidgen.create();
 }
 
-UUID::~UUID() {}
+UUID::~UUID() = default;
 
 cs::base::CSString
 UUID::ToString() const

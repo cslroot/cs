@@ -11,7 +11,7 @@ CSCommand::CSCommand()
   : _impl(std::make_unique<Impl>())
 {}
 
-CSCommand::~CSCommand() {}
+CSCommand::~CSCommand() = default;
 
 bool
 CSCommand::CanExecute(void*) const

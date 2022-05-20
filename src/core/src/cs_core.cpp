@@ -4,8 +4,8 @@
 #include "cs_core.h"
 
 namespace {
-static bool _initialized = false;
-}
+bool _initialized = false;
+} // namepsace anonymous
 
 bool
 cs_initialize(int argc, char** argv)

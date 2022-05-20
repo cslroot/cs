@@ -23,7 +23,7 @@ main(int argc, char** argv)
 #endif
     ));
 
-  auto& app = cs::app::CSApp::Create(argc, argv);
+  auto& app = cs::app::CSApp::Instance().Initialize(argc, argv);
   auto& doc = dynamic_cast<cs::app::CSDocument2d&>(
     app.Documents().OpenNewDocument(typeid(cs::app::CSDocument2d).name()));
 
@@ -44,7 +44,8 @@ main(int argc, char** argv)
   scene->Add(std::move(lineObj));
 
   // circle
-  auto circle = std::make_unique<cs::kernel::Circle2d>(p1, 0.4);
+  constexpr double radius = 0.4;
+  auto circle = std::make_unique<cs::kernel::Circle2d>(p1, radius);
   auto circleObj =
     std::make_unique<cs::render::CSDisplayableObject2d>(*circle, *mat);
   scene->Add(std::move(circleObj));
@@ -56,5 +57,5 @@ main(int argc, char** argv)
     renderer->Render(*scene, *camera);
   }
 
-  exit(EXIT_SUCCESS);
+  return 0;
 }

@@ -27,14 +27,16 @@ struct CSLogger::Impl
 {
   Poco::Logger* _logger;
 
+  Impl(const Impl&) = delete;
+  const Impl& operator=(const Impl&) = delete;
   Impl()
   {
     // init poco logger
-    Poco::SplitterChannel* pSChannel = new Poco::SplitterChannel();
+    auto* pSChannel = new Poco::SplitterChannel();
     pSChannel->addChannel(new Poco::FileChannel("cs.logger.log"));
     pSChannel->addChannel(new Poco::ConsoleChannel);
 
-    Poco::FormattingChannel* pFChannel = new Poco::FormattingChannel(
+    auto* pFChannel = new Poco::FormattingChannel(
       new Poco::PatternFormatter("%Y-%m-%d %H:%M:%S.%c %N[%P]:%s:%q: %t"));
 
     pFChannel->setChannel(pSChannel);
@@ -58,7 +60,7 @@ CSLogger::CSLogger()
   : _impl(std::make_unique<Impl>())
 {}
 
-CSLogger::~CSLogger() {}
+CSLogger::~CSLogger() = default;
 
 void
 CSLogger::SetLevel(const cs::base::CSString& level)
@@ -115,7 +117,7 @@ CSLogger::Trace(const cs::base::CSString& message)
 void
 CSLogger::Write(Priority priority, const cs::base::CSString& message)
 {
-  Poco::Message::Priority prio = (Poco::Message::Priority)((int)priority + 1);
+  auto prio = static_cast<Poco::Message::Priority>((int)priority + 1);
   auto msg = Poco::Message(std::string(""), message.c_str(), prio);
   _impl->_logger->log(msg);
 }

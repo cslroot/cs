@@ -8,4 +8,4 @@ struct CSBufferObject::Impl
 CSBufferObject::CSBufferObject()
   : _impl(std::make_unique<Impl>())
 {}
-CSBufferObject::~CSBufferObject() {}
+CSBufferObject::~CSBufferObject() = default;

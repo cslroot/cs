@@ -2,7 +2,8 @@
 
 namespace cs {
 namespace drawing {
-class CSSheet;
-} // namespace render
 
+class CSSheet;
+
+} // namespace drawing
 } // namespace cs

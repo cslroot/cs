@@ -18,7 +18,7 @@ public:
   DECL_CS_RENDER Mesh(const cs::kernel::Entity& entity,
                       const cs::render::CSMaterial& material)
   {}
-  DECL_CS_RENDER virtual ~Mesh() {}
+  DECL_CS_RENDER ~Mesh() override = default;
 };
 
 } // namespace render

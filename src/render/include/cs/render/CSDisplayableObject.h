@@ -24,7 +24,7 @@ public:
   CSDisplayableObject()
     : _cachedMesh(nullptr)
   {}
-  DECL_CS_RENDER virtual ~CSDisplayableObject() {}
+  DECL_CS_RENDER ~CSDisplayableObject() override = default;
 
 public:
   DECL_CS_RENDER std::shared_ptr<cs::core::CSBufferObject> GetBuffer() const

@@ -53,7 +53,7 @@ public:
     _b = ColorToFloat * ((colorHexRGB & 0x0000FF) >> 0);
   }
 
-  DECL_CS_BASE virtual ~CSColor() {}
+  DECL_CS_BASE virtual ~CSColor() = default;
 
 public:
   DECL_CS_BASE uint32_t ToRGBA() const

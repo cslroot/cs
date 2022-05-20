@@ -39,12 +39,12 @@ CSConfig::CSConfig()
   }
 }
 
-CSConfig::~CSConfig() {}
+CSConfig::~CSConfig() = default;
 
 void
 CSConfig::Save()
 {
-  auto path = this->ConfigHomePath();
+  auto path = CSConfig::ConfigHomePath();
   auto p = fs::path(path.c_str());
   if (!fs::exists(p)) {
     fs::create_directories(p.parent_path());

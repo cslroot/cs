@@ -72,7 +72,7 @@ struct GLFWRenderer::Impl
 
   GLsizei gen(Node& node)
   {
-    auto p = dynamic_cast<cs::render::CSDisplayableObject*>(&node);
+    auto* p = dynamic_cast<cs::render::CSDisplayableObject*>(&node);
     if (!p) {
       return 0;
     }
@@ -87,11 +87,11 @@ struct GLFWRenderer::Impl
 
     GLuint vertex_shader, fragment_shader;
     vertex_shader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertex_shader, 1, &vertex_shader_text, NULL);
+    glShaderSource(vertex_shader, 1, &vertex_shader_text, nullptr);
     glCompileShader(vertex_shader);
 
     fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragment_shader, 1, &fragment_shader_text, NULL);
+    glShaderSource(fragment_shader, 1, &fragment_shader_text, nullptr);
     glCompileShader(fragment_shader);
 
     GLuint program = glCreateProgram();
@@ -116,7 +116,7 @@ struct GLFWRenderer::Impl
 
       glEnableVertexAttribArray(_vpos_location);
       glVertexAttribPointer(
-        _vpos_location, 2, GL_FLOAT, GL_FALSE, sizeof(v[0]), (void*)0);
+        _vpos_location, 2, GL_FLOAT, GL_FALSE, sizeof(v[0]), (void*)nullptr);
 
       // glEnableVertexAttribArray(vcol_location);
       // glVertexAttribPointer(vcol_location, 3, GL_FLOAT, GL_FALSE,
@@ -132,7 +132,7 @@ GLFWRenderer::GLFWRenderer()
   : _impl(std::make_unique<Impl>())
 {}
 
-GLFWRenderer::~GLFWRenderer() {}
+GLFWRenderer::~GLFWRenderer() = default;
 
 void
 GLFWRenderer::Init()
@@ -147,7 +147,8 @@ GLFWRenderer::Init()
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-  _impl->_window = glfwCreateWindow(640, 480, "Simple example", NULL, NULL);
+  _impl->_window =
+    glfwCreateWindow(640, 480, "Simple example", nullptr, nullptr);
   if (!_impl->_window) {
     glfwTerminate();
     exit(EXIT_FAILURE);
@@ -184,18 +185,17 @@ void
 GLFWRenderer::Render(const Scene& scene, const Camera& camera)
 {
   _impl->_window = glfwGetCurrentContext();
-  float ratio;
-  int width, height;
 
+  int width = 0, height = 0;
   glfwGetFramebufferSize(_impl->_window, &width, &height);
-  ratio = width / (float)height;
+  float ratio = width / (float)height;
 
   glViewport(0, 0, width, height);
   glClear(GL_COLOR_BUFFER_BIT);
 
-  auto rot_angle = 0.0f; //(float)glfwGetTime();
+  auto rot_angle = 0.0F; //(float)glfwGetTime();
   auto m = glm::rotate(glm::mat4x4(1.0), rot_angle, { 0, 0, 1.0 });
-  auto p = glm::ortho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
+  auto p = glm::ortho(-ratio, ratio, -1.F, 1.F, 1.F, -1.F);
   auto mvp = (p * m);
 
   std::vector<GLsizei> npoints;

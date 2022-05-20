@@ -13,7 +13,7 @@ public:
   DECL_CS_KERNEL Geometry(EntityType entType)
     : Entity(entType)
   {}
-  DECL_CS_KERNEL virtual ~Geometry() {}
+  DECL_CS_KERNEL ~Geometry() override = default;
 };
 
 class Geometry3d : public Geometry
@@ -24,7 +24,7 @@ public:
   DECL_CS_KERNEL Geometry3d(EntityType entType)
     : BASE_CLASS(entType)
   {}
-  DECL_CS_KERNEL virtual ~Geometry3d() {}
+  DECL_CS_KERNEL ~Geometry3d() override = default;
 };
 
 class Point : public Geometry3d

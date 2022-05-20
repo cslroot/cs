@@ -2,6 +2,6 @@
 
 using namespace cs::render;
 
-Camera::Camera(/* args */) {}
+Camera::Camera(/* args */) = default;
 
-Camera::~Camera() {}
+Camera::~Camera() = default;

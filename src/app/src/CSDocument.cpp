@@ -18,6 +18,7 @@ using namespace cs::base;
 using namespace cs::modeler;
 
 namespace {
+
 sqlite3*
 create_db_doc()
 {
@@ -29,13 +30,13 @@ create_db_doc()
   rc = sqlite3_exec(
     db,
     "CREATE TABLE hoge(id INTEGER, name TEXT, category TEXT, "
-    "cost INTEGER, size INTEGER, weight INTEGER, createed_at DATETIME);",
-    NULL,
-    NULL,
+    "cost INTEGER, size INTEGER, weight INTEGER, created_at DATETIME);",
+    nullptr,
+    nullptr,
     &err);
   assert(rc == SQLITE_OK);
   if (rc != SQLITE_OK) {
-    printf("Execution Err \n");
+    CSApp::Instance().Log().Error("Execution Err");
     sqlite3_close(db);
     sqlite3_free(err);
     return nullptr;
@@ -44,12 +45,12 @@ create_db_doc()
                     "CREATE TABLE entities("
                     "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                     "enttype TEXT);",
-                    NULL,
-                    NULL,
+                    nullptr,
+                    nullptr,
                     &err);
   assert(rc == SQLITE_OK);
   if (rc != SQLITE_OK) {
-    printf("Execution Err \n");
+    CSApp::Instance().Log().Error("Execution Err \n");
     CSApp::Instance().Log().Error(err);
     sqlite3_close(db);
     sqlite3_free(err);
@@ -89,13 +90,15 @@ struct CSDocument::Impl
 
   cs::modeler::CSModeler _modeler;
 
-  sqlite3* _db;
+  sqlite3* _db = nullptr;
 
   void SaveAs(const CSString& filepath)
   {
+    _filepath = filepath;
+
     sqlite3* pDbTargetInMemory = _db;
-    sqlite3* pDbFile;        /* Database connection opened on zFilename */
-    sqlite3_backup* pBackup; /* Backup object used to copy data */
+    sqlite3* pDbFile = nullptr; /* Database connection opened on zFilename */
+    sqlite3_backup* pBackup = nullptr; /* Backup object used to copy data */
 
     /* Open the database file identified by zFilename. Exit early if this
      *fails
@@ -120,6 +123,9 @@ struct CSDocument::Impl
         (void)sqlite3_backup_finish(pBackup);
       }
       rc = sqlite3_errcode(pDbFile);
+      if (rc == SQLITE_OK) {
+        assert(rc == SQLITE_OK);
+      }
     }
 
     (void)sqlite3_close(pDbFile);
@@ -136,8 +142,8 @@ CSDocument::CSDocument(CSFactory::Key)
     sqlite3_exec(_impl->_db,
                  "insert into hoge values(1, 'AAA', 'aaa', 10, 100, 111, "
                  "CURRENT_TIMESTAMP);",
-                 NULL,
-                 NULL,
+                 nullptr,
+                 nullptr,
                  &err);
   assert(rc == SQLITE_OK);
 }

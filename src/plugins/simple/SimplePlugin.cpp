@@ -10,7 +10,5 @@ cs_create_plugin()
   return new SimplePlugin();
 }
 
-SimplePlugin::SimplePlugin() {}
-SimplePlugin::~SimplePlugin() {}
-
-SimplePlugin plugin;
+SimplePlugin::SimplePlugin() = default;
+SimplePlugin::~SimplePlugin() = default;

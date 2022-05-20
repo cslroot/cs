@@ -11,8 +11,8 @@ class DECL_CS_RENDER CSMaterial
 private:
   /* data */
 public:
-  CSMaterial(/* args */) {}
-  ~CSMaterial() {}
+  CSMaterial(/* args */) = default;
+  ~CSMaterial() = default;
 };
 
 class DECL_CS_RENDER BasicMaterial : public CSMaterial

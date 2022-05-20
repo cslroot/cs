@@ -25,7 +25,7 @@ CSDocumentCollection::CSDocumentCollection(CSApp* pOwnerApp)
   assert(pOwnerApp);
 }
 
-CSDocumentCollection::~CSDocumentCollection() {}
+CSDocumentCollection::~CSDocumentCollection() = default;
 
 CSDocument*
 CSDocumentCollection::ActiveDocument() const
