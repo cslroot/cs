@@ -99,3 +99,23 @@ jobs:
         name: "artifacts_${{ runner.os }}"
         path: "build/${{matrix.preset}}/bin"
 
+    - name: Setup OpenCppCoverage and add to PATh
+      if: runner.os == 'Windows'
+      id: setup_opencppcoverage
+      run: |
+        choco install OpenCppCoverage -y
+        echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
+
+    - name: Generate Report
+      if: runner.os == 'Windows'
+      id: generate_test_report
+      shell: cmd
+      run: OpenCppCoverage --sources src --modules=build\${{matrix.preset}}\bin\Debug\cs.* --export_type cobertura:cs.xml -- .\build\${{matrix.preset}}\bin\Debug\cs.test.exe
+
+    - name: Upload Report to Codecov
+      if: runner.os == 'Windows'
+      uses: codecov/codecov-action@v2
+      with:
+        files: ./cs.xml
+        fail_ci_if_error: true
+        functionalities: fix
