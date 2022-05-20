@@ -52,8 +52,8 @@ CSPluginManager::LoadAll()
     std::unique_ptr<SharedLibrary> plibrary =
       std::make_unique<SharedLibrary>(f); // will also load the library
 
-    auto func =
-      static_cast<ICSPluginEntryFunc>(plibrary->getSymbol("cs_create_plugin"));
+    auto func = reinterpret_cast<ICSPluginEntryFunc>(
+      plibrary->getSymbol("cs_create_plugin"));
     auto* pPlugin = func();
     auto name = pPlugin->Name();
 
