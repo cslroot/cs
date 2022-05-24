@@ -37,7 +37,6 @@ jobs:
         submodules: recursive
 
     - name: "setup ninja"
-      # TODO: review 
       uses: seanmiddleditch/gha-setup-ninja@master
 
     - name: "Create directory '${{ env.VCPKG_DEFAULT_BINARY_CACHE }}'"
@@ -45,6 +44,7 @@ jobs:
       shell: bash
 
     - name: Cache/Restore vcpkg
+      id: cache-vcpkg
       uses: actions/cache@v2
       with:
         path: |
@@ -54,7 +54,11 @@ jobs:
           !${{ env.VCPKG_ROOT }}/downloads
           !${{ env.VCPKG_ROOT }}/installed
         key: |
-          ${{ runner.os }}-${{ matrix.triplet }}-${{ secrets.CACHE_VERSION }}-${{ hashFiles('vcpkg.json') }}-${{ hashFiles('.git/modules/third/vcpkg/HEAD') }}
+          vcpkg-${{ secrets.CACHE_VERSION }}-${{ runner.os }}-${{ matrix.triplet }}-${{ hashFiles('vcpkg.json') }}-${{ hashFiles('.git/modules/third/vcpkg/HEAD') }}
+        restore-keys: |
+          vcpkg-${{ secrets.CACHE_VERSION }}-${{ runner.os }}-${{ matrix.triplet }}-${{ hashFiles('vcpkg.json') }}-
+          vcpkg-${{ secrets.CACHE_VERSION }}-${{ runner.os }}-${{ matrix.triplet }}-
+          vcpkg-${{ secrets.CACHE_VERSION }}-${{ runner.os }}-
         # CACHE_VERSION is used to clear cache explicitly
 
     # REMARK: setup-msbuild doesn't expose cl.exe into PATH.
