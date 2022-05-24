@@ -14,25 +14,26 @@ cmake --build --preset "clang-x64-ninja-Release"
 
 ### Windows
 
-using Visual Studio 2022
+with Visual Studio 2022
 
 ```
 git clone --recursive https://github.com/cslroot/cs.git
 cd cs
-cmake --preset "windows-x64-vs2019"
-cmake --build --preset "windows-x64-vs2019-Release"
+cmake --preset "windows-x64-vs2022"
+cmake --build --preset "windows-x64-vs2022-Release"
 ```
 
+----------------------------------------
 
-## get source from git
+# Step by Step 
+
+## 1. get source from github
 
 ```
 git clone --recursive https://github.com/cslroot/cs.git
 ```
 
 This repo use vcpkg as submodule, so clone with recursive option.
-Dependent libraries are retrieved via vcpkg.json.
-
 
 When you already cloned without `--recursive` option, then use below to get vcpkg:
 
@@ -40,42 +41,61 @@ When you already cloned without `--recursive` option, then use below to get vcpk
 git submodule update --init --recursive
 ```
 
+## 2. setup prerequisites and build
 
-## pre-requisites:
+* CMake 3.20+
+  - in order to use CMakePreset.json
+* Generator
+  * Ninja
+  * or Visual Studio (Windows)
+* Compiler
+  * Clang++
+  * or Visual Studio (Windows)
 
-If you want to build locally, please introduce the followings:
+vcpkg is introduced as git submodule.
+Dependent libraries are retrieved via vcpkg.json.
 
-- CMake ver. 3.20 or above
-  - to use CMakePreset
-- need zip/unzip to expand package of vcpkg (Linux)
-  - `sudo apt-get install curl zip unzip tar`
-- ninja
-  - `sudo apt-get install ninja`
+junmp to your platform:
+
+* [for Windows](#prerequisites-for-windows)
+* [for Ubuntu on WSLg](#prerequisites-for-wsl)
+* [for Linux](#prerequisites-for-linux)
+* [for Mac](#prerequisites-for-mac)
+* [for RaspberryPi](#prerequisites-for-raspi)
 
 
-vcpkg bind
+## Prerequisites for Windows
+
+### vcpkg
+
+bind?? (not mandantory???)
+
 ```
 .\bootstrap-vcpkg.bat
 ```
 
-no need to call integrate ~`.\vcpkg.exe integrate install`~
+no need to call integrate ~~`.\vcpkg.exe integrate install`~~
 
 
-# Windows
+### Prerequisites: install build tools
 
-## using Visual Studio 2022(VS2022)
+Using VS2022 Community Edition is easist way to build.
+Install cmake and Ninja via VS2022 Installer.
 
-### install build tools
-I used VS2022 Community Edition. It is easist way to build.
-And install cmake and Ninja via VS2022 Installer.
-
-* `ツール >  ツールと機能を取得`
+* VS Main Menu: `ツール >  ツールと機能を取得`
 * checked `ワークロード > C++ によるデスクトップ開発`
-  * install MSVC and 
-* check `Windows 用 C++ CMake ツール` if unchecked
+* checked the followings:
+  * `Windows 用 C++ CMake ツール` if unchecked
+  * `Windows 用 C++ Clang コンパイラ` if you would like to use clang-cl.
 
+install cmake and llvm(clang) if you use local cmake and clang
 
-### build
+```PowerShell
+winget install cmake
+winget install LLVM
+```
+
+### build via CLI
 
 ```PowerShell:
 "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
@@ -83,25 +103,30 @@ cmake --preset="win-x64-ninja"
 cmake --build --preset="win-ninja"
 ```
 
+----------------------------------------------
 
-## using local??
+## prerequisites for Linux
 
-```PowerShell
-winget install cmake
-winget install LLVM
-```
+If you want to build locally, please introduce the followings:
 
-## Ninja + clang
+- CMake 
+  - 
+- need zip/unzip to expand package of vcpkg (Linux)
+  - `sudo apt-get install curl zip unzip tar`
+- ninja
+  - `sudo apt-get install ninja`
 
 
-------
+----------------------------------------------
 
 
-# raspi (Raspberry os x64)
+## prerequisites for raspi
 
-## ubuntu 22.04 LTS
+Raspberry Pi
 
-install env.
+### ubuntu 22.04 LTS
+
+#### install env.
 
 ```
 sudo apt install -y cmake ninja-build clang
@@ -109,9 +134,9 @@ sudo apt install -y curl zip unzip tar
 sudo apt install -y pkg-config
 sudo apt install -y libxmu-dev libxi-dev libgl-dev
 sudo apt install -y libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev
-``
+```
 
-build
+#### build
 
 ```
 cmake --preset="raspi-clang-arm64-ninja"
@@ -119,9 +144,9 @@ cmake --build --preset="raspi-clang-arm64-ninja-Debug"
 ```
 
 
------
+### raspberry pi OS
 
-## raspberry pi OS
+#### install env.
 
 cmake -> 3.18.4
 latest vcpkg needs cmake 3.20+
@@ -145,18 +170,19 @@ sudo apt install -y libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev
 [build]     libglu1-mesa-dev
 
 
+#### build
 
 
 
-# Ubuntu on WSLg
+----------------------------------------------
+
+## prerequisites for WSLg
 
 Test Env.
 
 * Ubuntu 20.04LTS
 * Intel(R) Core(TM) i7-10875H
 * NVIDIA GeForce RTX 2070 Super
-
-
 
 ### Note
 * WSLg supports OpenGL 3.3 (Core) now (2022-04-01)
@@ -196,29 +222,34 @@ OpenGL ES profile shading language version string: OpenGL ES GLSL ES 3.00
 ```
 
 
+----------------------------------------------
 
-Ubuntu x64
-----------------
+## prerequisites for ubuntu focal
+
 
 * Docker Desktop on Windows / WSL
 * Ubuntu focal
   * `docker pull ubuntu:focal`
 
 ```sh
+apt update
 apt install -y git
 apt install -y cmake ninja-build clang
+apt install -y curl zip unzip tar
 apt install -y libxmu-dev libxi-dev libgl-dev
 apt install -y libglu1-mesa
 apt install -y libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev
 ```
 
-`cmake --version` is old to build using cmake preset
-so that introduce update version of cmake via pip
+`cmake --version` is old to build via cmake preset.
+please see [udpate cmake](#update-cmake-to-newer-version)
+
+
+#### build
 
 ```
-apt purge cmake
-apt install -y python3-pip
-pip3 install cmake
+cmake --preset="clang-x64-ninja"
+cmake --build --preset="clang-x64-ninja-Debug"
 ```
 
 

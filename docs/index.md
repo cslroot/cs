@@ -6,5 +6,6 @@ repo: https://github.com/cslroot/cs
 
 ## Documents
 
-[How to setup and build](setup.md)
+[Supported Platforms](paltforms.md)
 
+[How to setup and build](setup.md)
