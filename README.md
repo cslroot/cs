@@ -7,3 +7,33 @@
 
 
 currently, depends on POCO
+
+
+## Dependencies
+
+* CMake
+* Ninja (Linux)
+* Visual Studio (Windows)
+
+### for runtime
+* Poco
+* SQlite
+* glm 
+* glfw for GL render
+* glew for GL render
+
+### for developing
+* 
+
+### for testing
+* gtest
+* (cppopencoverage
+
+### for Packaging
+* WiX (Windows)
+
+
+### github actions
+using 
+* codecov / OpenCppCoverage
+* codeql
