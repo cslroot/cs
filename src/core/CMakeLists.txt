@@ -35,6 +35,12 @@ target_sources(${PROJ_NAME} PRIVATE ${CMAKE_BINARY_DIR}/version.rc)
 endif()
 # source_group("headers" FILES ${${PROJ_NAME}_HEADER})
 
+# W.A.) failed to compile using MSVC clang-cl pocoproject/poco#3162
+if(WIN32)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+target_compile_definitions(${PROJ_NAME} PRIVATE POCO_NO_AUTOMATIC_LIBS)
+endif()
+endif()
 find_package(Poco CONFIG REQUIRED Foundation Util)
 target_link_libraries(${PROJ_NAME} PRIVATE Poco::Util)
 

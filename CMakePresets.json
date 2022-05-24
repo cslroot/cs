@@ -70,14 +70,14 @@
                 "strategy": "external"
             },
             "toolset": {
-                "value": "host=x64",
+                "value": "v143,host=x64,version=14.32.31326",
                 "strategy": "external"
-            }
+            },
+            "description": "set 14.33.31424 for VS2022 preview / 14.32.31326 for VS2022 / 14.29.30133 for VS2019"
         },
         {
-            "name": "windows-clang-x64-ninja",
-            "hidden": true,
-            "description": "This preset is not work well. fail to build Poco with clang-cl #3162(lld-link: error: could not open 'PocoFoundationd.lib': no such file or directory)",
+            "name": "windows-clang-cl-x64-ninja",
+            "hidden": false,
             "inherits": "windows-x64-ninja-vcpkg-base",
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "clang-cl",
@@ -177,15 +177,15 @@
             ]
         },
         {
-            "name": "windows-clang-Debug",
-            "configurePreset": "windows-clang-x64-ninja",
+            "name": "windows-x64-clang-cl-Debug",
+            "configurePreset": "windows-clang-cl-x64-ninja",
             "configuration": "Debug"
         },
         {
-            "name": "windows-clang-Release",
+            "name": "windows-x64-clang-cl-Release",
             "configuration": "Release",
             "inherits": [
-                "windows-clang-Debug"
+                "windows-x64-clang-cl-Debug"
             ]
         },
         {
