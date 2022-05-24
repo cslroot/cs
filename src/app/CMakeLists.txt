@@ -32,6 +32,20 @@ target_precompile_headers(${PROJ_NAME}
     <vector>
 )
 
+
+# pthread
+if(WIN32)
+else()
+# W.A.) build process fails to import threads when using linux with shared lib(.so)
+# [cmake]   Target "cs.app" links to target "Threads::Threads" but the target was not
+# [cmake]   found.  Perhaps a find_package() call is missing for an IMPORTED target, or
+# [cmake]   an ALIAS target is missing?
+set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
+set(THREADS_PREFER_PTHREAD_FLAG TRUE)
+find_package(Threads REQUIRED)
+endif()
+
+
 find_package(unofficial-sqlite3 CONFIG REQUIRED)
 target_link_libraries(${PROJ_NAME} PRIVATE unofficial::sqlite3::sqlite3)
 
