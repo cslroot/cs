@@ -22,5 +22,8 @@ RUN if [ "${REINSTALL_CMAKE_VERSION_FROM_SOURCE}" != "none" ]; then \
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends ninja-build clang curl zip unzip tar pkg-config \
     && apt-get -y install --no-install-recommends libxmu-dev libxi-dev libgl-dev \
-    && apt-get -y install --no-install-recommends libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev \
-    && apt-get -y install libssl1.1 libssl-dev
+    && apt-get -y install --no-install-recommends libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev
+
+RUN echo "deb http://security.ubuntu.com/ubuntu impish-security main" | tee /etc/apt/sources.list.d/impish-security.list \
+    && apt-get update \
+    && apt-get install libssl1.1
