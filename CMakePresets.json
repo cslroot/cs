@@ -1,224 +1,222 @@
 {
-    "version": 3,
-    "cmakeMinimumRequired": {
-        "major": 3,
-        "minor": 20,
-        "patch": 0
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "ninja-vcpkg-base",
+      "hidden": true,
+      "generator": "Ninja Multi-Config",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "installDir": "${sourceDir}/build/install/${presetName}",
+      "cacheVariables": {
+        "BUILD_SHARED_LIBS": "ON"
+      }
     },
-    "configurePresets": [
-        {
-            "name": "ninja-vcpkg-base",
-            "hidden": true,
-            "generator": "Ninja Multi-Config",
-            "binaryDir": "${sourceDir}/build/${presetName}",
-            "installDir": "${sourceDir}/build/install/${presetName}",
-            "cacheVariables": {
-                "BUILD_SHARED_LIBS": "ON",
-                "CMAKE_TOOLCHAIN_FILE": {
-                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-                    "type": "FILEPATH"
-                },
-                "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/tools/vcpkg/custom-triplets"
-            },
-            "environment": {
-                "VCPKG_ROOT": "${sourceDir}/third/vcpkg"
-            }
-        },
-        {
-            "name": "clang-x64-ninja",
-            "inherits": "ninja-vcpkg-base",
-            "cacheVariables": {
-                "CMAKE_C_COMPILER": "clang",
-                "CMAKE_CXX_COMPILER": "clang++"
-            },
-            "condition": {
-                "type": "inList",
-                "string": "${hostSystemName}",
-                "list": [
-                    "Linux",
-                    "Darwin"
-                ]
-            }
-        },
-        {
-            "name": "gcc-x64-ninja",
-            "inherits": "ninja-vcpkg-base",
-            "cacheVariables": {
-                "CMAKE_C_COMPILER": "gcc",
-                "CMAKE_CXX_COMPILER": "g++"
-            },
-            "condition": {
-                "type": "inList",
-                "string": "${hostSystemName}",
-                "list": [
-                    "Linux",
-                    "Darwin"
-                ]
-            }
-        },
-        {
-            "name": "windows-x64-ninja-vcpkg-base",
-            "hidden": true,
-            "inherits": "ninja-vcpkg-base",
-            "condition": {
-                "type": "equals",
-                "lhs": "${hostSystemName}",
-                "rhs": "Windows"
-            },
-            "architecture": {
-                "value": "x64",
-                "strategy": "external"
-            },
-            "toolset": {
-                "value": "v143,host=x64,version=14.32.31326",
-                "strategy": "external"
-            },
-            "description": "set 14.33.31424 for VS2022 preview / 14.32.31326 for VS2022 / 14.29.30133 for VS2019"
-        },
-        {
-            "name": "windows-clang-cl-x64-ninja",
-            "hidden": false,
-            "inherits": "windows-x64-ninja-vcpkg-base",
-            "cacheVariables": {
-                "CMAKE_C_COMPILER": "clang-cl",
-                "CMAKE_CXX_COMPILER": "clang-cl"
-            },
-            "vendor": {
-                "microsoft.com/VisualStudioSettings/CMake/1.0": {
-                    "intelliSenseMode": "windows-clang-x64"
-                }
-            }
-        },
-        {
-            "name": "windows-cl-x64-ninja",
-            "inherits": "windows-x64-ninja-vcpkg-base",
-            "cacheVariables": {
-                "CMAKE_C_COMPILER": "cl",
-                "CMAKE_CXX_COMPILER": "cl"
-            }
-        },
-        {
-            "name": "windows-x64-vs2022",
-            "inherits": "windows-x64-ninja-vcpkg-base",
-            "generator": "Visual Studio 17 2022"
-        },
-        {
-            "name": "windows-x64-vs2019",
-            "inherits": "windows-x64-ninja-vcpkg-base",
-            "generator": "Visual Studio 16 2019"
-        },
-        {
-            "name": "raspi-clang-arm64-ninja",
-            "inherits": "clang-x64-ninja",
-            "environment": {
-                "VCPKG_FORCE_SYSTEM_BINARIES": "1"
-            }
+    {
+      "name": "clang-x64-ninja",
+      "inherits": "ninja-vcpkg-base",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++"
+      },
+      "condition": {
+        "type": "inList",
+        "string": "${hostSystemName}",
+        "list": [
+          "Linux",
+          "Darwin"
+        ]
+      }
+    },
+    {
+      "name": "gcc-x64-ninja",
+      "inherits": "ninja-vcpkg-base",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++"
+      },
+      "condition": {
+        "type": "inList",
+        "string": "${hostSystemName}",
+        "list": [
+          "Linux",
+          "Darwin"
+        ]
+      }
+    },
+    {
+      "name": "windows-x64-ninja-vcpkg-base",
+      "hidden": true,
+      "inherits": "ninja-vcpkg-base",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "toolset": {
+        "value": "v143,host=x64,version=14.32.31326",
+        "strategy": "external"
+      },
+      "description": "set 14.33.31424 for VS2022 preview / 14.32.31326 for VS2022 / 14.29.30133 for VS2019"
+    },
+    {
+      "name": "windows-clang-cl-x64-ninja",
+      "hidden": false,
+      "inherits": "windows-x64-ninja-vcpkg-base",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang-cl",
+        "CMAKE_CXX_COMPILER": "clang-cl"
+      },
+      "vendor": {
+        "microsoft.com/VisualStudioSettings/CMake/1.0": {
+          "intelliSenseMode": "windows-clang-x64"
         }
-    ],
-    "buildPresets": [
-        {
-            "name": "clang-x64-ninja-Debug",
-            "configurePreset": "clang-x64-ninja",
-            "configuration": "Debug"
-        },
-        {
-            "name": "clang-x64-ninja-Release",
-            "configurePreset": "clang-x64-ninja",
-            "configuration": "Release"
-        },
-        {
-            "name": "raspi-clang-arm64-ninja-Debug",
-            "configurePreset": "raspi-clang-arm64-ninja",
-            "configuration": "Debug"
-        },
-        {
-            "name": "raspi-clang-arm64-ninja-Release",
-            "configurePreset": "raspi-clang-arm64-ninja",
-            "configuration": "Release"
-        },
-        {
-            "name": "windows-cl-x64-ninja-Debug",
-            "configurePreset": "windows-cl-x64-ninja",
-            "configuration": "Debug"
-        },
-        {
-            "name": "windows-cl-x64-ninja-Release",
-            "configurePreset": "windows-cl-x64-ninja",
-            "configuration": "Release"
-        },
-        {
-            "name": "windows-x64-vs2022-Debug",
-            "configurePreset": "windows-x64-vs2022",
-            "configuration": "Debug",
-            "targets": [
-                "ALL_BUILD"
-            ]
-        },
-        {
-            "name": "windows-x64-vs2022-Release",
-            "configuration": "Release",
-            "inherits": [
-                "windows-x64-vs2022-Debug"
-            ]
-        },
-        {
-            "name": "windows-x64-vs2019-Debug",
-            "configurePreset": "windows-x64-vs2019",
-            "configuration": "Debug",
-            "targets": [
-                "ALL_BUILD"
-            ]
-        },
-        {
-            "name": "windows-x64-vs2019-Release",
-            "configuration": "Release",
-            "inherits": [
-                "windows-x64-vs2019-Debug"
-            ]
-        },
-        {
-            "name": "windows-x64-clang-cl-Debug",
-            "configurePreset": "windows-clang-cl-x64-ninja",
-            "configuration": "Debug"
-        },
-        {
-            "name": "windows-x64-clang-cl-Release",
-            "configuration": "Release",
-            "inherits": [
-                "windows-x64-clang-cl-Debug"
-            ]
-        },
-        {
-            "name": "gcc-x64-ninja-Debug",
-            "configurePreset": "gcc-x64-ninja",
-            "configuration": "Debug"
-        },
-        {
-            "name": "gcc-x64-ninja-Release",
-            "configuration": "Release",
-            "inherits": [
-                "gcc-x64-ninja-Debug"
-            ]
-        }
-    ],
-    "testPresets": [
-        {
-            "name": "windows-cl-x64-ninja",
-            "configurePreset": "windows-cl-x64-ninja",
-            "execution": {
-                "noTestsAction": "error",
-                "stopOnFailure": true
-            }
-        },
-        {
-            "name": "clang-x64-ninja",
-            "inherits": "windows-cl-x64-ninja",
-            "configurePreset": "clang-x64-ninja"
-        },
-        {
-            "name": "gcc-x64-ninja",
-            "inherits": "windows-cl-x64-ninja",
-            "configurePreset": "gcc-x64-ninja"
-        }
-    ]
+      }
+    },
+    {
+      "name": "windows-cl-x64-ninja",
+      "inherits": "windows-x64-ninja-vcpkg-base",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "cl",
+        "CMAKE_CXX_COMPILER": "cl"
+      }
+    },
+    {
+      "name": "windows-x64-vs2022",
+      "inherits": "windows-x64-ninja-vcpkg-base",
+      "generator": "Visual Studio 17 2022"
+    },
+    {
+      "name": "windows-x64-vs2019",
+      "inherits": "windows-x64-ninja-vcpkg-base",
+      "generator": "Visual Studio 16 2019"
+    },
+    {
+      "name": "raspi-clang-arm64-ninja",
+      "inherits": "clang-x64-ninja",
+      "environment": {
+        "VCPKG_FORCE_SYSTEM_BINARIES": "1"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "clang-x64-ninja-Debug",
+      "configurePreset": "clang-x64-ninja",
+      "configuration": "Debug"
+    },
+    {
+      "name": "clang-x64-ninja-Release",
+      "configurePreset": "clang-x64-ninja",
+      "configuration": "Release"
+    },
+    {
+      "name": "raspi-clang-arm64-ninja-Debug",
+      "configurePreset": "raspi-clang-arm64-ninja",
+      "configuration": "Debug"
+    },
+    {
+      "name": "raspi-clang-arm64-ninja-Release",
+      "configurePreset": "raspi-clang-arm64-ninja",
+      "configuration": "Release"
+    },
+    {
+      "name": "windows-cl-x64-ninja-Debug",
+      "configurePreset": "windows-cl-x64-ninja",
+      "configuration": "Debug"
+    },
+    {
+      "name": "windows-cl-x64-ninja-Release",
+      "configurePreset": "windows-cl-x64-ninja",
+      "configuration": "Release"
+    },
+    {
+      "name": "windows-x64-vs2022-Debug",
+      "configurePreset": "windows-x64-vs2022",
+      "configuration": "Debug",
+      "targets": [
+        "ALL_BUILD"
+      ]
+    },
+    {
+      "name": "windows-x64-vs2022-Release",
+      "configuration": "Release",
+      "inherits": [
+        "windows-x64-vs2022-Debug"
+      ]
+    },
+    {
+      "name": "windows-x64-vs2019-Debug",
+      "configurePreset": "windows-x64-vs2019",
+      "configuration": "Debug",
+      "targets": [
+        "ALL_BUILD"
+      ]
+    },
+    {
+      "name": "windows-x64-vs2019-Release",
+      "configuration": "Release",
+      "inherits": [
+        "windows-x64-vs2019-Debug"
+      ]
+    },
+    {
+      "name": "windows-x64-clang-cl-Debug",
+      "configurePreset": "windows-clang-cl-x64-ninja",
+      "configuration": "Debug"
+    },
+    {
+      "name": "windows-x64-clang-cl-Release",
+      "configuration": "Release",
+      "inherits": [
+        "windows-x64-clang-cl-Debug"
+      ]
+    },
+    {
+      "name": "gcc-x64-ninja-Debug",
+      "configurePreset": "gcc-x64-ninja",
+      "configuration": "Debug"
+    },
+    {
+      "name": "gcc-x64-ninja-Release",
+      "configuration": "Release",
+      "inherits": [
+        "gcc-x64-ninja-Debug"
+      ]
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "windows-cl-x64-ninja",
+      "configurePreset": "windows-cl-x64-ninja",
+      "execution": {
+        "noTestsAction": "error",
+        "stopOnFailure": true
+      }
+    },
+    {
+      "name": "clang-x64-ninja",
+      "inherits": "windows-cl-x64-ninja",
+      "configurePreset": "clang-x64-ninja"
+    },
+    {
+      "name": "gcc-x64-ninja",
+      "inherits": "windows-cl-x64-ninja",
+      "configurePreset": "gcc-x64-ninja"
+    },
+    {
+      "name": "windows-clang-cl-x64-ninja",
+      "description": "",
+      "displayName": "",
+      "configurePreset": "windows-clang-cl-x64-ninja"
+    }
+  ]
 }
