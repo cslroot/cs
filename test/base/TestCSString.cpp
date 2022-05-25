@@ -10,19 +10,56 @@ TEST(TestCSString, ctorDefault)
   CSString str;
   EXPECT_STREQ(str.c_str(), "");
 }
-
+TEST(TestCSString, CreateFromHex)
+{
+  void* pNull = nullptr;
+  CSString str = CSString::CreateFromHex(pNull);
+  EXPECT_STREQ(str.c_str(), "0000000000000000");
+}
 TEST(TestCSString, ctorStr)
 {
   CSString str("abc");
   EXPECT_STREQ(str.c_str(), "abc");
 }
+TEST(TestCSString, ctorWStr)
+{
+  CSString str(L"abc");
+  std::wstring wstr = L"def";
+  CSString str2(wstr);
 
+  EXPECT_STREQ(str.c_str(), "abc");
+  EXPECT_STREQ(str2.c_str(), "def");
+
+  CSString strNull(L"");
+  EXPECT_STREQ(strNull.c_str(), "");
+}
 TEST(TestCSString, opePlus)
 {
   CSString str1("abc");
   CSString str2("def");
   CSString str = str1 + str2;
   EXPECT_STREQ(str.c_str(), "abcdef");
+}
+
+TEST(TestCSString, opePlusEq)
+{
+  CSString str1("abc");
+  CSString str2("def");
+  CSString str;
+  str += str1;
+  str += str2;
+  str += u8"ghi";
+  EXPECT_STREQ(str.c_str(), "abcdefghi");
+}
+
+TEST(TestCSString, opeOstream)
+{
+  CSString str1("abc");
+  CSString str2("def");
+  std::ostringstream oss;
+  oss << str1 << " " << str2;
+
+  EXPECT_STREQ(oss.str().c_str(), "abc def");
 }
 
 TEST(TestCSString, replace)
