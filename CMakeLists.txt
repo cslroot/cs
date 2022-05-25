@@ -1,4 +1,26 @@
 cmake_minimum_required(VERSION 3.20.0)
+
+#-----
+# build options
+option(CS_ENABLE_BUILD_EXAMPLES "Build examples" ON)
+option(CS_ENABLE_TESTING "enable testing" ON)
+option(CS_ENABLE_PACKAGING "enable packaging" ON)
+
+option(CS_BUILD_SHARED_LIBS "build as a shared library" ON)
+option(CS_ENABLE_CODE_COVERAGE "enable code coverage. this value is effective if testing is ON" ON)
+
+# vcpkg 
+# RAMARK: define before project()
+set(VCPKG_OVERLAY_TRIPLETS "${CMAKE_SOURCE_DIR}/tools/vcpkg/custom-triplets")
+set(VCPKG_ROOT "${CMAKE_SOURCE_DIR}/third/vcpkg" CACHE STRING "vcpkg root directory")
+if(CS_ENABLE_BUILD_TESTING)
+  list(APPEND VCPKG_MANIFEST_FEATURES "testing")
+endif()
+
+message(STATUS "VCPKG_MANIFEST_FEATURES: ${VCPKG_MANIFEST_FEATURES}")
+set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
+
+#-----
 project(cs VERSION 0.1.0)
 
 cmake_policy(SET CMP0054 NEW)
@@ -30,8 +52,8 @@ set_property(GLOBAL PROPERTY
     VERSION ${CS_PROJECT_VERSION_NUMBER})
 
 
-option(CS_BUILD_SHARED_LIBS "build as a shared library" ON)
-option(CS_CODE_COVERAGE "enable code coverage" ON)
+add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
+add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 
 if (CS_BUILD_SHARED_LIBS)
     set(CS_LIB_TYPE SHARED)
@@ -42,13 +64,6 @@ endif()
 
 SET(CMAKE_DEBUG_POSTFIX "d")
 
-# vcpkg
-# if(NOT DEFINED VCPKG_ROOT)
-#     set(VCPKG_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/third/vcpkg" CACHE STRING "vcpkg root directory")
-# endif()
-# if(NOT DEFINED CMAKE_TOOLCHAIN_FILE)
-#     set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
-# endif()
 
 # clang on ubuntu/WSLg: Could NOT find OpenGL (missing: OPENGL_opengl_LIBRARY OPENGL_glx_LIBRARY)  ??
 set(OpenGL_GL_PREFERENCE LEGACY)
@@ -98,13 +113,19 @@ include(GenerateExportHeader)   # to create CS_XXX_EXPORT with generate_export_h
 add_subdirectory(src)
 
 # enable testing
+if(CS_ENABLE_TESTING)
 enable_testing()
 add_subdirectory(test)
+endif()
 
 # build example app
+if (CS_ENABLE_BUILD_EXAMPLES)
 add_subdirectory(examples)
+endif()
 
 # build installer
+if(CS_ENABLE_PACKAGING)
 if(WIN32)
 add_subdirectory(package)
+endif()
 endif()

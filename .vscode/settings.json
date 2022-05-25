@@ -115,7 +115,8 @@
         "filesystem": "cpp",
         "numbers": "cpp",
         "cfenv": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "regex": "cpp"
     },
     "files.exclude": {
         "third/*": true
