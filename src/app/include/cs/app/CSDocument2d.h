@@ -9,7 +9,7 @@ namespace app {
 class CSDocument2d : public CSDocument::Registrar<CSDocument2d>
 {
 public:
-  explicit DECL_CS_APP CSDocument2d(const cs::base::CSString&);
+  explicit DECL_CS_APP CSDocument2d(const cs::base::CSString& docName);
   DECL_CS_APP ~CSDocument2d() override;
 
 public:

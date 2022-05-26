@@ -38,6 +38,7 @@ target_link_libraries(${PROJ_NAME} PRIVATE cs.core)
 target_link_libraries(${PROJ_NAME} PRIVATE cs.kernel)
 target_link_libraries(${PROJ_NAME} PRIVATE cs.math)
 target_link_libraries(${PROJ_NAME} PRIVATE cs.modeler)
+target_link_libraries(${PROJ_NAME} PRIVATE cs.drawing)
 target_link_libraries(${PROJ_NAME} PRIVATE cs.render)
 target_link_libraries(${PROJ_NAME} PRIVATE cs.app)
 
