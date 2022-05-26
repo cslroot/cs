@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <codecvt>
+#include <iomanip>
 #include <iostream>
 #include <locale>
 #include <sstream>
@@ -76,7 +77,8 @@ CSString::CreateFromHex(void* p)
 {
   std::stringstream ss;
   ss.imbue(std::locale::classic());
-  ss << std::hex << p;
+
+  ss << std::setfill('0') << std::setw(sizeof(p) * 2) << std::hex << p;
   std::string s = ss.str(); // "10"
   return s;
 }

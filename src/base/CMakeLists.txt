@@ -30,6 +30,7 @@ target_precompile_headers(${PROJ_NAME}
     <codecvt>
     <cstddef>
     <iostream>
+    <iomanip>
     <locale>
     <string>
     <unordered_map>
