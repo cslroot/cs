@@ -26,6 +26,9 @@ CSApp::Instance()
   static Poco::SingletonHolder<CSApp> sh;
   return *sh.get();
 }
+void
+CSApp::Reset()
+{}
 
 struct CSApp::Impl
 {

@@ -20,6 +20,7 @@ public:
   DECL_CS_APP virtual ~CSApp();
 
   DECL_CS_APP static CSApp& Instance();
+  DECL_CS_APP static void Reset();
 
   DECL_CS_APP CSApp& Initialize(int argc, char** argv);
 
@@ -37,9 +38,6 @@ public:
 private:
   struct Impl;
   std::unique_ptr<Impl> _impl;
-
-private:
-  static std::unique_ptr<CSApp> _app;
 };
 
 } // namespace app
