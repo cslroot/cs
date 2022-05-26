@@ -77,7 +77,6 @@ CSString::CreateFromHex(void* p)
 {
   std::stringstream ss;
   ss.imbue(std::locale::classic());
-
   ss << std::setfill('0') << std::setw(sizeof(p) * 2) << std::hex
      << reinterpret_cast<int64_t>(
           p); // pointer type is converted as "0x00000000" on macos, so the

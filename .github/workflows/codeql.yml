@@ -37,6 +37,10 @@ jobs:
       fail-fast: false
       matrix:
         language: [ 'cpp' ]
+        include:
+          - language: 'cpp'
+            preset: clang-x64-ninja
+            triplet: x64-linux
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
         # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
 
@@ -80,6 +84,7 @@ jobs:
       shell: bash
 
     - name: Cache/Restore vcpkg
+      id: cache-vcpkg
       uses: actions/cache@v2
       with:
         path: |
@@ -89,7 +94,11 @@ jobs:
           !${{ env.VCPKG_ROOT }}/downloads
           !${{ env.VCPKG_ROOT }}/installed
         key: |
-          ${{ runner.os }}-${{ matrix.triplet }}-${{ secrets.CACHE_VERSION }}-${{ hashFiles('vcpkg.json') }}-${{ hashFiles('.git/modules/third/vcpkg/HEAD') }}
+          vcpkg-${{ secrets.CACHE_VERSION }}-${{ runner.os }}-${{ matrix.triplet }}-${{ hashFiles('vcpkg.json') }}-${{ hashFiles('.git/modules/third/vcpkg/HEAD') }}
+        restore-keys: |
+          vcpkg-${{ secrets.CACHE_VERSION }}-${{ runner.os }}-${{ matrix.triplet }}-${{ hashFiles('vcpkg.json') }}-
+          vcpkg-${{ secrets.CACHE_VERSION }}-${{ runner.os }}-${{ matrix.triplet }}-
+          vcpkg-${{ secrets.CACHE_VERSION }}-${{ runner.os }}-
         # CACHE_VERSION is used to clear cache explicitly
 
     - name: Add msbuild to PATH(Windows)
@@ -111,10 +120,13 @@ jobs:
         sudo apt-get install -y libgl1-mesa-dev
         sudo apt-get install -y mesa-utils freeglut3-dev
 
-    - name: cmake
+    - name: cmake configure
       run: |
-        cmake --preset "clang-x64-ninja" && \
-        cmake --build --preset "clang-x64-ninja-Debug"
+        cmake --preset "${{matrix.preset}}"
+
+    - name: cmake build
+      run: |
+        cmake --build --preset "${{matrix.preset}}-Debug"
 
 
     - name: Perform CodeQL Analysis
