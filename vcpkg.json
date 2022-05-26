@@ -22,7 +22,17 @@
             "name": "poco"
         },
         {
-            "name": "gtest"
+            "name": "assimp"
         }
-    ]
+    ],
+    "features": {
+        "testing": {
+            "description": "Enable Testing",
+            "dependencies": [
+                {
+                    "name": "gtest"
+                }
+            ]
+        }
+    }
 }
