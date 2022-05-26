@@ -48,13 +48,13 @@ CSApp::CSApp()
   : _impl(std::make_unique<CSApp::Impl>(this))
 {
 
-  //   std::locale::global(std::locale(
-  // #if _WIN32 && !__MINGW32__ && !__CYGWIN__
-  //     ".UTF-8"
-  // #else
-  //     ""
-  // #endif
-  //     ));
+  std::locale::global(std::locale(
+#if _WIN32 && !__MINGW32__ && !__CYGWIN__
+    ".UTF-8"
+#else
+    ""
+#endif
+    ));
 
   //----- init with config ----
   auto loglevel = _impl->_config.GetValue<cs::base::CSString>("loglevel");
