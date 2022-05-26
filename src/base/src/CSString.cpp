@@ -78,7 +78,10 @@ CSString::CreateFromHex(void* p)
   std::stringstream ss;
   ss.imbue(std::locale::classic());
 
-  ss << std::setfill('0') << std::setw(sizeof(p) * 2) << std::hex << p;
+  ss << std::setfill('0') << std::setw(sizeof(p) * 2) << std::hex
+     << reinterpret_cast<int64_t>(
+          p); // pointer type is converted as "0x00000000" on macos, so the
+              // result was unexpected string "00000000000000x0" ...
   std::string s = ss.str(); // "10"
   return s;
 }

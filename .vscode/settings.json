@@ -116,7 +116,8 @@
         "numbers": "cpp",
         "cfenv": "cpp",
         "cinttypes": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "__bits": "cpp"
     },
     "files.exclude": {
         "third/*": true
