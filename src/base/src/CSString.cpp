@@ -75,6 +75,7 @@ CSString
 CSString::CreateFromHex(void* p)
 {
   std::stringstream ss;
+  ss.imbue(std::locale::classic());
   ss << std::hex << p;
   std::string s = ss.str(); // "10"
   return s;
