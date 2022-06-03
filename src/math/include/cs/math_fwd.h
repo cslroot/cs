@@ -3,7 +3,7 @@
 #include <cstddef>
 
 namespace cs {
-namespace math {
+inline namespace math {
 
 class CSMath;
 

@@ -5,7 +5,7 @@
 #include <cstdint>
 
 namespace cs {
-namespace kernel {
+inline namespace kernel {
 
 enum class CurveSubtype
 {

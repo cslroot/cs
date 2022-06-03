@@ -9,8 +9,7 @@
 #include <cs/modeler.h>
 #include <cs/render.h>
 
-using namespace cs::core;
-using namespace cs::kernel;
+using namespace cs;
 
 int
 main(int argc, char** argv)

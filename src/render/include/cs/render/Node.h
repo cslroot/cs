@@ -9,7 +9,7 @@
 #include <vector>
 
 namespace cs {
-namespace render {
+inline namespace render {
 
 class Node : public std::enable_shared_from_this<Node>
 {

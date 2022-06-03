@@ -10,7 +10,7 @@
 #include <cs/base_fwd.h>
 
 namespace cs {
-namespace app {
+inline namespace app {
 
 class CSApp;
 class CSDocument;

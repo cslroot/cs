@@ -1,7 +1,7 @@
 #pragma once
 
 namespace cs {
-namespace app {
+inline namespace app {
 
 class CSApp;
 

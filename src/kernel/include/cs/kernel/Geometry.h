@@ -5,7 +5,7 @@
 #include <cs/kernel/common.h>
 
 namespace cs {
-namespace kernel {
+inline namespace kernel {
 
 class Geometry : public Entity
 {

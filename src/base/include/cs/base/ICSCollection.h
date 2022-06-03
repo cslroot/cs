@@ -3,7 +3,7 @@
 #include <memory>
 
 namespace cs {
-namespace base {
+inline namespace base {
 template<class T>
 class ICSCollection
 {

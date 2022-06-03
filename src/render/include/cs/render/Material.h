@@ -4,7 +4,7 @@
 #include <cs/render/common.h>
 
 namespace cs {
-namespace render {
+inline namespace render {
 
 class DECL_CS_RENDER CSMaterial
 {

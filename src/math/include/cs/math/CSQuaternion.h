@@ -5,7 +5,7 @@
 #include <memory>
 
 namespace cs {
-namespace math {
+inline namespace math {
 
 class CSVec3;
 

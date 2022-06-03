@@ -4,7 +4,7 @@
 #include <string>
 
 namespace cs {
-namespace base {
+inline namespace base {
 class CSString
 {
 public:

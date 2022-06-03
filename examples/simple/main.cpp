@@ -12,14 +12,12 @@
 
 #include <cassert>
 
-using namespace cs::app;
-using namespace cs::base;
-using namespace cs::core;
+using namespace cs;
 
 int
 main(int argc, char** argv)
 {
-  auto& app = cs::app::CSApp::Instance().Initialize(argc, argv);
+  auto& app = CSApp::Instance().Initialize(argc, argv);
   auto& log = app.Log();
 
   // test print logger

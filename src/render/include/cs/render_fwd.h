@@ -1,7 +1,7 @@
 #pragma once
 
 namespace cs {
-namespace render {
+inline namespace render {
 
 class Renderer;
 class GLRenderer;

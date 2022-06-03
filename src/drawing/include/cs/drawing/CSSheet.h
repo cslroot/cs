@@ -7,7 +7,7 @@
 #include <memory>
 
 namespace cs {
-namespace drawing {
+inline namespace drawing {
 
 class CSSheet
 {

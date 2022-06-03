@@ -10,7 +10,7 @@
 #include <memory>
 
 namespace cs {
-namespace kernel {
+inline namespace kernel {
 
 class Segment2d : public Curve2d
 {

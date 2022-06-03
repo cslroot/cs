@@ -5,7 +5,7 @@
 #include <memory>
 
 namespace cs {
-namespace app {
+inline namespace app {
 
 /**
  * @brief abstract command base class

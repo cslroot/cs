@@ -1,7 +1,7 @@
 #pragma once
 
 namespace cs {
-namespace kernel {
+inline namespace kernel {
 
 class CSKernel;
 

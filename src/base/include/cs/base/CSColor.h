@@ -5,7 +5,7 @@
 #include <cs/base/common.h>
 
 namespace cs {
-namespace base {
+inline namespace base {
 
 constexpr float ColorToFloat = 1.0f / 255.0f;
 constexpr int ColorToInt = 255;

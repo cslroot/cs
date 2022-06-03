@@ -7,7 +7,7 @@
 #include <memory>
 
 namespace cs {
-namespace modeler {
+inline namespace modeler {
 
 class CSModeler
 {

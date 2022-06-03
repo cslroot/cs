@@ -3,7 +3,7 @@
 #include <cs/drawing/common.h>
 
 namespace cs {
-namespace drawing {
+inline namespace drawing {
 
 enum class LineWeight
 {

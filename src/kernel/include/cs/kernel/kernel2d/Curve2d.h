@@ -4,7 +4,7 @@
 #include <cs/kernel/kernel2d/Geometry2d.h>
 
 namespace cs {
-namespace kernel {
+inline namespace kernel {
 
 class Curve2d : public Geometry2d
 {

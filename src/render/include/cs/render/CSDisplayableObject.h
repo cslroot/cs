@@ -7,7 +7,7 @@
 #include <memory>
 
 namespace cs {
-namespace render {
+inline namespace render {
 
 class CSMaterial;
 
