@@ -8,7 +8,7 @@
 #include <vector>
 
 namespace cs {
-namespace core {
+inline namespace core {
 
 class CSBufferObject : public CSObject
 {

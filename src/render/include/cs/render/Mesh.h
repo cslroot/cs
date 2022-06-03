@@ -8,7 +8,7 @@
 #include <cs/render_fwd.h>
 
 namespace cs {
-namespace render {
+inline namespace render {
 
 class Mesh : public CSDisplayableObject
 {

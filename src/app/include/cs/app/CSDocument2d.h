@@ -4,7 +4,7 @@
 #include <cs/app/common.h>
 
 namespace cs {
-namespace app {
+inline namespace app {
 
 class CSDocument2d : public CSDocument::Registrar<CSDocument2d>
 {

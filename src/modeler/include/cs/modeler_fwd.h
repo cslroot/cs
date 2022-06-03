@@ -1,7 +1,7 @@
 #pragma once
 
 namespace cs {
-namespace modeler {
+inline namespace modeler {
 
 class CSModeler;
 

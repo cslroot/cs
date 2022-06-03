@@ -5,7 +5,7 @@
 #include <cs/base/CSColor.h>
 
 namespace cs {
-namespace kernel {
+inline namespace kernel {
 
 constexpr int LAYER_ID_UNSET = -1;
 

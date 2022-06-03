@@ -7,7 +7,7 @@
 #include <memory>
 
 namespace cs {
-namespace kernel {
+inline namespace kernel {
 
 class CSKernel
 {

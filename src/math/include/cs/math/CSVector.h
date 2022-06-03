@@ -10,7 +10,7 @@
 #include <type_traits>
 
 namespace cs {
-namespace math {
+inline namespace math {
 
 template<typename T, int constSize>
 struct VecFloatStorage

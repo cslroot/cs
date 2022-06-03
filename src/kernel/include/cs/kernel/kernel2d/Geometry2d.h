@@ -8,7 +8,7 @@
 #include <memory>
 
 namespace cs {
-namespace kernel {
+inline namespace kernel {
 
 class Geometry2d : public Geometry
 {

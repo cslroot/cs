@@ -4,7 +4,7 @@
 #include <cs/app/common.h>
 
 namespace cs {
-namespace app {
+inline namespace app {
 
 class CSDocument3d : public CSDocument::Registrar<CSDocument3d>
 {

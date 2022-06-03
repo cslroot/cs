@@ -5,7 +5,7 @@
 #include <cs/core/common.h>
 
 namespace cs {
-namespace core {
+inline namespace core {
 
 class CSConfig : public CSObject
 {

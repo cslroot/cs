@@ -6,7 +6,7 @@
 #include <memory>
 
 namespace cs {
-namespace core {
+inline namespace core {
 
 class ICSPlugin
 {

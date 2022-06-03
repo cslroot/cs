@@ -11,7 +11,7 @@
 #include <cs/base_fwd.h>
 
 namespace cs {
-namespace app {
+inline namespace app {
 
 class CSCommandCollection final : public cs::base::ICSCollection<CSCommand>
 {

@@ -11,7 +11,7 @@
 #include <memory>
 
 namespace cs {
-namespace kernel {
+inline namespace kernel {
 
 class Circle2d : public Curve2d
 {

@@ -11,7 +11,7 @@
 #endif
 
 namespace cs {
-namespace base {
+inline namespace base {
 
 #ifdef _GCC
 std::string

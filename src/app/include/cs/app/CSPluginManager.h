@@ -6,7 +6,7 @@
 #include <memory>
 
 namespace cs {
-namespace app {
+inline namespace app {
 
 class CSPluginManager
 {

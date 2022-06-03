@@ -7,7 +7,7 @@
 #include <memory>
 
 namespace cs {
-namespace app {
+inline namespace app {
 
 /**
  * @brief Application level instance. Singleton
