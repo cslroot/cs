@@ -1,5 +1,6 @@
 
-project(cs.examples.wpf VERSION 0.1.0 LANGUAGES CSharp)
+project(cs.examples.wpf VERSION 0.1.0)
+enable_language(CSharp)
 
 include(CSharpUtilities)
 
@@ -33,6 +34,11 @@ csharp_set_xaml_cs_properties(
 set_target_properties(cs.examples.wpf PROPERTIES FOLDER examples)
 
 set_property(SOURCE App.xaml PROPERTY VS_XAML_TYPE "ApplicationDefinition")
+
+# install NuGet packages
+# CMake 3.15-
+# https://cmake.org/cmake/help/latest/prop_tgt/VS_PACKAGE_REFERENCES.html
+set_property(TARGET cs.examples.wpf PROPERTY VS_PACKAGE_REFERENCES "Fluent.Ribbon_9.0.4")
 
 set_property(TARGET cs.examples.wpf PROPERTY VS_DOTNET_TARGET_FRAMEWORK_VERSION "v4.7.2")
 set_property(TARGET cs.examples.wpf PROPERTY WIN32_EXECUTABLE TRUE)
