@@ -28,57 +28,48 @@
       <Fluent:RibbonTabItem Header="Home1" KeyTip="T1">
         <Fluent:RibbonGroupBox Header="ボタン" KeyTip="B">
           <Fluent:Button Header="大ボタン"
-                   KeyTip="BI"
-                   LargeIcon="..."/>
+                   KeyTip="BI"/>
 
           <Fluent:Button Header="中ボタン"
                    KeyTip="MI"
-                   Size="Middle"
-                   Icon="..."/>
+                   Size="Middle"/>
 
           <Fluent:Button Header="小ボタン"
                    KeyTip="SM"
-                   Size="Small"
-                   Icon="..."/>
+                   Size="Small"/>
         </Fluent:RibbonGroupBox>
 
         <Fluent:RibbonGroupBox Header="ドロップダウン"
                        KeyTip="DD">
 
           <Fluent:DropDownButton Header="大ボタン"
-                           KeyTip="DB"
-                           LargeIcon="...">
+                           KeyTip="DB">
 
             <!-- メニューの設定ができる -->
-            <Fluent:MenuItem Header="子要素1" Icon="..."/>
-            <Fluent:MenuItem Header="子要素2" Icon="..."/>
+            <Fluent:MenuItem Header="子要素1"/>
+            <Fluent:MenuItem Header="子要素2"/>
           </Fluent:DropDownButton>
 
           <Fluent:DropDownButton Header="中ボタン"
                            KeyTip="DM"
-                           Size="Middle"
-                           Icon="..."/>
+                           Size="Middle"/>
 
           <Fluent:DropDownButton Header="小ボタン"
                            KeyTip="DS"
-                           Size="Small"
-                           Icon="..."/>
+                           Size="Small"/>
         </Fluent:RibbonGroupBox>
         <Fluent:RibbonGroupBox Header="トグル" KeyTip="TB">
 
           <Fluent:ToggleButton Header="大トグル"
-                         KeyTip="TB"
-                         LargeIcon="..."/>
+                         KeyTip="TB"/>
 
           <Fluent:ToggleButton Header="中トグル"
                          KeyTip="TM"
-                         Size="Middle"
-                         Icon="..."/>
+                         Size="Middle"/>
 
           <Fluent:ToggleButton Header="小トグル"
                          KeyTip="TS"
-                         Size="Small"
-                         Icon="..."/>
+                         Size="Small"/>
 
         </Fluent:RibbonGroupBox>
         <Fluent:RibbonGroupBox Header="ラジオボタン" KeyTip="RB">
