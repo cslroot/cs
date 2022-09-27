@@ -11,8 +11,11 @@
 #include <fmt/format.h>
 
 #include <cassert>
+#include <filesystem>
 
 using namespace cs;
+
+namespace fs = std::filesystem;
 
 int
 main(int argc, char** argv)
@@ -48,7 +51,7 @@ main(int argc, char** argv)
   log.Information(app.SessionID().ToString());
 
   // plugin
-  app.PluginManager().LoadAll();
+  app.PluginManager().LoadAll(argc, argv);
   {
     auto* pPlugin = app.PluginManager().GetPlugin("Unexpected Plugin name");
     if (pPlugin) {
@@ -66,7 +69,7 @@ main(int argc, char** argv)
   assert(nullptr == app.Documents().ActiveDocument());
 
   auto& doc =
-    app.Documents().OpenNewDocument(typeid(cs::app::CSDocument3d).name());
+    app.Documents().OpenNewDocument(typeid(cs::app::CSDocument2d).name());
   doc.SaveAs("save.txt.db");
   assert(&doc == app.Documents().ActiveDocument());
 

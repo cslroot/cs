@@ -13,11 +13,24 @@
 
 #include <Poco/SingletonHolder.h>
 
+#include <filesystem>
 #include <locale>
 #include <memory>
 #include <vector>
 
+#if defined(_WIN32)
+#define NOMINMAX
+#define WIN32_LEAN_AND_MEAN
+#ifndef STRICT
+#define STRICT
+#endif
+#include <Windows.h>
+#endif
+
+namespace fs = std::filesystem;
+
 using namespace cs::app;
+using namespace cs::base;
 using namespace cs::core;
 
 CSApp&
@@ -28,16 +41,20 @@ CSApp::Instance()
 }
 void
 CSApp::Reset()
-{}
+{
+}
 
 struct CSApp::Impl
 {
   explicit Impl(CSApp* pApp)
     : _docs(pApp)
     , _commands(pApp)
-  {}
+  {
+  }
 
   bool _initialized = false;
+
+  std::string _command;
 
   CSDocumentCollection _docs;
   CSCommandCollection _commands;
@@ -73,9 +90,48 @@ CSApp&
 CSApp::Initialize(int argc, char** argv)
 {
   cs_initialize(argc, argv);
+  _impl->_command = argv[0];
   _impl->_initialized = true;
 
   return *this;
+}
+
+cs::base::CSString
+CSApp::Path() const
+{
+  cs::base::CSString pathStr;
+
+#if defined(_WIN32)
+  // wchar_t path[FILENAME_MAX];
+  // int n = GetModuleFileNameW(0, path, sizeof(path) / sizeof(wchar_t));
+  // if (n > 0) {
+  //   pathStr = CSString{ path };
+  // } else {
+  //   throw CSException("Cannot get application file name.");
+  // }
+
+  auto& command = _impl->_command;
+  fs::path p(command);
+  if (p.is_absolute()) {
+    pathStr = p.string();
+  } else {
+    pathStr = fs::absolute(p).string();
+  }
+
+#elif defined(__APPLE__) || defined(__linux__)
+
+  auto& command = _impl->_command;
+  fs::path p(command);
+  if (p.is_absolute()) {
+    pathStr = p.string();
+  } else {
+    pathStr = fs::absolute(p).string();
+  }
+#else
+  pathStr = _command;
+#endif
+
+  return pathStr;
 }
 
 CSDocumentCollection&
@@ -115,8 +171,10 @@ CSApp::PluginManager() const
 
 void
 CSApp::EmitDocumentActivated(CSDocument&)
-{}
+{
+}
 
 void
 CSApp::EmitDocumentUnActivated(CSDocument&)
-{}
+{
+}

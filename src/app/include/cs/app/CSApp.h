@@ -2,7 +2,7 @@
 
 #include <cs/app/common.h>
 #include <cs/app_fwd.h>
-#include <cs/core_fwd.h>
+#include <cs/core.h>
 
 #include <memory>
 
@@ -23,6 +23,8 @@ public:
   DECL_CS_APP static void Reset();
 
   DECL_CS_APP CSApp& Initialize(int argc, char** argv);
+  /** path to executable */
+  DECL_CS_APP cs::base::CSString Path() const;
 
   DECL_CS_APP CSDocumentCollection& Documents() const;
   DECL_CS_APP CSCommandCollection& Commands() const;

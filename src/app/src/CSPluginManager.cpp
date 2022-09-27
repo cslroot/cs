@@ -22,7 +22,8 @@ struct CSPluginManager::Impl
 
 CSPluginManager::CSPluginManager()
   : _impl(std::make_unique<Impl>())
-{}
+{
+}
 
 CSPluginManager::~CSPluginManager()
 {
@@ -35,7 +36,7 @@ CSPluginManager::~CSPluginManager()
 }
 
 void
-CSPluginManager::LoadAll()
+CSPluginManager::LoadAll(int argc, char** argv)
 {
   using Poco::Glob;
   using Poco::Path;
@@ -57,7 +58,8 @@ CSPluginManager::LoadAll()
     auto* pPlugin = func();
     auto name = pPlugin->Name();
 
-    _impl->_plugins[name.str()] = std::move(pPlugin);
+    pPlugin->Initialize(argc, argv);
+    _impl->_plugins[name.str()] = pPlugin;
     _impl->_libs.push_back(std::move(plibrary));
   }
 }
