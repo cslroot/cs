@@ -5,7 +5,7 @@
 #include <string>
 
 namespace cs {
-namespace base {
+inline namespace base {
 
 /**
  * @brief Path utility

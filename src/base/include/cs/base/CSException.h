@@ -6,7 +6,7 @@
 #include <exception>
 
 namespace cs {
-namespace base {
+inline namespace base {
 
 class DECL_CS_BASE CSException : public std::exception
 {
