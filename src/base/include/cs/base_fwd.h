@@ -15,6 +15,8 @@ inline namespace base {
 
 class CSString;
 class CSColor;
+class CSPath;
+class CSException;
 
 } // namespace base
 } // namespace cs

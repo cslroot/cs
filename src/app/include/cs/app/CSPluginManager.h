@@ -15,7 +15,7 @@ public:
   DECL_CS_APP ~CSPluginManager();
 
 public:
-  DECL_CS_APP void LoadAll();
+  DECL_CS_APP void LoadAll(int argc, char** argv);
   DECL_CS_APP cs::core::ICSPlugin* GetPlugin(
     const cs::base::CSString& pluginName);
 

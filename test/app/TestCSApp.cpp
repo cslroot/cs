@@ -29,6 +29,8 @@ TEST(TestCSApp, ctorDefault)
 TEST(TestCSApp, ctorWithInstanciate)
 {
   auto& app = CSApp::Instance();
+  app.Initialize(s_argc, s_argv);
+  EXPECT_STRNE(app.Path().c_str(), "");
 }
 TEST(TestCSApp, Initialize)
 {
@@ -86,5 +88,14 @@ TEST(TestCSApp, PluginManager)
   auto& plugins = app.PluginManager();
 
   EXPECT_NE(reinterpret_cast<uint64_t>(&plugins), 0U);
-  ASSERT_NO_THROW(plugins.LoadAll());
+  ASSERT_NO_THROW(plugins.LoadAll(s_argc, s_argv));
+}
+
+TEST(TestCSApp, Path)
+{
+  auto& app = CSApp::Instance();
+  app.Initialize(s_argc, s_argv);
+  auto apppath = app.Path();
+
+  EXPECT_FALSE(apppath.empty());
 }
